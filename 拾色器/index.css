@@ -1,0 +1,203 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  background-color: #f3f3f3;
+}
+
+body,
+.BarContainer,
+.other,
+.InputBoxTwo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.main {
+  width: 230px;
+  padding: 7px;
+  border-radius: 3px;
+  background-color: #ffffff;
+}
+
+.sample {
+  width: 100%;
+  height: 30px;
+  cursor: move;
+  border-radius: 3px;
+  background-color: #ff0000;
+}
+
+.ColorPickerContainer {
+  width: 100%;
+  margin-top: 10px;
+  position: relative;
+}
+
+.PanelContainer {
+  width: 100%;
+  height: 124px;
+  background-color: #ff0000;
+}
+
+.panel {
+  width: 100%;
+  height: 124px;
+  background: linear-gradient(to right, #ffffff, rgba(255, 255, 255, 0));
+}
+
+.variable {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(to top, #000000, rgba(0, 0, 0, 0));
+}
+
+.BarContainer {
+  width: 100%;
+  height: 15px;
+  margin-top: 7px;
+}
+
+.Discoloration {
+  width: 100%;
+  height: 15px;
+  position: relative;
+  overflow: hidden;
+  background-image: linear-gradient(
+    to right,
+    #ff0000 0%,
+    #ffff00 17%,
+    #00ff00 33%,
+    #00ffff 50%,
+    #0000ff 67%,
+    #ff00ff 83%,
+    #ff0000 100%
+  );
+}
+
+.other {
+  width: 100%;
+  margin-top: 7px;
+}
+
+input {
+  outline: none;
+}
+
+.InputBoxOne {
+  display: none;
+}
+
+.InputBoxOne,
+.InputBoxOne > input {
+  width: 161px;
+}
+
+.InputBoxOne > input {
+  font-size: 12px;
+  color: rgb(51, 51, 51);
+  width: 100%;
+  border-radius: 3px;
+  border: none;
+  box-shadow: rgb(218, 218, 218) 0px 0px 0px 1px inset;
+  height: 21px;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.InputBoxTwo {
+  width: 161px;
+  height: 46px;
+}
+
+.InputBoxTwo > div {
+  width: 49px;
+}
+
+.InputBoxTwo > div + div {
+  margin-left: 7px;
+}
+
+.InputBoxTwo > div > input {
+  font-size: 12px;
+  color: rgb(51, 51, 51);
+  width: 100%;
+  border-radius: 2px;
+  border: none;
+  box-shadow: rgb(218, 218, 218) 0px 0px 0px 1px inset;
+  height: 21px;
+  text-align: center;
+}
+
+.InputBoxOne > span,
+.InputBoxTwo > div > span {
+  text-transform: uppercase;
+  font-size: 12px;
+  line-height: 16px;
+  color: rgb(150, 150, 150);
+  text-align: center;
+  display: block;
+  height: 16px;
+  margin-top: 7px;
+}
+
+.control > button {
+  width: 49px;
+  height: 21px;
+  margin-left: 6px;
+  color: #606266;
+  box-sizing: border-box;
+  border: 1px solid #cccccc;
+  background-color: #ffffff;
+  border-radius: 2px;
+}
+
+.LeftAndRight {
+  width: 49px;
+  height: 16px;
+  margin-left: 6px;
+  margin-top: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.left,
+.right {
+  width: 50%;
+  height: 16px;
+  display: inline-block;
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: bold;
+  text-align: center;
+  color: rgb(150, 150, 150);
+}
+
+.DotOne,
+.DotTwo {
+  width: 15px;
+  height: 15px;
+  left: -7.5px;
+  border-radius: 50%;
+  position: absolute;
+  box-shadow: 0px 0px 3px rgb(0 0 0 / 80%);
+}
+
+.DotOne {
+  box-sizing: border-box;
+  border: 2px solid #f3f3f3;
+  top: -7.5px;
+}
+
+.DotTwo {
+  background-color: #f3f3f3;
+}

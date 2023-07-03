@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./index.css">
+    <script src="./ColorPicker.js"></script>
+</head>
+
+<body>
+    <div class="main">
+        <div class="sample"></div>
+        <div class="ColorPickerContainer">
+            <div class="PanelContainer">
+                <div class="panel">
+                    <div class="variable">
+                        <div class="DotOne"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="BarContainer">
+                <div class="Discoloration">
+                    <div class="DotTwo"></div>
+                </div>
+            </div>
+            <div class="other">
+                <div class="InputBoxContainer">
+                    <div class="InputBoxOne">
+                        <input value="#ff0000" spellcheck="false" maxlength="7">
+                        <span>HEX（十六进制）</span>
+                    </div>
+                    <div class="InputBoxTwo">
+                        <div>
+                            <input class="colorpicker-hexInput" value="255" maxlength="3" spellcheck="false">
+                            <span>r</span>
+                        </div>
+                        <div>
+                            <input class="colorpicker-hexInput" value="0" maxlength="3" spellcheck="false">
+                            <span>g</span>
+                        </div>
+                        <div>
+                            <input class="colorpicker-hexInput" value="0" maxlength="3" spellcheck="false">
+                            <span>b</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="control">
+                    <button>重置</button>
+                    <div class="LeftAndRight">
+                        <span class="left">
+                            <i class="icon-custom-10"></i>
+                        </span>
+                        <span class="right">
+                            <i class="icon-custom-9"></i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        ColorPicker("#008CD6").then(function (ColorData) {
+            console.log(ColorData)
+        });
+      // ColorPicker.setColor("#000000");//设置颜色
+    </script>
+</body>
+
+</html>
