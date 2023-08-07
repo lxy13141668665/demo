@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <title></title>
+    <base href="/" target="_blank">
+    <style>
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            padding: 0px;
+            box-sizing: border-box;
+            margin: 0;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            height: 100%;
+        }
+
+        .header-box {
+            border-bottom: 1px solid #ccc;
+            padding-left: 10px;
+            box-sizing: border-box;
+            font-weight: 900;
+        }
+
+        #main {
+            padding: 10px;
+            box-sizing: border-box;
+            display: block;
+            flex: 1;
+            overflow: hidden;
+        }
+
+        .testButton {
+            cursor: pointer;
+            height: 24px;
+            width: 80px;
+            border-radius: 4px;
+            color: #fff;
+            line-height: 24px;
+            text-align: center;
+            background-color: #208c99;
+            font-size: 14px;
+            margin-left: 24px;
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="header-box">
+            <button onclick="GetCurrentWriterControl().ShowAboutDialog()">关于</button>
+            <button onclick="ClearContent()">清空</button>
+            <button onclick="FileNew()">新建</button>
+            <button onclick="FileOpen()">打开</button>
+            <button onclick="Refresh()">刷新</button>
+            <button onclick="DownLoadFile('xml');">下载xml</button>
+            <br />
+            <button onclick="ReadViewMode()">阅读模式</button>
+            <button onclick="ReadOnly()">只读切换</button>
+            <button onclick="CommentEditableWhenReadonly()">只读状态下是否能编辑文档批注</button>
+            <button onclick="FormViewMode()">表单模式</button>
+            <button onclick="FormView()">获取当前表单模式</button>
+            <button onclick="ContentProtect()">内容保护</button>
+            <button onclick="ProtectType()">获取内容保护状态</button>
+            <button onclick="AdministratorViewMode()">管理员模式</button>
+            <button onclick="DesignMode()">设计模式</button>
+            <button onclick="ComplexViewMode()">留痕模式</button>
+            <button onclick="CleanViewMode()">清洁模式</button>
+            <button onclick="ClearAllUserTrace()">清除所有痕迹</button>清除痕迹时会将被标记为逻辑删除的内容给去掉逻辑删除的标记，可以显示出来。请在管理员模式下使用。
+            <button onclick="ClearUserTrace()">清除当前用户痕迹</button>
+            <button onclick="CommitUserTrace()">提交用户痕迹</button>删除所有被逻辑删除的元素。请在管理员模式下使用。
+            <button onclick="GetCommandStatus()">查询编辑器命令状态</button>
+
+
+
+        </div>
+        <div id="main">
+            <div id="myWriterControl" dctype="WriterControlForWASM"
+                style="height: 100%; background-color: rgb(230, 230, 230); border-bottom: 0px solid black; background-attachment: fixed; background-size: cover; background-position: center top; "
+                RuleVisible="true" RuleBackColor="rgb(230, 230, 230)"
+                ServicePageUrl="http://www.dcwriter.cn:8099/ServicePage.aspx"
+                PageCssString222="box-shadow:3px 3px 3px grey"
+                DocumentOptions.BehaviorOptions.OutputFormatedXMLSource="false"
+                DocumentOptions.BehaviorOptions.ParagraphFlagFollowTableOrSection="true"
+                DocumentOptions.ViewOptions.ShowInputFieldStateTag="true"
+                DocumentOptions.ViewOptions.IgnoreFieldBorderWhenPrint="false"
+                DocumentOptions.ViewOptions.PrintBackgroundText="false"
+                DocumentOptions.ViewOptions.PreserveBackgroundTextWhenPrint="true"
+                DocumentOptions.ViewOptions.FieldBorderPrintVisibility="hidden"
+                DocumentOptions.ViewOptions.FieldInvalidateValueForeColor="Blue"
+                DocumentOptions.ViewOptions.TagColorForNormalField="Green"
+                DocumentOptions.ViewOptions.TagColorForValueInvalidateField="Blue"
+                DocumentOptions.ViewOptions.UnEditableFieldBorderColor="Yellow"
+                DocumentOptions.SecurityOptions.EnablePermission="true"
+                DocumentOptions.SecurityOptions.EnableLogicDelete="true"
+                DocumentOptions.SecurityOptions.ShowLogicDeletedContent="true"
+                DocumentOptions.SecurityOptions.ShowPermissionTip="true"
+                DocumentOptions.SecurityOptions.ShowPermissionMark="true">
+                正在加载...</div>
+        </div>
+    </div>
+    <script src="_framework/blazor.webassembly.js"></script>
+    <script src="../../js/jquery-1.7.2.min.js"></script>
+    <script src="../../DemoApp.js"></script>
+    <script language="javascript">
+
+        function CommentEditableWhenReadonly() {
+            var ctl = GetCurrentWriterControl()
+            ctl.DocumentOptions.BehaviorOptions.CommentEditableWhenReadonly = !ctl.DocumentOptions.BehaviorOptions.CommentEditableWhenReadonly
+            alert(ctl.DocumentOptions.BehaviorOptions.CommentEditableWhenReadonly ? '只读状态下能编辑文档批注' : '只读状态下不能编辑文档批注')
+        }
+        function ReadViewMode() {
+            var myWriterControl = GetCurrentWriterControl();
+            myWriterControl.DCExecuteCommand("ReadViewMode", false, null);
+            console.log(myWriterControl.ReadViewMode)
+            alert((myWriterControl.ReadViewMode ? '已切换为阅读模式' : '取消阅读模式') + myWriterControl.ReadViewMode)
+
+        }
+        function ClearAllUserTrace() {
+            var myWriterControl = GetCurrentWriterControl();
+            myWriterControl.ClearAllUserTrace()
+        }
+
+        function ReadOnly() {
+            var myWriterControl = GetCurrentWriterControl();
+            var result = myWriterControl.Readonly;
+            myWriterControl.Readonly = !result;
+            alert((!result ? '已切换为只读' : '取消只读') + myWriterControl.Readonly)
+        }
+
+        // 表单模式
+        function FormViewMode() {
+            var myWriterControl = GetCurrentWriterControl();
+            myWriterControl.formModeDialog();
+        }
+        function FormView() {
+            var myWriterControl = GetCurrentWriterControl();
+            alert(myWriterControl.FormView())
+        }
+        // 内容保护
+        function ContentProtect(options) {
+            var myWriterControl = GetCurrentWriterControl();
+            myWriterControl.contentProtectedModeDialog();
+        }
+        function ProtectType() {
+            var myWriterControl = GetCurrentWriterControl();
+            alert(myWriterControl.ProtectType());
+        }
+        function AdministratorViewMode() {
+            var myWriterControl = GetCurrentWriterControl();
+            myWriterControl.IsAdministrator = !myWriterControl.IsAdministrator
+            // myWriterControl.DCExecuteCommand('AdministratorViewMode', false, null);
+            alert(myWriterControl.IsAdministrator ? '当前为管理员模式' : '已取消管理员模式')
+        }
+        // 设计模式
+        function DesignMode() {
+            var myWriterControl = GetCurrentWriterControl();
+            myWriterControl.InDesignMode();
+        }
+        // 留痕模式
+        function ComplexViewMode() {
+            var myWriterControl = GetCurrentWriterControl();
+            myWriterControl.ComplexViewMode()
+        }
+        // 清洁模式
+        function CleanViewMode() {
+            var myWriterControl = GetCurrentWriterControl();
+            myWriterControl.CleanViewMode()
+        }
+        function ClearUserTrace() {
+            var myWriterControl = GetCurrentWriterControl();
+            myWriterControl.ClearUserTrace()
+        }
+        function CommitUserTrace() {
+            var myWriterControl = GetCurrentWriterControl();
+            myWriterControl.CommitUserTrace()
+        }
+
+        function GetCommandStatus() {
+            let ctl = GetCurrentWriterControl()
+            var elements = document.getElementsByTagName("button");
+            for (var iCount = 0; iCount < elements.length; iCount++) {
+                var element = elements[iCount];
+                var cmdName = element.getAttribute("dccommandName");
+                if (cmdName != null && cmdName.length > 0) {
+                    let result = ctl.GetCommandStatus(cmdName);
+                    console.log("命令状态：", cmdName, result)
+                }
+            }
+
+        }
+
+
+        function WriterControl_OnLoad(rootElement) {
+
+            // rootElement.EventShowContextMenu = Handle_EventShowContextMenu;// 这个函数定义在DemoApp.js中
+            // rootElement.EventUpdateToolarState = Handle_EventUpdateToolarState;// 这个函数定义在DemoApp.js中
+            // rootElement.EventCanInsertObject = function (eventSender, eventArgs) {
+            //     eventArgs.Result = true;
+            // };
+
+        }
+
+
+        function ClearContent() {
+            var ctl = document.getElementById("myWriterControl");
+            var result = ctl.ClearContent();
+            console.log(result);
+        }
+        function FileNew() {
+            var ctl = document.getElementById("myWriterControl");
+            var result = ctl.DCExecuteCommand("FileNew", false, null);
+            console.log(result);
+        }
+        function FileOpen() {
+            var ctl = document.getElementById("myWriterControl");
+            ctl.DCExecuteCommand("FileOpen", true, null);
+        }
+        /**获得当前的编辑器控件对象 */
+        function GetCurrentWriterControl() {
+            return document.getElementById("myWriterControl");
+        }
+        function Refresh() {
+            let ctl = document.getElementById("myWriterControl");
+            ctl.RefreshDocument();
+        }
+        function DownLoadFile(format) {
+            if (format == null || format == "") {
+                format = "xml";
+            }
+            if (format == 'doc') {
+                DownLoadFiledoc();
+            }
+            else {
+                let ctl = GetCurrentWriterControl();
+                ctl.DownLoadFile(format);
+            }
+
+        }
+
+    </script>
+</body>
+
+</html>

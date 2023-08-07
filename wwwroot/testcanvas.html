@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <button onclick="Draw1();">测试绘图</button>
+    <script languge="javascript">
+        function Draw1() {
+            var ctl = document.getElementById("c1");
+            var ctx = ctl.getContext("2d");
+            ctx.reset();
+            ctx.fillStyle = "blue";
+            ctx.fillRect(100, 100, 800, 800);
+            //ctx.strokeStyle = "yellow";
+            //ctx.strokeRect(400, 500, 100, 100);
+            //ctx.save();
+
+            var path1 = new Path2D();
+            path1.rect(150, 150, 100, 100);
+            ctx.clip(path1);
+
+            //ctx.beginPath();
+            //ctx.rect(400, 500, 100, 100);
+            //ctx.clip();
+            //ctx.closePath();
+
+            ctx.fillStyle = "red";
+            ctx.fillRect(100, 100, 600, 600);
+
+            //ctx.fillStyle = "black";
+            //ctx.strokeRect(410, 510, 70, 70);
+            //ctx.restore();
+
+            var path2 = new Path2D();
+            path2.rect(200, 200, 100, 100);
+            ctx.clip(path2);
+
+            //ctx.beginPath();
+            //ctx.rect(200, 200, 100, 100);
+            //ctx.clip();
+
+            ctx.fillStyle = "yellow";
+            ctx.fillRect(100, 100, 600, 600);
+
+        }
+    </script>
+    <br/>
+    <canvas id="c1" width="1000" height="900" style="border:1px solid black"></canvas>
+</body>
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    html,
+    body {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        margin: 0;
+        padding: 0;
+    }
+
+    .mobileBox {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+    }
+
+    #presentationDocumentBox {
+        height: 100%;
+        overflow: auto;
+        padding: 10px;
+        box-sizing: border-box;
+    }
+
+    .childrenItem_p {
+        width: 280px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis
+    }
+
+    .parentItem_p {
+        width: 200px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis
+    }
+
+    .parentItem_p:active {
+        cursor: pointer;
+        background: linear-gradient(to bottom, #EFF5FF 0, #E0ECFF 100%);
+    }
+
+    .childrenItem:active {
+        cursor: pointer;
+        background: linear-gradient(to bottom, #EFF5FF 0, #E0ECFF 100%);
+    }
+
+    .mobileTitletext {
+        width: 100%;
+        height: 45px;
+        border-bottom: 1px solid #ccc;
+        line-height: 45px;
+        font-weight: 600;
+        padding-left: 10px;
+        box-sizing: border-box;
+    }
+</style>
+
+<body>
+    <div class="mobileBox">
+        <div class="mobileTitletext">演示文档
+        </div>
+        <div style="flex: 1;overflow: hidden;">
+            <div class="presentationDocumentBox" id="presentationDocumentBox"></div>
+        </div>
+    </div>
+
+</body>
+<script type="text/javascript" src="http://www.dcwriter.cn:6788/static/js/jquery-1.7.2.min.js"></script>
+<script>
+    jQuery(document).ready(function () {
+        jQuery.ajax({
+            type: "Post",
+            url: 'http://www.dcwriter.cn:6969/DCWebServiceConvert.asmx/GetDocumentList',
+            contentType: "application/json; charset=utf-8",
+            success: (data) => {
+                console.log(data)
+                let parentNodeStr = ''
+                if (data && data.d && data.d.Obj) {
+                    for (var i = 0; i < data.d.Obj.length; i++) {
+                        let obj = data.d.Obj[i]
+                        let childrenItem = ''
+                        if (obj.ChildNodes && obj.ChildNodes.length) {
+                            for (var j = 0; j < obj.ChildNodes.length; j++) {
+                                childrenItem += `<div class="childrenItem" style="display:none;margin-left:20px;" id="${obj.ChildNodes[j].NodeName}" fildUrl="${obj.NodeName}/${obj.ChildNodes[j].NodeName}">
+                                 <p  class="childrenItem_p"  title="${obj.ChildNodes[j].NodeName}"  style="display:inline-block;"><img src="./img/fileText.png" style="width:16px;height:16px;display:inline-block;margin-top: -3px;margin-right: 4px;"/>${obj.ChildNodes[j].NodeName}</p>
+                              </div>`
+                            }
+                        }
+                        parentNodeStr += `<div class="parentItem" isFlag="hide" id="${obj.NodeName}">
+                           <p class="parentItem_p" style="display:inline-block;" ><img src="./img/wjj.png" style="width:24px;height:24px;display:inline-block;margin-right: 5px;margin-top: -4px;" />${obj.NodeName}</p>
+                           ${childrenItem}
+                        </div>`
+                    }
+                    document.getElementById('presentationDocumentBox').innerHTML = parentNodeStr
+
+                    jQuery('.parentItem').click(function () {
+                        if (this.getAttribute('isFlag')) {
+                            if (this.getAttribute('isFlag') === 'hide') {
+                                jQuery(this).find('.childrenItem').show()
+                                jQuery(this).attr('isFlag', 'show')
+                            } else if (this.getAttribute('isFlag') === 'show') {
+                                jQuery(this).find('.childrenItem').hide()
+                                jQuery(this).attr('isFlag', 'hide')
+                            }
+                        }
+                    })
+                    jQuery('.childrenItem').click(function (event) {
+                        event.stopPropagation();
+                        window.location.href = "./demoDocMobileTerminalCanvas.html" + `?url=${jQuery(this).attr('fildUrl')}`
+                    })
+                }
+            }
+        })
+    });
+</script>
+
+</html>

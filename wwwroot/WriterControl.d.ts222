@@ -1,0 +1,45 @@
+﻿
+/**编辑器控件接口API声明 */
+interface WriterControl {
+    /** 从0开始计算的当前页码 */
+    readonly FocusedPageIndexBase0: number;
+    /**当前行在当前页中的行号 */
+    readonly CurrentLineIndexInPage: number;
+    /**当前列号 */
+    readonly CurrentColumnIndex: number;
+    /**选择区域长度 */
+    readonly SelectionLength: number;
+    /**选择区域开始位置 */
+    readonly SelectionStartPosition: number;
+    /**控件内容是否只读 */
+    Readonly: boolean;
+    /**
+    * 从一个字符串中加载文档
+    * @param strData 文件内容
+    * @param strFormat 文件格式
+    * @returns 操作是否成功
+    */
+    LoadDocumentFromString(strData: string, strFormat: string): boolean;
+
+    /**
+    * 保存文件到一个字符串中
+    * @param {string} strFormat 文件格式
+    * @returns {string} 文件内容的字符串
+    */
+    SaveDocumentToString(strFormat: Function): boolean;
+    /**文档内容选择状态发生改变事件 
+     * @param {WriterControl} eventSender 事件发起者
+     * @param { any } args 事件参数
+     */
+    SelectionChanged: (eventSender: WriterControl, args: any) => void;
+    /**文档加载完毕事件 
+     * @param {WriterControl} eventSender 事件发起者
+     * @param { any } args 事件参数
+     */
+    DocumentLoad: (eventSender: WriterControl, args: any) => void;
+}
+
+declare var WriterControl: {
+    prototype: WriterControl;
+    new(): WriterControl;
+};

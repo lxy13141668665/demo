@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <title>Document</title>
+   <title></title>
+   <base href="/" target="_blank" />
+   <style>
+      html,
+      body {
+         width: 100%;
+         height: 100%;
+         padding: 0px;
+         box-sizing: border-box;
+         margin: 0;
+      }
+
+      .container {
+         display: flex;
+         flex-direction: column;
+         width: 100%;
+         height: 100%;
+      }
+
+      .header-box {
+         border-bottom: 1px solid #ccc;
+         padding-left: 10px;
+         box-sizing: border-box;
+         font-weight: 900;
+      }
+
+      #main {
+         padding: 10px;
+         box-sizing: border-box;
+         display: block;
+         flex: 1;
+         overflow: hidden;
+      }
+
+      .testButton {
+         cursor: pointer;
+         height: 24px;
+         width: 80px;
+         border-radius: 4px;
+         color: #fff;
+         line-height: 24px;
+         text-align: center;
+         background-color: #208c99;
+         font-size: 14px;
+         margin-left: 24px;
+      }
+   </style>
+</head>
+
+<body>
+   <div class="container">
+      <div class="header-box">
+         <button onclick="GetCurrentWriterControl().ShowAboutDialog()">
+            关于
+         </button>
+         <button onclick="ClearContent()">清空</button>
+         <button onclick="FileNew()">新建</button>
+         <button onclick="FileOpen()">打开</button>
+         <button onclick="Refresh()">刷新</button>
+         <button onclick="DownLoadFile('xml');">下载xml</button>
+         <br />
+         <button onclick="LoadSaveBase64String()">
+            以xml格式从BASE64字符串加载文档内容
+         </button>
+         <button onclick="loadmix()">页眉，文档体，页脚组合加载</button>
+      </div>
+      <div id="main">
+         <div id="myWriterControl" dctype="WriterControlForWASM" style="
+            height: 100%;
+            background-color: rgb(230, 230, 230);
+            border-bottom: 0px solid black;
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: center top;
+          " RuleVisible="true" RuleBackColor="rgb(230, 230, 230)"
+            ServicePageUrl="http://www.dcwriter.cn:8099/ServicePage.aspx" PageCssString222="box-shadow:3px 3px 3px grey"
+            DocumentOptions.BehaviorOptions.OutputFormatedXMLSource="false"
+            DocumentOptions.BehaviorOptions.ParagraphFlagFollowTableOrSection="true"
+            DocumentOptions.ViewOptions.ShowInputFieldStateTag="true"
+            DocumentOptions.ViewOptions.IgnoreFieldBorderWhenPrint="false"
+            DocumentOptions.ViewOptions.PrintBackgroundText="false"
+            DocumentOptions.ViewOptions.PreserveBackgroundTextWhenPrint="true"
+            DocumentOptions.ViewOptions.FieldBorderPrintVisibility="hidden"
+            DocumentOptions.ViewOptions.FieldInvalidateValueForeColor="Blue"
+            DocumentOptions.ViewOptions.TagColorForNormalField="Green"
+            DocumentOptions.ViewOptions.TagColorForValueInvalidateField="Blue"
+            DocumentOptions.ViewOptions.UnEditableFieldBorderColor="Yellow"
+            DocumentOptions.SecurityOptions.EnablePermission="true"
+            DocumentOptions.SecurityOptions.EnableLogicDelete="true"
+            DocumentOptions.SecurityOptions.ShowLogicDeletedContent="true"
+            DocumentOptions.SecurityOptions.ShowPermissionTip="true"
+            DocumentOptions.SecurityOptions.ShowPermissionMark="true">
+            正在加载...
+         </div>
+      </div>
+   </div>
+   <script src="_framework/blazor.webassembly.js"></script>
+   <script src="../../js/jquery-1.7.2.min.js"></script>
+   <script src="../../DemoApp.js"></script>
+   <script language="javascript">
+      var header = `<XTextDocument xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" EditorVersionString="0.0.0.0">
+           <XElements>
+              <Element xsi:type="XTextHeader">
+                 <InnerID>1</InnerID>
+                 <AcceptTab>true</AcceptTab>
+                 <XElements>
+                    <Element xsi:type="XString" StyleIndex="0">
+                       <InnerID>28</InnerID>
+                       <Text>这是提供页眉内容的文档</Text>
+                    </Element>
+                    <Element xsi:type="XParagraphFlag" StyleIndex="0">
+                       <InnerID>6</InnerID>
+                       <AutoCreate>true</AutoCreate>
+                    </Element>
+                 </XElements>
+              </Element>
+              <Element xsi:type="XTextBody">
+                 <InnerID>2</InnerID>
+                 <AcceptTab>true</AcceptTab>
+                 <XElements>
+                    <Element xsi:type="XString" StyleIndex="0">
+                       <InnerID>29</InnerID>
+                       <Text>这是提供页眉内容的文档</Text>
+                    </Element>
+                    <Element xsi:type="XParagraphFlag">
+                       <InnerID>7</InnerID>
+                       <AutoCreate>true</AutoCreate>
+                    </Element>
+                 </XElements>
+              </Element>
+              <Element xsi:type="XTextFooter">
+                 <InnerID>3</InnerID>
+                 <AcceptTab>true</AcceptTab>
+                 <XElements>
+                    <Element xsi:type="XString" StyleIndex="0">
+                       <InnerID>30</InnerID>
+                       <Text>这是提供页眉内容的文档</Text>
+                    </Element>
+                    <Element xsi:type="XParagraphFlag">
+                       <InnerID>8</InnerID>
+                       <AutoCreate>true</AutoCreate>
+                    </Element>
+                 </XElements>
+              </Element>
+           </XElements>
+           <FileFormat>XML</FileFormat>
+           <ContentStyles>
+              <Default xsi:type="DocumentContentStyle">
+                 <FontSize>12</FontSize>
+              </Default>
+              <Styles>
+                 <Style Index="0">
+                    <FontSize>12</FontSize>
+                    <Align>Center</Align>
+                 </Style>
+              </Styles>
+           </ContentStyles>
+           <Info>
+              <LicenseText>南京都昌公司2023年测试用旗舰版(2并发):南京都昌公司2023年测试用旗舰版(2并发)</LicenseText>
+              <CreationTime>2023-05-26T14:05:59.5903726+08:00</CreationTime>
+              <LastModifiedTime>2023-05-26T14:08:10.0656695+08:00</LastModifiedTime>
+              <LastPrintTime>1980-01-01T00:00:00</LastPrintTime>
+              <Operator>DCSoft.Writer Version:0.0.0.0</Operator>
+              <NumOfPage>1</NumOfPage>
+           </Info>
+           <BodyText>这是提供页眉内容的文档</BodyText>
+           <LocalConfig />
+           <PageSettings>
+              <StrictUsePageSize>false</StrictUsePageSize>
+           </PageSettings>
+</XTextDocument>`;
+      var footer = `<XTextDocument xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" EditorVersionString="0.0.0.0">
+           <XElements>
+              <Element xsi:type="XTextHeader">
+                 <InnerID>1</InnerID>
+                 <AcceptTab>true</AcceptTab>
+                 <XElements>
+                    <Element xsi:type="XString" StyleIndex="0">
+                       <InnerID>28</InnerID>
+                       <Text>这是提供页脚内容的文档</Text>
+                    </Element>
+                    <Element xsi:type="XParagraphFlag" StyleIndex="0">
+                       <InnerID>6</InnerID>
+                       <AutoCreate>true</AutoCreate>
+                    </Element>
+                 </XElements>
+              </Element>
+              <Element xsi:type="XTextBody">
+                 <InnerID>2</InnerID>
+                 <AcceptTab>true</AcceptTab>
+                 <XElements>
+                    <Element xsi:type="XString" StyleIndex="0">
+                       <InnerID>29</InnerID>
+                       <Text>这是提供页脚内容的文档</Text>
+                    </Element>
+                    <Element xsi:type="XParagraphFlag">
+                       <InnerID>7</InnerID>
+                       <AutoCreate>true</AutoCreate>
+                    </Element>
+                 </XElements>
+              </Element>
+              <Element xsi:type="XTextFooter">
+                 <InnerID>3</InnerID>
+                 <AcceptTab>true</AcceptTab>
+                 <XElements>
+                    <Element xsi:type="XString" StyleIndex="0">
+                       <InnerID>30</InnerID>
+                       <Text>这是提供页脚内容的文档</Text>
+                    </Element>
+                    <Element xsi:type="XParagraphFlag">
+                       <InnerID>8</InnerID>
+                       <AutoCreate>true</AutoCreate>
+                    </Element>
+                 </XElements>
+              </Element>
+           </XElements>
+           <FileFormat>XML</FileFormat>
+           <ContentStyles>
+              <Default xsi:type="DocumentContentStyle">
+                 <FontSize>12</FontSize>
+              </Default>
+              <Styles>
+                 <Style Index="0">
+                    <FontSize>12</FontSize>
+                    <Align>Center</Align>
+                 </Style>
+              </Styles>
+           </ContentStyles>
+           <Info>
+              <LicenseText>南京都昌公司2023年测试用旗舰版(2并发):南京都昌公司2023年测试用旗舰版(2并发)</LicenseText>
+              <CreationTime>2023-05-26T14:05:59.5903726+08:00</CreationTime>
+              <LastModifiedTime>2023-05-26T14:08:43.8942807+08:00</LastModifiedTime>
+              <LastPrintTime>1980-01-01T00:00:00</LastPrintTime>
+              <Operator>DCSoft.Writer Version:0.0.0.0</Operator>
+              <NumOfPage>1</NumOfPage>
+           </Info>
+           <BodyText>这是提供页脚内容的文档</BodyText>
+           <LocalConfig />
+           <PageSettings>
+              <StrictUsePageSize>false</StrictUsePageSize>
+           </PageSettings>
+</XTextDocument>`;
+      var body = `<XTextDocument xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" EditorVersionString="0.0.0.0">
+           <XElements>
+              <Element xsi:type="XTextHeader">
+                 <InnerID>1</InnerID>
+                 <AcceptTab>true</AcceptTab>
+                 <XElements>
+                    <Element xsi:type="XString" StyleIndex="0">
+                       <InnerID>29</InnerID>
+                       <Text>这是提供主文档内容的文档</Text>
+                    </Element>
+                    <Element xsi:type="XParagraphFlag" StyleIndex="0">
+                       <InnerID>6</InnerID>
+                       <AutoCreate>true</AutoCreate>
+                    </Element>
+                 </XElements>
+              </Element>
+              <Element xsi:type="XTextBody">
+                 <InnerID>2</InnerID>
+                 <AcceptTab>true</AcceptTab>
+                 <XElements>
+                    <Element xsi:type="XString" StyleIndex="0">
+                       <InnerID>30</InnerID>
+                       <Text>这是提供主文档内容的文档</Text>
+                    </Element>
+                    <Element xsi:type="XParagraphFlag">
+                       <InnerID>7</InnerID>
+                       <AutoCreate>true</AutoCreate>
+                    </Element>
+                 </XElements>
+              </Element>
+              <Element xsi:type="XTextFooter">
+                 <InnerID>3</InnerID>
+                 <AcceptTab>true</AcceptTab>
+                 <XElements>
+                    <Element xsi:type="XString" StyleIndex="0">
+                       <InnerID>31</InnerID>
+                       <Text>这是提供主文档内容的文档</Text>
+                    </Element>
+                    <Element xsi:type="XParagraphFlag">
+                       <InnerID>8</InnerID>
+                       <AutoCreate>true</AutoCreate>
+                    </Element>
+                 </XElements>
+              </Element>
+           </XElements>
+           <FileFormat>XML</FileFormat>
+           <ContentStyles>
+              <Default xsi:type="DocumentContentStyle">
+                 <FontSize>12</FontSize>
+              </Default>
+              <Styles>
+                 <Style Index="0">
+                    <FontSize>12</FontSize>
+                    <Align>Center</Align>
+                 </Style>
+              </Styles>
+           </ContentStyles>
+           <Info>
+              <LicenseText>南京都昌公司2023年测试用旗舰版(2并发):南京都昌公司2023年测试用旗舰版(2并发)</LicenseText>
+              <CreationTime>2023-05-26T14:05:59.5903726+08:00</CreationTime>
+              <LastModifiedTime>2023-05-26T14:09:13.4757914+08:00</LastModifiedTime>
+              <LastPrintTime>1980-01-01T00:00:00</LastPrintTime>
+              <Operator>DCSoft.Writer Version:0.0.0.0</Operator>
+              <NumOfPage>1</NumOfPage>
+           </Info>
+           <BodyText>这是提供主文档内容的文档</BodyText>
+           <LocalConfig />
+           <PageSettings>
+              <StrictUsePageSize>false</StrictUsePageSize>
+           </PageSettings>
+</XTextDocument>`;
+
+      function LoadSaveBase64String() {
+         let ctl = document.getElementById("myWriterControl");
+         try {
+            var globalsavebase64string = ctl.SaveDocumentToBase64String('xml')
+            if (ctl != null && globalsavebase64string != null) {
+               ctl.LoadDocumentFromBase64String(globalsavebase64string, "xml");
+            }
+            alert("调用成功")
+         } catch {
+            alert("调用失败")
+         }
+
+      }
+
+      function loadmix() {
+         var options = {
+            FileFormat: "xml",
+            UseBase64String: "false",
+            HeaderContent: header,
+            BodyContent: body,
+            FooterContent: footer
+         }
+         let ctl = document.getElementById("myWriterControl");
+         ctl.LoadDocumentFromMixString(options);
+      }
+
+
+      function WriterControl_OnLoad(rootElement) { }
+
+      function ClearContent() {
+         var ctl = document.getElementById("myWriterControl");
+         var result = ctl.ClearContent();
+         console.log(result);
+      }
+      function FileNew() {
+         var ctl = document.getElementById("myWriterControl");
+         var result = ctl.DCExecuteCommand("FileNew", false, null);
+         console.log(result);
+      }
+      function FileOpen() {
+         var ctl = document.getElementById("myWriterControl");
+         ctl.DCExecuteCommand("FileOpen", true, null);
+      }
+      /**获得当前的编辑器控件对象 */
+      function GetCurrentWriterControl() {
+         return document.getElementById("myWriterControl");
+      }
+      function Refresh() {
+         let ctl = document.getElementById("myWriterControl");
+         ctl.RefreshDocument();
+      }
+      function DownLoadFile(format) {
+         if (format == null || format == "") {
+            format = "xml";
+         }
+         if (format == "doc") {
+            DownLoadFiledoc();
+         } else {
+            let ctl = GetCurrentWriterControl();
+            ctl.DownLoadFile(format);
+         }
+      }
+   </script>
+</body>
+
+</html>

@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>科室连接刷新不及时</title>
+    <link222 href="DCSoft.WASM.styles.css" rel="stylesheet"></link222>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 100vh;
+        }
+
+        #tools {
+            padding: 5px 10px;
+            height: 100px;
+            overflow: auto;
+        }
+
+        #main {
+            height: calc(100% - 100px);
+            overflow: hidden;
+        }
+
+            #main #dcwriter {
+                border: 1px solid #000;
+            }
+    </style>
+</head>
+
+<body>
+    <div id="tools">
+        <div>
+            科室连接刷新不及时
+        </div>
+        button onclick="loadfile()">加载文档</!--button>
+        <button onclick="binddata()">绑定数据源</button>
+        <button onclick="document.getElementById('dcwriter').RefreshDocument()">刷新</button>
+    </div>
+    <div id="main">
+        <div id="dcwriter" dctype="WriterControlForWASM" DoubleBuffer="true"
+             RegisterCode="0596ACE69CFEDA6049E2B0AB8F61A6EB77417D43048C94F2FEC8EF188B9F93701356B484E51E9866F5FD1DAEDC05CD9C2B2694D07C132CF9D337145FA6CB9F6747F7F7EF73B16233788DDA65604DF01EFC278900F153FA0D11E07190CFC337455B2DF88227863E0AF4A2552FED42C1C1DE42100AF3704910FFA04DACDFC5B90484CB99A1DDEB665398B3BAD2A1434DF5AB8E1A10D57C6621BAF3FC4F20366B0086"
+             style="height: 100%; background-color: rgb(230, 230, 230); border-bottom: 0px solid black; background-attachment: fixed; background-size: cover; background-position: center top; "
+             RuleVisible="true" RuleBackColor="rgb(230, 230, 230)" PageCssString222="box-shadow:3px 3px 3px grey"
+             DocumentOptions.BehaviorOptions.HandleCommandException="false"
+             DocumentOptions.BehaviorOptions.OutputFormatedXMLSource="false"
+             DocumentOptions.BehaviorOptions.ParagraphFlagFollowTableOrSection="true"
+             DocumentOptions.ViewOptions.EnableEncryptView="true" DocumentOptions.ViewOptions.ShowInputFieldStateTag="true"
+             DocumentOptions.ViewOptions.IgnoreFieldBorderWhenPrint="false"
+             DocumentOptions.ViewOptions.PrintBackgroundText="false"
+             DocumentOptions.ViewOptions.PreserveBackgroundTextWhenPrint="true"
+             DocumentOptions.ViewOptions.FieldBorderPrintVisibility="hidden"
+             DocumentOptions.ViewOptions.FieldInvalidateValueForeColor="Blue"
+             DocumentOptions.ViewOptions.TagColorForNormalField="Green"
+             DocumentOptions.ViewOptions.TagColorForValueInvalidateField="Blue"
+             DocumentOptions.ViewOptions.UnEditableFieldBorderColor="Yellow"
+             DocumentOptions.SecurityOptions.EnablePermission="true"
+             DocumentOptions.SecurityOptions.EnableLogicDelete="true"
+             DocumentOptions.SecurityOptions.ShowLogicDeletedContent="true"
+             DocumentOptions.SecurityOptions.ShowPermissionTip="true"
+             DocumentOptions.SecurityOptions.ShowPermissionMark="true" PageTitlePosition="BottomRight"
+             DocumentOptions.BehaviorOptions.AutoAssistInsertString="true"
+             OnLoad="this.LoadDocumentFromString(strDemoFileXml, 'xml');">正在加载...</div>
+    </div>
+    </div>
+</body>
+<script src="js/easyui/easyui.js"></script>
+<script src="http://www.dcwriter.cn:8099/Jquery/jquery-1.7.2.min.js"></script>
+<script src="./_framework/dcwriter5.js"></script>
+<script>
+    var strDemoFileXml = `<XTextDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" EditorVersionString="1.2023.4.28">
+   <XElements>
+      <Element xsi:type="XTextHeader">
+         <InnerID>1824</InnerID>
+         <AcceptTab>true</AcceptTab>
+         <XElements>
+            <Element xsi:type="XTextLabelElement">
+               <InnerID>1850</InnerID>
+               <ID>label1</ID>
+               <AutoSize>false</AutoSize>
+               <Width>399.99999</Width>
+               <Height>57.0312424</Height>
+               <Text>科室</Text>
+               <ContactAction>TableRow</ContactAction>
+               <AttributeNameForContactAction>科室</AttributeNameForContactAction>
+               <LinkTextForContactAction>-&gt;</LinkTextForContactAction>
+            </Element>
+            <Element xsi:type="XParagraphFlag" StyleIndex="0">
+               <InnerID>1830</InnerID>
+               <AutoCreate>true</AutoCreate>
+            </Element>
+         </XElements>
+      </Element>
+      <Element xsi:type="XTextBody">
+         <InnerID>1825</InnerID>
+         <AcceptTab>true</AcceptTab>
+         <XElements>
+
+            <Element xsi:type="XParagraphFlag">
+               <InnerID>1882</InnerID>
+            </Element>
+            <Element xsi:type="XTextTable" NumOfRows="2" NumOfColumns="2">
+               <InnerID>1837</InnerID>
+               <ID>table1</ID>
+               <XElements>
+                  <Element xsi:type="XTextTableRow">
+                     <InnerID>1840</InnerID>
+                     <XElements>
+                        <Element xsi:type="XTextTableCell" StyleIndex="1">
+                           <InnerID>1841</InnerID>
+                           <XElements>
+                              <Element xsi:type="XString">
+                                 <InnerID>17</InnerID>
+                                 <Text>1111</Text>
+                              </Element>
+                              <Element xsi:type="XParagraphFlag">
+                                 <InnerID>1842</InnerID>
+                              </Element>
+                           </XElements>
+                        </Element>
+                        <Element xsi:type="XTextTableCell" StyleIndex="1">
+                           <InnerID>1843</InnerID>
+                           <XElements>
+                              <Element xsi:type="XString">
+                                 <InnerID>18</InnerID>
+                                 <Text>11111</Text>
+                              </Element>
+                              <Element xsi:type="XParagraphFlag">
+                                 <InnerID>1844</InnerID>
+                              </Element>
+                           </XElements>
+                        </Element>
+                     </XElements>
+                     <HeaderStyle>true</HeaderStyle>
+                  </Element>
+                  <Element xsi:type="XTextTableRow">
+                     <InnerID>1845</InnerID>
+                     <ValueBinding>
+                        <DataSource>ad</DataSource>
+                     </ValueBinding>
+                     <XElements>
+                        <Element xsi:type="XTextTableCell" StyleIndex="1">
+                           <InnerID>1846</InnerID>
+                           <ValueBinding>
+                              <BindingPath>a</BindingPath>
+                           </ValueBinding>
+                           <XElements>
+                              <Element xsi:type="XParagraphFlag">
+                                 <InnerID>1847</InnerID>
+                              </Element>
+                           </XElements>
+                        </Element>
+                        <Element xsi:type="XTextTableCell" StyleIndex="1">
+                           <InnerID>1848</InnerID>
+                           <ValueBinding>
+                              <BindingPath>b</BindingPath>
+                           </ValueBinding>
+                           <XElements>
+                              <Element xsi:type="XParagraphFlag">
+                                 <InnerID>1849</InnerID>
+                              </Element>
+                           </XElements>
+                        </Element>
+                     </XElements>
+                  </Element>
+               </XElements>
+               <Columns>
+                  <Element xsi:type="XTextTableColumn">
+                     <InnerID>1838</InnerID>
+                     <Width>937.375</Width>
+                  </Element>
+                  <Element xsi:type="XTextTableColumn">
+                     <InnerID>1839</InnerID>
+                     <Width>937.375</Width>
+                  </Element>
+               </Columns>
+            </Element>
+            <Element xsi:type="XParagraphFlag">
+               <InnerID>1829</InnerID>
+               <AutoCreate>true</AutoCreate>
+            </Element>
+         </XElements>
+      </Element>
+      <Element xsi:type="XTextFooter">
+         <InnerID>1826</InnerID>
+         <AcceptTab>true</AcceptTab>
+         <XElements>
+            <Element xsi:type="XParagraphFlag">
+               <InnerID>1831</InnerID>
+               <AutoCreate>true</AutoCreate>
+            </Element>
+         </XElements>
+      </Element>
+   </XElements>
+   <FileName>C:\Users\admin\Downloads\科室.xml</FileName>
+   <FileFormat>XML</FileFormat>
+   <ContentStyles>
+      <Default xsi:type="DocumentContentStyle">
+         <FontName>宋体</FontName>
+         <FontSize>12</FontSize>
+      </Default>
+      <Styles>
+         <Style Index="0">
+            <FontName>宋体</FontName>
+            <FontSize>12</FontSize>
+            <Align>Center</Align>
+         </Style>
+         <Style Index="1">
+            <FontName>宋体</FontName>
+            <FontSize>12</FontSize>
+            <BorderWidth>1</BorderWidth>
+            <BorderLeft>true</BorderLeft>
+            <BorderBottom>true</BorderBottom>
+            <BorderTop>true</BorderTop>
+            <BorderRight>true</BorderRight>
+            <PaddingLeft>15</PaddingLeft>
+            <PaddingTop>10</PaddingTop>
+            <PaddingRight>15</PaddingRight>
+            <PaddingBottom>10</PaddingBottom>
+         </Style>
+      </Styles>
+   </ContentStyles>
+   <Info>
+      <LicenseText>都昌:都昌旗舰版（100并发）</LicenseText>
+      <CreationTime>1980-01-01T00:00:00</CreationTime>
+      <LastModifiedTime>2023-08-02T17:09:31.5765889+08:00</LastModifiedTime>
+      <LastPrintTime>1980-01-01T00:00:00</LastPrintTime>
+      <Operator>DCSoft.Writer Version:1.2023.4.28</Operator>
+      <NumOfPage>1</NumOfPage>
+   </Info>
+   <BodyText>科室
+
+1111 11111
+    </BodyText>
+   <LocalConfig />
+   <PageSettings>
+      <StrictUsePageSize>false</StrictUsePageSize>
+   </PageSettings>
+</XTextDocument>`;
+</script>
+<script>
+    var num = 5;
+    var arr = ["骨科", "内科"];
+    var ctl = document.getElementById("dcwriter");
+    // 编辑器加载成功
+    function WriterControl_OnLoad(rootElement) {
+        console.log("WriterControl_OnLoad：编辑器加载成功");
+        // rootElement.EventAfterInsertSubDocuments = function () {
+        //     rootElement.RefreshDocument();
+        // }
+        // rootElement.ondocumentmouseup = function () {
+        //    var _row = ctl.CurrentTableRow();
+        //    if (_row) {
+        //       var attrs = rootElement.GetElementCustomAttributes(_row);
+        //    }
+        // }
+        rootElement.DocumentLoad = function () {
+            binddata();
+        }
+    };
+    function loadfile() {
+        ctl.LoadDocumentFromString(strDemoFileXml, 'xml');
+    }
+    function binddata() {
+        var adData = [];
+        for (var i = 0; i < num; i++) {
+            var obj = {
+                a: "a" + i,
+                b: arr[Math.round(Math.random())]
+            };
+            adData.push(obj);
+        }
+        ctl.SetDocumentParameterValue("ad", adData);
+        ctl.WriteDataFromDataSourceToDocument();
+        //ctl.RefreshDocument();
+        setattr();
+        ctl.RefreshDocument();
+        //ctl.RefreshDocument();
+    }
+
+    function setattr() {
+        var tableNode = ctl.GetElementByIdExt("table1");
+        var tableProp = ctl.GetElementProperties(tableNode);
+        var rows = tableProp.Rows;
+        for (var i = 0; i < rows.length; i++) {
+            var _row = rows[i];
+            var _rowProp = ctl.GetElementProperties(_row);
+            // console.log("🚀 ~ file: 科室连接刷新不及时.html:273 ~ setattr ~ _rowProp:", _rowProp);
+            if (_rowProp.HeaderStyle == false) {
+                // 不是标题行
+                var _cell = _rowProp.Cells[1];
+                var _txt = ctl.GetElementTextByID(_cell);
+                var opt = {
+                    "科室": _txt
+                };
+                ctl.SetElementCustomAttributes(_row, opt);
+            }
+        }
+    }
+</script>
+
+</html>

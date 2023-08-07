@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <title></title>
+    <base href="/" target="_blank">
+    <style>
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            padding: 0px;
+            box-sizing: border-box;
+            margin: 0;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            height: 100%;
+        }
+
+        .header-box {
+            border-bottom: 1px solid #ccc;
+            padding-left: 10px;
+            box-sizing: border-box;
+            font-weight: 900;
+        }
+
+        #main {
+            padding: 10px;
+            box-sizing: border-box;
+            display: block;
+            flex: 1;
+            overflow: hidden;
+        }
+
+        .testButton {
+            cursor: pointer;
+            height: 24px;
+            width: 80px;
+            border-radius: 4px;
+            color: #fff;
+            line-height: 24px;
+            text-align: center;
+            background-color: #208c99;
+            font-size: 14px;
+            margin-left: 24px;
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="header-box">
+            <button onclick="GetCurrentWriterControl().ShowAboutDialog()">关于</button>
+            <button onclick="ClearContent()">清空</button>
+            <button onclick="FileNew()">新建</button>
+            <button onclick="FileOpen()">打开</button>
+            <button onclick="Refresh()">刷新</button>
+            <button onclick="DownLoadFile('xml');">下载xml</button>
+
+            <br />
+            <button onclick="LoadsubMainXml()">加载病程</button>
+            <button onclick="AppendSubDocuments()">追加病程</button>
+            <button onclick="LoadSubDocumentFromString()">追加单个</button>
+            <button onclick="InsertSub2()">插入病程</button>
+            <button onclick="GetCourseRecords()">获取病程编号</button>
+            <button onclick="GetAllSubDocumentIDs()">获取文档中的全部病程ID</button>
+            <button onclick="SelectSubDocumentByID()">根据编号定位病程</button>
+            <button onclick="SelectSubDocument()">根据序号定位病程</button>
+            <button onclick="DeleteSubDoc()">删除指定病程</button>
+            <button onclick="DeleteCurrentSubDoc()">删除当前病程</button>
+            <button onclick="CurrentSubDoc()">当前病程编号</button>
+            <button onclick="SetCurrentSubDocumentReadOnly(true)">设置病程只读</button>
+            <button onclick="SetCurrentSubDocumentReadOnly(false)">取消病程只读</button>
+            <button onclick="SubDocCrossPage(true)">设置病程跨页</button>
+            <button onclick="SubDocCrossPage(false)">取消病程跨页</button>
+            <div>
+                病程Id:<input type="text" id="subId">
+                是否只读：<select id="ReadOnly">
+                    <option value="true">是</option>
+                    <option value="false">否</option>
+                </select>
+                背景颜色：<input type="text" id="subcolor">
+                <button onclick="SetSubDocumentReadOnly()">设置指定病程是否只读</button>
+            </div>
+
+
+        </div>
+        <div id="main">
+            <div id="myWriterControl" dctype="WriterControlForWASM"
+                style="height: 100%; background-color: rgb(230, 230, 230); border-bottom: 0px solid black; background-attachment: fixed; background-size: cover; background-position: center top; "
+                RuleVisible="true" RuleBackColor="rgb(230, 230, 230)"
+                ServicePageUrl="http://www.dcwriter.cn:8099/ServicePage.aspx"
+                PageCssString222="box-shadow:3px 3px 3px grey"
+                DocumentOptions.BehaviorOptions.OutputFormatedXMLSource="false"
+                DocumentOptions.BehaviorOptions.ParagraphFlagFollowTableOrSection="true"
+                DocumentOptions.ViewOptions.ShowInputFieldStateTag="true"
+                DocumentOptions.ViewOptions.IgnoreFieldBorderWhenPrint="false"
+                DocumentOptions.ViewOptions.PrintBackgroundText="false"
+                DocumentOptions.ViewOptions.PreserveBackgroundTextWhenPrint="true"
+                DocumentOptions.ViewOptions.FieldBorderPrintVisibility="hidden"
+                DocumentOptions.ViewOptions.FieldInvalidateValueForeColor="Blue"
+                DocumentOptions.ViewOptions.TagColorForNormalField="Green"
+                DocumentOptions.ViewOptions.TagColorForValueInvalidateField="Blue"
+                DocumentOptions.ViewOptions.UnEditableFieldBorderColor="Yellow"
+                DocumentOptions.SecurityOptions.EnablePermission="true"
+                DocumentOptions.SecurityOptions.EnableLogicDelete="true"
+                DocumentOptions.SecurityOptions.ShowLogicDeletedContent="true"
+                DocumentOptions.SecurityOptions.ShowPermissionTip="true"
+                DocumentOptions.SecurityOptions.ShowPermissionMark="true">
+                正在加载...</div>
+        </div>
+    </div>
+    <script src="_framework/blazor.webassembly.js"></script>
+    <script src="../../js/jquery-1.7.2.min.js"></script>
+    <script src="../../static/SubXML.js"></script>
+    <script src="../../static/indexStrDemoFileXml.js"></script>
+    <script>
+        var subXml1 = SUBXML1
+        //获取一个随机字符串
+        function randomString(length) {
+            var str = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            var result = '';
+            for (var i = length; i > 0; --i)
+                result += str[Math.floor(Math.random() * str.length)];
+            return result;
+        }
+        function LoadsubMainXml() {
+            var ctl = GetCurrentWriterControl();
+            ctl.LoadDocumentFromString(COURSEDISEASE)
+        }
+        function AppendSubDocuments() {
+            var file = new Array();
+            file.push(SUB6);
+            file.push(SUB7);
+
+            var options = new Array();
+            var attr1 = {
+                "ID": randomString(6),//
+                "Title": "术前小结",
+                "Parameters": { "rdogroup": "V3", "chkgroup": "V2,V3" },//绑定的数据格式
+                "DataBindingXML": "<DataSourceName><Name>王二麻</Name><Sex>男</Sex></DataSourceName>"
+            };
+            var attr2 = {
+                "ID": randomString(6),//
+                "Title": "深静脉置管术操作记录",
+                "Parameters": { "rdogroup": "V1", "chkgroup": "V1,V4" }, //绑定的数据格式
+                "DataBindingXML": "<DataSourceName><Name>刘二狗</Name><Sex>女</Sex></DataSourceName>"
+            };
+            options.push(attr1);
+            options.push(attr2);
+            var options = {
+                Files: file,
+                Options: options,
+                Usebase64: "false"
+            };
+
+            let ctl = GetCurrentWriterControl();
+            let result = ctl.AppendSubDocuments(options);
+            if (result) {
+                ctl.RefreshDocument();
+            }
+        }
+        function LoadSubDocumentFromString() {
+            let ctl = document.getElementById("myWriterControl");
+            var options = {
+                FileContentXML: subXml1,
+                ID: 'subdoc1',
+                Usebase64: false,
+                ShowMaskUI: true
+            };
+            let result = ctl.LoadSubDocumentFromString(options);
+            alert(result)
+        }
+        function InsertSub2() {
+            var file = new Array();
+            file.push(SUB9);
+
+            var options = new Array();
+            var attr1 = {
+                "ID": randomString(6),//
+                "Title": "日常病程记录",
+                "Parameters": { "rdogroup": "V3", "chkgroup": "V2,V3" },//绑定的数据格式
+                "DataBindingXML": "<DataSourceName><Name>王二麻</Name><Sex>男</Sex></DataSourceName>"
+            };
+            options.push(attr1);
+            var options = {
+                Files: file,
+                Options: options,
+                Usebase64: "false"
+            };
+
+            let ctl = GetCurrentWriterControl();
+            let result = ctl.InsertSubDocuments(options);
+            if (result) {
+                ctl.RefreshDocument();
+            }
+
+        }
+
+        //获取病程编号
+        function GetCourseRecords() {
+            let ctl = GetCurrentWriterControl();
+            let id = ctl.GetCourseRecords();
+            console.log(id)
+            alert('已将病程编号打印在控制台')
+        }
+        function GetAllSubDocumentIDs() {
+            let ctl = GetCurrentWriterControl();
+            let id = ctl.GetAllSubDocumentIDs();
+            console.log("病程编号id: ", id)
+            alert('已将病程编号id打印在控制台')
+        }
+        //根据编号定位病程
+        function SelectSubDocumentByID() {
+            let ctl = GetCurrentWriterControl();
+            let id = ctl.CurrentSubDoc();
+            var name = prompt("请输入定位的病程编号：", id)
+            if (name != null && name != "") {
+                let result = ctl.SelectSubDocumentByID(name);
+                alert(result)
+            }
+        }
+        //根据序号定位病程
+        function SelectSubDocument() {
+            let ctl = GetCurrentWriterControl();
+            var name = prompt("请输入定位第几个病程：", '1')
+            if (name != null && name != "") {
+                var myindex = parseInt(name);
+                let result = ctl.SelectSubDocument(myindex);
+                alert(result)
+            }
+        }
+        //删除指定病程
+        function DeleteSubDoc() {
+            let ctl = GetCurrentWriterControl();
+            let id = ctl.CurrentSubDoc();
+            var name = prompt("请输入删除的病程编号：", id)
+            if (name != null && name != "") {
+                let result = ctl.DeleteSubDoc(name);
+                alert(result)
+            }
+        }
+
+        //删除当前病程
+        function DeleteCurrentSubDoc() {
+            let ctl = GetCurrentWriterControl();
+            let result = ctl.DeleteCurrentSubDoc();
+            alert(result)
+        }
+        //当前病程编号
+        function CurrentSubDoc() {
+            let ctl = GetCurrentWriterControl();
+            let id = ctl.CurrentSubDoc();
+            console.log(id)
+            alert(id);
+        }
+        //设置病程是否只读
+        function SetCurrentSubDocumentReadOnly(isReadOnly) {
+            let ctl = GetCurrentWriterControl();
+            if (isReadOnly) {
+                ctl.SetCurrentSubDocumentReadOnly(isReadOnly, '#FFFFCD');
+            }
+            else {
+                ctl.SetCurrentSubDocumentReadOnly(isReadOnly, null);
+            }
+
+            ctl.RefreshDocument();
+        };
+        //设置病程是否跨页
+        function SubDocCrossPage(value) {
+            let ctl = GetCurrentWriterControl();
+            let id = ctl.CurrentSubDoc();
+            let result = ctl.SubDocCrossPage(id, value);
+            ctl.RefreshDocument();
+            alert(result)
+        }
+        function SetSubDocumentReadOnly() {
+            let ctl = GetCurrentWriterControl();
+            let id = document.getElementById('subId').value
+            let ReadOnly = document.getElementById('ReadOnly').value
+            let subcolor = document.getElementById('subcolor').value
+            let result = ctl.SetSubDocumentReadOnly(id, ReadOnly === 'true' ? true : false, subcolor)
+            alert(result)
+            if (result) {
+                ctl.RefreshDocument();
+            }
+        }
+
+
+    </script>
+    <script language="javascript">
+        function AppendBody(type) {
+            var ctl = GetCurrentWriterControl();
+        }
+
+
+        function WriterControl_OnLoad(rootElement) {
+
+        }
+
+
+        function ClearContent() {
+            var ctl = document.getElementById("myWriterControl");
+            var result = ctl.ClearContent();
+            console.log(result);
+        }
+        function FileNew() {
+            var ctl = document.getElementById("myWriterControl");
+            var result = ctl.DCExecuteCommand("FileNew", false, null);
+            console.log(result);
+        }
+        function FileOpen() {
+            var ctl = document.getElementById("myWriterControl");
+            ctl.DCExecuteCommand("FileOpen", true, null);
+        }
+        /**获得当前的编辑器控件对象 */
+        function GetCurrentWriterControl() {
+            return document.getElementById("myWriterControl");
+        }
+        function Refresh() {
+            let ctl = document.getElementById("myWriterControl");
+            ctl.RefreshDocument();
+        }
+        function DownLoadFile(format) {
+            if (format == null || format == "") {
+                format = "xml";
+            }
+            if (format == 'doc') {
+                DownLoadFiledoc();
+            }
+            else {
+                let ctl = GetCurrentWriterControl();
+                ctl.DownLoadFile(format);
+            }
+
+        }
+
+    </script>
+</body>
+
+</html>

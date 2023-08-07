@@ -1,0 +1,2464 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <title></title>
+    <base href="/" target="_blank">
+    <style>
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            padding: 0px;
+            box-sizing: border-box;
+            margin: 0;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            height: 100%;
+        }
+
+        .header-box {
+            border-bottom: 1px solid #ccc;
+            padding-left: 10px;
+            box-sizing: border-box;
+            font-weight: 900;
+        }
+
+        #main {
+            padding: 10px;
+            box-sizing: border-box;
+            display: block;
+            flex: 1;
+            overflow: hidden;
+        }
+
+        .testButton {
+            cursor: pointer;
+            height: 24px;
+            width: 80px;
+            border-radius: 4px;
+            color: #fff;
+            line-height: 24px;
+            text-align: center;
+            background-color: #208c99;
+            font-size: 14px;
+            margin-left: 24px;
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="header-box">
+            <button onclick="GetCurrentWriterControl().ShowAboutDialog()">关于</button>
+            <button onclick="ClearContent()">清空</button>
+            <button onclick="FileNew()">新建</button>
+            <button onclick="FileOpen()">打开</button>
+            <button onclick="Refresh()">刷新</button>
+            <button onclick="DownLoadFile('xml');">下载xml</button>
+            <br />
+            <button onclick="getCurrentInputID()">获取当前输入域id</button>
+            <button onclick="InsertRadioBox()">插入单选框</button>
+            <button onclick="InsertCheckBox()">插入复选框</button>
+            <button onclick="CurrentCheckboxOrRadio()">获取当前单选框或复选框</button>
+            <button onclick="GetAllCheckboxOrRadio()">获取全部单选框或复选框</button>
+            <button onclick="RadioBoxProperties()">单复选框属性</button>
+            <button onclick="InsertLabel()">插入标签文本</button>
+            <button onclick="InsertHorizontalLine()">插入水平线</button>
+            <button onclick="InsertButton()">插入按钮</button>
+            <button onclick="InsertImage()">插入图片</button>
+            <button onclick="imgEditDialog()">图片编辑</button>
+
+            <button onclick="InsertSpecifyCharacter()">插入特殊字符</button>
+            <button onclick="InsertJson()">插入Json</button>
+
+
+            <div>
+                <textarea id="InsertXml" cols="30" rows="10"></textarea>
+                <input type="button" value="InsertXmlById" onclick="InsertXmlById();" />
+                <input type="button" value="InsertXmlString" onclick="InsertXmlString();" />
+
+            </div>
+            <div>SetElementChecked:
+                <button onclick="SetElementChecked(true)">根据id设置单/复选框的勾选状态为：true</button>
+                <button onclick="SetElementChecked(false)">根据id设置单/复选框的勾选状态为：false</button>
+            </div>
+            <div>SetElementCheckedByID:
+                <button onclick="SetElementCheckedByID(true)">根据id设置单/复选框的勾选状态为：true</button>
+                <button onclick="SetElementCheckedByID(false)">根据id设置单/复选框的勾选状态为：false</button>
+            </div>
+
+
+
+        </div>
+        <div id="main">
+            <div id="myWriterControl" dctype="WriterControlForWASM"
+                style="height: 100%; background-color: rgb(230, 230, 230); border-bottom: 0px solid black; background-attachment: fixed; background-size: cover; background-position: center top; "
+                RuleVisible="true" RuleBackColor="rgb(230, 230, 230)"
+                ServicePageUrl="http://www.dcwriter.cn:8099/ServicePage.aspx"
+                PageCssString222="box-shadow:3px 3px 3px grey"
+                DocumentOptions.BehaviorOptions.OutputFormatedXMLSource="false"
+                DocumentOptions.BehaviorOptions.ParagraphFlagFollowTableOrSection="true"
+                DocumentOptions.ViewOptions.ShowInputFieldStateTag="true"
+                DocumentOptions.ViewOptions.IgnoreFieldBorderWhenPrint="false"
+                DocumentOptions.ViewOptions.PrintBackgroundText="false"
+                DocumentOptions.ViewOptions.PreserveBackgroundTextWhenPrint="true"
+                DocumentOptions.ViewOptions.FieldBorderPrintVisibility="hidden"
+                DocumentOptions.ViewOptions.FieldInvalidateValueForeColor="Blue"
+                DocumentOptions.ViewOptions.TagColorForNormalField="Green"
+                DocumentOptions.ViewOptions.TagColorForValueInvalidateField="Blue"
+                DocumentOptions.ViewOptions.UnEditableFieldBorderColor="Yellow"
+                DocumentOptions.SecurityOptions.EnablePermission="true"
+                DocumentOptions.SecurityOptions.EnableLogicDelete="true"
+                DocumentOptions.SecurityOptions.ShowLogicDeletedContent="true"
+                DocumentOptions.SecurityOptions.ShowPermissionTip="true"
+                DocumentOptions.SecurityOptions.ShowPermissionMark="true">
+                正在加载...</div>
+        </div>
+    </div>
+    <script src="_framework/blazor.webassembly.js"></script>
+    <script src="../../js/jquery-1.7.2.min.js"></script>
+    <script src="../../DemoApp.js"></script>
+    <script language="javascript">
+        var strtest = `<XTextDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" EditorVersionString="1.2023.4.28">
+           <XElements>
+              <Element xsi:type="XTextHeader">
+                 <InnerID>3556</InnerID>
+                 <AcceptTab>true</AcceptTab>
+                 <XElements>
+                    <Element xsi:type="XParagraphFlag" StyleIndex="0">
+                       <InnerID>3562</InnerID>
+                       <AutoCreate>true</AutoCreate>
+                    </Element>
+                 </XElements>
+              </Element>
+              <Element xsi:type="XTextBody">
+                 <InnerID>3557</InnerID>
+                 <AcceptTab>true</AcceptTab>
+                 <XElements>
+                    <Element xsi:type="XString">
+                       <InnerID>3584</InnerID>
+                       <Text>这是测试页面</Text>
+                    </Element>
+                    <Element xsi:type="XParagraphFlag">
+                       <InnerID>3561</InnerID>
+                       <AutoCreate>true</AutoCreate>
+                    </Element>
+                 </XElements>
+              </Element>
+              <Element xsi:type="XTextFooter">
+                 <InnerID>3558</InnerID>
+                 <AcceptTab>true</AcceptTab>
+                 <XElements>
+                    <Element xsi:type="XParagraphFlag">
+                       <InnerID>3563</InnerID>
+                       <AutoCreate>true</AutoCreate>
+                    </Element>
+                 </XElements>
+              </Element>
+           </XElements>
+           <ContentStyles>
+              <Default xsi:type="DocumentContentStyle">
+                 <FontName>宋体</FontName>
+                 <FontSize>12</FontSize>
+              </Default>
+              <Styles>
+                 <Style Index="0">
+                    <FontName>宋体</FontName>
+                    <FontSize>12</FontSize>
+                    <Align>Center</Align>
+                 </Style>
+              </Styles>
+           </ContentStyles>
+           <Info>
+              <LicenseText>南京都昌信息科技有限公司内部使用:南京都昌信息科技有限公司内测旗舰版</LicenseText>
+              <CreationTime>1980-01-01T00:00:00</CreationTime>
+              <LastModifiedTime>2023-05-25T08:47:35.1352338+08:00</LastModifiedTime>
+              <LastPrintTime>1980-01-01T00:00:00</LastPrintTime>
+              <Operator>DCSoft.Writer Version:1.2023.4.28</Operator>
+              <NumOfPage>1</NumOfPage>
+           </Info>
+           <BodyText>这是测试页面</BodyText>
+           <LocalConfig />
+           <PageSettings>
+              <StrictUsePageSize>false</StrictUsePageSize>
+           </PageSettings>
+</XTextDocument>`;
+        function SetElementChecked(boolen) {
+            var ctl = GetCurrentWriterControl();
+            let id = prompt('请输入单复选框的id', '')
+            var options = ctl.SetElementChecked(id, boolen);
+            alert(options)
+        }
+        function SetElementCheckedByID(boolen) {
+            var ctl = GetCurrentWriterControl();
+            let id = prompt('请输入单复选框的id', '')
+            var options = ctl.SetElementCheckedByID(id, boolen);
+            alert(options)
+        }
+
+        function getCurrentInputID() {
+            var ctl = GetCurrentWriterControl();
+            var ele = ctl.CurrentInputField();
+            var options = ctl.GetElementProperties(ele);
+            alert(options.ID)
+        }
+        function InsertRadioBox() {
+            var ctl = GetCurrentWriterControl();
+            var options = {
+                "Name": "name001", //单选框的Name属性相同
+                "Type": "radio", //radio、checkbox
+                "ListItems": [
+                    {
+                        "ID": "chk1",
+                        "ToolTip": "提示信息1",
+                        "MultiLine": "true",
+                        "Checked": "false",
+                        "StringTag": "附加数据1",
+                        "VisualStyle": "RadioBox", //"Default", "CheckBox", "RadioBox", "SystemDefault", "SystemCheckBox", "SystemRadioBox"
+                        "Text": "男性",
+                        "Value": "值1",
+                        "CaptionFlowLayout": "true"
+                    },
+                    {
+                        "ID": "chk2",
+                        "ToolTip": "提示信息2",
+                        "MultiLine": "false",
+                        "Checked": "true",
+                        "StringTag": "附加数据2",
+                        "VisualStyle": "RadioBox", //"Default", "CheckBox", "RadioBox", "SystemDefault", "SystemCheckBox", "SystemRadioBox"
+                        "Text": "女性",
+                        "Value": "值2",
+                        "CaptionFlowLayout": "true"
+                    }
+                ]
+            };
+            ctl.DCExecuteCommand("InsertCheckBoxOrRadio", true, options);
+        };
+        function InsertCheckBox() {
+            var ctl = GetCurrentWriterControl();
+            var options = {
+                "Name": "name001", //单选框的Name属性相同
+                "Type": "checkbox", //radio、checkbox
+                "ListItems": [
+                    {
+                        "ID": "chk1",
+                        "ToolTip": "提示信息1",
+                        "MultiLine": "true",
+                        "Checked": "false",
+                        "StringTag": "附加数据1",
+                        "VisualStyle": "CheckBox", //"Default", "CheckBox", "RadioBox", "SystemDefault", "SystemCheckBox", "SystemRadioBox"
+                        "Text": "高血压",
+                        "Value": "值1",
+                        "CaptionFlowLayout": "true"
+                    },
+                    {
+                        "ID": "chk2",
+                        "ToolTip": "提示信息2",
+                        "MultiLine": "false",
+                        "Checked": "true",
+                        "StringTag": "附加数据2",
+                        "VisualStyle": "CheckBox", //"Default", "CheckBox", "RadioBox", "SystemDefault", "SystemCheckBox", "SystemRadioBox"
+                        "Text": "冠心病",
+                        "Value": "值2",
+                        "CaptionFlowLayout": "true"
+                    }
+                ]
+            };
+            ctl.DCExecuteCommand("InsertCheckBoxOrRadio", true, options);
+        };
+        //获取当前单选框或复选框
+        function CurrentCheckboxOrRadio() {
+            var ctl = GetCurrentWriterControl();
+            let result = ctl.CurrentCheckboxOrRadio()
+            console.log("获取当前单选框或复选框:", result);
+            alert('请在控制台查看获取当前单选框或复选框')
+        }
+        function GetAllCheckboxOrRadio() {
+            let ctl = document.getElementById("myWriterControl");
+            var result = ctl.GetAllCheckboxOrRadio('radio', "");
+            console.log("全部单选框或复选框: ", result);
+            alert('请在控制台查看获取全部单选框或复选框')
+        }
+        //单选框属性
+        function RadioBoxProperties() {
+            var ctl = GetCurrentWriterControl();
+            var element = ctl.CurrentElement("xtextradioboxelement");
+            console.log(element);
+            ctl.CheckboxAndRadioDialog({});
+        }
+
+        function InsertLabel() {
+            var ctl = GetCurrentWriterControl();
+            var options = {
+                ID: "label1",       //标签ID
+                Text: "测试用标签",   //标签文本
+                Bold: true,        //标签文本是否加粗，不设置则不加粗
+                Deletable: true,   //标签是否可以删除，不设置则可以删除
+                TitleLevel: -1,       //标签大纲级别，值从0到7，若不设置则此标签不作为大纲节点
+                Attributes: {       //自定义属性，直接传JSON对象
+                    Name: "张三",
+                    Sex: "男",
+                    Age: "20"
+                },
+                PageTexts: [
+                    {
+                        PageIndex: 0,
+                        PageIndexText: "自定义文本aaa"
+                    },
+                    {
+                        PageIndex: 1,
+                        PageIndexText: "自定义文本bbb"
+                    },
+                    {
+                        PageIndex: 2,
+                        PageIndexText: "自定义文本ccc"
+                    },
+                    {
+                        PageIndex: 3,
+                        PageIndexText: "自定义文本ddd"
+                    }
+                ],
+                ContactAction: "Normal",    //连接模式
+                AttributeNameForContactAction: "科室",    //连接模式提取值的来源属性名称
+                LinkTextForContactAction: "-"   //连接字符串
+            };
+            ctl.DCExecuteCommand("InsertLabelElement", true, options);
+        }
+
+        function InsertHorizontalLine() {
+            var ctl = GetCurrentWriterControl();
+            if (ctl != null) {
+                var options = {
+                    LineLengthInCM: "100px",
+                    LineSize: "10px",
+                    Color: "red",
+                    LineStyle: "dashed",
+                    ID: "hr1"
+                };
+                ctl.DCExecuteCommand('InsertHorizontalLine', true, options);
+            }
+        }
+        var bluepicbase64data = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAR8AAADeCAIAAACL9pO/AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAKWSURBVHhe7dOhDcAwEARBdxaaxtyLi3FRCQ6xApaNNOjh63Zc9wYK6oKKuqCiLqioCyrqgoq6oKIuqKgLKuqCirqgoi6oqAsq6oKKuqCiLqioCyrqgoq6oKIuqKgLKuqCirqgoi6oqAsq6oKKuqCiLqioCyrqgoq6oKIuqKgLKuqCirqgoi6oqAsq6oKKuqCiLqioCyrqgoq6oKIuqKgLKuqCirqgoi6oqAsq6oKKuqCiLqioCyrqgoq6oKIuqKgLKuqCirqgoi6oqAsq6oKKuqCiLqioCyrqgoq6oKIuqKgLKuqCirqgoi6oqAsq6oKKuqCiLqioCyrqgoq6oKIuqKgLKuqCirqgoi6oqAsq6oKKuqCiLqioCyrqgoq6oKIuqKgLKuqCirqgoi6oqAsq6oKKuqCiLqioCyrqgoq6oKIuqKgLKuqCirqgoi6oqAsq6oKKuqCiLqioCyrqgoq6oKIuqKgLKuqCirqgoi6oqAsq6oKKuqCiLqioCyrqgoq6oKIuqKgLKuqCirqgoi6oqAsq6oKKuqCiLqioCyrqgoq6oKIuqKgLKuqCirqgoi6oqIuztdac83PkSF2cvWmNYSq/eRlU1AUVdUFFXVBRF1TUBRV1QUVdUFEXVNQFFXVBRV1QURdU1AUVdUFFXVBRF1TUBRV1QUVdUFEXVNQFFXVBRV1QURdU1AUVdUFFXVBRF1TUBRV1QUVdUFEXVNQFFXVBRV1QURdU1AUVdUFFXVBRF1TUBRV1QUVdUFEXVNQFFXVBRV1QURdU1AUVdUFFXVBRF1TUBRV1QUVdUFEXVNQFFXVBRV1QURdU1AUVdUFFXVBRF1TUBRV1QUVdUFEXVNQFFXVBRV1QURdU1AUVdUFFXdC49wNy06ZYIL3nJAAAAABJRU5ErkJggg==";
+
+        function InsertButton() {
+            var ctl = GetCurrentWriterControl();
+            var options = {
+                ID: "button1",
+                Height: "100",
+                Width: "500",
+                Deleteable: false,
+                PrintVisibility: "Visible",
+                Name: "btnName",
+                Enabled: true,
+                PrintAsText: false,
+                AutoSize: false,
+                Text: "按钮文本",
+                ScriptTextForClick: "",
+                CommandName: "",
+                ImgBase64: null,
+                ImgBase64ForDown: bluepicbase64data,
+                ImgBase64ForOver: null,
+                ScriptTextForClick: "alert('哦呵呵呵呵呵')"
+            };
+            ctl.DCExecuteCommand('InsertButton', true, options)
+            //ctl.EventButtonClick = function(eventSender , args ){
+            //    //目前必须要定义一个前端EventButtonClick事件。
+            //    //否则按钮元素的ScriptTextForClick会无法触发
+            //}
+        }
+        function InsertImage() {
+            var ctl = GetCurrentWriterControl();
+            var options = {
+                ID: "img1",
+                Width: 200,
+                Height: 200,
+                SaveContentInFile: true,
+                Src: bluepicbase64data
+            };
+            ctl.DCExecuteCommand("InsertImage", true, options);
+        }
+        //编辑图片
+        function imgEditDialog() {
+            var ctl = document.getElementById('myWriterControl');
+            options = ctl.CurrentElement('xtextimageelement');
+            ctl.imgEditDialog(options, ctl);
+        }
+        //插入特殊字符
+        function InsertSpecifyCharacter() {
+            var ctl = GetCurrentWriterControl();
+            ctl.DCExecuteCommand("InsertSpecifyCharacter", true, {});
+        }
+        function InsertJson() {
+            var ctl = document.getElementById("myWriterControl");
+            let str = `{"Type":"DCDocument2022",
+    "BodyText":"一般健康状况:良好。疾病史：否认冠心病史；否认高血压病史，否认糖尿病病史，否认支气管哮喘病史，否认鼻窦炎病史。传染病史：否认结核病史，否认肝炎病史。预防接种史：随社会人群进行。手术外伤史：否认手术外伤史。输血史：否认输血史。食物或药物过敏史：否认食物或药物过敏史。",
+    "Elements":
+        [
+        {"Type":"Header",
+            "Elements":
+                [
+                {"Type":"PFlag",
+                    "StyleIndex":0,
+                    "AutoCreate":true
+                }
+                ],
+            "InnerID":4624
+        },
+        {"Type":"Body",
+            "Elements":
+                [
+                {"Type":"Text","Text":"一般健康状况:"},
+                {"Type":"InputField",
+                    "Attributes":
+                        [
+                        {"Name":"NsoElementTypeName",
+                            "Value":"NewControl"
+                        },
+                        {"Name":"NsoControlTypeName",
+                            "Value":"Combox"
+                        },
+                        {"Name":"Type",
+                            "Value":"1"
+                        },
+                        {"Name":"ControlID",
+                            "Value":"201407162337202938"
+                        },
+                        {"Name":"ElementID",
+                            "Value":"201072"
+                        },
+                        {"Name":"WordVersion",
+                            "Value":"2"
+                        },
+                        {"Name":"HelpTip",
+                            "Value":"一般健康状况"
+                        },
+                        {"Name":"DelFlag",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"EditProtect",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"IsSaveAsNode",
+                            "Value":"TRUE"
+                        },
+                        {"Name":"IsNotRecordInXML",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"MustFillContent",
+                            "Value":"TRUE"
+                        },
+                        {"Name":"Reference",
+                            "Value":"TRUE"
+                        },
+                        {"Name":"ExpandInput",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"Edge",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"WomanUse",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"ControlType",
+                            "Value":"1"
+                        },
+                        {"Name":"ControlTypeTemplate",
+                            "Value":"ElementLableAndComboBox"
+                        },
+                        {"Name":"IsCtrlHidden",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"ViewSecret",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"ControlName",
+                            "Value":"一般健康状况"
+                        },
+                        {"Name":"UpdateEveryTime",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"IsGroupUse",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"ConsistenceType",
+                            "Value":"0"
+                        },
+                        {"Name":"PlaceHolder",
+                            "Value":"一般健康状况"
+                        },
+                        {"Name":"Reserve",
+                            "Value":"201407162337202938 良好~一般~较差"
+                        },
+                        {"Name":"EdgeStyle",
+                            "Value":"["
+                        },
+                        {"Name":"EdgeStyle2",
+                            "Value":"]"
+                        },
+                        {"Name":"IsDefault",
+                            "Value":"TRUE"
+                        },
+                        {"Name":"BetweenInTimeAndOutTime",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"WritingInAdvance",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"IsGroupReplace",
+                            "Value":"TRUE"
+                        },
+                        {"Name":"IsNullPrint",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"ReplaceOldValue",
+                            "Value":"FALSE"
+                        }
+                        ],
+                    "Elements":
+                        [
+                        {"Type":"Text","Text":"良好"}
+                        ],
+                    "InnerID":128,
+                    "ID":"201407162337202938",
+                    "InnerValue":"1",
+                    "BackgroundText":"一般健康状况",
+                    "FieldSettings":
+                        {"ListSource":
+                                {"Items":
+                                        [
+                                        {"Text":"良好",
+                                            "Value":"1"
+                                        },
+                                        {"Text":"一般",
+                                            "Value":"2"
+                                        },
+                                        {"Text":"较差",
+                                            "Value":"3"
+                                        }
+                                        ]
+                                },
+                            "EditStyle":"DropdownList",
+                            "ListValueSeparatorChar":","
+                        },
+                    "Name":"一般健康状况",
+                    "ValidateStyle":
+                        {"Required":true
+                        },
+                    "EditorActiveMode":"F2, MouseDblClick, MouseClick",
+                    "ToolTip":"一般健康状况",
+                    "AcceptChildElementTypes2":"Text",
+                    "SelectedIndex":0,
+                    "BorderVisible":"Hidden"
+                },
+                {"Type":"Text","Text":"。"},
+                {"Type":"Text","StyleIndex":1,"Text":"疾病史"},
+                {"Type":"Text","Text":"："},
+                {"Type":"InputField",
+                    "Attributes":
+                        [
+                        {"Name":"NsoElementTypeName",
+                            "Value":"NewControl"
+                        },
+                        {"Name":"NsoControlTypeName",
+                            "Value":"Combox"
+                        },
+                        {"Name":"Type",
+                            "Value":"1"
+                        },
+                        {"Name":"ControlID",
+                            "Value":"201407162338406678"
+                        },
+                        {"Name":"ElementID",
+                            "Value":"201073"
+                        },
+                        {"Name":"WordVersion",
+                            "Value":"2"
+                        },
+                        {"Name":"ExternalDataSourceId"
+                        },
+                        {"Name":"HelpTip",
+                            "Value":"冠心病"
+                        },
+                        {"Name":"DelFlag",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"EditProtect",
+                            "Value":"False"
+                        },
+                        {"Name":"IsSaveAsNode",
+                            "Value":"True"
+                        },
+                        {"Name":"IsNotRecordInXML",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"MustFillContent",
+                            "Value":"True"
+                        },
+                        {"Name":"Reference",
+                            "Value":"False"
+                        },
+                        {"Name":"ExpandInput",
+                            "Value":"True"
+                        },
+                        {"Name":"Edge",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"WomanUse",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"ControlType",
+                            "Value":"1"
+                        },
+                        {"Name":"ControlTypeTemplate",
+                            "Value":"ElementLableAndComboBox"
+                        },
+                        {"Name":"IsCtrlHidden",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"ViewSecret",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"ControlName",
+                            "Value":"冠心病"
+                        },
+                        {"Name":"UpdateEveryTime",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"IsGroupUse",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"Code"
+                        },
+                        {"Name":"ConsistenceType",
+                            "Value":"3"
+                        },
+                        {"Name":"PlaceHolder",
+                            "Value":"冠心病"
+                        },
+                        {"Name":"Reserve",
+                            "Value":"201407162338406678 否认冠心病史~有冠心病史"
+                        }
+                        ],
+                    "Elements":
+                        [
+                        {"Type":"Text","Text":"否认冠心病史"}
+                        ],
+                    "InnerID":133,
+                    "ID":"201407162338406678",
+                    "InnerValue":"1",
+                    "BackgroundText":"冠心病",
+                    "FieldSettings":
+                        {"ListSource":
+                                {"Items":
+                                        [
+                                        {"Text":"否认冠心病史",
+                                            "Value":"1"
+                                        },
+                                        {"Text":"有冠心病史",
+                                            "Value":"2"
+                                        }
+                                        ]
+                                },
+                            "EditStyle":"DropdownList",
+                            "ListValueSeparatorChar":","
+                        },
+                    "ValidateStyle":
+                        {"Required":true
+                        },
+                    "EditorActiveMode":"F2, MouseDblClick, MouseClick",
+                    "ToolTip":"冠心病",
+                    "AcceptChildElementTypes2":"Text",
+                    "SelectedIndex":0,
+                    "BorderVisible":"Hidden"
+                },
+                {"Type":"Text","Text":"；"},
+                {"Type":"InputField",
+                    "Attributes":
+                        [
+                        {"Name":"NsoElementTypeName",
+                            "Value":"NewControl"
+                        },
+                        {"Name":"NsoControlTypeName",
+                            "Value":"Combox"
+                        },
+                        {"Name":"Type",
+                            "Value":"1"
+                        },
+                        {"Name":"ControlID",
+                            "Value":"201407162339007721"
+                        },
+                        {"Name":"ElementID",
+                            "Value":"201096"
+                        },
+                        {"Name":"WordVersion",
+                            "Value":"2"
+                        },
+                        {"Name":"ExternalDataSourceId"
+                        },
+                        {"Name":"HelpTip",
+                            "Value":"高血压"
+                        },
+                        {"Name":"DelFlag",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"EditProtect",
+                            "Value":"False"
+                        },
+                        {"Name":"IsSaveAsNode",
+                            "Value":"True"
+                        },
+                        {"Name":"IsNotRecordInXML",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"MustFillContent",
+                            "Value":"True"
+                        },
+                        {"Name":"Reference",
+                            "Value":"False"
+                        },
+                        {"Name":"ExpandInput",
+                            "Value":"True"
+                        },
+                        {"Name":"Edge",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"WomanUse",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"ControlType",
+                            "Value":"1"
+                        },
+                        {"Name":"ControlTypeTemplate",
+                            "Value":"ElementLableAndComboBox"
+                        },
+                        {"Name":"IsCtrlHidden",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"ViewSecret",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"ControlName",
+                            "Value":"高血压"
+                        },
+                        {"Name":"UpdateEveryTime",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"IsGroupUse",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"Code"
+                        },
+                        {"Name":"ConsistenceType",
+                            "Value":"3"
+                        },
+                        {"Name":"PlaceHolder",
+                            "Value":"高血压"
+                        },
+                        {"Name":"Reserve",
+                            "Value":"201407162339007721 否认高血压病史~有高血压病史"
+                        }
+                        ],
+                    "Elements":
+                        [
+                        {"Type":"Text","Text":"否认高血压病史"}
+                        ],
+                    "InnerID":136,
+                    "ID":"201407162339007721",
+                    "InnerValue":"1",
+                    "BackgroundText":"高血压",
+                    "FieldSettings":
+                        {"ListSource":
+                                {"Items":
+                                        [
+                                        {"Text":"否认高血压病史",
+                                            "Value":"1"
+                                        },
+                                        {"Text":"有高血压病史",
+                                            "Value":"2"
+                                        }
+                                        ]
+                                },
+                            "EditStyle":"DropdownList",
+                            "ListValueSeparatorChar":","
+                        },
+                    "ValidateStyle":
+                        {"Required":true
+                        },
+                    "EditorActiveMode":"F2, MouseDblClick, MouseClick",
+                    "ToolTip":"高血压",
+                    "AcceptChildElementTypes2":"Text",
+                    "SelectedIndex":0,
+                    "BorderVisible":"Hidden"
+                },
+                {"Type":"Text","Text":"，"},
+                {"Type":"InputField",
+                    "Attributes":
+                        [
+                        {"Name":"NsoElementTypeName",
+                            "Value":"NewControl"
+                        },
+                        {"Name":"NsoControlTypeName",
+                            "Value":"Combox"
+                        },
+                        {"Name":"Type",
+                            "Value":"1"
+                        },
+                        {"Name":"ControlID",
+                            "Value":"201407162339356194"
+                        },
+                        {"Name":"ElementID",
+                            "Value":"201184"
+                        },
+                        {"Name":"WordVersion",
+                            "Value":"2"
+                        },
+                        {"Name":"ExternalDataSourceId"
+                        },
+                        {"Name":"HelpTip",
+                            "Value":"糖尿病"
+                        },
+                        {"Name":"DelFlag",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"EditProtect",
+                            "Value":"False"
+                        },
+                        {"Name":"IsSaveAsNode",
+                            "Value":"True"
+                        },
+                        {"Name":"IsNotRecordInXML",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"MustFillContent",
+                            "Value":"True"
+                        },
+                        {"Name":"Reference",
+                            "Value":"False"
+                        },
+                        {"Name":"ExpandInput",
+                            "Value":"True"
+                        },
+                        {"Name":"Edge",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"WomanUse",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"ControlType",
+                            "Value":"1"
+                        },
+                        {"Name":"ControlTypeTemplate",
+                            "Value":"ElementLableAndComboBox"
+                        },
+                        {"Name":"IsCtrlHidden",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"ViewSecret",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"ControlName",
+                            "Value":"糖尿病"
+                        },
+                        {"Name":"UpdateEveryTime",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"IsGroupUse",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"Code"
+                        },
+                        {"Name":"ConsistenceType",
+                            "Value":"3"
+                        },
+                        {"Name":"PlaceHolder",
+                            "Value":"糖尿病"
+                        },
+                        {"Name":"Reserve",
+                            "Value":"201407162339356194 否认糖尿病病史~有糖尿病病史"
+                        }
+                        ],
+                    "Elements":
+                        [
+                        {"Type":"Text","Text":"否认糖尿病病史"}
+                        ],
+                    "InnerID":139,
+                    "ID":"201407162339356194",
+                    "InnerValue":"1",
+                    "BackgroundText":"糖尿病",
+                    "FieldSettings":
+                        {"ListSource":
+                                {"Items":
+                                        [
+                                        {"Text":"否认糖尿病病史",
+                                            "Value":"1"
+                                        },
+                                        {"Text":"有糖尿病病史",
+                                            "Value":"2"
+                                        }
+                                        ]
+                                },
+                            "EditStyle":"DropdownList",
+                            "ListValueSeparatorChar":","
+                        },
+                    "ValidateStyle":
+                        {"Required":true
+                        },
+                    "EditorActiveMode":"F2, MouseDblClick, MouseClick",
+                    "ToolTip":"糖尿病",
+                    "AcceptChildElementTypes2":"Text",
+                    "SelectedIndex":0,
+                    "BorderVisible":"Hidden"
+                },
+                {"Type":"Text","Text":"，"},
+                {"Type":"InputField",
+                    "Attributes":
+                        [
+                        {"Name":"NsoElementTypeName",
+                            "Value":"NewControl"
+                        },
+                        {"Name":"NsoControlTypeName",
+                            "Value":"Combox"
+                        },
+                        {"Name":"Type",
+                            "Value":"1"
+                        },
+                        {"Name":"ControlID",
+                            "Value":"201407162340116238"
+                        },
+                        {"Name":"ElementID",
+                            "Value":"201193"
+                        },
+                        {"Name":"WordVersion",
+                            "Value":"2"
+                        },
+                        {"Name":"ExternalDataSourceId"
+                        },
+                        {"Name":"HelpTip",
+                            "Value":"支气管哮喘"
+                        },
+                        {"Name":"DelFlag",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"EditProtect",
+                            "Value":"False"
+                        },
+                        {"Name":"IsSaveAsNode",
+                            "Value":"True"
+                        },
+                        {"Name":"IsNotRecordInXML",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"MustFillContent",
+                            "Value":"True"
+                        },
+                        {"Name":"Reference",
+                            "Value":"False"
+                        },
+                        {"Name":"ExpandInput",
+                            "Value":"True"
+                        },
+                        {"Name":"Edge",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"WomanUse",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"ControlType",
+                            "Value":"1"
+                        },
+                        {"Name":"ControlTypeTemplate",
+                            "Value":"ElementLableAndComboBox"
+                        },
+                        {"Name":"IsCtrlHidden",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"ViewSecret",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"ControlName",
+                            "Value":"支气管哮喘"
+                        },
+                        {"Name":"UpdateEveryTime",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"IsGroupUse",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"Code"
+                        },
+                        {"Name":"ConsistenceType",
+                            "Value":"3"
+                        },
+                        {"Name":"PlaceHolder",
+                            "Value":"支气管哮喘"
+                        },
+                        {"Name":"Reserve",
+                            "Value":"201407162340116238 否认支气管哮喘病史~有支气管哮喘病史"
+                        }
+                        ],
+                    "Elements":
+                        [
+                        {"Type":"Text","Text":"否认支气管哮喘病史"}
+                        ],
+                    "InnerID":142,
+                    "ID":"201407162340116238",
+                    "InnerValue":"1",
+                    "BackgroundText":"支气管哮喘",
+                    "FieldSettings":
+                        {"ListSource":
+                                {"Items":
+                                        [
+                                        {"Text":"否认支气管哮喘病史",
+                                            "Value":"1"
+                                        },
+                                        {"Text":"有支气管哮喘病史",
+                                            "Value":"2"
+                                        }
+                                        ]
+                                },
+                            "EditStyle":"DropdownList",
+                            "ListValueSeparatorChar":","
+                        },
+                    "ValidateStyle":
+                        {"Required":true
+                        },
+                    "EditorActiveMode":"F2, MouseDblClick, MouseClick",
+                    "ToolTip":"支气管哮喘",
+                    "AcceptChildElementTypes2":"Text",
+                    "SelectedIndex":0,
+                    "BorderVisible":"Hidden"
+                },
+                {"Type":"Text","Text":"，"},
+                {"Type":"InputField",
+                    "Attributes":
+                        [
+                        {"Name":"NsoElementTypeName",
+                            "Value":"NewControl"
+                        },
+                        {"Name":"NsoControlTypeName",
+                            "Value":"Combox"
+                        },
+                        {"Name":"Type",
+                            "Value":"1"
+                        },
+                        {"Name":"ControlID",
+                            "Value":"201407162340279626"
+                        },
+                        {"Name":"ElementID",
+                            "Value":"201197"
+                        },
+                        {"Name":"WordVersion",
+                            "Value":"2"
+                        },
+                        {"Name":"ExternalDataSourceId"
+                        },
+                        {"Name":"HelpTip",
+                            "Value":"鼻窦炎"
+                        },
+                        {"Name":"DelFlag",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"EditProtect",
+                            "Value":"False"
+                        },
+                        {"Name":"IsSaveAsNode",
+                            "Value":"True"
+                        },
+                        {"Name":"IsNotRecordInXML",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"MustFillContent",
+                            "Value":"True"
+                        },
+                        {"Name":"Reference",
+                            "Value":"False"
+                        },
+                        {"Name":"ExpandInput",
+                            "Value":"True"
+                        },
+                        {"Name":"Edge",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"WomanUse",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"ControlType",
+                            "Value":"1"
+                        },
+                        {"Name":"ControlTypeTemplate",
+                            "Value":"ElementLableAndComboBox"
+                        },
+                        {"Name":"IsCtrlHidden",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"ViewSecret",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"ControlName",
+                            "Value":"鼻窦炎"
+                        },
+                        {"Name":"UpdateEveryTime",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"IsGroupUse",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"Code"
+                        },
+                        {"Name":"ConsistenceType",
+                            "Value":"3"
+                        },
+                        {"Name":"PlaceHolder",
+                            "Value":"鼻窦炎"
+                        },
+                        {"Name":"Reserve",
+                            "Value":"201407162340279626 否认鼻窦炎病史~有鼻窦炎病史"
+                        }
+                        ],
+                    "Elements":
+                        [
+                        {"Type":"Text","Text":"否认鼻窦炎病史"}
+                        ],
+                    "InnerID":145,
+                    "ID":"201407162340279626",
+                    "InnerValue":"1",
+                    "BackgroundText":"鼻窦炎",
+                    "FieldSettings":
+                        {"ListSource":
+                                {"Items":
+                                        [
+                                        {"Text":"否认鼻窦炎病史",
+                                            "Value":"1"
+                                        },
+                                        {"Text":"有鼻窦炎病史",
+                                            "Value":"2"
+                                        }
+                                        ]
+                                },
+                            "EditStyle":"DropdownList",
+                            "ListValueSeparatorChar":","
+                        },
+                    "ValidateStyle":
+                        {"Required":true
+                        },
+                    "EditorActiveMode":"F2, MouseDblClick, MouseClick",
+                    "ToolTip":"鼻窦炎",
+                    "AcceptChildElementTypes2":"Text",
+                    "SelectedIndex":0,
+                    "BorderVisible":"Hidden"
+                },
+                {"Type":"Text","Text":"。"},
+                {"Type":"InputField",
+                    "Attributes":
+                        [
+                        {"Name":"NsoElementTypeName",
+                            "Value":"NewControl"
+                        },
+                        {"Name":"NsoControlTypeName",
+                            "Value":"TextBox"
+                        },
+                        {"Name":"Type",
+                            "Value":"3"
+                        },
+                        {"Name":"ControlID",
+                            "Value":"201407162340515095"
+                        },
+                        {"Name":"ElementID",
+                            "Value":"201201"
+                        },
+                        {"Name":"WordVersion",
+                            "Value":"2"
+                        },
+                        {"Name":"HelpTip",
+                            "Value":"其他疾病史"
+                        },
+                        {"Name":"DelFlag",
+                            "Value":"TRUE"
+                        },
+                        {"Name":"EditProtect",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"IsSaveAsNode",
+                            "Value":"TRUE"
+                        },
+                        {"Name":"IsNotRecordInXML",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"MustFillContent",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"Reference",
+                            "Value":"TRUE"
+                        },
+                        {"Name":"ExpandInput",
+                            "Value":"TRUE"
+                        },
+                        {"Name":"Edge",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"WomanUse",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"ControlType",
+                            "Value":"3"
+                        },
+                        {"Name":"ControlTypeTemplate",
+                            "Value":"ElementLableAndText"
+                        },
+                        {"Name":"IsCtrlHidden",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"ViewSecret",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"ControlName",
+                            "Value":"其他疾病史"
+                        },
+                        {"Name":"UpdateEveryTime",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"IsGroupUse",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"ConsistenceType",
+                            "Value":"3"
+                        },
+                        {"Name":"PlaceHolder",
+                            "Value":"其他疾病史"
+                        },
+                        {"Name":"Reserve"
+                        },
+                        {"Name":"EdgeStyle",
+                            "Value":"["
+                        },
+                        {"Name":"EdgeStyle2",
+                            "Value":"]"
+                        },
+                        {"Name":"IsDefault",
+                            "Value":"TRUE"
+                        },
+                        {"Name":"BetweenInTimeAndOutTime",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"WritingInAdvance",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"IsGroupReplace",
+                            "Value":"TRUE"
+                        },
+                        {"Name":"IsNullPrint",
+                            "Value":"TRUE"
+                        },
+                        {"Name":"ReplaceOldValue",
+                            "Value":"FALSE"
+                        }
+                        ],
+                    "InnerID":148,
+                    "ID":"201407162340515095",
+                    "BackgroundText":"其他疾病史",
+                    "Name":"其他疾病史",
+                    "EditorActiveMode":"MouseClick",
+                    "Deleteable":false,
+                    "ToolTip":"其他疾病史",
+                    "BorderVisible":"Hidden"
+                },
+                {"Type":"Text","StyleIndex":1,"Text":"传染病史"},
+                {"Type":"Text","Text":"："},
+                {"Type":"InputField",
+                    "Attributes":
+                        [
+                        {"Name":"NsoElementTypeName",
+                            "Value":"NewControl"
+                        },
+                        {"Name":"NsoControlTypeName",
+                            "Value":"Combox"
+                        },
+                        {"Name":"Type",
+                            "Value":"1"
+                        },
+                        {"Name":"ControlID",
+                            "Value":"20140804145587"
+                        },
+                        {"Name":"ElementID",
+                            "Value":"201202"
+                        },
+                        {"Name":"WordVersion",
+                            "Value":"2"
+                        },
+                        {"Name":"HelpTip",
+                            "Value":"结核"
+                        },
+                        {"Name":"DelFlag",
+                            "Value":"TRUE"
+                        },
+                        {"Name":"EditProtect",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"IsSaveAsNode",
+                            "Value":"TRUE"
+                        },
+                        {"Name":"IsNotRecordInXML",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"MustFillContent",
+                            "Value":"TRUE"
+                        },
+                        {"Name":"Reference",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"ExpandInput",
+                            "Value":"TRUE"
+                        },
+                        {"Name":"Edge",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"WomanUse",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"ControlType",
+                            "Value":"1"
+                        },
+                        {"Name":"ControlTypeTemplate",
+                            "Value":"ElementLableAndComboBox"
+                        },
+                        {"Name":"IsCtrlHidden",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"ViewSecret",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"ControlName",
+                            "Value":"结核"
+                        },
+                        {"Name":"UpdateEveryTime",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"IsGroupUse",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"ConsistenceType",
+                            "Value":"3"
+                        },
+                        {"Name":"PlaceHolder",
+                            "Value":"结核"
+                        },
+                        {"Name":"Reserve",
+                            "Value":"20140804145587 否认结核病史~有肺结核病史~有其他部位结核病史"
+                        },
+                        {"Name":"EdgeStyle",
+                            "Value":"["
+                        },
+                        {"Name":"EdgeStyle2",
+                            "Value":"]"
+                        },
+                        {"Name":"IsDefault",
+                            "Value":"TRUE"
+                        },
+                        {"Name":"BetweenInTimeAndOutTime",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"WritingInAdvance",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"IsGroupReplace",
+                            "Value":"TRUE"
+                        },
+                        {"Name":"IsNullPrint",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"ReplaceOldValue",
+                            "Value":"FALSE"
+                        }
+                        ],
+                    "Elements":
+                        [
+                        {"Type":"Text","Text":"否认结核病史"}
+                        ],
+                    "InnerID":151,
+                    "ID":"20140804145587",
+                    "InnerValue":"1",
+                    "BackgroundText":"结核",
+                    "FieldSettings":
+                        {"ListSource":
+                                {"Items":
+                                        [
+                                        {"Text":"否认结核病史",
+                                            "Value":"1"
+                                        },
+                                        {"Text":"有肺结核病史",
+                                            "Value":"2"
+                                        },
+                                        {"Text":"有其他部位结核病史",
+                                            "Value":"3"
+                                        }
+                                        ]
+                                },
+                            "EditStyle":"DropdownList",
+                            "ListValueSeparatorChar":","
+                        },
+                    "Name":"结核",
+                    "ValidateStyle":
+                        {"Required":true
+                        },
+                    "EditorActiveMode":"F2, MouseDblClick, MouseClick",
+                    "Deleteable":false,
+                    "ToolTip":"结核",
+                    "AcceptChildElementTypes2":"Text",
+                    "SelectedIndex":0,
+                    "BorderVisible":"Hidden"
+                },
+                {"Type":"Text","Text":"，"},
+                {"Type":"InputField",
+                    "Attributes":
+                        [
+                        {"Name":"NsoElementTypeName",
+                            "Value":"NewControl"
+                        },
+                        {"Name":"NsoControlTypeName",
+                            "Value":"Combox"
+                        },
+                        {"Name":"Type",
+                            "Value":"1"
+                        },
+                        {"Name":"ControlID",
+                            "Value":"20140804148224"
+                        },
+                        {"Name":"ElementID",
+                            "Value":"201206"
+                        },
+                        {"Name":"WordVersion",
+                            "Value":"2"
+                        },
+                        {"Name":"HelpTip",
+                            "Value":"肝炎"
+                        },
+                        {"Name":"DelFlag",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"EditProtect",
+                            "Value":"False"
+                        },
+                        {"Name":"IsSaveAsNode",
+                            "Value":"True"
+                        },
+                        {"Name":"IsNotRecordInXML",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"MustFillContent",
+                            "Value":"True"
+                        },
+                        {"Name":"Reference",
+                            "Value":"False"
+                        },
+                        {"Name":"ExpandInput",
+                            "Value":"True"
+                        },
+                        {"Name":"Edge",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"WomanUse",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"ControlType",
+                            "Value":"1"
+                        },
+                        {"Name":"ControlTypeTemplate",
+                            "Value":"ElementLableAndComboBox"
+                        },
+                        {"Name":"IsCtrlHidden",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"ViewSecret",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"ControlName",
+                            "Value":"肝炎"
+                        },
+                        {"Name":"UpdateEveryTime",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"IsGroupUse",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"ConsistenceType",
+                            "Value":"3"
+                        },
+                        {"Name":"PlaceHolder",
+                            "Value":"肝炎"
+                        },
+                        {"Name":"Reserve",
+                            "Value":"20140804148224 否认肝炎病史~有肝炎病史"
+                        }
+                        ],
+                    "Elements":
+                        [
+                        {"Type":"Text","Text":"否认肝炎病史"}
+                        ],
+                    "InnerID":154,
+                    "ID":"20140804148224",
+                    "InnerValue":"1",
+                    "BackgroundText":"肝炎",
+                    "FieldSettings":
+                        {"ListSource":
+                                {"Items":
+                                        [
+                                        {"Text":"否认肝炎病史",
+                                            "Value":"1"
+                                        },
+                                        {"Text":"有肝炎病史",
+                                            "Value":"2"
+                                        }
+                                        ]
+                                },
+                            "EditStyle":"DropdownList",
+                            "ListValueSeparatorChar":","
+                        },
+                    "Name":"肝炎",
+                    "ValidateStyle":
+                        {"Required":true
+                        },
+                    "EditorActiveMode":"F2, MouseDblClick, MouseClick",
+                    "ToolTip":"肝炎",
+                    "AcceptChildElementTypes2":"Text",
+                    "SelectedIndex":0,
+                    "BorderVisible":"Hidden"
+                },
+                {"Type":"Text","Text":"。"},
+                {"Type":"InputField",
+                    "Attributes":
+                        [
+                        {"Name":"NsoElementTypeName",
+                            "Value":"NewControl"
+                        },
+                        {"Name":"NsoControlTypeName",
+                            "Value":"TextBox"
+                        },
+                        {"Name":"Type",
+                            "Value":"3"
+                        },
+                        {"Name":"ControlID",
+                            "Value":"201407171205358646"
+                        },
+                        {"Name":"ElementID",
+                            "Value":"201207"
+                        },
+                        {"Name":"WordVersion",
+                            "Value":"2"
+                        },
+                        {"Name":"HelpTip",
+                            "Value":"其他传染病病史"
+                        },
+                        {"Name":"DelFlag",
+                            "Value":"TRUE"
+                        },
+                        {"Name":"EditProtect",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"IsSaveAsNode",
+                            "Value":"TRUE"
+                        },
+                        {"Name":"IsNotRecordInXML",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"MustFillContent",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"Reference",
+                            "Value":"TRUE"
+                        },
+                        {"Name":"ExpandInput",
+                            "Value":"TRUE"
+                        },
+                        {"Name":"Edge",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"WomanUse",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"ControlType",
+                            "Value":"3"
+                        },
+                        {"Name":"ControlTypeTemplate",
+                            "Value":"ElementLableAndText"
+                        },
+                        {"Name":"IsCtrlHidden",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"ViewSecret",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"ControlName",
+                            "Value":"其他传染病病史"
+                        },
+                        {"Name":"UpdateEveryTime",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"IsGroupUse",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"ConsistenceType",
+                            "Value":"3"
+                        },
+                        {"Name":"PlaceHolder",
+                            "Value":"其他传染病病史"
+                        },
+                        {"Name":"Reserve"
+                        },
+                        {"Name":"EdgeStyle",
+                            "Value":"["
+                        },
+                        {"Name":"EdgeStyle2",
+                            "Value":"]"
+                        },
+                        {"Name":"IsDefault",
+                            "Value":"TRUE"
+                        },
+                        {"Name":"BetweenInTimeAndOutTime",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"WritingInAdvance",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"IsGroupReplace",
+                            "Value":"TRUE"
+                        },
+                        {"Name":"IsNullPrint",
+                            "Value":"TRUE"
+                        },
+                        {"Name":"ReplaceOldValue",
+                            "Value":"FALSE"
+                        }
+                        ],
+                    "InnerID":157,
+                    "ID":"201407171205358646",
+                    "BackgroundText":"其他传染病病史",
+                    "Name":"其他传染病病史",
+                    "EditorActiveMode":"MouseClick",
+                    "Deleteable":false,
+                    "ToolTip":"其他传染病病史",
+                    "BorderVisible":"Hidden"
+                },
+                {"Type":"Text","StyleIndex":1,"Text":"预防接种史"},
+                {"Type":"Text","Text":"："},
+                {"Type":"InputField",
+                    "Attributes":
+                        [
+                        {"Name":"NsoElementTypeName",
+                            "Value":"NewControl"
+                        },
+                        {"Name":"NsoControlTypeName",
+                            "Value":"Combox"
+                        },
+                        {"Name":"Type",
+                            "Value":"1"
+                        },
+                        {"Name":"ControlID",
+                            "Value":"201407171206165874"
+                        },
+                        {"Name":"ElementID",
+                            "Value":"201209"
+                        },
+                        {"Name":"WordVersion",
+                            "Value":"2"
+                        },
+                        {"Name":"ExternalDataSourceId"
+                        },
+                        {"Name":"HelpTip",
+                            "Value":"预防接种史G"
+                        },
+                        {"Name":"DelFlag",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"EditProtect",
+                            "Value":"False"
+                        },
+                        {"Name":"IsSaveAsNode",
+                            "Value":"True"
+                        },
+                        {"Name":"IsNotRecordInXML",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"MustFillContent",
+                            "Value":"True"
+                        },
+                        {"Name":"Reference",
+                            "Value":"False"
+                        },
+                        {"Name":"ExpandInput",
+                            "Value":"True"
+                        },
+                        {"Name":"Edge",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"WomanUse",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"ControlType",
+                            "Value":"1"
+                        },
+                        {"Name":"ControlTypeTemplate",
+                            "Value":"ElementLableAndComboBox"
+                        },
+                        {"Name":"IsCtrlHidden",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"ViewSecret",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"ControlName",
+                            "Value":"预防接种史G"
+                        },
+                        {"Name":"UpdateEveryTime",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"IsGroupUse",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"Code"
+                        },
+                        {"Name":"ConsistenceType",
+                            "Value":"3"
+                        },
+                        {"Name":"PlaceHolder",
+                            "Value":"预防接种史G"
+                        },
+                        {"Name":"Reserve",
+                            "Value":"201407171206165874 随社会人群进行~不详"
+                        }
+                        ],
+                    "Elements":
+                        [
+                        {"Type":"Text","Text":"随社会人群进行"}
+                        ],
+                    "InnerID":160,
+                    "ID":"201407171206165874",
+                    "InnerValue":"1",
+                    "BackgroundText":"预防接种史G",
+                    "FieldSettings":
+                        {"ListSource":
+                                {"Items":
+                                        [
+                                        {"Text":"随社会人群进行",
+                                            "Value":"1"
+                                        },
+                                        {"Text":"不详",
+                                            "Value":"2"
+                                        }
+                                        ]
+                                },
+                            "EditStyle":"DropdownList",
+                            "ListValueSeparatorChar":","
+                        },
+                    "ValidateStyle":
+                        {"Required":true
+                        },
+                    "EditorActiveMode":"F2, MouseDblClick, MouseClick",
+                    "ToolTip":"预防接种史G",
+                    "AcceptChildElementTypes2":"Text",
+                    "SelectedIndex":0,
+                    "BorderVisible":"Hidden"
+                },
+                {"Type":"Text","StyleIndex":2,"Text":"。"},
+                {"Type":"Text","StyleIndex":1,"Text":"手术外伤史"},
+                {"Type":"Text","Text":"："},
+                {"Type":"InputField",
+                    "Attributes":
+                        [
+                        {"Name":"NsoElementTypeName",
+                            "Value":"NewControl"
+                        },
+                        {"Name":"NsoControlTypeName",
+                            "Value":"Combox"
+                        },
+                        {"Name":"Type",
+                            "Value":"1"
+                        },
+                        {"Name":"ControlID",
+                            "Value":"20140804145342"
+                        },
+                        {"Name":"ElementID",
+                            "Value":"201210"
+                        },
+                        {"Name":"WordVersion",
+                            "Value":"2"
+                        },
+                        {"Name":"HelpTip",
+                            "Value":"手术外伤史"
+                        },
+                        {"Name":"DelFlag",
+                            "Value":"TRUE"
+                        },
+                        {"Name":"EditProtect",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"IsSaveAsNode",
+                            "Value":"TRUE"
+                        },
+                        {"Name":"IsNotRecordInXML",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"MustFillContent",
+                            "Value":"TRUE"
+                        },
+                        {"Name":"Reference",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"ExpandInput",
+                            "Value":"TRUE"
+                        },
+                        {"Name":"Edge",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"WomanUse",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"ControlType",
+                            "Value":"1"
+                        },
+                        {"Name":"ControlTypeTemplate",
+                            "Value":"ElementLableAndComboBox"
+                        },
+                        {"Name":"IsCtrlHidden",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"ViewSecret",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"ControlName",
+                            "Value":"手术外伤史"
+                        },
+                        {"Name":"UpdateEveryTime",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"IsGroupUse",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"ConsistenceType",
+                            "Value":"3"
+                        },
+                        {"Name":"PlaceHolder",
+                            "Value":"手术外伤史"
+                        },
+                        {"Name":"Reserve",
+                            "Value":"20140804145342 否认手术外伤史~胸部手术史"
+                        },
+                        {"Name":"EdgeStyle",
+                            "Value":"["
+                        },
+                        {"Name":"EdgeStyle2",
+                            "Value":"]"
+                        },
+                        {"Name":"IsDefault",
+                            "Value":"TRUE"
+                        },
+                        {"Name":"BetweenInTimeAndOutTime",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"WritingInAdvance",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"IsGroupReplace",
+                            "Value":"TRUE"
+                        },
+                        {"Name":"IsNullPrint",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"ReplaceOldValue",
+                            "Value":"FALSE"
+                        }
+                        ],
+                    "Elements":
+                        [
+                        {"Type":"Text","Text":"否认手术外伤史"}
+                        ],
+                    "InnerID":165,
+                    "ID":"20140804145342",
+                    "InnerValue":"1",
+                    "BackgroundText":"手术外伤史",
+                    "FieldSettings":
+                        {"ListSource":
+                                {"Items":
+                                        [
+                                        {"Text":"否认手术外伤史",
+                                            "Value":"1"
+                                        },
+                                        {"Text":"胸部手术史",
+                                            "Value":"2"
+                                        }
+                                        ]
+                                },
+                            "EditStyle":"DropdownList",
+                            "ListValueSeparatorChar":","
+                        },
+                    "Name":"手术外伤史",
+                    "ValidateStyle":
+                        {"Required":true
+                        },
+                    "EditorActiveMode":"F2, MouseDblClick, MouseClick",
+                    "Deleteable":false,
+                    "ToolTip":"手术外伤史",
+                    "AcceptChildElementTypes2":"Text",
+                    "SelectedIndex":0,
+                    "BorderVisible":"Hidden"
+                },
+                {"Type":"Text","Text":"。"},
+                {"Type":"InputField",
+                    "Attributes":
+                        [
+                        {"Name":"NsoElementTypeName",
+                            "Value":"NewControl"
+                        },
+                        {"Name":"NsoControlTypeName",
+                            "Value":"TextBox"
+                        },
+                        {"Name":"Type",
+                            "Value":"3"
+                        },
+                        {"Name":"ControlID",
+                            "Value":"20140804141758"
+                        },
+                        {"Name":"ElementID",
+                            "Value":"201450"
+                        },
+                        {"Name":"WordVersion",
+                            "Value":"2"
+                        },
+                        {"Name":"HelpTip",
+                            "Value":"其他手术史"
+                        },
+                        {"Name":"DelFlag",
+                            "Value":"TRUE"
+                        },
+                        {"Name":"EditProtect",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"IsSaveAsNode",
+                            "Value":"TRUE"
+                        },
+                        {"Name":"IsNotRecordInXML",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"MustFillContent",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"Reference",
+                            "Value":"TRUE"
+                        },
+                        {"Name":"ExpandInput",
+                            "Value":"TRUE"
+                        },
+                        {"Name":"Edge",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"WomanUse",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"ControlType",
+                            "Value":"3"
+                        },
+                        {"Name":"ControlTypeTemplate",
+                            "Value":"ElementLableAndText"
+                        },
+                        {"Name":"IsCtrlHidden",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"ViewSecret",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"ControlName",
+                            "Value":"其他手术史"
+                        },
+                        {"Name":"UpdateEveryTime",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"IsGroupUse",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"ConsistenceType",
+                            "Value":"3"
+                        },
+                        {"Name":"PlaceHolder",
+                            "Value":"其他手术史：描述手术时间及手术名称"
+                        },
+                        {"Name":"EdgeStyle",
+                            "Value":"["
+                        },
+                        {"Name":"EdgeStyle2",
+                            "Value":"]"
+                        },
+                        {"Name":"IsDefault",
+                            "Value":"TRUE"
+                        },
+                        {"Name":"BetweenInTimeAndOutTime",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"WritingInAdvance",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"IsGroupReplace",
+                            "Value":"TRUE"
+                        },
+                        {"Name":"IsNullPrint",
+                            "Value":"TRUE"
+                        },
+                        {"Name":"ReplaceOldValue",
+                            "Value":"FALSE"
+                        }
+                        ],
+                    "InnerID":168,
+                    "ID":"20140804141758",
+                    "BackgroundText":"其他手术史：描述手术时间及手术名称",
+                    "Name":"其他手术史",
+                    "EditorActiveMode":"MouseClick",
+                    "Deleteable":false,
+                    "ToolTip":"其他手术史",
+                    "BorderVisible":"Hidden"
+                },
+                {"Type":"Text","StyleIndex":1,"Text":"输血史"},
+                {"Type":"Text","Text":"："},
+                {"Type":"InputField",
+                    "Attributes":
+                        [
+                        {"Name":"NsoElementTypeName",
+                            "Value":"NewControl"
+                        },
+                        {"Name":"NsoControlTypeName",
+                            "Value":"Combox"
+                        },
+                        {"Name":"Type",
+                            "Value":"1"
+                        },
+                        {"Name":"ControlID",
+                            "Value":"20140804148461"
+                        },
+                        {"Name":"ElementID",
+                            "Value":"201211"
+                        },
+                        {"Name":"WordVersion",
+                            "Value":"2"
+                        },
+                        {"Name":"HelpTip",
+                            "Value":"输血史G"
+                        },
+                        {"Name":"DelFlag",
+                            "Value":"TRUE"
+                        },
+                        {"Name":"EditProtect",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"IsSaveAsNode",
+                            "Value":"TRUE"
+                        },
+                        {"Name":"IsNotRecordInXML",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"MustFillContent",
+                            "Value":"TRUE"
+                        },
+                        {"Name":"Reference",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"ExpandInput",
+                            "Value":"TRUE"
+                        },
+                        {"Name":"Edge",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"WomanUse",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"ControlType",
+                            "Value":"1"
+                        },
+                        {"Name":"ControlTypeTemplate",
+                            "Value":"ElementLableAndComboBox"
+                        },
+                        {"Name":"IsCtrlHidden",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"ViewSecret",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"ControlName",
+                            "Value":"输血史G"
+                        },
+                        {"Name":"UpdateEveryTime",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"IsGroupUse",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"ConsistenceType",
+                            "Value":"3"
+                        },
+                        {"Name":"PlaceHolder",
+                            "Value":"输血史G"
+                        },
+                        {"Name":"Reserve",
+                            "Value":"20140804148461 否认输血史~有输血史~曾出现输血反应"
+                        },
+                        {"Name":"EdgeStyle",
+                            "Value":"["
+                        },
+                        {"Name":"EdgeStyle2",
+                            "Value":"]"
+                        },
+                        {"Name":"IsDefault",
+                            "Value":"TRUE"
+                        },
+                        {"Name":"BetweenInTimeAndOutTime",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"WritingInAdvance",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"IsGroupReplace",
+                            "Value":"TRUE"
+                        },
+                        {"Name":"IsNullPrint",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"ReplaceOldValue",
+                            "Value":"FALSE"
+                        }
+                        ],
+                    "Elements":
+                        [
+                        {"Type":"Text","Text":"否认输血史"}
+                        ],
+                    "InnerID":171,
+                    "ID":"20140804148461",
+                    "InnerValue":"1",
+                    "BackgroundText":"输血史G",
+                    "FieldSettings":
+                        {"ListSource":
+                                {"Items":
+                                        [
+                                        {"Text":"否认输血史",
+                                            "Value":"1"
+                                        },
+                                        {"Text":"有输血史",
+                                            "Value":"2"
+                                        },
+                                        {"Text":"曾出现输血反应",
+                                            "Value":"3"
+                                        }
+                                        ]
+                                },
+                            "EditStyle":"DropdownList",
+                            "ListValueSeparatorChar":","
+                        },
+                    "Name":"输血史G",
+                    "ValidateStyle":
+                        {"Required":true
+                        },
+                    "EditorActiveMode":"F2, MouseDblClick, MouseClick",
+                    "Deleteable":false,
+                    "ToolTip":"输血史G",
+                    "AcceptChildElementTypes2":"Text",
+                    "SelectedIndex":0,
+                    "BorderVisible":"Hidden"
+                },
+                {"Type":"Text","Text":"。"},
+                {"Type":"Text","StyleIndex":1,"Text":"食物或药物过敏史"},
+                {"Type":"Text","Text":"："},
+                {"Type":"InputField",
+                    "Attributes":
+                        [
+                        {"Name":"NsoElementTypeName",
+                            "Value":"NewControl"
+                        },
+                        {"Name":"NsoControlTypeName",
+                            "Value":"Combox"
+                        },
+                        {"Name":"Type",
+                            "Value":"1"
+                        },
+                        {"Name":"ControlID",
+                            "Value":"201407171207355973"
+                        },
+                        {"Name":"ElementID",
+                            "Value":"201212"
+                        },
+                        {"Name":"WordVersion",
+                            "Value":"2"
+                        },
+                        {"Name":"HelpTip",
+                            "Value":"食物或药物过敏史"
+                        },
+                        {"Name":"DelFlag",
+                            "Value":"TRUE"
+                        },
+                        {"Name":"EditProtect",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"IsSaveAsNode",
+                            "Value":"TRUE"
+                        },
+                        {"Name":"IsNotRecordInXML",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"MustFillContent",
+                            "Value":"TRUE"
+                        },
+                        {"Name":"Reference",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"ExpandInput",
+                            "Value":"TRUE"
+                        },
+                        {"Name":"Edge",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"WomanUse",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"ControlType",
+                            "Value":"1"
+                        },
+                        {"Name":"ControlTypeTemplate",
+                            "Value":"ElementLableAndComboBox"
+                        },
+                        {"Name":"IsCtrlHidden",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"ViewSecret",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"ControlName",
+                            "Value":"食物或药物过敏史"
+                        },
+                        {"Name":"UpdateEveryTime",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"IsGroupUse",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"ConsistenceType",
+                            "Value":"3"
+                        },
+                        {"Name":"PlaceHolder",
+                            "Value":"食物或药物过敏史"
+                        },
+                        {"Name":"Reserve",
+                            "Value":"201407171207355973 否认食物或药物过敏史~有药物、吸入物过敏史~有食物过敏史"
+                        },
+                        {"Name":"EdgeStyle",
+                            "Value":"["
+                        },
+                        {"Name":"EdgeStyle2",
+                            "Value":"]"
+                        },
+                        {"Name":"IsDefault",
+                            "Value":"TRUE"
+                        },
+                        {"Name":"BetweenInTimeAndOutTime",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"WritingInAdvance",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"IsGroupReplace",
+                            "Value":"TRUE"
+                        },
+                        {"Name":"IsNullPrint",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"ReplaceOldValue",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"SetUCControl",
+                            "Value":"Neusoft.Emr.RecordTpl.UI,Neusoft.Emr.RecordTpl.UI.Internal.Forms.WordUserControl.WordUcCheckListForm"
+                        },
+                        {"Name":"IsDropDown",
+                            "Value":"FALSE"
+                        },
+                        {"Name":"SelectItem",
+                            "Value":"否认食物或药物过敏史"
+                        }
+                        ],
+                    "Elements":
+                        [
+                        {"Type":"Text","Text":"否认食物或药物过敏史"}
+                        ],
+                    "InnerID":176,
+                    "ID":"201407171207355973",
+                    "BackgroundText":"食物或药物过敏史",
+                    "FieldSettings":
+                        {"ListSource":
+                                {"Items":
+                                        [
+                                        {"Text":"否认食物或药物过敏史",
+                                            "Value":"1"
+                                        },
+                                        {"Text":"有药物、吸入物过敏史",
+                                            "Value":"2"
+                                        },
+                                        {"Text":"有食物过敏史",
+                                            "Value":"3"
+                                        }
+                                        ]
+                                },
+                            "EditStyle":"DropdownList",
+                            "ListValueSeparatorChar":","
+                        },
+                    "Name":"食物或药物过敏史",
+                    "ValidateStyle":
+                        {"Required":true
+                        },
+                    "EditorActiveMode":"F2, MouseDblClick, MouseClick",
+                    "Deleteable":false,
+                    "ToolTip":"食物或药物过敏史",
+                    "AcceptChildElementTypes2":"Text",
+                    "SelectedIndex":2,
+                    "BorderVisible":"Hidden",
+                    "EnableValueEditor":false
+                },
+                {"Type":"Text","StyleIndex":2,"Text":"。"},
+                {"Type":"PFlag",
+                    "AutoCreate":true
+                }
+                ],
+            "InnerID":4625
+        },
+        {"Type":"Footer",
+            "InnerID":4626
+        },
+        {"Type":"HeaderForFirstPage",
+            "Elements":
+                [
+                {"Type":"PFlag",
+                    "StyleIndex":0,
+                    "AutoCreate":true
+                }
+                ],
+            "InnerID":4627
+        },
+        {"Type":"FooterForFirstPage",
+            "InnerID":4628
+        }
+        ],
+    "FileFormat":"json",
+    "FileName":"test.json",
+    "ContentStyles":
+        {"Default":
+                {"FontName":"宋体",
+                    "FontSize":12
+                },
+            "Styles":
+                [
+                {"FontName":"宋体",
+                    "FontSize":12,
+                    "Index":0,
+                    "Align":"Center"
+                },
+                {"FontName":"宋体",
+                    "FontSize":12,
+                    "Index":1,
+                    "Bold":true
+                },
+                {"FontName":"宋体",
+                    "FontSize":12,
+                    "Index":2,
+                    "LineSpacingStyle":"SpaceSpecify",
+                    "LineSpacing":83.33334
+                }
+                ]
+        },
+    "EditorVersionString":"1.2023.4.28",
+    "Info":
+        {"NumOfPage":1,
+            "Operator":"DCSoft.Writer Version:1.2023.4.28",
+            "LicenseText":"南京都昌信息科技有限公司内部使用:南京都昌信息科技有限公司内测旗舰版",
+            "CreationTime":"1980-01-01 00:00:00",
+            "LastModifiedTime":"2023-05-10 13:31:03",
+            "LastPrintTime":"1980-01-01 00:00:00"
+        },
+    "PageSettings":
+        {"StrictUsePageSize":false
+        }
+}`;
+            let result = ctl.InsertJson(str);
+
+            console.log(result);
+        }
+
+        function InsertXmlById() {
+            var xml = document.getElementById('InsertXml').value
+            var myWriterControl = GetCurrentWriterControl();
+            var name = prompt("请输入输入域编号：", "")
+            if (name != null && name != "") {
+                var obj = {
+                    "file": xml,//xml文档
+                    "format": "xml",//xml文档格式
+                    "base64": "false",//是否是base64字符串
+                    "type": "two",
+                    "position": "start",
+                    "ClearFormat": true //是否清除插入文档的格式
+                }
+                console.log(obj, '==========obj')
+                myWriterControl.InsertXmlById(obj, name, true);
+            }
+        }
+
+        function InsertXmlString() {
+            var xml = document.getElementById('InsertXml').value
+            var ctl = document.getElementById("myWriterControl");
+            ctl.InsertXmlString(xml);
+        }
+
+        function WriterControl_OnLoad(rootElement) {
+
+        }
+
+
+        function ClearContent() {
+            var ctl = document.getElementById("myWriterControl");
+            var result = ctl.ClearContent();
+            console.log(result);
+        }
+        function FileNew() {
+            var ctl = document.getElementById("myWriterControl");
+            var result = ctl.DCExecuteCommand("FileNew", false, null);
+            console.log(result);
+        }
+        function FileOpen() {
+            var ctl = document.getElementById("myWriterControl");
+            ctl.DCExecuteCommand("FileOpen", true, null);
+        }
+        /**获得当前的编辑器控件对象 */
+        function GetCurrentWriterControl() {
+            return document.getElementById("myWriterControl");
+        }
+        function Refresh() {
+            let ctl = document.getElementById("myWriterControl");
+            ctl.RefreshDocument();
+        }
+        function DownLoadFile(format) {
+            if (format == null || format == "") {
+                format = "xml";
+            }
+            if (format == 'doc') {
+                DownLoadFiledoc();
+            }
+            else {
+                let ctl = GetCurrentWriterControl();
+                ctl.DownLoadFile(format);
+            }
+
+        }
+
+    </script>
+</body>
+
+</html>

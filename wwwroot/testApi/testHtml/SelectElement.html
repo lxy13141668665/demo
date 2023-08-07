@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <title></title>
+    <base href="/" target="_blank">
+    <style>
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            padding: 0px;
+            box-sizing: border-box;
+            margin: 0;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            height: 100%;
+        }
+
+        .header-box {
+            border-bottom: 1px solid #ccc;
+            padding-left: 10px;
+            box-sizing: border-box;
+            font-weight: 900;
+        }
+
+        #main {
+            padding: 10px;
+            box-sizing: border-box;
+            display: block;
+            flex: 1;
+            overflow: hidden;
+        }
+
+        .testButton {
+            cursor: pointer;
+            height: 24px;
+            width: 80px;
+            border-radius: 4px;
+            color: #fff;
+            line-height: 24px;
+            text-align: center;
+            background-color: #208c99;
+            font-size: 14px;
+            margin-left: 24px;
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="header-box">
+            <button onclick="GetCurrentWriterControl().ShowAboutDialog()">关于</button>
+            <button onclick="ClearContent()">清空</button>
+            <button onclick="FileNew()">新建</button>
+            <button onclick="FileOpen()">打开</button>
+            <button onclick="Refresh()">刷新</button>
+            <button onclick="DownLoadFile('xml');">下载xml</button>
+            <br />
+            <button onclick="SelectAll()">选中所有内容</button>
+            <button onclick="SelectedText()">获取文档中被选中的文字</button>
+            <button onclick="SelectionInner()">文档选择的部分</button>
+            <br />
+            <button onclick="startNode()">选中开始元素</button>
+            <button onclick="endNode()">选中结束元素</button>
+            <button onclick="SelectContentByStartEndElement()">以起始元素选择内容</button>
+            <br />
+            <button onclick="GetId()">获取元素id</button>
+            <button onclick="SelectElementById()">根据id选中元素</button>
+            <br />
+            <div>
+                <textarea id="CustomAttributes" cols="30" rows="10"></textarea>
+                <button onclick="SetElementCustomAttributes()">设置指定元素的自定义属性</button>
+            </div>
+            <div>
+                SetElementInnerValueStringByID :
+                新的文本:<input type="text" id="newText">
+                新的值:<input type="text" id="newValue">
+                <button onclick="SetElementInnerValueStringByID()">兼容四代设置元素InnerValue文本</button>
+            </div>
+            <div>
+                属性名:<input type="text" id="optionsKey">
+                属性值:<input type="text" id="optionsValue">
+                <button onclick="SetElementProperty()">设置文档元素自定义属性</button>
+
+            </div>
+            <div>
+                <button onclick="SetElementText()">设置文档元素文本内容SetElementText</button>
+                <button onclick="SetElementTextByID()">设置文档元素文本内容SetElementTextByID</button>
+                <button onclick="SetElementVisibility('false')">设置文档元素隐藏SetElementVisibility</button>
+                <button onclick="SetFieldDropListItemByValue()">指定下拉列表的默认选择项SetFieldDropListItemByValue</button>
+                <button onclick="SetLabelElementContactSettings()">设置文本标签的连接模式SetLabelElementContactSettings</button>
+            </div>
+
+
+        </div>
+        <div id="main">
+            <div id="myWriterControl" dctype="WriterControlForWASM"
+                style="height: 100%; background-color: rgb(230, 230, 230); border-bottom: 0px solid black; background-attachment: fixed; background-size: cover; background-position: center top; "
+                RuleVisible="true" RuleBackColor="rgb(230, 230, 230)"
+                ServicePageUrl="http://www.dcwriter.cn:8099/ServicePage.aspx"
+                PageCssString222="box-shadow:3px 3px 3px grey"
+                DocumentOptions.BehaviorOptions.OutputFormatedXMLSource="false"
+                DocumentOptions.BehaviorOptions.ParagraphFlagFollowTableOrSection="true"
+                DocumentOptions.ViewOptions.ShowInputFieldStateTag="true"
+                DocumentOptions.ViewOptions.IgnoreFieldBorderWhenPrint="false"
+                DocumentOptions.ViewOptions.PrintBackgroundText="false"
+                DocumentOptions.ViewOptions.PreserveBackgroundTextWhenPrint="true"
+                DocumentOptions.ViewOptions.FieldBorderPrintVisibility="hidden"
+                DocumentOptions.ViewOptions.FieldInvalidateValueForeColor="Blue"
+                DocumentOptions.ViewOptions.TagColorForNormalField="Green"
+                DocumentOptions.ViewOptions.TagColorForValueInvalidateField="Blue"
+                DocumentOptions.ViewOptions.UnEditableFieldBorderColor="Yellow"
+                DocumentOptions.SecurityOptions.EnablePermission="true"
+                DocumentOptions.SecurityOptions.EnableLogicDelete="true"
+                DocumentOptions.SecurityOptions.ShowLogicDeletedContent="true"
+                DocumentOptions.SecurityOptions.ShowPermissionTip="true"
+                DocumentOptions.SecurityOptions.ShowPermissionMark="true">
+                正在加载...</div>
+        </div>
+    </div>
+    <script src="_framework/blazor.webassembly.js"></script>
+    <script src="../../js/jquery-1.7.2.min.js"></script>
+    <script src="../../DemoApp.js"></script>
+    <script language="javascript">
+
+        function SetLabelElementContactSettings() {
+            var ctl = document.getElementById("myWriterControl");
+            let element = ctl.GetElementProperties(ctl.CurrentElement())
+            var options = {
+                //ContactAction: "Normal", //连接模式 AttributeNameForContactAction: "科室", //连接模式提取值的来源属性名 LinkTextForContactAction: "-" //连接字符串 };
+                LinkTextForContactAction: "-"
+            }
+            ctl.SetLabelElementContactSettings(element, options);
+            ctl.RefreshDocument();
+        }
+        function SetElementProperty() {
+            var ctl = GetCurrentWriterControl();
+            let id = ctl.GetElementProperties(ctl.CurrentElement()).ID
+            let optionsKey = document.getElementById('optionsKey').value
+            let optionsValue = document.getElementById('optionsValue').value
+            let result = ctl.SetElementProperty(id, optionsKey, optionsValue);
+            alert(result)
+        }
+        function SetElementText() {
+            var ctl = GetCurrentWriterControl();
+            let id = ctl.GetElementProperties(ctl.CurrentElement()).ID
+            let text = prompt('请输入文本内容', '')
+            let result = ctl.SetElementText(id, text);
+        }
+        function SetCurrentInputText() {
+            var myWriterControl = GetCurrentWriterControl();
+            let input = myWriterControl.CurrentInputField;
+            let text = prompt('请输入文本内容', '')
+            if (input != null) {
+                let id = input.ID;
+                myWriterControl.SetElementTextByID(id, text);
+            }
+        }
+        function SetElementVisibility(type) {
+            var myWriterControl = document.getElementById("myWriterControl");
+            let id = myWriterControl.GetElementProperties(myWriterControl.CurrentElement()).ID
+            var result = myWriterControl.SetElementVisibility(id, type);
+            myWriterControl.RefreshDocument();
+            alert(result);
+        }
+
+        function SetFieldDropListItemByValue() {
+            let text = prompt('请输入值', '')
+            var ctl = document.getElementById("myWriterControl");
+            let id = myWriterControl.GetElementProperties(myWriterControl.CurrentElement()).ID
+            let result = ctl.SetFieldDropListItemByValue(id, text)
+            console.log(result);
+        }
+
+
+        function SetElementInnerValueStringByID() {
+            var ctl = GetCurrentWriterControl();
+            let id = ctl.GetElementProperties(ctl.CurrentElement()).ID
+            let newValue = document.getElementById('newValue').value
+            let newText = document.getElementById('newText').value
+            ctl.SetElementInnerValueStringByID(id, newValue, newText);
+        }
+        function SelectionInner() {
+            var myWriterControl = GetCurrentWriterControl();
+            var result = myWriterControl.Selection;
+            console.log('文档中选中的部分', result);
+            alert('请打开控制台查看')
+        }
+        function SelectedText() {
+            var myWriterControl = GetCurrentWriterControl();
+            var result = myWriterControl.SelectedText;
+            alert(result);
+        }
+        function GetId() {
+            var ctl = document.getElementById("myWriterControl");
+            if (ctl.GetElementProperties(ctl.CurrentElement())) {
+                let options = ctl.GetElementProperties(ctl.CurrentElement())
+                alert(options.ID)
+            }
+        }
+        function SelectElementById() {
+            let ID = prompt('请输入元素ID', '')
+            var ctl = document.getElementById("myWriterControl");
+            ctl.SelectElementById(ID);
+        }
+        function SetElementCustomAttributes() {
+            var ctl = document.getElementById("myWriterControl");
+            var element = ctl.CurrentElement()
+            var opts = null
+            var CustomAttributes = document.getElementById('CustomAttributes').value
+            try {
+                opts = JSON.parse(CustomAttributes)
+            } catch (error) {
+                alert('请检查是否为严格JSON模式')
+            }
+
+            var result = ctl.SetElementCustomAttributes(element, opts);
+            alert(result);
+        }
+        function SelectAll() {
+            var ctl = document.getElementById("myWriterControl");
+            ctl.SelectAll();
+        }
+
+        let startNodeElement = null;
+        let endNodeElement = null;
+        function startNode() {
+            var ctl = document.getElementById("myWriterControl");
+            startNodeElement = document.WriterControl.GetElementProperties(document.WriterControl.CurrentElement())
+        }
+
+        function endNode() {
+            var ctl = document.getElementById("myWriterControl");
+            endNodeElement = document.WriterControl.GetElementProperties(document.WriterControl.CurrentElement())
+        }
+
+        function SelectContentByStartEndElement() {
+            var ctl = document.getElementById("myWriterControl");
+            if (!startNodeElement) {
+                return alert('请选择开始节点')
+            }
+            if (!endNodeElement) {
+                return alert('请选择结束节点')
+            }
+            ctl.SelectContentByStartEndElement(startNodeElement, endNodeElement)
+        }
+
+        function WriterControl_OnLoad(rootElement) {
+
+        }
+
+
+        function ClearContent() {
+            var ctl = document.getElementById("myWriterControl");
+            var result = ctl.ClearContent();
+            console.log(result);
+        }
+        function FileNew() {
+            var ctl = document.getElementById("myWriterControl");
+            var result = ctl.DCExecuteCommand("FileNew", false, null);
+            console.log(result);
+        }
+        function FileOpen() {
+            var ctl = document.getElementById("myWriterControl");
+            ctl.DCExecuteCommand("FileOpen", true, null);
+        }
+        /**获得当前的编辑器控件对象 */
+        function GetCurrentWriterControl() {
+            return document.getElementById("myWriterControl");
+        }
+        function Refresh() {
+            let ctl = document.getElementById("myWriterControl");
+            ctl.RefreshDocument();
+        }
+        function DownLoadFile(format) {
+            if (format == null || format == "") {
+                format = "xml";
+            }
+            if (format == 'doc') {
+                DownLoadFiledoc();
+            }
+            else {
+                let ctl = GetCurrentWriterControl();
+                ctl.DownLoadFile(format);
+            }
+
+        }
+
+    </script>
+</body>
+
+</html>

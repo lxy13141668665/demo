@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <title></title>
+    <style>
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            padding: 0px;
+            box-sizing: border-box;
+            margin: 0;
+        }
+
+        .ImgLoad {
+            width: 50px;
+            height: 50px;
+            animation: turn 3s linear infinite;
+        }
+
+        @keyframes turn {
+            0% {
+                -webkit-transform: rotate(0deg);
+            }
+
+            25% {
+                -webkit-transform: rotate(90deg);
+            }
+
+            50% {
+                -webkit-transform: rotate(180deg);
+            }
+
+            75% {
+                -webkit-transform: rotate(270deg);
+            }
+
+            100% {
+                -webkit-transform: rotate(360deg);
+            }
+        }
+
+        #loadingBox {
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            left: 0;
+            top: 0;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .ImgLoad {
+            position: fixed;
+            left: 50%;
+            top: 40%;
+            margin-left: -25px;
+        }
+
+        .LoadText {
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            margin-left: -40px;
+            color: #409eff;
+            width: 80px;
+            text-align: center;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            height: 100%;
+        }
+
+        .header-box {
+            border-bottom: 1px solid #ccc;
+            height: 45px;
+            padding-left: 10px;
+            box-sizing: border-box;
+            font-weight: 900;
+        }
+
+        #main {
+            padding: 10px;
+            box-sizing: border-box;
+            display: block;
+            flex: 1;
+            overflow: hidden;
+        }
+
+        #backButton {
+            border-right: 1px solid #ccc;
+            width: 65px;
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="header-box">
+            <p id="backButton"><span style="font-weight: 600;font-size: 16px;">&#8592;</span>&nbsp;返回</p>
+            <span id="XmlTitle"></span>
+        </div>
+        <div id="main">
+            <div id="myWriterControl1" dctype="WriterControlForWASM"
+                style="height: 100%; background-color: rgb(230, 230, 230); border-bottom: 0px solid black; background-attachment: fixed; background-size: cover; background-position: center top; "
+                RuleVisible="true" RuleBackColor="rgb(230, 230, 230)"
+                ServicePageUrl="http://www.dcwriter.cn:8099/ServicePage.aspx"
+                PageCssString222="box-shadow:3px 3px 3px grey"
+                DocumentOptions.BehaviorOptions.OutputFormatedXMLSource="false"
+                DocumentOptions.BehaviorOptions.ParagraphFlagFollowTableOrSection="true"
+                DocumentOptions.ViewOptions.ShowInputFieldStateTag="true"
+                DocumentOptions.ViewOptions.IgnoreFieldBorderWhenPrint="false"
+                DocumentOptions.ViewOptions.PrintBackgroundText="false"
+                DocumentOptions.ViewOptions.PreserveBackgroundTextWhenPrint="true"
+                DocumentOptions.ViewOptions.FieldBorderPrintVisibility="hidden"
+                DocumentOptions.ViewOptions.FieldInvalidateValueForeColor="Blue"
+                DocumentOptions.ViewOptions.TagColorForNormalField="Green"
+                DocumentOptions.ViewOptions.TagColorForValueInvalidateField="Blue"
+                DocumentOptions.ViewOptions.UnEditableFieldBorderColor="Yellow"
+                DocumentOptions.SecurityOptions.EnablePermission="true"
+                DocumentOptions.SecurityOptions.EnableLogicDelete="true"
+                DocumentOptions.SecurityOptions.ShowLogicDeletedContent="true"
+                DocumentOptions.SecurityOptions.ShowPermissionTip="true"
+                DocumentOptions.SecurityOptions.ShowPermissionMark="true">
+                正在加载...</div>
+        </div>
+    </div>
+    <div id="loadingBox">
+        <img class="ImgLoad" style="" src="./img/load.png" alt="">
+        <p class="LoadText">加载中...</p>
+    </div>
+    <script src="_framework/blazor.webassembly.js"></script>
+    <script src="js/jquery-1.7.2.min.js"></script>
+    <script language="javascript">
+        let Loading = true
+        jQuery('#loadingBox').show()
+        jQuery('#main').hide()
+
+        function WriterControl_OnLoad(rootElement) {
+            jQuery('#loadingBox').hide()
+            jQuery('#main').show()
+            let index = window.location.search.indexOf('=')
+            if (window.location.search.indexOf("?") != -1) {
+                var str = window.location.search.substr(window.location.search.indexOf("?"));
+            }
+            jQuery('#XmlTitle').innerHTML = window.location.search.substr(index + 1)
+            jQuery.ajax({
+                url: `http://www.dcwriter.cn:6969/演示文档/${window.location.search.substr(index + 1)}.xml`,
+                success: (data) => {
+                    if (data) {
+                        rootElement.LoadDocumentFromString(data.documentElement.outerHTML, 'xml');
+                    }
+                }
+            })
+            document.getElementById('backButton').addEventListener('touchstart', function () {
+                window.location.href = "./demoDocMobileTerminal.html"
+            })
+        }
+
+    </script>
+</body>
+
+</html>

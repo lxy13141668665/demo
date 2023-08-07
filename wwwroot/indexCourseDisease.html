@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>DCSoft.WASM</title>
+    <script src="http://www.dcwriter.cn:8099/Jquery/jquery-1.7.2.min.js"></script>
+    <link href="./js/easyui/easyui.css" rel="stylesheet" />
+    <style>
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+            overflow: hidden;
+            background-color: gray;
+        }
+
+        #box {
+            width: 100%;
+            height: calc(100% - 105px);
+            display: flex;
+            flex-wrap: wrap;
+            background: #fff;
+            overflow: hidden;
+        }
+
+        #tt {
+            height: 100%;
+            overflow: hidden;
+            background-color: white;
+        }
+
+        .tabs-panels {
+            height: calc(100% - 34px);
+        }
+
+        .tabs-panels>.panel-htop,
+        .panel-body {
+            height: 100%;
+        }
+
+        .tabs-title-change::after {
+            content: '*';
+            margin-left: 5px;
+        }
+
+        .tabs li.tabs-selected a.tabs-inner {
+            border-radius: 1px;
+        }
+
+        .tabs-title {
+            font-size: 14px;
+            font-family: "宋体";
+        }
+
+        .l-btn-text {
+            font-size: 14px;
+            font-family: "宋体";
+        }
+
+        #myWriterControl {
+            border: 2px solid #e6e6e6;
+        }
+
+        .tabs-header,
+        .tabs-scroller-left,
+        .tabs-scroller-right,
+        .tabs-tool,
+        .tabs,
+        .tabs-panels,
+        .tabs li a.tabs-inner,
+        .tabs-header-right {
+            border-color: transparent !important;
+        }
+
+        .tabs-header,
+        .tabs-tool {
+            background-color: #e6e6e6;
+            /* background-color: #fff; */
+        }
+
+        .panel-body {
+            border-bottom: 1px solid #c6c6c6;
+        }
+
+        .presentationDocumentBox {
+            width: 300px;
+            background-color: #fff;
+            box-sizing: border-box;
+            position: relative;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+
+
+        .fileTextImg {
+            width: 16px;
+            height: 16px;
+            display: inline-block;
+            margin-top: -3px;
+            margin-right: 4px;
+        }
+
+        .presentationDocumentBox .head {
+            line-height: 24px;
+            text-align: center;
+            font-size: 24px;
+            font-weight: 700;
+            margin: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid;
+        }
+
+
+        .presentationDocumentBox .tabBox .tabItem {
+            height: 30px;
+            line-height: 30px;
+            padding: 0 6px;
+            border-radius: 2px;
+            margin-right: 4px;
+            background: linear-gradient(to bottom, #EFF5FF 0, #E0ECFF 100%);
+            cursor: pointer;
+        }
+
+        .presentationDocumentBox .tabBox .tabItem.active {
+            background: #ffffff;
+            color: #3f51b5;
+            font-weight: bold;
+            outline: none;
+        }
+
+        .presentationDocumentBox .tabBox {
+            display: flex;
+            width: 100%;
+            border-bottom: 1px solid #d2d2d2;
+            font-size: 14px;
+            background: #e6e6e6;
+            padding-top: 3px;
+            box-sizing: border-box;
+            font-family: "宋体";
+        }
+
+        .presentationDocumentBox .boxItem {
+            flex: 1;
+            height: 100%;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .courseListContent {
+            overflow-y: auto;
+            padding-left: 20px;
+            padding-bottom: 10px;
+            flex: 1;
+        }
+
+        .courseListItem {
+            text-align: left;
+            line-height: 30px;
+            font-size: 14px;
+        }
+
+        div::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        div::-webkit-scrollbar-thumb {
+            border-radius: 10px;
+            opacity: 0.2;
+            background: #9093994d;
+        }
+
+        div::-webkit-scrollbar-track {
+            border-radius: 0;
+            background: #f8f8f8;
+        }
+
+        .courseListItem_p {
+            font-family: '宋体';
+            display: inline-block;
+            width: 100%;
+            cursor: pointer;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            width: 100%;
+        }
+
+        .courseListItem:hover {
+            background: linear-gradient(to bottom, #EFF5FF 0, #E0ECFF 100%);
+        }
+
+        .refreshImg {
+            cursor: pointer;
+            width: 22px;
+            height: 22px;
+            float: right;
+        }
+
+        #courseDisease {
+            display: flex;
+            flex-wrap: wrap;
+            width: 100%;
+            background: #eaedf1;
+            height: 105px;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #c6c6c6;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        .courseButton {
+            margin: 0;
+            padding: 0 8px;
+            box-sizing: border-box;
+            font-size: 14px;
+            height: 34px;
+            margin: -1px;
+            cursor: pointer;
+            color: #333;
+            line-height: 34px;
+            background: #E0ECFF;
+            border: 1px solid #95B8E7;
+        }
+
+        .courseButton:hover {
+            background: #ffffff;
+
+        }
+
+        #courseDisease p:first-child {
+            border-top-left-radius: 5px;
+            border-bottom-left-radius: 5px;
+        }
+
+        #courseDisease>div>p:last-child {
+            border-top-right-radius: 5px;
+            border-bottom-right-radius: 5px;
+        }
+
+        .courseDiseaseLeft,
+        .courseDiseaseRight {
+            display: flex;
+            margin: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="courseDisease">
+        <div class="courseDiseaseLeft">
+            <p class="courseButton" title="加载病程" id="LoadsubMainXml">加载病程</p>
+            <p class="courseButton" title="追加病程" id="InsertSub">追加病程</p>
+            <p class="courseButton" title="插入病程" id="InsertSub2">插入病程</p>
+            <p class="courseButton" title="获取病程编号" id="GetCourseRecords">获取病程编号</p>
+            <p class="courseButton" title="根据编号定位病程" id="SelectSubDocumentByID">根据编号定位病程</p>
+            <p class="courseButton" title="根据序号定位病程" id="SelectSubDocument">根据序号定位病程</p>
+            <p class="courseButton" title="删除指定病程" id="DeleteSubDoc">删除指定病程</p>
+            <p class="courseButton" title="删除当前病程" id="DeleteCurrentSubDoc">删除当前病程</p>
+            <p class="courseButton" title="当前病程编号" id="CurrentSubDoc">当前病程编号</p>
+            <p class="courseButton" title="设置病程只读" id="SetCurrentSubDocumentReadOnlyTrue">设置病程只读</p>
+            <p class="courseButton" title="取消病程只读" id="SetCurrentSubDocumentReadOnlyFalse">取消病程只读</p>
+            <p class="courseButton" title="设置病程跨页" id="SubDocCrossPageTrue">设置病程跨页</p>
+            <p class="courseButton" title="取消病程跨页" id="SubDocCrossPageFalse">取消病程跨页</p>
+        </div>
+
+        <div class="courseDiseaseRight">
+            <p title="全部打印" class="courseButton"
+                onclick="GetCurrentWriterControl().PrintDocument({CompletedCallback:function(){alert('打印成功');}});">全部打印
+            </p>
+            <p class="courseButton" title="打印结果" onclick="GetPrintResult();">打印结果</p>
+            <p class="courseButton" style="display: flex;align-items: center;">
+                初始页码:
+                <input id="SubStartPage" type="number" value="0" min="0" max="100" step="1"
+                    style="width: 38px;height: 16px;line-height: 16px;margin-right: 5px;" />
+                初始偏移量:
+                <input id="SubLayoutOffset" type="number" value="0" min="0" max="100" step="1"
+                    style="width: 38px;height: 16px;line-height: 16px;margin-right: 5px;" />
+                <span onclick="LayoutOffsetSubPrint()">病程偏移套打</span>
+            </p>
+        </div>
+
+    </div>
+    <div id="box">
+        <div class="presentationDocumentBox" style="user-select:none;" id="presentationDocumentBox">
+            <div class="boxItem" id="courseListBox">
+                <div class="head">
+                    <span id="courseListTitle">病程记录</span>
+                    <img class="refreshImg" title="刷新" src="./img/shuaxin.png" alt="">
+                </div>
+                <div id="courseListContent" class="courseListContent listItem">正在加载...</div>
+            </div>
+        </div>
+        <!-- 在此处写tab页的最外层包裹元素 -->
+        <div id="tt" class="easyui-tabs" style="flex: 1;width:100%">
+            <div title="病程记录" data-options="closable:true" style="display:none;width: 100%;">
+                <!-- 第一页的html   ServicePageUrl="http://localhost:9901/dcwritersvp"-->
+                <div id="myWriterControl" dctype="WriterControlForWASM" DoubleBuffer="true"
+                    aaaRegisterCode222="0596ACE69CFEDA6049E2B0AB8F61A6EB77417D43048C94F2FEC8EF188B9F93701356B484E51E9866F5FD1DAEDC05CD9C2B2694D07C132CF9D337145FA6CB9F6747F7F7EF73B16233788DDA65604DF01EFC278900F153FA0D11E07190CFC337455B2DF88227863E0AF4A2552FED42C1C1DE42100AF3704910FFA04DACDFC5B90484CB99A1DDEB665398B3BAD2A1434DF5AB8E1A10D57C6621BAF3FC4F20366B0086"
+                    ServicePageUrl="http://www.dcwriter.cn:8099/ServicePage.aspx"
+                    PrintServicePageUrl="http://localhost:23345"
+                    style="height: 100%; background-color: rgb(230, 230, 230); border-bottom: 0px solid black; background-attachment: fixed; background-size: cover; background-position: center top; "
+                    RuleVisible="true" RuleBackColor22="rgb(230, 230, 230)"
+                    PageCssString333="box-shadow:1px 1px 1px grey" PageTitlePosition="BottomRight"
+                    PageBorderColor="rgb(230, 230, 230)" CaretCss="3,Blue"
+                    DocumentOptions.BehaviorOptions.ResetTextFormatWhenCreateNewLine="true"
+                    DocumentOptions.BehaviorOptions.SelectionTextIncludeBackgroundText="false"
+                    DocumentOptions.BehaviorOptions.AutoAssistInsertString="true"
+                    DocumentOptions.BehaviorOptions.AutoAssistInsertStringDetectTextLength="1"
+                    DocumentOptions.BehaviorOptions.HandleCommandException="false"
+                    DocumentOptions.BehaviorOptions.OutputFormatedXMLSource="false"
+                    DocumentOptions.BehaviorOptions.ParagraphFlagFollowTableOrSection="true"
+                    DocumentOptions.BehaviorOptions.PromptJumpBackForSearch="false"
+                    DocumentOptions.BehaviorOptions.CommentEditableWhenReadonly="true"
+                    DocumentOptions.ViewOptions.EnableEncryptView="true"
+                    DocumentOptions.ViewOptions.ShowInputFieldStateTag="true"
+                    DocumentOptions.ViewOptions.IgnoreFieldBorderWhenPrint="false"
+                    DocumentOptions.ViewOptions.PrintBackgroundText="false"
+                    DocumentOptions.ViewOptions.PreserveBackgroundTextWhenPrint="true"
+                    DocumentOptions.ViewOptions.FieldBorderPrintVisibility="hidden"
+                    DocumentOptions.ViewOptions.FieldInvalidateValueForeColor="Blue"
+                    DocumentOptions.ViewOptions.TagColorForNormalField="Green"
+                    DocumentOptions.ViewOptions.TagColorForValueInvalidateField="Blue"
+                    DocumentOptions.ViewOptions.UnEditableFieldBorderColor="Yellow"
+                    DocumentOptions.ViewOptions.ShowParagraphFlag="true"
+                    DocumentOptions.SecurityOptions.EnablePermission="true"
+                    DocumentOptions.SecurityOptions.EnableLogicDelete="true"
+                    DocumentOptions.SecurityOptions.ShowLogicDeletedContent="true"
+                    DocumentOptions.SecurityOptions.ShowPermissionTip="true"
+                    DocumentOptions.SecurityOptions.ShowPermissionMark="true"
+                    DocumentOptions.SecurityOptions.TrackVisibleLevel0.BackgroundColor="Transparent"
+                    DocumentOptions.SecurityOptions.TrackVisibleLevel0.DeleteLineColor="Blue"
+                    DocumentOptions.SecurityOptions.TrackVisibleLevel0.DeleteLineNum="1"
+                    DocumentOptions.SecurityOptions.TrackVisibleLevel0.Enabled="true"
+                    DocumentOptions.SecurityOptions.TrackVisibleLevel0.UnderLineColor="Blue"
+                    DocumentOptions.SecurityOptions.TrackVisibleLevel0.UnderLineColorNum="1"
+                    DocumentOptions.SecurityOptions.TrackVisibleLevel1.BackgroundColor="Transparent"
+                    DocumentOptions.SecurityOptions.TrackVisibleLevel1.DeleteLineColor="Yellow"
+                    DocumentOptions.SecurityOptions.TrackVisibleLevel1.DeleteLineNum="2"
+                    DocumentOptions.SecurityOptions.TrackVisibleLevel1.Enabled="true"
+                    DocumentOptions.SecurityOptions.TrackVisibleLevel1.UnderLineColor="Yellow"
+                    DocumentOptions.SecurityOptions.TrackVisibleLevel1.UnderLineColorNum="2"
+                    DocumentOptions.SecurityOptions.TrackVisibleLevel2.BackgroundColor="Transparent"
+                    DocumentOptions.SecurityOptions.TrackVisibleLevel2.DeleteLineColor="Green"
+                    DocumentOptions.SecurityOptions.TrackVisibleLevel2.DeleteLineNum="2"
+                    DocumentOptions.SecurityOptions.TrackVisibleLevel2.Enabled="true"
+                    DocumentOptions.SecurityOptions.TrackVisibleLevel2.UnderLineColor="Green"
+                    DocumentOptions.SecurityOptions.TrackVisibleLevel2.UnderLineColorNum="2"
+                    OnLoad="this.LoadDocumentFromString(COURSEDISEASE, 'xml');">
+                    正在加载...
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="http://www.dcwriter.cn:8099/ServicePage.aspx?wasmres=dcwriter5.js"></script>
+    <script src="DemoApp.js"></script>
+    <script src="js/easyui/easyui.js"></script>
+    <script src="./static/SubXML.js"></script>
+    <script src="./static/indexStrDemoFileXml.js"></script>
+    <script>
+
+        /**获得当前的编辑器控件对象 */
+        function GetCurrentWriterControl() {
+            var pp = $('#tt').tabs('getSelected');
+            //判断目前的根元素
+            var targetId = pp[0].children[0].getAttribute('id');
+            return document.getElementById(targetId);
+        }
+
+        //获取病程列表
+        function getCourseList() {
+            let ctl = GetCurrentWriterControl();
+            let data = ctl.GetCourseRecords()
+            console.log(data, '----------获取病程')
+            let parentNodeStr = ''
+            for (var i = 0; i < data.length; i++) {
+                let obj = data[i]
+                parentNodeStr += `<div class="courseListItem" isFlag="hide" id="${obj.ID}">
+                                  <p class="courseListItem_p" title="${obj.Title}${obj.Attributes && obj.Attributes.RegionCreatTime}"><img class="fileTextImg" src="./img/fileText.png"/>${obj.Title}${obj.Attributes && obj.Attributes.RegionCreatTime}</p>
+                               </div>`
+            }
+            document.getElementById('courseListContent').innerHTML = parentNodeStr
+            jQuery('.courseListItem').click(function () {
+                ctl.SelectSubDocumentByID(this.id)
+            })
+        }
+
+        //获取一个随机字符串
+        function randomString(length) {
+            var str = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            var result = '';
+            for (var i = length; i > 0; --i)
+                result += str[Math.floor(Math.random() * str.length)];
+            return result;
+        }
+
+        function WriterControl_OnLoad() {
+            setTimeout(() => {
+                getCourseList()
+            })
+        }
+        window.addEventListener('load', function () {
+            $('#tt').tabs({
+                onSelect: function (title, index) {
+                    document.getElementById('courseListTitle').innerText = title
+                    setTimeout(function () {
+                        getCourseList()
+                    })
+                }
+            });
+        });
+
+        function GetPrintResult() {
+            var myWriterControl = GetCurrentWriterControl();
+            var result = myWriterControl.GetPrintResult();
+            if (result != null) {
+
+                var message = "PageIndexFix:" + result.PageIndexFix;
+                message += (",PageCount:" + result.PageCount);
+                message += (",LastPageHeight:" + result.LastPageHeight);
+                message += (",BodyOffsetY:" + result.BodyOffsetY);
+                message += (",BodyHeight:" + result.BodyHeight);
+                alert("打印结果：" + message);
+            }
+            else {
+                alert("未获取到打印结果");
+            }
+        }
+        function LayoutOffsetSubPrint() {
+            var SubStartPage = $('#SubStartPage').val();
+            var SubLayoutOffset = $('#SubLayoutOffset').val();
+            SubStartPage = parseInt(SubStartPage);
+            if (Number.isInteger(SubStartPage) == false) {
+                alert("请输入初始页码");
+                return;
+            }
+            if (SubStartPage < 0) {
+                alert("初始不正确");
+                return;
+            }
+            SubLayoutOffset = parseInt(SubLayoutOffset);
+            if (Number.isInteger(SubLayoutOffset) == false) {
+                alert("请输入偏移量");
+                return;
+            }
+            if (SubLayoutOffset < 0) {
+                alert("偏移量不正确");
+                return;
+            }
+
+
+            var ctl = GetCurrentWriterControl();
+            let CreatePrintOptions =
+            {
+                PageIndexFix: SubStartPage,
+                BodyLayoutOffset: SubLayoutOffset,
+                CompletedCallback: function () {
+                    let lastPrintresult = ctl.GetPrintResult();
+                    console.log("打印的结果", lastPrintresult);
+                }
+            };
+            ctl.PrintDocument(CreatePrintOptions);
+
+
+
+        }
+
+
+
+    </script>
+    <script></script>
+    <script type="module">
+        class SubDocument {
+            constructor(options) { }
+            EventcourseDisease(event, callBack) {
+                switch (event) {
+                    case "LoadsubMainXml":
+                        this.LoadsubMainXml()
+                        break;
+                    case "InsertSub":
+                        this.InsertSub(callBack)
+                        break;
+                    case "InsertSub2":
+                        this.InsertSub2(callBack)
+                        break;
+                    case "GetCourseRecords":
+                        this.GetCourseRecords()
+                        break;
+                    case "SelectSubDocumentByID":
+                        this.SelectSubDocumentByID()
+                        break;
+                    case "SelectSubDocument":
+                        this.SelectSubDocument()
+                        break;
+                    case "DeleteSubDoc":
+                        this.DeleteSubDoc()
+                        break;
+                    case "DeleteCurrentSubDoc":
+                        this.DeleteCurrentSubDoc()
+                        break;
+                    case "CurrentSubDoc":
+                        this.CurrentSubDoc()
+                        break;
+                    case "SetCurrentSubDocumentReadOnlyTrue":
+                        this.SetCurrentSubDocumentReadOnly(true)
+                        break;
+                    case "SetCurrentSubDocumentReadOnlyFalse":
+                        this.SetCurrentSubDocumentReadOnly(false)
+                        break;
+                    case "SubDocCrossPageTrue":
+                        this.SubDocCrossPage(true)
+                        break;
+                    case "SubDocCrossPageFalse":
+                        this.SubDocCrossPage(false)
+                        break;
+                    default:
+                        break;
+                }
+            }
+            LoadsubMainXml() {
+                var allControl = document.querySelectorAll("div[dctype='WriterControlForWASM']");
+                var strServicePageUrl = null;
+                var lastIndex = 0;
+                if (allControl != null && allControl.length > 0) {
+                    lastIndex = allControl[allControl.length - 1].getAttribute('id').match(/[0-9]+/g);
+                    strServicePageUrl = allControl[0].getAttribute("servicepageurl");
+                    if (lastIndex == null) {
+                        lastIndex = 0;
+                    } else {
+                        lastIndex = lastIndex[0];
+                    }
+                }
+                var newControlID = "myWriterControl" + (parseFloat(lastIndex) + 1);
+                var title = '病程记录' + (parseFloat(lastIndex) + 1);
+                //在此处切换tab页
+                $('#tt').tabs('add', {
+                    title,
+                    content: `<div id="${newControlID}"
+                                dctype="WriterControlForWASM"
+                                style="height: 100%; background-color: rgb(230, 230, 230); border-bottom: 0px solid black; background-attachment: fixed; background-size: cover; background-position: center top; "
+                                RuleVisible="true"
+                                RuleBackColor="rgb(230, 230, 230)"
+                                ServicePageUrl="http://www.dcwriter.cn:8099/ServicePage.aspx"
+                                PageCssString222="box-shadow:3px 3px 3px grey"
+                                DocumentOptions.BehaviorOptions.OutputFormatedXMLSource="false"
+                                DocumentOptions.BehaviorOptions.ParagraphFlagFollowTableOrSection="true"
+                                DocumentOptions.ViewOptions.ShowInputFieldStateTag="true"
+                                DocumentOptions.ViewOptions.IgnoreFieldBorderWhenPrint = "false"
+                                DocumentOptions.ViewOptions.PrintBackgroundText="false"
+                                DocumentOptions.ViewOptions.PreserveBackgroundTextWhenPrint="true"
+                                DocumentOptions.ViewOptions.FieldBorderPrintVisibility="hidden"
+                                DocumentOptions.ViewOptions.FieldInvalidateValueForeColor="Blue"
+                                DocumentOptions.ViewOptions.TagColorForNormalField="Green"
+                                DocumentOptions.ViewOptions.TagColorForValueInvalidateField="Blue"
+                                DocumentOptions.ViewOptions.UnEditableFieldBorderColor="Yellow"
+                                DocumentOptions.SecurityOptions.EnablePermission="true"
+                                DocumentOptions.SecurityOptions.EnableLogicDelete="true"
+                                DocumentOptions.SecurityOptions.ShowLogicDeletedContent="true"
+                                DocumentOptions.SecurityOptions.ShowPermissionTip="true"
+                                DocumentOptions.SecurityOptions.ShowPermissionMark="true">正在加载...</div>`,
+                    closable: true,
+                });
+                //此处为加载样式，未初始化所以暂时注释
+                var newCtl = document.getElementById(newControlID);
+                // newCtl.setAttribute("servicepageurl", strServicePageUrl);
+                window.CreateWriterControlForWASM(newCtl);
+                // newCtl.LoadDocumentFromString(strFileContent, fileFormat);
+
+                var myWriterControl = GetCurrentWriterControl();
+                myWriterControl.LoadDocumentFromString(SUBMAINXML, "XML");
+                this.AppendSubs();
+                //默认打开病程列表
+                jQuery("#presentationDocumentBox").show()
+
+            }
+            AppendSubs() {
+                var file = new Array();
+                file.push(SUB1);
+                file.push(SUB2);
+                file.push(SUB3);
+                file.push(SUB4);
+                file.push(SUB5);
+
+                var options = new Array();
+                var attr1 = {
+                    "ID": "subdoc1",//randomString(6),//
+                    "Attributes": { "姓名": "张三", "科室": "科室1", "床号": "12345" }, //自定义属性
+                    "Title": "首次病程记录",
+                    "Parameters": { "rdogroup": "V3", "chkgroup": "V2,V3" },//绑定的数据格式
+                    "DataBindingXML": "<DataSourceName><Name>王二麻</Name><Sex>男</Sex></DataSourceName>"
+                };
+                var attr2 = {
+                    "ID": "subdoc2",//randomString(6),//
+                    "Attributes": { "姓名": "张三", "科室": "科室2", "床号": "12345" }, //自定义属性
+                    "Title": "主任医师查房记录",
+                    "Parameters": { "rdogroup": "V1", "chkgroup": "V1,V4" }, //绑定的数据格式
+                    "DataBindingXML": "<DataSourceName><Name>刘二狗</Name><Sex>女</Sex></DataSourceName>"
+                };
+                var attr3 = {
+                    "ID": "subdoc3",//randomString(6),//
+                    "Attributes": { "姓名": "张三", "科室": "科室3", "床号": "12345" }, //自定义属性
+                    "Title": "主治医师查房记录",
+                    "Parameters": { "rdogroup": "V3", "chkgroup": "V2,V3" },//绑定的数据格式
+                    "DataBindingXML": "<DataSourceName><Name>王二麻</Name><Sex>男</Sex></DataSourceName>"
+                };
+                var attr4 = {
+                    "ID": "subdoc4",//randomString(6),//
+                    "Attributes": { "姓名": "张三", "科室": "科室4", "床号": "12345" }, //自定义属性
+                    "Title": "转出记录",
+                    "Parameters": { "rdogroup": "V1", "chkgroup": "V1,V4" }, //绑定的数据格式
+                    "DataBindingXML": "<DataSourceName><Name>刘二狗</Name><Sex>女</Sex></DataSourceName>"
+                };
+                var attr5 = {
+                    "ID": "subdoc5",//randomString(6),//
+                    "Attributes": { "姓名": "张三", "科室": "科室5", "床号": "12345" }, //自定义属性
+                    "Title": "转入记录",
+                    "Parameters": { "rdogroup": "V3", "chkgroup": "V2,V3" },//绑定的数据格式
+                    "DataBindingXML": "<DataSourceName><Name>王二麻</Name><Sex>男</Sex></DataSourceName>"
+                };
+                options.push(attr1);
+                options.push(attr2);
+                options.push(attr3);
+                options.push(attr4);
+                options.push(attr5);
+
+                var options = {
+                    Files: file,
+                    Options: options,
+                    Usebase64: "false"
+                };
+                let ctl = GetCurrentWriterControl();
+                ctl.AppendSubDocuments(options);
+
+                ctl.RefreshDocument();
+            }
+            InsertSub(callBack) {
+                var file = new Array();
+                file.push(SUB6);
+                file.push(SUB7);
+
+                var options = new Array();
+                var attr1 = {
+                    "ID": randomString(6),//
+                    "Title": "术前小结",
+                    "Parameters": { "rdogroup": "V3", "chkgroup": "V2,V3" },//绑定的数据格式
+                    "DataBindingXML": "<DataSourceName><Name>王二麻</Name><Sex>男</Sex></DataSourceName>"
+                };
+                var attr2 = {
+                    "ID": randomString(6),//
+                    "Title": "深静脉置管术操作记录",
+                    "Parameters": { "rdogroup": "V1", "chkgroup": "V1,V4" }, //绑定的数据格式
+                    "DataBindingXML": "<DataSourceName><Name>刘二狗</Name><Sex>女</Sex></DataSourceName>"
+                };
+                options.push(attr1);
+                options.push(attr2);
+                var options = {
+                    Files: file,
+                    Options: options,
+                    Usebase64: "false"
+                };
+                let ctl = GetCurrentWriterControl();
+                let result = ctl.AppendSubDocuments(options);
+                if (result) {
+                    ctl.RefreshDocument();
+                }
+                callBack && callBack()
+            }
+            InsertSub2(callBack) {
+                var file = new Array();
+                file.push(SUB9);
+
+                var options = new Array();
+                var attr1 = {
+                    "ID": randomString(6),//
+                    "Title": "日常病程记录",
+                    "Parameters": { "rdogroup": "V3", "chkgroup": "V2,V3" },//绑定的数据格式
+                    "DataBindingXML": "<DataSourceName><Name>王二麻</Name><Sex>男</Sex></DataSourceName>"
+                };
+                options.push(attr1);
+                var options = {
+                    Files: file,
+                    Options: options,
+                    Usebase64: "false"
+                };
+
+                let ctl = GetCurrentWriterControl();
+                let result = ctl.InsertSubDocuments(options);
+                if (result) {
+                    ctl.RefreshDocument();
+                }
+                callBack && callBack()
+
+            }
+            //获取病程编号
+            GetCourseRecords() {
+                let ctl = GetCurrentWriterControl();
+                let id = ctl.GetCourseRecords();
+                console.log(id)
+            }
+            //根据编号定位病程
+            SelectSubDocumentByID() {
+                let ctl = GetCurrentWriterControl();
+                let id = ctl.CurrentSubDoc();
+                var name = prompt("请输入定位的病程编号：", id)
+                if (name != null && name != "") {
+                    let result = ctl.SelectSubDocumentByID(name);
+                    alert(result)
+                }
+            }
+            //根据序号定位病程
+            SelectSubDocument() {
+                let ctl = GetCurrentWriterControl();
+                var name = prompt("请输入定位第几个病程：", '1')
+                if (name != null && name != "") {
+                    var myindex = parseInt(name);
+                    let result = ctl.SelectSubDocument(myindex);
+                    alert(result)
+                }
+            }
+            //删除指定病程
+            DeleteSubDoc() {
+                let ctl = GetCurrentWriterControl();
+                let id = ctl.CurrentSubDoc();
+                var name = prompt("请输入删除的病程编号：", id)
+                if (name != null && name != "") {
+                    let result = ctl.DeleteSubDoc(name);
+                    alert(result)
+                    getCourseList()
+                }
+            }
+            //删除当前病程
+            DeleteCurrentSubDoc() {
+                let ctl = GetCurrentWriterControl();
+                let result = ctl.DeleteCurrentSubDoc();
+                alert(result)
+                getCourseList()
+            }
+            //当前病程编号
+            CurrentSubDoc() {
+                let ctl = GetCurrentWriterControl();
+                let id = ctl.CurrentSubDoc();
+                console.log(id)
+                alert(id);
+            }
+            //设置病程是否只读
+            SetCurrentSubDocumentReadOnly(isReadOnly) {
+                let ctl = GetCurrentWriterControl();
+                if (isReadOnly) {
+                    ctl.SetCurrentSubDocumentReadOnly(isReadOnly, '#FFFFCD');
+                }
+                else {
+                    ctl.SetCurrentSubDocumentReadOnly(isReadOnly, null);
+                }
+
+                ctl.RefreshDocument();
+            };
+            //设置病程是否跨页
+            SubDocCrossPage(value) {
+                let ctl = GetCurrentWriterControl();
+                let id = ctl.CurrentSubDoc();
+                let result = ctl.SubDocCrossPage(id, value);
+                ctl.RefreshDocument();
+                alert(result)
+            }
+
+            //暂时未用到
+            LoadSubDocumentFromString() {
+                let ctl = GetCurrentWriterControl();
+                var xml2 = SUBXML1;
+                var options = {
+                    FileContentXML: xml2,
+                    ID: '123',
+                    Usebase64: false,
+                    ShowMaskUI: true
+                };
+                let result = ctl.LoadSubDocumentFromString(options);
+                alert(result)
+            }
+
+
+        }
+
+        var subDocument = new SubDocument()
+        document.getElementById('courseDisease').addEventListener('click', function (e) {
+            if (e.target.className.indexOf('courseButton') !== -1) {
+                let eventType = e.target.id
+                eventType && subDocument.EventcourseDisease(eventType, getCourseList) //getCourseList:用于插入和追加病程后更新病程记录
+            }
+
+        })
+    </script>
+</body>
+
+</html>

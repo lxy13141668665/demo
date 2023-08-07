@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <title></title>
+    <base href="/" target="_blank">
+    <style>
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            padding: 0px;
+            box-sizing: border-box;
+            margin: 0;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            height: 100%;
+        }
+
+        .header-box {
+            border-bottom: 1px solid #ccc;
+            padding-left: 10px;
+            box-sizing: border-box;
+            font-weight: 900;
+        }
+
+        #main {
+            padding: 10px;
+            box-sizing: border-box;
+            display: block;
+            flex: 1;
+            overflow: hidden;
+        }
+
+        .testButton {
+            cursor: pointer;
+            height: 24px;
+            width: 80px;
+            border-radius: 4px;
+            color: #fff;
+            line-height: 24px;
+            text-align: center;
+            background-color: #208c99;
+            font-size: 14px;
+            margin-left: 24px;
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="header-box">
+            <button onclick="GetCurrentWriterControl().ShowAboutDialog()">关于</button>
+            <button onclick="ClearContent()">清空</button>
+            <button onclick="FileNew()">新建</button>
+            <button onclick="FileOpen()">打开</button>
+            <button onclick="Refresh()">刷新</button>
+            <button onclick="DownLoadFile('xml');">下载xml</button>
+            <br />
+            <button onclick="MedicalExpression1()">月经史公式1</button>
+            <button onclick="MedicalExpression2()">月经史公式2</button>
+            <button onclick="MedicalExpression3()">月经史公式3</button>
+            <button onclick="MedicalExpression4()">月经史公式4</button>
+            <button onclick="MedicalExpression5()">瞳孔图</button>
+            <button onclick="MedicalExpression6()">胎心图</button>
+            <button onclick="MedicalExpression7()">标尺公式</button>
+            <button onclick="MedicalExpression8()">恒牙牙位图</button>
+            <button onclick="MedicalExpression9()">乳牙牙位图</button>
+            <button onclick="MedicalExpression10()">分数公式</button>
+            <button onclick="MedicalExpression11()">病变上牙</button>
+            <button onclick="MedicalExpression12()">病变下牙</button>
+            <button onclick="EyeballProtrusion()">眼球突出度</button>
+            <button onclick="SquintSymbol()">斜视符号</button>
+            <button onclick="LightPositioningDialog()">光定位值</button>
+
+        </div>
+        <div id="main">
+            <div id="myWriterControl" dctype="WriterControlForWASM"
+                style="height: 100%; background-color: rgb(230, 230, 230); border-bottom: 0px solid black; background-attachment: fixed; background-size: cover; background-position: center top; "
+                RuleVisible="true" RuleBackColor="rgb(230, 230, 230)"
+                ServicePageUrl="http://www.dcwriter.cn:8099/ServicePage.aspx"
+                PageCssString222="box-shadow:3px 3px 3px grey"
+                DocumentOptions.BehaviorOptions.OutputFormatedXMLSource="false"
+                DocumentOptions.BehaviorOptions.ParagraphFlagFollowTableOrSection="true"
+                DocumentOptions.ViewOptions.ShowInputFieldStateTag="true"
+                DocumentOptions.ViewOptions.IgnoreFieldBorderWhenPrint="false"
+                DocumentOptions.ViewOptions.PrintBackgroundText="false"
+                DocumentOptions.ViewOptions.PreserveBackgroundTextWhenPrint="true"
+                DocumentOptions.ViewOptions.FieldBorderPrintVisibility="hidden"
+                DocumentOptions.ViewOptions.FieldInvalidateValueForeColor="Blue"
+                DocumentOptions.ViewOptions.TagColorForNormalField="Green"
+                DocumentOptions.ViewOptions.TagColorForValueInvalidateField="Blue"
+                DocumentOptions.ViewOptions.UnEditableFieldBorderColor="Yellow"
+                DocumentOptions.SecurityOptions.EnablePermission="true"
+                DocumentOptions.SecurityOptions.EnableLogicDelete="true"
+                DocumentOptions.SecurityOptions.ShowLogicDeletedContent="true"
+                DocumentOptions.SecurityOptions.ShowPermissionTip="true"
+                DocumentOptions.SecurityOptions.ShowPermissionMark="true">
+                正在加载...</div>
+        </div>
+    </div>
+    <script src="_framework/blazor.webassembly.js"></script>
+    <script src="../../js/jquery-1.7.2.min.js"></script>
+    <script src="../../DemoApp.js"></script>
+    <script language="javascript">
+
+        function MedicalExpression1() {
+            var ctl = GetCurrentWriterControl();
+            var options = {
+                "ID": "expression1",
+                "ExpressionStyle": "FourValues1",
+                "Type": "XTextNewMedicalExpressionElement",
+                "FontSize": "12",
+                "Width": "112px",
+                "Height": "46px",
+                "Values": "Value1:14;Value2:14;Value3:14;Value4:14"
+            };
+            ctl.DCExecuteCommand("insertmedicalexpression", true, options);
+        }
+        function MedicalExpression2() {
+            var ctl = GetCurrentWriterControl();
+            var options = {
+                "ID": "expression2",
+                "ExpressionStyle": "FourValues2",
+                "Type": "XTextNewMedicalExpressionElement",
+                "FontSize": "12",
+                "Width": "112px",
+                "Height": "46px",
+                "Values": "Value1:14;Value2:14;Value3:14;Value4:14"
+            };
+            ctl.DCExecuteCommand("insertmedicalexpression", true, options);
+        }
+        function MedicalExpression3() {
+            var ctl = GetCurrentWriterControl();
+            var options = {
+                "ID": "expression3",
+                "ExpressionStyle": "ThreeValues",
+                "Type": "XTextNewMedicalExpressionElement",
+                "FontSize": "12",
+                "Width": "112px",
+                "Height": "46px",
+                "Values": "Value1:14;Value2:14;Value3:14"
+            };
+            ctl.DCExecuteCommand("insertmedicalexpression", true, options);
+        }
+        function MedicalExpression4() {
+            var ctl = GetCurrentWriterControl();
+            var options = {
+                "ID": "expression4",
+                "ExpressionStyle": "FourValues",
+                "Type": "XTextNewMedicalExpressionElement",
+                "FontSize": "12",
+                "Width": "112px",
+                "Height": "46px",
+                "Values": "Value1:14;Value2:14;Value3:14;Value4:14"
+            };
+            ctl.DCExecuteCommand("insertmedicalexpression", true, options);
+        }
+        function MedicalExpression5() {
+            var ctl = GetCurrentWriterControl();
+            var options = {
+                "ID": "expression5",
+                "ExpressionStyle": "Pupil",
+                "Type": "XTextNewMedicalExpressionElement",
+                "FontSize": "12",
+                "Width": "112px",
+                "Height": "46px",
+                "Values": "Value1:14;Value2:14;Value3:14;Value4:14;Value5:14;Value6:14;Value7:14;"
+            };
+            ctl.DCExecuteCommand("insertmedicalexpression", true, options);
+        }
+        function MedicalExpression6() {
+            var ctl = GetCurrentWriterControl();
+            var options = {
+                "ID": "expression6",
+                "ExpressionStyle": "FetalHeart",
+                "Type": "XTextNewMedicalExpressionElement",
+                "FontSize": "12",
+                "Width": "112px",
+                "Height": "46px",
+                "Values": "Value1:14;Value2:14;Value3:14;Value4:14;Value5:14;Value6:14;"
+            };
+            ctl.DCExecuteCommand("insertmedicalexpression", true, options);
+        }
+        function MedicalExpression7() {
+            var ctl = GetCurrentWriterControl();
+            var options = {
+                "ID": "expression9",
+                "ExpressionStyle": "PainIndex",
+                "Type": "XTextNewMedicalExpressionElement",
+                "FontSize": "12",
+                "Width": "112px",
+                "Height": "46px",
+                "Values": "Value1:14;"
+            };
+            ctl.DCExecuteCommand("insertmedicalexpression", true, options);
+        }
+        function MedicalExpression8() {
+            var ctl = GetCurrentWriterControl();
+            var options = {
+                "ID": "expression10",
+                "ExpressionStyle": "PermanentTeethBitmap",
+                "Type": "XTextNewMedicalExpressionElement",
+                "FontSize": "12",
+                "Width": "112px",
+                "Height": "46px",
+                "Values": "Value1:1;Value2:2;Value3:3;Value4:4;Value5:5;Value6:6;Value7:7;Value8:8;Value9:9;Value10:10;Value11:11;Value12:12;Value13:13;Value14:14;Value15:15;Value16:16;Value17:17;Value18:18;Value19:19;Value20:20;"
+            };
+            ctl.DCExecuteCommand("insertmedicalexpression", true, options);
+        }
+        function MedicalExpression9() {
+            var ctl = GetCurrentWriterControl();
+            var options = {
+                "ID": "expression11",
+                "ExpressionStyle": "DeciduousTeech",
+                "Type": "XTextNewMedicalExpressionElement",
+                "FontSize": "12",
+                "Width": "112px",
+                "Height": "46px",
+                "Values": "Value1:1;Value2:2;Value3:3;Value4:4;Value5:5;Value6:6;Value7:7;Value8:8;Value9:9;Value10:10;Value11:11;Value12:12;Value13:13;Value14:14;Value15:15;Value16:16;Value17:17;Value18:18;Value19:19;Value20:20;"
+            };
+            ctl.DCExecuteCommand("insertmedicalexpression", true, options);
+        }
+        function MedicalExpression10() {
+            var ctl = GetCurrentWriterControl();
+            var options = {
+                "ID": "expression12",
+                "ExpressionStyle": "Fraction",
+                "Type": "XTextNewMedicalExpressionElement",
+                "FontSize": "12",
+                "Width": "112px",
+                "Height": "46px",
+                "Values": "Value1:1;Value2:2;"
+            };
+            ctl.DCExecuteCommand("insertmedicalexpression", true, options);
+        }
+        function MedicalExpression11() {
+            var ctl = GetCurrentWriterControl();
+            var options = {
+                "ID": "expression13",
+                "ExpressionStyle": "DiseasedTeethTop",
+                "Type": "XTextNewMedicalExpressionElement",
+                "FontSize": "12",
+                "Width": "112px",
+                "Height": "46px",
+                "Values": "Value1:1;Value2:2;Value3:2;"
+            };
+            ctl.DCExecuteCommand("insertmedicalexpression", true, options);
+        }
+        function MedicalExpression12() {
+            var ctl = GetCurrentWriterControl();
+            var options = {
+                "ID": "expression14",
+                "ExpressionStyle": "DiseasedTeethBotton",
+                "Type": "XTextNewMedicalExpressionElement",
+                "FontSize": "12",
+                "Width": "112px",
+                "Height": "46px",
+                "Values": "Value1:1;Value2:2;Value3:2;"
+            };
+            ctl.DCExecuteCommand("insertmedicalexpression", true, options);
+        }
+
+        //眼球突出度
+        function EyeballProtrusion() {
+            var ctl = GetCurrentWriterControl();
+            var options = {
+                "ID": "expression7",
+                "ExpressionStyle": "ThreeValues2",
+                "Type": "XTextNewMedicalExpressionElement",
+                "FontSize": "12",
+                "Width": "112px",
+                "Height": "46px",
+                "Values": "Value1:0;Value2:1;Value3:2;"
+            };
+            ctl.DCExecuteCommand("insertmedicalexpression", true, options);
+        }
+        //斜视符号
+        function SquintSymbol() {
+            var ctl = GetCurrentWriterControl();
+            var options = {
+                "ID": "expression8",
+                "ExpressionStyle": "StrabismusSymbol",
+                "Type": "XTextNewMedicalExpressionElement",
+                "FontSize": "12",
+                "Width": "112px",
+                "Height": "46px",
+                "Values": "Value1:L;"
+            };
+            ctl.DCExecuteCommand("insertmedicalexpression", true, options);
+        }
+        function LightPositioningDialog() {
+            var ctl = document.getElementById("myWriterControl");
+            var options = {
+                "ID": "expression1",
+                "ExpressionStyle": "LightPositioning",
+                "Type": "XTextNewMedicalExpressionElement",
+                "FontSize": "12",
+                "Width": "112px",
+                "Height": "46px",
+                "Values": "Value1:14;Value2:14;Value3:14;Value4:14;Value5:14;Value6:14;Value7:14;Value8:14;Value9:14;"
+            };
+            ctl.DCExecuteCommand("insertmedicalexpression", true, options);
+        }
+
+        function WriterControl_OnLoad(rootElement) {
+
+        }
+
+
+        function ClearContent() {
+            var ctl = document.getElementById("myWriterControl");
+            var result = ctl.ClearContent();
+            console.log(result);
+        }
+        function FileNew() {
+            var ctl = document.getElementById("myWriterControl");
+            var result = ctl.DCExecuteCommand("FileNew", false, null);
+            console.log(result);
+        }
+        function FileOpen() {
+            var ctl = document.getElementById("myWriterControl");
+            ctl.DCExecuteCommand("FileOpen", true, null);
+        }
+        /**获得当前的编辑器控件对象 */
+        function GetCurrentWriterControl() {
+            return document.getElementById("myWriterControl");
+        }
+        function Refresh() {
+            let ctl = document.getElementById("myWriterControl");
+            ctl.RefreshDocument();
+        }
+        function DownLoadFile(format) {
+            if (format == null || format == "") {
+                format = "xml";
+            }
+            if (format == 'doc') {
+                DownLoadFiledoc();
+            }
+            else {
+                let ctl = GetCurrentWriterControl();
+                ctl.DownLoadFile(format);
+            }
+
+        }
+
+    </script>
+</body>
+
+</html>

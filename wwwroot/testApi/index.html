@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>DCSoft.WASM</title>
+    <style>
+        html,
+        body {
+            height: 100%;
+            width: 100%;
+            padding: 0;
+            margin: 0;
+            overflow: hidden;
+
+        }
+
+        div::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+
+        div::-webkit-scrollbar-thumb {
+            border-radius: 10px;
+            opacity: 0.2;
+            background: #9093994d;
+        }
+
+        div::-webkit-scrollbar-track {
+            border-radius: 0;
+            background: #f8f8f8;
+        }
+
+
+        .testApiBox {
+            width: 100%;
+            height: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .leftTestApiBox {
+            width: 360px;
+            height: calc(100% - 120px);
+            padding: 15px;
+            box-sizing: border-box;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        #leftListBoxContent {
+            flex: 1;
+            overflow: auto;
+        }
+
+        .rightTestApiBox {
+            width: calc(100% - 360px);
+            height: calc(100% - 120px);
+            overflow-y: auto;
+            padding: 0 80px;
+            box-sizing: border-box;
+        }
+
+        .apiListItem {
+            width: 100%;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            height: 40px;
+            line-height: 40px;
+            font-size: 14px;
+            color: #444;
+            cursor: pointer;
+        }
+
+        .apiListItem:hover {
+            background: #f3f8ec;
+            color: #8dbe41;
+        }
+
+        .testApiHeader {
+            width: 100%;
+            height: 100px;
+            display: flex;
+        }
+
+        .titleDiv {
+            font-size: 16px;
+            color: #333;
+            line-height: 40px;
+            height: 40px;
+            cursor: auto;
+            font-weight: 600;
+        }
+
+        .titleDiv:hover {
+            color: #333;
+        }
+
+        .topTitle {
+            font-size: 25px;
+            margin: 0;
+            line-height: 110px;
+            color: #208c99;
+            margin-left: 10px;
+
+        }
+
+        .containerBox {
+            height: auto;
+            box-sizing: border-box;
+            margin-bottom: 50px;
+            padding-bottom: 5px;
+        }
+
+        .preBox {
+            background-color: #f8f8f8;
+            line-height: 1.5rem;
+            margin: 10px 0;
+            overflow: auto;
+            padding: 10px 15px;
+            box-sizing: border-box;
+            position: relative;
+            word-wrap: normal;
+            min-width: 500px
+        }
+
+        .psText {
+            line-height: 14px;
+            height: 14px;
+            font-size: 14px;
+            margin: 0;
+        }
+
+        table.paramsTable {
+            border-collapse: collapse;
+            border: 1px solid #ebeef5;
+            margin: 10px 0;
+            width: auto;
+            font-size: 14px;
+            min-width: 500px;
+            box-shadow: 0 5px 5px hsla(210, 8%, 81%, .25);
+
+        }
+
+        .paramsTable th {
+            text-align: center;
+            font-weight: bold;
+            border: 1px solid #ebeef5;
+            padding: 5px;
+        }
+
+        .paramsTable tbody tr:nth-child(even) {
+            background-color: #f5f7fa;
+        }
+
+        .paramsTable thead tr {
+            background: #fff;
+        }
+
+        .paramsTable td {
+            border: 1px solid #ebeef5;
+            padding: 6px 10px;
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+        .goPageButton,
+        .pageRightHtmlButton {
+            cursor: pointer;
+            height: 24px;
+            width: 80px;
+            border-radius: 4px;
+            color: #fff;
+            line-height: 24px;
+            text-align: center;
+            background-color: #8dbe41;
+            font-size: 14px;
+            margin-left: 24px;
+        }
+
+        .goPageButton:hover,
+        .pageRightHtmlButton:hover {
+            opacity: 0.7;
+        }
+
+        .listItemBox {
+            position: relative;
+        }
+
+        .notFontIcon {
+            position: absolute;
+            right: 10px;
+            background: #F56C6C;
+            color: #fff;
+            font-size: 12px;
+            padding: 2px 5px;
+            border-radius: 10px;
+            top: 50%;
+            margin-top: -10px;
+            cursor: pointer;
+        }
+
+        #searchCondition {
+            width: 120px;
+            display: block;
+            margin: 0;
+            background-color: #fff;
+            border: 1px solid #ebeef5;
+            border-radius: 4px;
+            box-shadow: 0 2px 12px 0 rgba(0, 0, 0, .1);
+            position: absolute;
+            z-index: 9;
+            top: 32px;
+            left: -6px;
+        }
+
+        .conditionItem {
+            margin: 0;
+            padding: 0;
+            line-height: 30px;
+            cursor: pointer;
+            padding: 0 10px;
+            box-sizing: border-box;
+        }
+
+        .conditionItem:hover {
+            background: #f3f8ec;
+            color: #8dbe41;
+        }
+
+        #currentSearch {
+            width: 100px;
+            font-size: 16px;
+            color: #333;
+            line-height: 40px;
+            height: 40px;
+            cursor: pointer;
+            font-weight: 600;
+            display: flex;
+        }
+
+
+        #currentCondition {
+            margin: 0;
+            padding: 0;
+            margin-right: 4px;
+        }
+
+        #triangleTop,
+        #triangleBottom {
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 0 6px 6px 6px;
+            border-color: transparent transparent #333 transparent;
+        }
+
+        #triangleBottom {
+            transform: rotate(180deg);
+            display: none;
+        }
+
+        #searchBox {
+            position: relative;
+        }
+
+        .goPageButtonDisabled {
+            background: #F56C6C;
+            cursor: no-drop;
+        }
+
+        .pageHtmlBox>.pageHtmlTitle {
+            margin: 10px 0;
+            padding: 0;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .pageHtmlBox>.listItemBox {
+            padding-left: 20px;
+        }
+
+        .pageRightHtmlBox .pageHtmlTitle {
+            font-size: 22px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .pageRightHtmlBox .goPageButton {
+            display: none
+        }
+
+        .dialog {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgb(0, 0, 0, 0.4);
+        }
+
+        #errorBox {
+            width: 600px;
+            height: 500px;
+            background: #fff;
+            opacity: 1;
+            z-index: 9;
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            margin-top: -250px;
+            margin-left: -250px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .errorHeader {
+            width: 100%;
+            height: 45px;
+            border-bottom: 1px solid #dcdfe6;
+            padding: 5px 10px;
+            display: flex;
+            box-sizing: border-box;
+            justify-content: space-between;
+            align-items: center;
+
+        }
+
+        .errorHeader .info {
+            font-size: 18px;
+        }
+
+        .infoicon {
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            line-height: 24px;
+            font-size: 14px;
+            color: #fff;
+            background: #e6a23c;
+            border-radius: 12px;
+            padding-left: 9px;
+            box-sizing: border-box;
+            font-weight: 600;
+            margin-right: 5px;
+        }
+
+        .close {
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .errorFooter {
+            width: 100%;
+            height: 60px;
+            border-top: 1px solid #dcdfe6;
+            padding: 5px 10px;
+            display: flex;
+            box-sizing: border-box;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .errorFooter>.button {
+            width: 60px;
+            height: 36px;
+            text-align: center;
+            line-height: 36px;
+            border: 1px solid #dcdfe6;
+            margin: 0 10px;
+            border-radius: 5px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .errorFooter>.button:hover {
+            opacity: 0.8;
+            background: #fff;
+            color: #208c99;
+            border: 1px solid #208c99;
+        }
+
+        .errorContainer {
+            flex: 1;
+            padding: 10px;
+            overflow: hidden;
+            box-sizing: border-box;
+
+        }
+
+        #tableBox {
+            width: 100%;
+            /* height: 100%; */
+            overflow-y: auto;
+            border: 1px solid #dcdfe6;
+            border-bottom: none;
+        }
+
+        .errorContainer .row {
+            display: flex;
+            text-align: center;
+            align-items: center;
+            height: 38px;
+            border-bottom: 1px solid #dcdfe6;
+            line-height: 38px;
+        }
+
+        .errorContainer .colleft {
+            width: 40%;
+            border-right: 1px solid #dcdfe6;
+            margin: 0;
+            padding: 0;
+            height: 100%;
+
+        }
+
+        .errorContainer .colright {
+            width: 59%;
+        }
+
+        #dialog {
+            display: none;
+        }
+
+        @keyframes animatedGradient {
+            0% {
+                background-color: #fff;
+            }
+
+            50% {
+                background-color: rgb(240, 249, 235);
+                opacity: 0.5;
+            }
+
+            100% {
+                background-color: #fff;
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="testApiBox">
+        <div class="testApiHeader">
+            <img src="http://www.dcwriter.cn:909/%E5%9B%BE%E7%89%87/%E5%AE%98%E7%BD%91logo.png" alt="">
+            <p class="topTitle">API 测试平台</p>
+        </div>
+        <div id="leftTestApiBox" class="leftTestApiBox">
+            <div id="searchBox">
+                <div id="currentSearch">
+                    <p id="currentCondition">全部</p>
+                    <p id="triangleTop"></p>
+                    <p id="triangleBottom"></p>
+                </div>
+                <div id="searchCondition" style="display: none;">
+                    <p class="conditionItem" selectType="classificationPage">按页面分类</p>
+                    <p class="conditionItem" selectType="all">全部</p>
+                    <p class="conditionItem" selectType="function">方法</p>
+                    <p class="conditionItem" selectType="object">属性</p>
+                    <p class="conditionItem" selectType="hasParams">有参</p>
+                    <p class="conditionItem" selectType="notParams">无参</p>
+                </div>
+            </div>
+            <div id="leftListBoxContent">
+                <div id="leftListBox"></div>
+                <div id="notFoundDom"></div>
+            </div>
+        </div>
+        <div id="rightTestApiBox" class="rightTestApiBox">
+        </div>
+    </div>
+    <div id="dialog" class="dialog">
+        <div id="errorBox" class="errorBox">
+            <div class="errorHeader">
+                <span class="info"><span class="infoicon"> ！</span> 请检查以下配置</span>
+                <span class="close">x</span>
+            </div>
+            <div id="errorContainer" class="errorContainer">
+                <div id="tableBox"></div>
+                <div id="errorapi"></div>
+            </div>
+            <div class="errorFooter">
+                <span id="conformButton" class="button close">确认</span>
+            </div>
+        </div>
+    </div>
+    <script src="../js/jquery-1.7.2.min.js"></script>
+    <script src="./testHtml/AllHtmlPageName.js"></script>
+    <script type="module">
+        //数据初始化
+        import { WriterControl_API } from '../_framework/WriterControl_API.js';
+        var newApiStr = WriterControl_API.BindControlForWriterControlForWASM.toString()
+        var APIList = newApiStr.match(/(?:^|\n|\r)\s*\/\*[\s\S]*?\*\/\s*(?:\r|\n|$)/g)//接口名称的列表
+        console.log(APIList.length, '接口总数')
+        let apiNameKeyListObj = getNameList(APIList) //整理好的api接口和对应的注释
+        let { functionNameList, objectNameList } = Classification(apiNameKeyListObj) //方法和属性的分类
+        let { hasParams, notParams } = HasParams(apiNameKeyListObj)//有参和无参分类
+        var hasHtml = [] // 可渲染的已有页面
+        var notFoundList = [] //没有配置的接口
+
+        checkAllHtmlPageName()
+        hasHtml = htmlApiFormat(AllHtmlPageName)
+        notFoundList = getNotFoundList(Object.keys(AllHtmlPageName))
+        changeLeftApiList('all')
+
+        //校验配置html是否正确
+        function checkAllHtmlPageName() {
+            let allPageApi = Object.keys(AllHtmlPageName)
+            let errorObj = {}
+            allPageApi.map(item => {
+                if (!AllHtmlPageName[item].match(/^.+\.(html)$/)) {
+                    errorObj[item] = AllHtmlPageName[item]
+                }
+            })
+            console.log(errorObj)
+            let errorKeys = Object.keys(errorObj)
+            if (errorKeys.length) {
+                let errorHtml = ''
+                errorKeys.map(item => {
+                    errorHtml += `<div class="row">
+                                    <div class="colleft">${item}</div>    
+                                    <div class="colright">${errorObj[item]}</div>    
+                                </div>`
+                })
+                let container = `
+                <div class="row">
+                    <div class="colleft">接口</div>    
+                    <div class="colright">页面</div>    
+                </div>
+                ${errorHtml}
+                `
+                document.getElementById('tableBox').innerHTML = container;
+                document.getElementById('dialog').style.display = 'block'
+            }
+        }
+
+
+
+
+        //整理同一个页面的api
+        function htmlApiFormat(data) {
+            let temp = {};
+            let apiNames = Object.keys(data)
+            for (var i = 0; i < apiNames.length; i++) {
+                let key = data[apiNames[i]];
+                let value = apiNames[i]
+                if (Object.keys(temp).indexOf(data[apiNames[i]]) === -1) {
+                    temp[key] = [value]
+                } else {
+                    temp[key].push(value)
+                }
+            }
+            return temp
+        }
+        //提取没有page的接口
+        function getNotFoundList(AllHtmlPageName) {
+            var list = []
+            let allApiKeys = Object.keys(apiNameKeyListObj);
+            for (var i = 0; i < allApiKeys.length; i++) {
+                if (AllHtmlPageName.indexOf(trim(allApiKeys[i])) === -1) {
+                    list.push(trim(allApiKeys[i]))
+                }
+            }
+
+            renderNotFountDom(list)
+            return list
+        }
+
+        //渲染没有配置的接口
+        function renderNotFountDom(list) {
+            list.sort()
+            let dom = '<div style="margin:10px 0;padding: 0;font-size:18px;font-weight:600;cursor:pointer; ">未配置的接口</div>'
+            for (var i = 0; i < list.length; i++) {
+                dom += `<div class="listItemBox"><div class="apiListItem" title="${list[i]}">${i + 1} . ${list[i]}</div><p class="notFontIcon" title="暂未配置测试页面">404</p></div>`
+            }
+            document.getElementById('notFoundDom').innerHTML = dom
+        }
+
+        /**
+         * 按页面分类的右侧列表
+         * */
+        function renderRightClassificationPage() {
+            let keys = Object.keys(hasHtml);
+            let pageItemBox = ''
+            for (var i = 0; i < keys.length; i++) {
+                let pageName = keys[i];
+                let apiArr = hasHtml[pageName];
+                let divStr = renderRightTestApiBox(hasHtml[pageName])
+                pageItemBox += `<div id="${pageName}" class="pageRightHtmlBox">
+                    
+                   <div id="pageRightHtmlButtonBox" style="display: flex;align-items: center;"> 
+                        <p class="pageHtmlTitle">${i + 1}. ${pageName}</p>
+                        <div apiHtml="${pageName}" class="pageRightHtmlButton">试一试</div>
+                    </div>
+                    
+                    ${divStr}</div>`
+            }
+            document.getElementById('rightTestApiBox').innerHTML = pageItemBox
+
+        }
+
+        /**
+         * 按页面分类的渲染
+        */
+        function renderClassificationPage() {
+            let keys = Object.keys(hasHtml);
+            let pageItemBox = ''
+            for (var i = 0; i < keys.length; i++) {
+                let pageName = keys[i];
+                let apiArr = hasHtml[pageName];
+                let divStr = renderleftListBox(hasHtml[pageName])
+                pageItemBox += `<div class="pageHtmlBox"><p title="${pageName}" class="apiListItem pageHtmlTitle">${i + 1}. ${pageName} </p>${divStr}</div>`
+            }
+            document.getElementById('leftListBox').innerHTML = pageItemBox
+            document.getElementById('notFoundDom').style.display = "block"
+        }
+
+
+
+        /**
+        * @description  初始化渲染左侧api列表
+        * @params {Array} apiNameKeyListObj 整理好的api接口和对应的注释
+        */
+        function renderleftListBox(apiNameList = []) {
+            let divStr = ''
+            for (var i = 0; i < apiNameList.length; i++) {
+                let notPage = notFoundList.length && notFoundList.indexOf(trim(apiNameList[i])) !== -1
+                divStr += `<div class="listItemBox">
+                            <div class="apiListItem" title="${apiNameList[i]}">
+                                 - ${i + 1}. ${apiNameList[i]}
+                            </div>
+                            ${notPage ? `<p class="notFontIcon" title="暂未配置测试页面">404</p>` : ''}
+                    </div>
+                            `
+            }
+            document.getElementById('leftListBox').innerHTML = divStr
+            document.getElementById('notFoundDom').style.display = "none"
+
+            return divStr
+        }
+
+
+        /**
+        * @description  初始化渲染右侧流式页面
+        * @params {Array} dataKeyList api接口
+        */
+        function renderRightTestApiBox(dataKey) {
+            let contentHTML = ''
+            for (var i = 0; i < dataKey.length; i++) {
+                let notPage = notFoundList.length && notFoundList.indexOf(trim(dataKey[i])) !== -1
+                let onelineText = apiNameKeyListObj[dataKey[i]].slice(apiNameKeyListObj[dataKey[i]].indexOf('* '), apiNameKeyListObj[dataKey[i]].length)
+                let titleText = onelineText.slice(onelineText.indexOf('*') + 1, onelineText.indexOf('\n'))
+                contentHTML += `<div class="containerBox" id="${dataKey[i]}">
+                        <div style="display:flex;align-items: center;">
+                            <h4 style="margin:5px 0;"> ${i + 1}. ${titleText}_${dataKey[i]}</h4>
+                            <div title=" ${notPage ? '未配置页面' : ''}" apiId="${dataKey[i]}" class="goPageButton ${notPage ? 'goPageButtonDisabled' : ''}">试一试</div>
+                           
+                            </div>
+                        <pre class="preBox">${apiNameKeyListObj[dataKey[i]]}</pre> 
+                        ${paramsTable(apiNameKeyListObj[dataKey[i]]) ? paramsTable(apiNameKeyListObj[dataKey[i]]) : ''}
+                        </div>
+                    `
+            }
+            document.getElementById('rightTestApiBox').innerHTML = contentHTML
+            return contentHTML
+        }
+        function changeLeftApiList(type = 'all') {
+            switch (type) {
+                case 'all':
+                    let nameList = Object.keys(apiNameKeyListObj)
+                    nameList.sort()
+                    renderleftListBox(nameList)//渲染左侧页面
+                    renderRightTestApiBox(nameList)//渲染右侧页面
+                    break;
+                case 'function':
+                    renderleftListBox(functionNameList)//渲染左侧页面
+                    renderRightTestApiBox(functionNameList)//渲染右侧页面
+                    break;
+                case 'object':
+                    renderleftListBox(objectNameList)//渲染左侧页面
+                    renderRightTestApiBox(objectNameList)//渲染右侧页面
+                    break;
+                case 'hasParams':
+                    renderleftListBox(hasParams)//渲染左侧页面
+                    renderRightTestApiBox(hasParams)//渲染右侧页面
+                    break;
+                case 'notParams':
+                    renderleftListBox(notParams)//渲染左侧页面
+                    renderRightTestApiBox(notParams)//渲染右侧页面
+                    break;
+                case 'classificationPage':
+                    renderClassificationPage()
+                    renderRightClassificationPage()
+                    // renderleftListBox(notParams)//渲染左侧页面
+                    // renderRightTestApiBox(notParams)//渲染右侧页面
+                    break;
+
+                default:
+                    break;
+            }
+            document.getElementById('rightTestApiBox').scrollTop = 0
+            document.getElementById('leftListBox').scrollTop = 0
+        }
+
+        //关闭筛选框
+        function displayNoneSelect() {
+            document.getElementById('searchCondition').style = "display: none;"
+            document.getElementById('triangleBottom').style = "display: none;"
+            document.getElementById('triangleTop').style = "display: block;"
+        }
+        //弹框点击事件
+        document.getElementById('dialog').addEventListener('click', function (e) {
+            if (e.target.className.indexOf('close') !== -1) {
+                document.getElementById('dialog').style.display = 'none'
+            }
+        })
+
+        //筛选的确认事件
+        document.getElementById('searchCondition').addEventListener('click', function (e) {
+            let currentConditionInner = document.getElementById('currentCondition').innerHTML
+            let targetInner = e.target.innerHTML
+            if (e && e.target && e.target.className === 'conditionItem') {
+                if (targetInner != currentConditionInner) {
+                    changeLeftApiList(e.target.getAttribute('selectType'))
+                }
+                document.getElementById('currentCondition').innerHTML = e.target.innerHTML
+                displayNoneSelect()
+            }
+        })
+        //筛选框的点击事件
+        document.getElementById('currentSearch').addEventListener('click', function () {
+            if ($('#searchCondition').css('display') === 'none') {
+                $('#searchCondition').css('display', 'block')
+                $('#triangleBottom').css('display', 'block')
+                $('#triangleTop').css('display', 'none')
+                return
+            }
+            displayNoneSelect()
+        })
+        //页面跳转的点击事件
+        document.getElementById('rightTestApiBox').addEventListener('click', function (e) {
+            if (e.target.className.indexOf('goPageButton') !== -1) {
+                //判断页面是否存在
+                if (e.target.className.indexOf('goPageButtonDisabled') !== -1) {
+                    return alert('测试页面不存在')
+                }
+                let apiName = e.target.getAttribute('apiId').trim()
+                console.log(AllHtmlPageName[apiName])
+                var w = window.open("about:blank");
+                w.location.href = `./testHtml/${AllHtmlPageName[apiName]}`
+
+            }
+
+            if (e.target.className.indexOf('pageRightHtmlButton') !== -1) {
+                let apiHtml = e.target.getAttribute('apiHtml').trim()
+                var w = window.open("about:blank");
+                w.location.href = `./testHtml/${apiHtml}`
+            }
+        })
+
+        //列表点击事件
+        document.getElementById('leftListBox').addEventListener('click', function (e) {
+            e.stopPropagation ? e.stopPropagation() : window.event.cancelBubble = true;
+            if (e && e.target) {
+                console.log(e.target.className, e.target.getAttribute('title'))
+                if (e.target.className.indexOf('apiListItem') !== -1 && e.target.getAttribute('title')) {
+                    let apiName = e.target.getAttribute('title')
+                    var element = document.getElementById(apiName);
+                    element.scrollIntoView({ block: "center", behavior: "smooth", inline: "center" })
+                    setTimeout(() => {
+                        element.style = "animation-name:animatedGradient;animation-duration: 2s;"
+                    })
+                }
+            }
+        })
+
+        /**
+         * @params {Object} item 当前注释内容
+         */
+        function paramsTable(item) {
+            let table = null
+            let tableArr = []
+            if (item.indexOf('@param') !== -1) {
+                let paramArr = item.match(/@param\s+\{[^\}]+\}(.*)/g)
+                if (paramArr && paramArr.length) {
+                    for (var i = 0; i < paramArr.length; i++) {
+                        try {
+                            tableArr.push({
+                                type: paramArr[i].match(/\{[^\}]+\}/)[0].slice(1, -1),
+                                param: paramArr[i].match(/\s+[a-zA-Z]+/)[0],
+                                Interpretation: paramArr[i].match(/\s+[a-zA-Z]+(.*)/)[1]
+                            })
+                        } catch (error) {
+                            // console.log(error, paramArr[i], paramArr[i].match(/\s+[a-zA-Z]+/), '=============')
+                        }
+
+
+                    }
+                }
+
+
+                if (tableArr && tableArr.length) {
+                    let tr = ``
+                    for (var i = 0; i < tableArr.length; i++) {
+                        tr += `
+                        <tr>
+                        <td>${tableArr[i].param}</td>
+                        <td>${tableArr[i].type}</td>
+                        <td>${tableArr[i].Interpretation}</td></tr>
+                        `
+                    }
+                    table = `
+                    <div>参数说明：</div>
+                    <table class="paramsTable">
+                        <thead>
+                        <tr>
+                            <td>参数名</td>
+                            <td>类型</td>
+                            <td>描述</td>
+                            </tr>    
+                        </thead>
+                        <tbody>${tr}</tbody>
+                        </table>`
+                }
+            }
+            return table
+        }
+
+        /**
+        * @description 去掉前导后导空格
+        * @params {string} str 字符串
+        * @return {string} 返回一个字符串
+        */
+        function trim(str) {
+            return str.replace(/^\s\s*/, '').replace(/\s\s*$/, '');
+        }
+
+        /**
+           * @description 将方法和属性进行分类、排序
+           * @params {Object} data api接口和对应的注释
+           * @return {Object} { functionNameList, objectNameList } 返回一个接口对应注释的obj
+          */
+        function Classification(data) {
+            let functionNameList = [];
+            let objectNameList = []
+            let keys = Object.keys(data)
+            for (var i = 0; i < keys.length; i++) {
+                if (data[keys[i]].indexOf('@type {object.defineProperty}') !== -1) {
+                    objectNameList.push(keys[i])
+                } else {
+                    functionNameList.push(keys[i])
+                }
+            }
+            functionNameList.sort()
+            objectNameList.sort()
+            return { functionNameList, objectNameList }
+        }
+
+        /**
+         * @description 将有入参和没有入参的接口分类
+         * @params {Object} data api接口和对应的注释
+         * @return {Object} { hasParams, notParams } 返回一个接口对应注释的obj
+         */
+        function HasParams(data) {
+            let hasParams = [];
+            let notParams = []
+            let keys = Object.keys(data)
+            for (var i = 0; i < keys.length; i++) {
+                if (data[keys[i]].indexOf('@param ') !== -1) {
+                    hasParams.push(keys[i])
+                } else {
+                    notParams.push(keys[i])
+                }
+            }
+            hasParams.sort()
+            notParams.sort()
+            return { hasParams, notParams }
+        }
+
+        /**
+         * @description 整理接口对应的注释
+         * @params {Array} list api接口的数组
+         * @return {Object} 返回一个接口对应注释的obj
+        */
+        function getNameList(list) {
+            let obj = {};
+            let apierror = ''
+            for (var i = 0; i < list.length; i++) {
+                try {
+
+                    let startIndex = list[i].indexOf('@name ')
+                    if (startIndex != -1) {
+                        let nameToEndStr = list[i].slice(startIndex, list[i].length)
+                        let endIndex = nameToEndStr.indexOf('\n');
+                        if (obj[nameToEndStr.slice(6, endIndex - 1)]) {
+                            console.warn(nameToEndStr.slice(6, endIndex - 1), 'api中重复的接口')
+                            apierror += `
+                                    <div class="colright">重复接口：${nameToEndStr.slice(6, endIndex - 1)}</div>    
+                                `
+                        }
+                        obj[trim(nameToEndStr.slice(6, endIndex - 1))] = list[i]
+                    }
+
+                } catch (error) {
+                    console.log(error, '====================')
+                }
+            }
+            if (apierror.length) {
+                document.getElementById('errorapi').innerHTML = apierror
+                document.getElementById('dialog').style.display = 'block'
+
+            }
+            return obj
+        }
+    </script>
+</body>
+
+</html>

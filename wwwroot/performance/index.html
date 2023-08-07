@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>renderPerformance</title>
+</head>
+<style>
+    html,
+    body,
+    .performanceContainer {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    .performanceContainer {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .performanceBox {
+        flex: 1;
+        padding: 20px 100px;
+        box-sizing: border-box;
+    }
+
+    .indexPage,
+    .myWriterControlBox {
+        width: 600px;
+        box-shadow: 0 2px 12px 0 rgba(0, 0, 0, .1);
+    }
+
+    .myWriterControlBox,
+    .saveXmlWriterControlTime,
+    .saveJsonWriterControlTime {
+        margin-top: 20px;
+        width: 600px;
+        box-shadow: 0 2px 12px 0 rgba(0, 0, 0, .1);
+    }
+
+    .indexPageItem {
+        display: flex;
+        margin: 0;
+        padding: 0;
+    }
+
+    .indexPageTitle {
+        margin-right: 10px;
+    }
+
+    .indexPageItem>p {
+        margin: 0;
+        padding: 0;
+    }
+
+    table.paramsTable {
+        border-collapse: collapse;
+        border: 1px solid #ebeef5;
+        width: 100%;
+        font-size: 14px;
+        min-width: 500px;
+        margin-top: -1px;
+    }
+
+    .tableTop {
+        padding: 18px 20px;
+        border-bottom: 1px solid #ebeef5;
+        box-sizing: border-box;
+        color: #409eff;
+    }
+
+    .paramsTable th {
+        text-align: center;
+        font-weight: bold;
+        border: 1px solid #ebeef5;
+        padding: 5px;
+    }
+
+    .paramsTable tbody tr:nth-child(even) {
+        background-color: #f5f7fa;
+    }
+
+    .paramsTable thead tr {
+        background: #fff;
+    }
+
+    .paramsTable td {
+        border: 1px solid #ebeef5;
+        padding: 6px 10px;
+        box-sizing: border-box;
+        text-align: center;
+    }
+
+    .performanceHeader {
+        width: 100%;
+        height: 45px;
+        line-height: 45px;
+        font-size: 18px;
+        color: #303133;
+        padding: 0 10px;
+        box-sizing: border-box;
+        border: 1px solid #ebebeb;
+    }
+</style>
+
+<body>
+    <div class="performanceContainer">
+        <div class="performanceHeader">
+            页面耗时统计
+        </div>
+        <div class="performanceBox">
+            <div class="indexPage" id="indexPage"></div>
+            <div class="myWriterControlBox" id="myWriterControlBox"></div>
+            <div class="saveXmlWriterControlTime" id="saveXmlWriterControlTime"></div>
+            <div class="saveJsonWriterControlTime" id="saveJsonWriterControlTime"></div>
+        </div>
+    </div>
+    <script>
+        try {
+            let indexPerformanceTiming = (localStorage.getItem('indexPerformanceTiming') && JSON.parse(localStorage.getItem('indexPerformanceTiming'))) || {}
+            console.log(indexPerformanceTiming)
+            if (indexPerformanceTiming && indexPerformanceTiming.indexPage) {
+                let { indexPage } = indexPerformanceTiming
+                let tr = ``
+                for (var i = 0; i < indexPage.length; i++) {
+                    tr += `
+                <tr>
+                    <td>${indexPage[i].title}</td>
+                    <td>${indexPage[i].useTime}</td>
+                </tr>`
+                }
+                let table = `
+                    <div class="tableTop">页面加载时间</div>
+                    <table class="paramsTable">
+                        <thead>
+                        <tr>
+                            <td>类型</td>
+                            <td>耗时(ms)</td>
+                            </tr>    
+                        </thead>
+                        <tbody>${tr}</tbody>
+                        </table>`
+
+                document.getElementById('indexPage').innerHTML = table
+            }
+
+            if (indexPerformanceTiming && indexPerformanceTiming.myWriterControl) {
+                let { myWriterControl } = indexPerformanceTiming
+                let myWriterControlArr = Object.keys(myWriterControl)
+                let tr = ``
+                for (var i = 0; i < myWriterControlArr.length; i++) {
+                    let item = myWriterControl[myWriterControlArr[i]]
+                    let itemTimer = item.endTime - item.startTime
+                    tr += `
+                <tr>
+                    <td>${myWriterControlArr[i]}</td>
+                    <td id="${myWriterControlArr[i]}"></td>
+                    <td>${itemTimer}</td>
+                </tr>`
+                }
+                let table = `
+                    <div  class="tableTop" >控件加载时间</div>
+                    <table class="paramsTable">
+                        <thead>
+                        <tr>
+                            <td>控件id</td>
+                            <td>文档耗时(ms)</td>
+                            <td>控件耗时(ms)</td>
+                            </tr>    
+                        </thead>
+                        <tbody>${tr}</tbody>
+                        </table>`
+
+                document.getElementById('myWriterControlBox').innerHTML = table
+
+            }
+            if (indexPerformanceTiming && indexPerformanceTiming.documentTiming) {
+                let { documentTiming } = indexPerformanceTiming
+                for (var i = 0; i < documentTiming.length; i++) {
+                    let item = documentTiming[i];
+                    document.getElementById(item.id).innerHTML = item.useTime
+                }
+            }
+
+
+            if (indexPerformanceTiming && indexPerformanceTiming.saveXmlWriterControlTime) {
+                let { saveXmlWriterControlTime } = indexPerformanceTiming
+                let saveXmlWriterControlTimeArr = Object.keys(saveXmlWriterControlTime)
+                let tr = ``
+                for (var i = 0; i < saveXmlWriterControlTimeArr.length; i++) {
+                    let item = saveXmlWriterControlTime[saveXmlWriterControlTimeArr[i]]
+                    tr += `<tr>
+                        <td>${saveXmlWriterControlTimeArr[i]}</td>
+                        <td >${item}</td>
+                    </tr>`
+                }
+                let table = `
+                    <div  class="tableTop" >保存XML时间</div>
+                    <table class="paramsTable">
+                        <thead>
+                        <tr>
+                            <td>控件id</td>
+                            <td>耗时(ms)</td>
+                            </tr>    
+                        </thead>
+                        <tbody>${tr}</tbody>
+                        </table>`
+
+                document.getElementById('saveXmlWriterControlTime').innerHTML = table
+            }
+
+
+            if (indexPerformanceTiming && indexPerformanceTiming.saveJsonWriterControlTime) {
+                let { saveJsonWriterControlTime } = indexPerformanceTiming
+                let saveJsonWriterControlTimeArr = Object.keys(saveJsonWriterControlTime)
+                let tr = ``
+                for (var i = 0; i < saveJsonWriterControlTimeArr.length; i++) {
+                    let item = saveJsonWriterControlTime[saveJsonWriterControlTimeArr[i]]
+                    tr += `<tr>
+                        <td>${saveJsonWriterControlTimeArr[i]}</td>
+                        <td >${item}</td>
+                    </tr>`
+                }
+                let table = `
+                    <div  class="tableTop" >保存JSON时间</div>
+                    <table class="paramsTable">
+                        <thead>
+                        <tr>
+                            <td>控件id</td>
+                            <td>耗时(ms)</td>
+                            </tr>    
+                        </thead>
+                        <tbody>${tr}</tbody>
+                        </table>`
+
+                document.getElementById('saveJsonWriterControlTime').innerHTML = table
+            }
+
+
+
+        } catch (error) {
+
+        }
+    </script>
+</body>
+
+</html>
