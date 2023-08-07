@@ -1,0 +1,6 @@
+// Mac生成sshKey方法(在根目录下生成- cd+回车表示到根目录)
+ssh-keygen 
+cd ~/.ssh 
+vim id_rsa.pub
+// 然后把生成的sshkey 拷贝到网站中即可 
+
