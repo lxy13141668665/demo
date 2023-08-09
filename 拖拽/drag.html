@@ -1,0 +1,202 @@
+<!-- <!DOCTYPE html>
+<html>
+
+<head>
+    <title>限制拖拽范围示例</title>
+    <style>
+        .draggable {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background-color: green;
+            color: white;
+            cursor: move;
+        }
+
+        .container {
+            position: relative;
+            width: 400px;
+            height: 400px;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="draggable">拖拽我</div>
+    </div>
+
+    <script>
+        var draggableElement = document.querySelector('.draggable');
+        var containerElement = document.querySelector('.container');
+
+        var isDragging = false;
+        var prevX = 0;
+        var prevY = 0;
+        var containerRect = containerElement.getBoundingClientRect();
+
+        draggableElement.addEventListener('mousedown', function (e) {
+            isDragging = true;
+            prevX = e.clientX;
+            prevY = e.clientY;
+        });
+
+        document.addEventListener('mousemove', function (e) {
+            if (isDragging) {
+                var newX = draggableElement.offsetLeft + (e.clientX - prevX);
+                var newY = draggableElement.offsetTop + (e.clientY - prevY);
+
+                var minX = 0;
+                var minY = 0;
+                var maxX = containerRect.width - draggableElement.offsetWidth;
+                var maxY = containerRect.height - draggableElement.offsetHeight;
+
+                newX = Math.max(minX, Math.min(newX, maxX));
+                newY = Math.max(minY, Math.min(newY, maxY));
+
+                // 更新元素位置
+                draggableElement.style.left = newX + 'px';
+                draggableElement.style.top = newY + 'px';
+
+                prevX = e.clientX;
+                prevY = e.clientY;
+            }
+        });
+
+        document.addEventListener('mouseup', function () {
+            isDragging = false;
+        });
+    </script>
+</body>
+
+</html> -->
+
+<!-- <!DOCTYPE html>
+<html>
+
+<head>
+    <title>限制拖拽范围示例</title>
+    <style>
+        .draggable {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background-color: green;
+            color: white;
+            cursor: move;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="draggable">拖拽我</div>
+
+    <script>
+        var draggableElement = document.querySelector('.draggable');
+        var isDragging = false;
+        var offsetX = 0;
+        var offsetY = 0;
+
+        draggableElement.addEventListener('mousedown', function (e) {
+            isDragging = true;
+            offsetX = e.clientX - draggableElement.offsetLeft;
+            offsetY = e.clientY - draggableElement.offsetTop;
+        });
+
+        document.addEventListener('mousemove', function (e) {
+            if (isDragging) {
+                var posX = e.clientX - offsetX;
+                var posY = e.clientY - offsetY;
+
+                posX = Math.max(0, Math.min(posX, window.innerWidth - draggableElement.offsetWidth));
+                posY = Math.max(0, Math.min(posY, window.innerHeight - draggableElement.offsetHeight));
+
+                draggableElement.style.left = posX + 'px';
+                draggableElement.style.top = posY + 'px';
+            }
+        });
+
+        document.addEventListener('mouseup', function () {
+            isDragging = false;
+        });
+    </script>
+</body>
+
+</html> -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>限制拖拽fixed定位元素示例</title>
+    <style>
+        .draggable {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            width: 100px;
+            height: 100px;
+            background-color: green;
+            color: white;
+            cursor: move;
+            transform: translate(-50%, -50%);
+            /*将元素居中*/
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="draggable">拖拽我</div>
+
+    <script>
+        var draggableElement = document.querySelector('.draggable');
+        var startX = 0;
+        var startY = 0;
+        var offsetX = 0;
+        var offsetY = 0;
+
+        draggableElement.addEventListener('mousedown', function (e) {
+            startX = e.clientX;
+            startY = e.clientY;
+            offsetX = draggableElement.getBoundingClientRect().left - startX;
+            offsetY = draggableElement.getBoundingClientRect().top - startY;
+
+            document.addEventListener('mousemove', dragElement);
+            document.addEventListener('mouseup', stopDragElement);
+        });
+
+        function dragElement(e) {
+            var newX = e.clientX + offsetX;
+            var newY = e.clientY + offsetY;
+
+            var maxX = window.innerWidth - draggableElement.offsetWidth;
+            var maxY = window.innerHeight - draggableElement.offsetHeight;
+
+            newX = Math.max(0, Math.min(newX, maxX));
+            newY = Math.max(0, Math.min(newY, maxY));
+
+            draggableElement.style.left = newX + 'px';
+            draggableElement.style.top = newY + 'px';
+        }
+
+        function stopDragElement() {
+            document.removeEventListener('mousemove', dragElement);
+            document.removeEventListener('mouseup', stopDragElement);
+        }
+    </script>
+</body>
+
+</html>

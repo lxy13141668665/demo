@@ -3,4 +3,3 @@ ssh-keygen
 cd ~/.ssh 
 vim id_rsa.pub
 // 然后把生成的sshkey 拷贝到网站中即可 
-

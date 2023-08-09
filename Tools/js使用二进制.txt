@@ -1,0 +1,59 @@
+var xhr = new XMLHttpRequest();
+        xhr.open("POST", strUrl, true);
+        xhr.responseType = "blob";
+      xhr.onload = async function () {
+            if (this.status == 200) {
+                var blob = this.response;
+                if (typeof (callBack) == "function") {
+                    if (strFormat == 'printhtml') {
+                        var newHtml = await blob.text();
+                        // 执行回调函数
+                        callBack.call(rootElement, newHtml);
+                    } else if (strFormat == 'pdf') {
+                        //执行把blob转base64
+                        var reader = new FileReader();
+                        reader.readAsDataURL(blob);
+                        reader.onload = function (e) {
+                            var result = e.target.result.substring(28);
+                            callBack.call(rootElement, result);
+                        }
+                    }
+                } else {
+                    if (strFormat == 'printhtml') {
+                        blob.text().then(res => {
+                            if (res.indexOf('charset=gb2312') !== -1) {
+                                let str2 = res.replace('charset=gb2312', 'charset=utf-8');
+                                console.log(str2); // hello javascript
+                                var newblob = new Blob([str2]);
+                                that.downloadElementPDFAndHTML(newblob, 'printhtml')
+                            } else {
+                                that.downloadElementPDFAndHTML(blob, 'printhtml')
+                            }
+                        })
+                    }
+                    if (strFormat == "pdf") {
+                        that.downloadElementPDFAndHTML(blob, 'pdf')
+                    }
+                }
+            }
+        };
+
+
+  downloadElementPDFAndHTML: function (blob, strFormat) {
+        let downloadElement = document.createElement("a");
+        let href = window.URL.createObjectURL(blob); //创建下载的链接，传的是二进制对象
+        downloadElement.href = href;
+        if (strFormat == "pdf") {
+            downloadElement.download = "PrintForPDF_" + new Date().valueOf() + ".pdf"; //下载后文件名
+        }
+        else if (strFormat == 'printhtml') {
+            downloadElement.download = "PrintForHtml_" + new Date().valueOf() + ".html"; //下载后文件名
+        }
+        document.body.appendChild(downloadElement);
+        downloadElement.click(); //点击下载
+        document.body.removeChild(downloadElement); //下载完成移除元素
+        window.URL.revokeObjectURL(href); //释放掉blob对象
+    },
+
+ var newblob = new Blob([str2]);
+ blob.text()
