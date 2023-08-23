@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>测试第五代接口</title>
+    <style>
+        html,
+        body {
+            height: 100%;
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<body style="text-align:center;">
+    <button onclick="insertImage()">插入图片</button>
+    <button onclick="insertImage2()">插入图片2</button>
+    <div id="myWriterControl" dctype="WriterControlForWASM"
+        style="height: 800px; border-bottom: 0px solid black; background-attachment: fixed; background-size: cover; background-position: center top; "
+        RuleVisible="true" AllowDrop="true" AllowDragContent="true" RuleBackColor="rgb(155, 187, 227)" CaretCss="5,Blue"
+        RegisterCode="04023D6AB58E2F0368E2CB1293E20AEC7E45710588485AFAE01F92A6136F90A67BBF0984254D49C785382FCD14A5BC85E925F0CBA3D2AAF81A1A3C347C1A9D1D15DDBA5D2A849AF3A8A7B8D9EC6D4E5A66"
+        PageCssString="box-shadow:0px 0px 0px grey">
+        正在加载...
+    </div>
+    <script src="js/jquery-1.7.2.min.js"></script>
+    <script src="_framework/dcwriter5.js"></script>
+    <!-- 以下是调用四代的服务地址 -->
+    <script src="http://www.dcwriter.cn:8099/Jquery/jquery-1.7.2.min.js"></script>
+    <script src="http://www.dcwriter.cn:8099/ServicePage.aspx?wasmres=dcwriter5.js"></script>
+    <script src="DemoApp.js"></script>
+
+    <script>
+
+        var rootElement = document.getElementById('myWriterControl');
+        function WriterControl_OnLoad(rootElement) {
+
+            rootElement.EventHttpDownloadFile = function (a, b, c) {
+                console.log(a, b, c)
+            }
+
+        }
+
+
+        function insertImage() {
+            rootElement.DCExecuteCommand('insertimage', true, {
+                ID: "img1",
+                Width: 200,
+                Height: 200,
+                SaveContentInFile: true,
+                Src: "http://192.138.10.43:5000/官网logo.png"
+            })
+        }
+
+        function insertImage2() {
+            var ctl = document.getElementById("myWriterControl");
+            var arr = new Array();
+            var options = {
+                ID: "img2",
+                Width: 400,
+                Height: 200,
+                SaveContentInFile: true,
+                Src: "http://192.138.10.43:5000/官网logo.png"
+            };
+            var options2 = {
+                ID: "img3",
+                Width: 200,
+                Height: 400,
+                SaveContentInFile: true,
+                Src: "http://192.138.10.43:5000/官网logo.png"
+            };
+            var options3 = {
+                ID: "img4",
+                Width: 200,
+                Height: 400,
+                SaveContentInFile: true,
+                Src: bluepicbase64data
+            };
+            arr.push(options);
+            arr.push(options2);
+            arr.push(options3);
+
+            ctl.InsertImageByJSONText(options3);
+        }
+
+        var bluepicbase64data = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAR8AAADeCAIAAACL9pO/AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAKWSURBVHhe7dOhDcAwEARBdxaaxtyLi3FRCQ6xApaNNOjh63Zc9wYK6oKKuqCiLqioCyrqgoq6oKIuqKgLKuqCirqgoi6oqAsq6oKKuqCiLqioCyrqgoq6oKIuqKgLKuqCirqgoi6oqAsq6oKKuqCiLqioCyrqgoq6oKIuqKgLKuqCirqgoi6oqAsq6oKKuqCiLqioCyrqgoq6oKIuqKgLKuqCirqgoi6oqAsq6oKKuqCiLqioCyrqgoq6oKIuqKgLKuqCirqgoi6oqAsq6oKKuqCiLqioCyrqgoq6oKIuqKgLKuqCirqgoi6oqAsq6oKKuqCiLqioCyrqgoq6oKIuqKgLKuqCirqgoi6oqAsq6oKKuqCiLqioCyrqgoq6oKIuqKgLKuqCirqgoi6oqAsq6oKKuqCiLqioCyrqgoq6oKIuqKgLKuqCirqgoi6oqAsq6oKKuqCiLqioCyrqgoq6oKIuqKgLKuqCirqgoi6oqAsq6oKKuqCiLqioCyrqgoq6oKIuqKgLKuqCirqgoi6oqAsq6oKKuqCiLqioCyrqgoq6oKIuqKgLKuqCirqgoi6oqIuztdac83PkSF2cvWmNYSq/eRlU1AUVdUFFXVBRF1TUBRV1QUVdUFEXVNQFFXVBRV1QURdU1AUVdUFFXVBRF1TUBRV1QUVdUFEXVNQFFXVBRV1QURdU1AUVdUFFXVBRF1TUBRV1QUVdUFEXVNQFFXVBRV1QURdU1AUVdUFFXVBRF1TUBRV1QUVdUFEXVNQFFXVBRV1QURdU1AUVdUFFXVBRF1TUBRV1QUVdUFEXVNQFFXVBRV1QURdU1AUVdUFFXVBRF1TUBRV1QUVdUFEXVNQFFXVBRV1QURdU1AUVdUFFXdC49wNy06ZYIL3nJAAAAABJRU5ErkJggg==";
+
+    </script>
+
+</body>
+
+</html>

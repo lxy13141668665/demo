@@ -1,0 +1,115 @@
+var xhr = new XMLHttpRequest();
+        xhr.open("POST", strUrl, true);
+        xhr.responseType = "blob";
+      xhr.onload = async function () {
+            if (this.status == 200) {
+                var blob = this.response;
+                if (typeof (callBack) == "function") {
+                    if (strFormat == 'printhtml') {
+                        var newHtml = await blob.text();
+                        // 执行回调函数
+                        callBack.call(rootElement, newHtml);
+                    } else if (strFormat == 'pdf') {
+                        //执行把blob转base64
+                        var reader = new FileReader();
+                        reader.readAsDataURL(blob);
+                        reader.onload = function (e) {
+                            var result = e.target.result.substring(28);
+                            callBack.call(rootElement, result);
+                        }
+                    }
+                } else {
+                    if (strFormat == 'printhtml') {
+                        blob.text().then(res => {
+                            if (res.indexOf('charset=gb2312') !== -1) {
+                                let str2 = res.replace('charset=gb2312', 'charset=utf-8');
+                                console.log(str2); // hello javascript
+                                var newblob = new Blob([str2]);
+                                that.downloadElementPDFAndHTML(newblob, 'printhtml')
+                            } else {
+                                that.downloadElementPDFAndHTML(blob, 'printhtml')
+                            }
+                        })
+                    }
+                    if (strFormat == "pdf") {
+                        that.downloadElementPDFAndHTML(blob, 'pdf')
+                    }
+                }
+            }
+        };
+
+
+  downloadElementPDFAndHTML: function (blob, strFormat) {
+        let downloadElement = document.createElement("a");
+        let href = window.URL.createObjectURL(blob); //创建下载的链接，传的是二进制对象
+        downloadElement.href = href;
+        if (strFormat == "pdf") {
+            downloadElement.download = "PrintForPDF_" + new Date().valueOf() + ".pdf"; //下载后文件名
+        }
+        else if (strFormat == 'printhtml') {
+            downloadElement.download = "PrintForHtml_" + new Date().valueOf() + ".html"; //下载后文件名
+        }
+        document.body.appendChild(downloadElement);
+        downloadElement.click(); //点击下载
+        document.body.removeChild(downloadElement); //下载完成移除元素
+        window.URL.revokeObjectURL(href); //释放掉blob对象
+    },
+
+ var newblob = new Blob([str2]);
+ blob.text()
+
+
+————————————————————————————————————
+ let str = file;//file为html
+            let str2 = str.replace('charset=gb2312', 'charset=utf-8');
+            var blob = new Blob([str2]);
+            let downloadElement = document.createElement("a");
+            let href = window.URL.createObjectURL(blob); //创建下载的链接
+            downloadElement.href = href;
+            downloadElement.download = 'test.html';// file.name; //下载后文件名
+            document.body.appendChild(downloadElement);
+            downloadElement.click(); //点击下载
+            document.body.removeChild(downloadElement); //下载完成移除元素
+            window.URL.revokeObjectURL(href); //释放掉blob对象
+————————————————————
+base64可以直接渲染图片标签
+ if (options.imagedatabase64string && options.imagedatabase64string.length) {
+                let _val = options.imagedatabase64string
+                let str = ''
+                if (_val.indexOf("base64,") == -1) {
+                    str = "data:image/png;base64," + options.imagedatabase64string;
+                }
+                dcPanelBody.find("img#WatermarkSrcImg").attr("src", str);
+            }
+————————————————————————
+ <input type="file" disabled accept="image/*">
+//图片上传，对文件按钮进行判断
+        dcPanelBody.find('input[type=file]').on('change', function (e) {
+            var reader = new FileReader()
+            var file = e.target.files[0]
+            if (file) {
+                reader.readAsDataURL(file)
+                reader.onloadend = function () {
+                    //console.log(reader.result);
+                    dcPanelBody.find("#imagedatabase64string").val(reader.result);
+                    dcPanelBody.find("img#WatermarkSrcImg").attr("src", reader.result);
+                }
+            }
+        })
+——————————————————————————————————————
+function* numberGenerator() {
+    yield 1;
+    yield 2;
+    yield 3;
+}
+
+const generator = numberGenerator();
+console.log(generator.next().value); // 输出: 1
+console.log(generator.next().value); // 输出: 2
+console.log(generator.next().value); // 输出: 3
+console.log(generator.next().value); // 输出: undefined（生成器结束）
+function* 定义了生成器函数 numberGenerator，它通过多次调用 .next() 方法来逐步生成值。
+
+生成器函数在处理异步操作时特别有用，因为它们可以将异步操作的代码结构化得更清晰，并且避免了回调地狱（callback hell）的问题。
+
+需要注意的是，function* 和 yield 关键字只能在支持 ECMAScript 6（ES6）或更高版本的JavaScript环境中使用。
