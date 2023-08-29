@@ -8,3 +8,21 @@ vim id_rsa.pub
 
 打印样式
 console.log(`%c${"标题"}`,'color:#fff;background:red;padding:2px 6px;border-radius:3px;',1234)
+
+
+//预览 file:html
+                var oPrntWin = window.open("", "", "width=450,height=470,left=400,top=100,menubar=yes,toolbar=no,location=no,scrollbars=yes,resizable=yes");
+                oPrntWin.document.write(file);
+                console.log(file)
+                // 下载
+                // let str = file;
+                // let str2 = str.replace('charset=gb2312', 'charset=utf-8');
+                // var blob = new Blob([str2]);
+                // let downloadElement = document.createElement("a");
+                // let href = window.URL.createObjectURL(blob); //创建下载的链接
+                // downloadElement.href = href;
+                // downloadElement.download = 'test.html';// file.name; //下载后文件名
+                // document.body.appendChild(downloadElement);
+                // downloadElement.click(); //点击下载
+                // document.body.removeChild(downloadElement); //下载完成移除元素
+                // window.URL.revokeObjectURL(href); //释放掉blob对象
