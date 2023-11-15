@@ -1,0 +1,1986 @@
+<XTextDocument xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" EditorVersionString="1.2022.5.24">
+    <Attributes>
+       <Attribute>
+          <Name>WordFileVersion</Name>
+          <Value>2</Value>
+       </Attribute>
+       <Attribute>
+          <Name>ShareFlag</Name>
+          <Value>False</Value>
+       </Attribute>
+       <Attribute>
+          <Name>DynamicGridShow</Name>
+          <Value>False</Value>
+       </Attribute>
+       <Attribute>
+          <Name>HeadReadOnly</Name>
+          <Value>False</Value>
+       </Attribute>
+       <Attribute>
+          <Name>ElementHideRule</Name>
+          <Value>TRUE</Value>
+       </Attribute>
+       <Attribute>
+          <Name>FormulaText</Name>
+          <Value>&lt;?xml version="1.0" encoding="GB2312"?&gt;&lt;公式&gt;&lt;BMI值&gt;&lt;体重 ControlID="20140902121944" ControlName="体重G" /&gt;&lt;身高 ControlID="20140902123656" ControlName="身高G" /&gt;&lt;BMI值 ControlID="20140902129096" ControlName="BMI" /&gt;&lt;/BMI值&gt;&lt;/公式&gt;</Value>
+       </Attribute>
+    </Attributes>
+    <XElements>
+       <Element xsi:type="XTextHeader">
+          <InnerID>6</InnerID>
+          <AcceptTab>true</AcceptTab>
+          <XElements>
+             <Element xsi:type="XParagraphFlag">
+                <InnerID>7</InnerID>
+             </Element>
+             <Element xsi:type="XImage" StyleIndex="2">
+                <InnerID>8</InnerID>
+                <ID>image2</ID>
+                <Width>410</Width>
+                <Height>90</Height>
+                <CompressSaveMode>false</CompressSaveMode>
+                <Image>
+                   <ImageDataBase64String> iVBORw0K GgoAAAAN SUhEUgAA ATYAAABH CAYAAACN tWt5AAAA AXNSR0IA rs4c6QAA AARnQU1B AACxjwv8 YQUAAAAJ cEhZcwAA HYcAAB2H AY/l8WUA AE6pSURB VHhe7V0H
+  XFRX9sYU jS2aaIwm xsT0mGKS f+omppfd tE03PZuq SaxI7yC9 I70LiIhY aAKKFVCx V5qiYlfs vXv+33dn Hg5IF7O7 2fnye8GZ efPmlXu/ +51zzz3H RIwwwggj /mIwEpsR
+  Rhjxl4OR 2Iwwwoi/ HIzEZoQR RvzlYCQ2 I4ww4i+H P43Y9h47 Lmt27ZYZ FRskqGix WOXOEvOc mWKanStj svPEefY8 CV20RDJK ymTFzl2y 7dBhOXfh gv7bRhhh hBHNx1Uj
+  tmNnzsiC zVvEdc58 +WxCqjzk Fyw3O3tK Z3tXud7G Wa6xchKT MbZiYmqj /n2dtbO0 t3GRTnZj pbuTh9zt FSDvjU8W 25mzJQ9k ePDkSf2R jTDCCCMa R5sTW8me veKUP09e
+  jYyTXmO9 xMTSQdpZ OUpHEFZX Bzfp5uiu tu7YXo2K l/dBXjc7 e9S8x7/c jwR4LckP 3+9i7yaP BoQqlVdU tVUuXLyo /zUjjDDC iMvRZsRG wvkudarc 5eEnJhYO 8uXEycrM
+  vJGEBQV2 k8FGAusC 8rKdmS8B BQvV5yQ0 w3243Yzt RuxHRUc1 187SEa/d 5b34CZJZ Wm4kOCOM MKJeXDGx bdi/X4ZM ywQ5ucOs tJVnQyIl ZfVqsczJ k38mJCuS q4+0brAd
+  K1+mTJav J01R+5Ds DD+niqN5 eouLlyLJ Pq4+itSo 5kh0HUB0 HydNkuJt 2/VnYoQR RhihwxUR 2/jlq6S/ d4AyF7vC XOxMk9E/ VN6NT5IJ K1dL1JJl 8mJ4rPR2 9a5FblRx
+  t7v5yqjM GeKzoFA+ B3Hd5ORZ ax+aoa/B VA0oXCjD MrLl1rHe ILXax6CC 6+niKS5z 5snJs2f1 Z/Xn4yKV 43+VeLyo /ivfu1eW b9uqf691 4GVrl85j GqL+W/Jf daP+K1D3
+  vhuCn+WV lkjF3j36 d3S4oL7T mmehazsa 6h7hP8WI ahWxHT19 Rsxm5El7 W2dsLjVk Q9OR/rBr rZ1kdFaO VELNpa5Z IwODwpSP TduvA9Ta D2nTxa+g SH6Zki5j YLLe5qZT
+  ZDRLqcpe CIuR4IWL ZM7GjdJ7 rI+YmNvX fN9w62Tn qhQf1WHV wUP6M7w6 0OZoOTES MG+O2GRl SvWxY+q9 /5Dn2SL8 kpIsHU1H ychpU+TI 6VP6d1sG 3pMzZ8/L qXNn1Gve
+  h7r3Yv7G Cpm4fJkc O9W63zCi eThz/pxU HTgg6ehz w1NTJLes VI5hwL9n rLPELymW Y6dPy5It m+XAiRNq /ytpswdP HMfxdM/T 8DgXLl7A cz6tf3Wp z/zZaDGx bdi3T96M
+  iReTkVbK 79XD2bMW 0VB1cfOe XyDbDh2S n0BgJCqa mtxIRJwV JbmZmDuI ySgrMRlt oxRae7x/ AwiQBEnz sxdU2q8w c4u3bpVB 4dHquIYm q+aDI5mS +O709Fe+ vqsF3Sgn
+  kluyTkyG D8d5j5GX Q4JxnQfV +xfwcWOj 538M9Ke4 aPMmudnB Ftfyu5hn TNe92Qps P3hQPouN lgIMQoTh HQicN1du tDSXjpZm Urprp/7d /z3UbRfH MTiSaIjW txjdN+dv
+  qBCH3Dx5 JzJc7hjr hHY5Skx+ +EH+Hhos ZXt2y61O zvJ2dJR8 FRcjD7u5 yqvBAbL7 yBH13ZaC Kp9t5Ukf b/koJqpW tILubC6K 58xcscag f/b8efXO vwMtIjbG l3G28/MJ
+  k5TSejMm QZmhhsTG jf6zF8Jj xL+wSD5J StGFdWA/ EuHt7r7y BBTcq1Fx +GySfJUy RT7F8Xis J8eFS1+Y qFR39NeZ mNkpooso XioFW7ao mVG+1n6H x+PMK81a HvfduCS5
+  08Nfpq0v 1Z9x24KN kw1yO4js 26REud7W WtpZmMsz /r6yasc2 tQ/J7b8B WpPzB/GY /ParGtUP YxRuDQpB kCTHX6EA NZxBo3aY kS2fokPd hc50h7ur ZJesl7U7 d8gJ3MP/
+  ktvUZuCg uA1qKmbx QjEDMbwY HCSDQoJk 5RW5AnR3 MRDWg8lv Q9DPTKWT rZW8C8Jx y58pcyvK oeD2S29n R+lgOQaq eam8ERUh HdFmN1bv Vd9tKaav Woln/Qes JEv83miJ
+  W7pY/8kl WKRPE5Mf v5d5INx/ F5pNbGt3 75EHfINA NrYyKCxS 9sAE81pQ KP09A5Rq qj3zqXPy U4EN8A+W lyLixCIn T6aDcLZC xTXkDzt1 7pxsP3xE csoxAs2a o8iOx2as
+  G31pnEjQ foP+vGdC opQyfDt2 PI5dojYq SKrC9JIy /VHbFnPK y2RQgK88 4usD9egk 3ZwcxWTo L/JNfKxq Zrrt6ug2 nSvv8iO3 /NcuoqPp jITzFy5I 0IJ58l1S ghw9dVL2
+  Hj0K4rlk SjSF03iW 70ZHQsGP lLegGI7A 3CSpDZmU Ip7oXCdB Ym9HhOIZ jsY2Rm7D YLC0aov+ 201Bdycb urqWX/e/ FzPWrQEp DAMhmElH WwzcuGej pqbpP209 zuIZxi1Z
+  Ivd7uktI 0QJZs3O7 VB08oD47 j0Zjk5Uh brPyJGHF ckVKJJ6W RhRo9/oU nvdn8TEQ KubgAlPx nTNLvW94 tILKjfLN +HiZtHy5 hBQskGmr V8pxvTr9 s9AsYqvc f0AGBqJx
+  cobTwV38 ChfK4m3b pAokFbds hdznE6QC a2ka0lyk U/8WZy/5 EWbonI2b 9EfR4TTI q6x6n8yu 3CRpa9dJ 8qrVMhl/ Z8GMYQwc R3NDLNm2 XU0y3ApS 4+9z0oCm J5VZVmmZ
+  5ON7M8rK ZPKatep9 TjBwxpRE uGBLlf4o bYWLynyw hRKhUuti 7yQ9HO3F FdJ79fba s7NXpcvh oBz5N+7b J7+kpsjI qVNk37Gj +g+vDIur qmTEtCky AMrqE5oY xxtXb4pw
+  0DncQV4m o0dDpVNh m8rn46Ho sf2Rlqab VAESli6V x7295R9R 4RK+sEi1 geaA9Fsf eWnHJTm3 sH82ivM8 Ig54ppnn 1xLwNE+f OyuWmRnS 2dZOOtnY SBdrS5m/ cYNuhyvE
+  SrS/u6GM v0lOkj4Y bJ/z96nx gfHX88rL pZu1NQaZ CJBT7T7W UmzeVy0P gURfCR0n +9BOqtEG 12zXWSwn cexpa1aL ZXamOGB7 3NdbqXlO YPyZaJLY jp85K29E j1emJP1b
+  dOQ/EhAi gyJiZPWu XVBX5TAR Q6SDrQsa N2PNGMOW Jit3XvKn bNi3X8Yt KpbByany oG+wdNY7 /KnETEyt dX/N7ZUJ eo9XgHyY mCxe8wtl HVSihorq ahk6LVPa WzurMBCa
+  oA/4jpMn Ydbaz8yX V6JiaiYo SLDXWTvJ fd6B+N5+ /RGuHIZ9 aNLK5dLF zlqeQgPS cBhq5UQr nfCNgeYv R2DNETth 6RK5Fw3L 5I9h8lPq JKW6WoON aKBhRYXy eVys8s1c
+  C7K+ztpK TEYMl8y1 q/V7XQ7t PqzevlWu h/nTy8Fe Jq9aJb/i XEyG/iq3 Otgp5WcI +ls0EuKf 5hASdzmF 9pe1bq0k Ll8msUuK xTQjXT6M jJAk3ANt n7bEkq2b 5RWo8aSl
+  xc0+z+ZA c1FsxXPs 5zZWbnV0 kCQoqLaC NQZbE7PR 6vl1wSCT sGyZ/hM8 px075BEM LO3MzOTH lGRlnipc wbV9BkUW irZDzFi/ DspttmSV rJfng/zk C3zGCaNZ sG4ecHGS
+  ZwL8ZRcs sT8TjRIb r9siZ5Yi Ic3U7O7o IdeDWPp6 +Mmg8Bj5 NGmS/JAG mxrE1Nfd VwKLFum+ DGw6cEDM Z8xSoRom IyywWSpS uscrEMQY q5ZM0c/G 1Qcv4fWD IKqOIEeT
+  kbDfh1so Iv0jPQtm 8G79EUWS V66WAX7B 6pwYzzbA L0S+mJh6 ma+P5Mb3 XomKl+Nt FApC/aBJ +MMw2/qP dZb+GCW/ T0mRJ/xA +N4e8hTM 1OEwLw6d bJ2/agMI /JeJE2Q6
+  Rj0NdjOy ZICri+w4 rJv1JZHZ ZWcps+bl 0BClBBoD 959XUa58 HhlQtlZQ DR+j8d3n DnI0N5V2 VhZykzKr 7eVaczMZ 6OMtCysr 9d9uGKt3 bJdnfLwk H8cm6GZ4 PTgII/Ya
+  9bpwU6X8 DrL7OiFe tuzXdSaq sJZg1+HD chcnOEaO APGiDVli G20qXa3M ZL3BwNda 8GlqZ0Ty +WUS2tLw EdLefIzM xqDdZsCx q3APPoyO Rv+xlNvx PGej82uf tQY0+3NB
+  JjQ3p69b Jy+EBEpX e1u5zdlZ Po6LUf7M 0xhQ3qOr AM+5K8jU ZPRIcc3N 0R+hJdDp Zw2f4pkm rVih/s3o gPYgTZNh f8iXifGy 98gR8Z49 S/rY2WEQ CpcterO4 lZfZKjRK
+  bIkrVqvQ DSoxwxgz NRuJ13Te UyXdC2X0 j9hEmJjV 6ntULg6z 5ip/l8kw c/VdrhYg 6S2s2io7 ceG84Ybg iE6/3bLt OySseKl8 NmGS9HIB IeL7VHhc xbBLrwJ2 gP0/5qTE
+  KGv5OiVN TLNyYH5e mlTg+dHH p0JBxtji 81z1vSuF 9mAmLlsi r4eMkx6Q /B1srKQT OtunML+s sjLkAS9c 829DJb74 cqdqQzgJ YlqhdyKP X1asHMHP giDP6e/R y8HjVMde
+  vGWzek38 lIoOCGUV oh81m8JQ kKXJiD/k BpxvO0s0 QvpIoNC6 OzlIT6i1 ziCPayzH yIi0ybJf H8Ji2JDr gp/wmWmm MAn/9Pmz cgCmScWe PfIv/F43 OxCSKYjT dLQUb9Zc
+  Es1v3jRD eQ4+c/Px HMfI9VbW UOwgNpi8 XySOl911 VGFroJ0N zePR6dPV +Xaw4kz9 CAkvXKD/ tPU4dua0 nITqpPTz nJWrnllH eztFMJ+g zVwJFuKe 9ra1liXo U1sOHJT+
+  7m6K2NrD zL0dz3NZ 1RZJgPKk X+0G3Lc7 oRS74fPZ rXDqa/dp BUzeUdOm yAMebjJZ P/h+PyFR eliZS+xi 9G+c00cg UgeQZ+Gm TTVC4Hzz H3uboEFi o/+Mfiz6 qx7xD1GE
+  wTANqigS B1+r1QYW 9vJBQrIc PKGb9i3c XCVPB0co xcVlUyMz Z8jKHa2b 5idR2s2c oyYNSHAP wYydtk5n q9NB/euU dOnn4SuP BYQq35pG bCQ1zpRy IX13Jze5 A/vkb2xa
+  gTQEPhPl U9I/3ojC ArkD5lZ7 dIBXw0Og HC4pyjfC QqQjzLM5 ehXTHOwA 0X8cGyUF mzZK6IL5 8ntamvSB ebd5f7Uc PnlSnvT3 hXlhLWGL Fsq2g7rQ ksFJSVBX 5rJ0a/Nm
+  1ZZhv3vd 6QIYDYIA oaGBP+Lr Jb1d8Ewd HKUTjk8n swbD660P hp9o/167 Y5u8BELu iY7bDsTZ Gb/RHeTG kI/WQHff dYgvLoYi 9pTHsTnk zFAO8yuF 1uku4Fg0 0Ux+HyJ3
+  QUklLVsq mei0u4+2 znzSzvnI yVMSUTBf qvXHWbpt m7wwLlAe gCJ+wNNT 4pfozGle SWP3uiFM WbUC/WKE CvWwooIn KeM5PhMU ICW7dkKp n5dx8+fJ c/i9LJiL AQvmSfsx
+  ZrJYP3lz 8aLOp9hc bIbyejEo SJ4LClQT H5aZ6ep9 KveSXbuk cl+13O7s qAbhr0F2 Gjg8UVX+ mWiQ2H6b jhsF85Ik NjwjGyZl nlouxRUG JA4SCM1B Zu44pTeF fAqKVKgH
+  Y9PeiUvC g2yb5U5l e6thbk7W +ePM7cQy Z2ZNM/iR ZrApOhBI lufKxfPM IkIVN37Z CskuLRXX OXNVmMrJ s61zCp9F A9l3/Bge zqXOxJHr JhtreRFq SjMR0zgV PmKYmBkQ
+  RHPAWKAn 0PhuAVH6 oSHOqaiQ 7rY2Ele8 SBzRiR/z 85abnB2k k7VVjfx/ MyIcpGEn m/bvU68b g6aNeZ4p K5bL+CXF UrR5M0z8 XXIffXVQ QN9MmKDf q/XgxM/v kyfJw77e
+  SgleZ2sp j/n6wCy/ 8swsR3CM LSD6o23s w9yJe8Iw FZMxo2DW B8uSZg4U jUEjqRU4 1vMYlHYZ xIyVQc0+ 4uMDAnCW aCgcDfyG QfNqFuiu uAHPzmvO bHkBZEOH fhcotW4O
+  DiCfIBmW lqpM1fzS Elm1c6d8 kZSozPgp eldBS2GW kS5fY0A9 AQX6tK+v PIVna3jK GWvXSP+x LnI3lOO7 kRGycmuV QeD3fwCx LYE5SPOR JEGT87fp mRJZvERG ZGbLsIws
+  5SNjcC3D OGh2EgzP 0OLVnGbP qyG7tgIj mmnKqhi3 kVYyFOdE cAbro0SY pRaONase Hg8KFe8F BVK0pUqt bhiWniVP jYuQyCWX HKotAUf0 HDQOqieu OnCbNVPe jgyXnspn
+  YSo/TUyR vYcOy92u zvKgm4ua JWoutIEs tGCBmPz6 i5o1XIYG 0dnKUiJg zr4SFqwU 1gBvL+kL dfVBbJwa Zekj6+fi IvuaEXvG jlbfyDws bQpGeBtl nv4zLk4i Fi2SVBDf
+  /iZmRJuC G00uM3OY jVYgNu8a Nd8aaGd9 to3bE59R 6soV8rdx AWLyx2+4 n3EGkzBt 0wmnr10n XS0tak2k 0b3w6+QU NavezdZO PoqPFz8o WvrLWipq Fm7eIndj ACnegkFq
+  xw6xzM4G aXqIH1R/ v7HoJyNG yB2OdtLP 0V664hlz 5rqjtR2I xxVm9zRl VRzV99/m 4N3oKJih U9W/l2zZ olwyde9V ZfVe5R55 JzpabsE1 2oAM/x2o l9i43IkE RRL5v3Hh
+  krm+RAJA EM+FRsr9 PkFQRp5q QqAUSooI LFqsSK2L /VgZv3yl eu9qIX9D pfRx9Qa5 WapcbQR9 dg/4BKpl WbZ5s0Bo W9RGdTNh 5SqZW7lJ zcg+Fhim ZhhbgzA0 FpvsTCW3
+  u1qYQSWO kZtBbF1g dn2ZmCTf TkhQzvwU vaJqDaav WSUb9u6R mWUluJ+j cf7LxBq/ afLH7+h4 sRIKE7iX tTlU2n6Y ognSC7+/ 4/Bh/bdb hvDCQpDy GAxcXG/r JJ3soIah
+  NukAfgUq lKsJmgM2 a270mTLs ZcHGDTJh abF0s7GR a2Aq287I lHPYY9fR Yxi9W7jU Bgfmflyx sKCyUhJh Iv6SmgpV mIpn3rrr 1jrizJIS udXJXplN HaxtoXZg Gi5eqD5r
+  K4QUFcl1 ZqNlqT4U QgHslbx8 OdS3tXRy wO+DVPvA ZGfwbkux Hc/+Qbex klumi9l8 Gyo+Gir/ EAY7q4xp MgFtcSH6 wUcgbcYR 3oCB5n4v T92APOx3 1cYe8/YW VwzUx8+c
+  bpJY3wwP lR+Sayt7 +llXwMSu Pn5U5m0o l/dAfreC bE040TNq NEzxK/dT tgaXEdvG /QcUQXSC WqN/7f3x EyRiMdQa lBpDK5Ri Aulps5/F W7dLd5im 11rYSyxM v5bg9OZK
+  2RfsL3vG 2suRGVly 8XzzTMWM 0jLpbOsi 7a0cJQdm GzF13Xp5 ITwasv+w LKyqktil y1RsW9ji xWqVQz8P f6XmZm7Q LftpCfi8 2Yge8XST cSC4YjzI B6CgbrCy gdnlI58k
+  jAdJjJJ3 oiLk5OnW Eadhm4pC B2tnNkbF OO3B7z6K TvcZzIiT 585L1rp1 MMdOw6xI UOZqc0zR uijbs1fu cXOV69HQ u6Nzd0ND vBVqcHBC gnycCHNl 1CgVXNss 6E88Byb/
+  AA/3GqL9 IDZG2oHY qDgf9/OR HujE96MT MgbwyKmW Kbjf0yYp p/s1HFDG mELZDhFH EP6VIAyD xI02FjIK yoXmMgeq a6AwuCqA Cr0tYJub IzfhGXHG krPYw6dN UcHKfTCY
+  PODuIV3x mS3aPX1e uti8Jpil HgxOiJf7 Yf7NQ1uh 8ouDyh8U 6CdJy5eq GfahKROh 3lygTANl /JLFsg2m dzH6h/fs fBVQfY2Z mVwPgivZ c8lP3BAG BfrjWUzW v9KBbpS3
+  w0LlATcP 6WaHwQyE 3RF/+e+x s/JwRS2/ prbAZcTm U7BQERd9 aDRH+7n7 yh0ghb+F RcsTQeHK 7/ZF8mRl 2hyF+nku NFqpJ5qi LcHxhQWy 8cmHpKx7 Bynv2UnK sO12sJSL
+  zQyOZBpx xr8xlo3O d8Ie5/Db 9Az5MCFZ OoOAGYby DCcyzO3U AvtrLZ3k m1SdlG4J tEczC533 XmdH+XnS RLnPi/fH XvmSTEaN UE5VjpSt BbsSf4fp 0D+Nj5Pe Dg6yR+90
+  HjF1qvxr 4qXlSnQK vxYeJt3s HVQsWktA U+gLkpf5 GOntOlZu AaG1g9k7 GMRJbEXD 74jPHGDW NAfavRkC FcV1s+t2 7xb7nCy5 w9VFqdku aODfJiWJ +5w56hpo Ho0rmK//
+  VuPQjp24 dIncBGLk LHQ/HPez +FgVm9US nDfoYJy5 u9HKQqz1 vtDlMP0f 4Ww2iI3E aZ6ZXrOO k2jpMjlt 9+Ew27rj HoyYDgto GNQwQyJG jpTvU5Jl E57bXc4O ErGwSL/3
+  pe+1BBU4 zt9DQjFo uMhzQQHy EP5+DnW/ Fap+xrq1 8llMtPyO 9hMB8/DA Sd3idw2c gCvCvWBA 7fEmBuRT aHOPYDAf k1Hbf0y/ 6kucTDA1 k36eHuh3 9nKDhRWu ueX9rC1R
+  i9hoTjDN EGc/SWwq rANqjL42 LmHi357O nrJq5y61 v+d8mDMj LOSN6PgW pQ06f/yY bP3iIynv fp1svO92 2Xh/X9lw Z08p79NN js6bo3wd J8pK5ejc fDlaME9O bai4jPA4
+  wnGdqckw MxmZNUO9 txnmE1cc kJjpb+PM KE1mxt7x eqg27/L0 VzO+rQWD ERkxfgPM h5tAar1d HGUgHviL GBHZQLSo +NaCmRn6 wDQ0nTZN /44oYuDa VA1cxvRs gJ+acaRp
+  3BKs2blT euD4Juaj QdAp6GQT lUIz0zfY YCgZhiJk r1+vXjcH 2w4ekIe8 3KWjja10 sbGGiW6n ZlqvtbSS 53FfNFBB dLQyF7fZ zVODHDy5 AoLhJ2V7 96rZN/5W a8CnQj9t
+  BpR9Hwwa 9K0Z1tQg 0fyfP5Qb VGF7S0sZ BHM8a+0a PM/WqTee +wdxsWp2 eOLKFUot /cAYORCn fa6uvbpC 0XSzsZQK XBvR0paj ES7/MIB9 +fbtkg0y ex5E81RA gDwd4C8D
+  sd3t7Sm3 oZ2OSEtt tRrlDHEf DOpWBgOe 1tQ3VO9V YSUPwrJ4 NjBAIhcv kr8F+av+ +O9CLWJb vHWb8p+R FEgEdTcT S0f5PlXX 4Wia3eYK kxUmIb/X FC6A2Y/A fNj21Sdy
+  YPJE2fLm i1JxW3eQ GohNT25l PTrKvshQ RQ5ncfyT 69fKoWmT ZaethWz/ +VvZHxUm Z/SxcgST XPYGcd0I wl21S0e2 Fjkz1Wwt z5eztyoV EpSn2pyo 2hxl/IqG o+obgtbo
+  dkPRPITR vSNIpb2t rYoxm7Z6 tVzP0f63 oRjtM1SH 0T107VvN A1MgfYLO 8F5UpOw2 8CF9DoXy QWy0/hUb 1EUxBxE9 jPM4VGcU bgrLYUab wMwd4OGm CIOLspmp hIpr8sqV
+  0g1K5j6Y lJwFbi44 +9UJ138D NpeZuWKa Pl2thbzB wU6FfgTM nyeTVq1U wcvd7axl nf5ZNQQu bSLovzlU z0SGbpb6 uPI1rkFn 5n5EU2aP 39w5arVG ZyvrmqVM ht9YiXtz
+  GxTs9VCZ DKK9AaTE QFeuD+Y6 WkM09WQ5 EzzQx0d6 4h7sPnZU ReLfDhP0 Ppig6/RZ Tvbh/t8J FfrPWN06 47rQVHxD qO8zOu/v hlnIFQiP +fljYHeU HlCGVuh7 qwx9fQo8
+  QlNXosMm 9LubbK1B ypeCew0H cV5Dbwz2 azFwzt64 UW51sJGN Bm4S7sq1 4M39vStF LWLznAcF BrXDdZ8M vqViIyG0 tx2rsmow 4DVf76Ni VSmT4eby 89TGQxsu QF0cSIyV
+  TS89I+X9 blEEdaJk nWz9+B1l gpLQ1Na/ t5Tf2lWO 5Gbpv3kJ F3GM40UL ZNuPX8vG ZwfKgaR4 /Sc685Mr Gj5KnKhu NJdh3QLV RnXJ82Vw LxUb49y0 UJQh+hnV lqJoU6U8
+  E8iYMlvp ZG+vCOIx H29xyctV 5sWTviD6 MaMvS+rX XKSsWCY9 0Hhm6NWS 1m4YB0YH ryHGZKSj AY9tsROd as9v9iyZ tmqVej23 okI64ze7 2NopR3p7 01ESqg9M NWi3jeIA
+  OvF3UJSZ a9fKmh3b pJ+zM9qR pTwbMk7N +pn8/juO PVx6gjA4 AUA0RkJ8 jtoMJVUJ U+VELlok Q9Mmy5sR YfI0VMG9 7u7S29lJ bgZxcm3q Nm2ZUAOg gqIJS1Mt XR9YWh8Y
+  DnM9zr2z I32PjnIN zHT6wp6D 8hw+dYpk QLHvP9E0 6TPesL+b u1q/aY5n 1Qn39zqY olTkhHb1 fOa87xml l2ekaebt rwXmWnsa ao3B0QN8 fFXQbheQ TF9cy8Ne HjKrrHVr
+  Nkt275au IEu7nNqr FhgC9U1i onTHZ8UY 4IivxifI IJjFdavM UQGzDxkS 4tVCLWJT sWIw7Z4K jlBZcOlP Y5AtY8Xu 9g5Q758+ fw4j0DHl d+tkM1Yt hm8IJ1at kKp//kNK
+  b+og23/4 So4vK9Z/ InI4c7qU 39lLyqHS KvrcKGU3 Xifbf/lO LjTiWObt 2B8XKeV3 9ZJqf2/1 XuWBQyqA l6sjGKtD /D02Ua6x dpIPxifL kGkZ8vWk NPkudYq8 GhmvVjQw
+  Hm9fM0MQ tEewE+br V0kJINGR yine332s WOMaSg2c rgw98Zg5 U4IWLJA8 mNKG5rkK t2jieSYv XQqCiNft C2i7c6Q7 gWMZksEP EyfIjTZW Un6Fy4pW YBTvBqK+ bayzcpwX
+  Vlaq31e/ 1cT5EjxV rfnuhTJ5 GGZ5N6iU +7281HIv msrJy5ao oNdKA7Xd GM6cO4/B Ikf+mDJZ 3odSZZgL o+evw0By B87zQU8P edrfD7/l KddxBcUv P8m/aKo3 cL58m53p
+  wPETBgq3 4Ytzzs1V 5ngnXEcP l7HS3d5J OoAo2oHw OoDoHgFB aCtFGgIT Pj7k6Y3B FQOGuZny aQYumKf/ lNDdY57X 4PHxci8G qf36BJDM rnJI/++W IqF4sdwI tcnfNMXz
+  ZAjIQDyL zNIS6Yhz Dy4o0O/Z MpDYOqOd DE5MqEVM wzDYdDc3 hSLVCR6u ae6J37et x0f7O57n u5HheuWm uwNXCzXE to9MHxIh /5o8VYKK Fkn0kqUg hgny7aQp +PcytYKA
+  JEEkr16D B2+tcq4x a2d9OJKT KRV395EN 990hh0AA 9eHI3Nmy fcgPsvWz 92Svt5uc b+Zs2cHE OCmFuju1 WOd4VTnf oNp8Fuge mgvVJMxR EhgrYfWC giNR++Jz 97kLQMp+
+  snZP04Sg 3fjwokKx yZkhmevW YuSzlzfD w6Rw00bx gfJxRgdk ah6GkUQu LJTvJybL L5MmyeD4 OHmTi7Wh AFQ2Cxyq scfI3yIR Hm2maelF s8rMFLL/ yrJDbNi3 Fx3BRgYn
+  tS5AV7sm +nieDwpS TvL4pUtg OsfKk36+ +KTljZem 5WtQeyY/ /4Dj/SEd YOL+hk7B 2UOSJ808 3isSQS46 LJeBRRZd csK3Bfhs b4RpxbCF DjBdr7Wx lGtBDAzk 7QXCW7ez
+  8ckLxjw+ FeiHfmKq Vnck65Vq fSiH+djB wkyss3XW ynqYqisv MxubByaB HJuXJ3e7 jpXvUyfK 6xhcOKgc PXtGetg7 yITlrVt4 z9n37lD2 THSgwT4r U3pYmsnC zZeW+iVi
+  ELtuzMga otPAZ/YE 2gNDlLbq fW+NLdm7 UtQQG/Ot cdaTqYRS V6+VRcpv dlEVZjGf kSsfJSSr FEXEUBAc iYTrQevD /tgIZWZW PvOY7PHz kD1errLb xlx2W5vh r27b62wr
+  1SAzhnrs sh4je7HP XjdH2YP3 a232lrI/ KlTOGSxv 4e2o+uQ9 qMG3oYXP SzjOy2QU zdEU9Xn+ xk1QcM7C hfuMX4vH 5yRm25mz 5EHfQKhQ V8kub956 udVowF3Q 6Dzz89VI
+  tePQQfzV aZTBiePF ZMgv8irN IyiI/8NG /xH3y4DJ cZ21Ncyw 36AmElRn bewxaiqN aM7jngTC vGbEMLU+ 70qwm75S R0f5GETc WhSjYXe3 slCZPUz1 +cXei4mW B2EGHWtl
+  +AtrMXwF E/Nr3LvZ 5c3LrdfW CmBWRbl8 EBMlzwYF KuU4dEoa 1FWcJC7R rQNu6Ne0 979LGi+P ebhJgT6h AN9vaIb1 2+Qkud5i jEp/ZQvT 1XBVQkvA CaEpMLV/ njwJJDxG
+  +Toji4tl +5EjcouD o8Tql3G1 FLs4eeDi JL9O1j1f mpmW06eo 8CMddBfm kDtDqcU3 IsJlcMJ4 1Q7ej42R FwIDpL2d Dc7JTLJh zl9t1BAb g1jpbO9o O1bNLDIH 2vxNm2Uq
+  VMo/odye gZrjAnXi 2dAoZaay BF5d7A3w ltKu18im QU/Jbncn 2fjQXcrc LL+ls5T3 4tZF/bu0 k4mU3GAi Zfhb3v16 Ke2I1x3w utv1un1B jNrG97Z9 /4WcN3Ak H5mRKeX9
+  esrFdWtk KczRjnYu cq93kIrx qsKI0MPZ Qz5OnCim WTNUTBvz tlGxMYCX M70e85sn yTk7Sf8Q nb80R4Pm z1HOa2Ir zI23QGrM R0b/w3cT JkhkYYFs ObBfhqJh saHe7+Gq
+  ZqNOnW3b RHv7MQJO Xb1KzeYZ mgYtxUGo nnvQ+bjc prVYv2u3 fAVijFxU pGbduL0e Hiq3Q93u aE0gbQOX 0/qrbD14 LVRfl1Yl NA1tz637 D8iemuVU jZ995YF9 0tfZSR7z
+  8ZF+Tg5Q qFP0n7QM XNIWvXix 2MHCYPjK 9da28gSO uZYpwh3s xW9e80Jt 6oIZcvpD BX7exAA4 HsR5HeMN Ycqz33AW WPksYRX0 gFp7xNND irdoiUav 3hOtITZW lWLKIM6I
+  Mn6NaodO 9xEZ2fIe zLh+Hl5q zVs1yOV2 Nz8Qh5eU 6qepNVSH +EvZjdfC BO0thxcW yLafvpUK kJSaHODM J7d7b5OK u3rJjmG/ yMGJifj7 q2x+/QXZ HxEs+yJD ZNPTj8oG
+  fF6z/319 1evy3jfK UYMwgROr lkt535vl GMzSagyD d4PUqMSY 4ojxOffh 9a9Qlvaz Zqvr6e3q I/f7Bsnz jLszsxOr vHz9kRoG R6VXIeVv gAnCZTF8 TfX1j7AQ 2asnWZri
+  CzdtUj4X zmp6z8qT 9yPDJKRw geSUrK/j 02mrB3n5 cVp7ZJp0 Twb4yReJ Cfp3rhxc z/lEgL90 xgi95n+w zgGJrZYy a+LhaB+n rlwJQhil JluGTq4d CNtcMLmj VXq6eMyZ
+  Le3Rbjsz CDgnGyKl UjpbWal1 wq0Bz/Gr 8bESu6jx 1Rnse/lQ 2NGLFyoT eM6GDSoB A9dWr0Vb 4EywQmsb bDNRQ2y+ BUU12TsY KsE1opwJ vQcEwRUH rFPAtMBr YLJyxpFL
+  q0hyGo4V LZCK/rcq 9bXX3VnO QTltfvlZ qbj9JgOS ul023NFD Kp8cIGf1 8Ve8vvMG o/puJxvd bKnBd0iG 5bd2kQMJ sfq9QGzL l4DsusoB KER6+f4W FqP8alxy RXC1ATP7
+  DkvXle5j DBvPuyNT GVk6iFVu 08TGyYAX GXwIRaZl KGHg5jth ofKkj6cy Mc7o1ZsG fscuL0e6 2ViLf8F8 5fS/OtC1 jCtvHxdh NoTKVzCb 2grMD8eZ y47WFipu 7n8VrXk2
+  Xvn5cp+9 ncQsap0p ShXP2fkP oKw4sHRx sJM73d1V yqJezg6y qgnfYGNg eFDdmc7W 4SqzGlBD bHS4c8mR Ye0ChntQ wdHsfDlS F2JRVFWl 9qM/Tuu0 F8+cka2f /xMm43Wy
+  ceD9cnqL LvcWg3Ar bqlDUlBz FXf2lMMZ lwJQNZyH Itzy/lu6 +DaD72y4 6xYpB0Ee K7wko4/k ZMHkvVYO RYer1/+I S4LstVV1 FQgWiOFC fYataGSt bYzHs87V rTNtCNqt
+  Z9zXWBAV q/po73Fd HZeW3OXi qPxqb0dG qNkeZod4 2MtL7nF3 k5u5DnDE MHHFd//T wZUOI6Zd ee79S7io /Etc4qNm WK9+O/5L gcGw7Fut ca4z9OZh mHtcG9rF 3kZ6Ojmq
+  BfBUgkyG +r9SArGG 2BxnzVUZ aWsXZdFt zHrL2UWi EPbxNVbo 0MGRcko/ I8owDpqf JLFt33xW 8zgOg3yU iutxwyX/ 2q1dVWjH xqcellMG MTUXIWF3 21kq39sl f5zO11Z2
+  8w2yfeiP cgEPTcMe Rxspwb7H 8/PU63fi J6glVlP1 +do+T06V drieutfC rTnEVh/Y 0Awd1Fw+ 5DN3LtRO onwFU+63 qWniODNP pcleBUKc WVrSgsIl /x6QeJxn ZKv0220J
+  rhBg2AbR 1k79vyrq 3qXW3rWZ ZaUqpnBm yXpVR3Ty qhXSzdJc LLMycdD/ jWdRQ2yu c+Zfpti0 7XqoHhYw ppN66fYd UEHO8oh/ aE22hj1u joq0KkBE e2BKGoIq q9rXQ6r9
+  PKXa30uq A31kj7Md CK+3bHr2 MTkGm/8C zLdd1mZS BlW2y2q0 2kfti22v j5vyxZ0z CIM4A1t9 w4C7ZeP/ DZALdJ7j vdeixivf WXaZbkLj nwkTFVHX vRZuzTVF /xdA5zgn
+  EIz4a6Ah 2lKrJ9Bf /zdozYDY QhcXq2we dLTXJQIW ank4IEQO nz4lG/fv V+/1c/eT 7Ud0ece2 fTtYKvp0 UxMFe71d 1XuNgT61 yucGKn8c ldtWqDyq NM6gntna tMLZZWUq
+  JdeZyL5x fur1sbNn 5LHAUChL J5WDjaDC pNKsey3c SGyWOUZi M8KIvypq iG3q2vVq KVV9xMYU RkxltOnA Qdj+Z5RT nmEhxWox /EXZ+uHf QWzdpeLW LrJzzHDd ARvBWSiu
+  ymcelQ39 esiGO29R pLihX0/Z +Mjdcqq0 8cXX+0ID pbTr9bLp 5WflrH5B NNeksWpV LxcvVVCE wYAP+QWr avN1r4WK lOUB7Wc2 na6amTCm r14lYYWF ErVokURj 49/LtsW6
+  jZ83uA82 w88a2q+x 73Or7/Pm HEv792X7 Gpx7rfcb 2QyPVd/3 GnrfcGvo e/W9p71v +G/Dzw1f N/W+thke qzn71vd+ fdufeSxu 2j78a/hv w33UdgXP uO5njb1f 32Z4rJCC
+  AlWK72q7 J2qIjVlz mVJbS/tt uGkZPuZu 0kUYs6qU yWgriVup W3O39etP paL3jVLR 92bZ/Mpz cq6J2KUa Yrvj5ksT BCC4xoiN udr2eo7V xbn1u0WO LbwUh5YF 87Odhb08
+  ExKpfEYM NmYsHs+5 7rWQuKlM Y5Y2HYHN dZXm6dNU lZ/Px8fX u30Wz7/j 9dvln/+3 bZ/Fx+mv ybgZt7bf 3okMF9eZ eVfd1VdD bFsPH5a+ MC/rI4Ob QAZ0uHvq g1pd5nAB
+  vIXKtEtU O1jrTEkV ltFVqoO4 lKZhnN25 XZmgDP24 RGy9YIre KafWX+7E Pnf4kOwY PgSk1l7K enSSAxOT 9J/owEy6 PB9tyVcS CPdamKEk sboKlMTN +LyCmiBB I4ww4k/H
+  n0VsXOvI WDD600gG TPfDvwyV UFlzTW3U AnKCFdav sXRQZff2 nzsnZxcW SnlfmJV3 91Z51egr O7agYVPv 3KGDMCWf qRUKUtG7 q1Q+fr+c 2VG7AAyV WdXH70rp DSZqpcG+
+  qNBa94QL ap8Ni4KC tJGUVTpS /CMjW8W0 qfN30mX1 YKYPEhoX 9fdx9ZXK VqRiNsSx 02dl0aZK 2dyKDLb/ yeBIqlL0 XOWGZ4QR VxM1xEYM y+AyDAdV z/M2N19F BHd6+slP
+  adPkzejx 8oBvkGw5 eFBFF78Z myCs6xm3 UpeGZcfQ H6T85g5q lQGVGGct mT/tXM2S kto4mJqs FskznKMC Km8DyO1A Qoz67MKZ 03K8eJHs HDFUKu66 VUram0jl s4/J4Txd
+  gj5DzCiv kGtxznd6 +qtF0Yyk fzQgFKap g1oxYZ49 Q16LipcX w2PkFlzX 9dZO6nXd uqYtxZpt 2+RGizHS 19FBlm2r knNghEvB uFePFRqL bWKJM0aG hzczQy3B 0miGyFi3
+  Tr6Nj20w uUFDuLK7 qbtj3Jgd gvUluCbX CCNai1rE FrVshbSH CTdkaoaM yJwhf6Rn iue8+VJW vVeWbN0G onMTvwW6 JRVZZWUq IPbp4Eg5 jg51Yc8e 2fz2S1LG mc57+iif
+  GZdBbf77 Kyp8gymM zkHdGHbL U5s3yYHk BKkOC5LD +XlyfPVK FRay5YO3 pAKmaWkH qLReXUCa P8qpqksZ BDTQAakC c0daitcC XeHgKetK 1OwoVxhw XWjMkiUS u3S5mM3I
+  hVLzUSEh trNaHsNW H8wyM1Qg 5LuxMfJS cJCYpU9T absJraO2 NRj5vfXA ftl26JAq MK0VVdbw 6rhA+TA6 Uv+qfjDJ YsKSYnyX CTEvCKvW a8kaubD/ fleXFlUv 0nAl16s5
+  k5llt8OY 0fJJXO3E mkYY0RLU IrbNBw+p oic9nDzl 5chYCVu0 WNbs3CEl e/eI9/wC ZdIxJxtV ETvYWzGJ wtTgAUW6 bAdntm+T ncN+BaF1 U6alWmVw m262tOLe 29TEwrbv
+  v5Rd5qNU gC0nA/aO dZCdv/0k W955Te1T 1vVatSC+ AqYtVy4c yc1usMNM XLVG2pna quVenK1l B3hv/ASQ l7087B8M Qlsqjvmz JRjX8TYU JuPxOPOb 24qCLobg pAKJJbq4
+  WLfCwNxS 2o0ZI+GF BTJi8iRV Cf1KwOtt 6Jq5rOVp H2+518lR ZdI4ra+V ygK/q3H/ f06ZqGag iIaOMasC KnfksJoU 1R6z8uSL 8VBpMOtZ o/Jxlsxr ZvqkbQcO inVWes3+
+  reEgQ82Y sX69dDAb LU452ZK2 crlENKMa e0MzbIzR Yz1Sqk/u w79c0H4O ZP5ncGVD P8E6AayR Wh/4ncbP 7aI6fxaM vuy68ZLv sU3wWhtS 97pvNvoj bQaW52Q9 W8PsNfz9
+  tliY1Rhq ERvxyYRU tbLg2dBI 8S8olJGZ OWr5lOZ4 ZxCvNqNY sLlKOuJ1 T3y2Ql9c g6d/cNpk 2Qyiot9N mZqcMe2D jSsKmOnj 5hug7Nrr SKyTifKf lXVup0hw 06CnFelx
+  7SlXIzSE KpBwf5if 7aAa09bq ZlKzSsuk g50LzE0X udsrUBV2 sZ+ZL8FF i+T5sCgV 5vFkUISq Ddoa0J9m kT4d6myc ytx6nbm5 WovX0dZK 4osXy5Jt W4Ul+CIX tr6MW1PN
+  jVkmPomP U5katMwZ /M4b4wLE f+4csZ+R LQWb9JW+ G2k+n8bF yqh0XcGN oIICMRny syzavFnW 7Nolr4SM U9WHmoOs 9WtVBfUR 01uXjUID Q3QcQbQ9 rS1U3VZW uO9ibip2
+  2boJoQbv Cz5gp5m8 YrmYZ2WI RXameMzO V0klN0L9 veDjKfM3 6FJUsazh 3/x9m8zF fxqDZMTC QrHBvbTJ yhKb7Ms3 5k6zAfmy 0Exj6ydZ kZ31O6mS uRVWbhQr nOdjXp6S
+  XVIqCyp1 78/dUC4L N1UqX3dD qY00TFq+ TL5AGzhy Rhcgz1ob /nPn4lbo /vsNg5uP vsrY5QTG VgHyO3dW pbxinkFL XmdOjjjO nCnW+Gs1 Ywa2bPW+ BbfM9Eaz QnNhewQG
+  9bH4TfXs DKwr5su7 39UZFp8u vlTDBVzk 1RxcLiO2 tPUlKmL/ RpidnBxg LNi1eM0F 8Vw7yky1 TA+0cZ8u FbNNXr5K Ef5sSJRU H7u0KP78 iRPKJ8YV BVX//Lts ev5x2Tig
+  v8p+y23D /X1l03MD odRel+0/ f6dM0GPz 58i5JlI8 E3z4KsPv cAv5cYqu ICsLNKuF 8CAvnjdr N5DIeM4P +gWrGV8T C3uV0ry1 KEQjZI1P k5GjVKGO 0WignWws 5cfUFMkv
+  K5UH3dxV EWMtp319 qNtoDRue 9q/tIG3m 8q8L7fMN +/bJQG8P MZs6RWU2 JZi1YS1I yQrmMSvS K9TTcrRR fO2O7ZK9 do1SDz4g xI9iYmQH VGj6urWq qjgrkDUH oUUF0snK
+  XN4KD1UJ OSuq98n+ FtRLYIJK FjOp3L9f ra39QT/j 7Tprljzt 6yOHmmkS v43f7wmy fzE4ULpa W+K+7JIQ nFtfJzuQ nK5dZpWU SBdLS5UB ujGQ1O9x dVIE756f L865OeKk
+  3xz1fz1m z5YBPj7y mLeXnAIR NgQ7tJG3 QoOF6cs/ jY+VrxLi VDnCGx0c 5IOYaBmM 10xZ/l5U hHweE6We Qf241FI8 82dJXzvb msFnzPSp 8hyemYa/ +fvJUIOE kLWhO8rx
+  06flEbSh no728i5+ lzVJ+dxZ CPzd6Eh5 R20R8hbO 63XcB1by aggsstPD zhrX5Su3 OdnLjxMS McBmyfdJ Ceq4JsN/ lyfwLL/H +79Mmqiy fejO4/L2 2Va4jNjo gH/YP0SZ
+  bV3t3dQi +Lu9AuRe nyCl2EgU nGAYnKxL q0KSeY6z ksPM1XtM WVMXrHtw BibtCXSa wwULsM2X EytXyGmY ToY51pqL 0Vk5itSY YWT7Yd3k hGP+3JqZ 0JFZ2fJu XKJSmTSf
+  WWGro62r 3OzsobKT tBb0Q/nO yZckjNKE O0aojpbm 8ihMt9tZ +cnUVD4c H6+fKW34 oVUfOapG QG2P1bt2 1KT3ofn0 blS4POvL DlM7Mwj3 pzrhlrV2 tSoewzTZ WhppmsfM
+  oFqFwaGp ZjMcDf8l fx9V7JYN 7qReHbPI 7wuBQQYT IfUfR+tm zrPypauV JUyrAzJq WprcPNpU vk9OUhMZ zUEYTM0n oKqW4DzM p05V18IJ kIc93WRV C0rsvRYa Ih5z5sjC
+  LZvl//A8 NuNePAt1 xnTnVEwp y5eKGTO+ OtpBoS4w yJN2OViV nRXsXwJJ OkOVMRWQ LQiKBbOp IB1mZIor Bu0Xg4PR 6YPlVCOD AJerTVi2 VLzmzRV3 KMmg+fMU yd3u4gyC
+  nCF+c2eL J94PxX3f gnbTUN63 C2pI0t3T wPnz5T5X l5rMMtY4 nzejLvlV X8M5aRXb GwITOTyK tsOBkFgB svk4MkIt wD977pwi 65PY6OLR nVPDz5NJ QR/ycFXP i6ULh0+f
+  Ljfb2sq3 E5LFLidX XbcdrnUY nu91o0Zd cpU0r4m0 CpcRG+E2 D6YJSIKh Ef09A8Qy J0/8Cxcq ouAqBJIH lyuFLNLl dirBiHs/ VBKz6rLe AGdOrwaq oQR+mDwd BGIrt471
+  kqIqXd75 1DVrVZgK Y9eYzjx+ +XK8t0Yc Zs6Sd+IT dBlKcD3f Tb48o0hr EQ41wEra JqajpL+H m3yWBAVp YSqdYEp5 zszV71UH elL6ZWKy PO2nq9nA 2dRvE8er CupMz/5z
+  SrLKusuq USS5umAJ OXOM0Gsx UIwHwb6H EVYrwTdi Sprc4zZW KRS2GUM1 aIhIEEcX M1Mprtqi 6nPeam8r OVCchD86 DQmB3yY5 McFgYxg+ fZrcaG2F xl2lsvAy NXjyimXq
+  swtNzJXy XsyugAoe /ocq3xa9 qEg2oi19 lzxBulqY SxHMtubi jbBQEMQc VfRmyKQU SV29StqN HikBC+bJ J1Afd7k4 SF9XV+nq 6Cj9nBxl wYaGU6of PnVSFen5 BoTvjYGM
+  i8dZfcwG JhqTHIwA aTCR6M8Y HBK51rkR U/TM+Qvy JJ71S8H+ ql3Qn8li 0rePdRGr jHTxwvFY 26E3zmtV nVAnQ/BJ Vh87IjEw ka1hHj4K UzYTg9v+ Y0fFBQPs IJDZXBA4
+  Tfq3w8Nk NJ5LYzgO AcJjWMHU Jr5g0W/T MSpDDVPf vxo8Tl4e N06eAcGn rWq8EDqJ bSBIMr+8 XP6VnCxz 0JZ/QBtn tSpWEtsI C6MSG8sD foffWaB3 DeDxXzXU S2x7j59Q
+  S5Ko2no4 eyofm03e LBmeniV9 3XxVjBtj 27rBXM0s 1aVtXrFj pzzkO04p N35Xq9De VmCqcpUk Ese/3dVH 5lTqUiMt xkjDMoA0 O0m8Tmjc rNEQVbxU +Qj/b1w4 rsNZboJa
+  W66vh9pa aEQxs7xU rgWp3WRv h0afIa+H hchANIBh UyerwN+T GPEMOUX7 5wQQ0aDA AJivtvhO mMQuLJIP MdK+D8k/ dc0qGYBR +L3oaHnE x0uKG1gz y3Gb4RhM p8RJHJrH
+  WgNhzcde IJn1Naaw 9su6v8xb /15YsFxr PkYll6xG p1iK37kT v/tcgL/a x2/+XLkD 6jNyyRJ5 OdBPKSpD GFyWwnsw Y7rADGH6 pmtAJFQk zUUwfssU 5rQXyMg5 L1dVsfom
+  MV6eDgyU m0BsU1Y2 Pz//30Hw I9Knyz9h UjOL66u4 vyYjRikS 3wvTk9Wb YpYtkVsc 7KQYHYwT JQ3h8MkT MDE9xQ2E EQhFNRLE wwkSlkEk 4bGavRsI yQFqjsq5 MVD5PhXo
+  D+INER+Y kJ6zZ8n7 cSA2Zyfl p/OCmhkF ErpjrJMq rNMY8tGn aJ5bwcx7 YVyAepbu OA/m/XsJ hDQowFem r1mtFGFT iu0EiQ3X 6IzvT1+9 Um5ztJWU FSskDm20 I9qQOQgv
+  c906SV2x XDY14R4i sT2H9uSC Y/0+Tedr TQLhP+bi KE96eciT MHmfwG89 CjN1LM79 z0C9xEZE L12h/FVc icAqUN9M SlPpwh/w GacUEEmE ZMIkjlpy Ryo1lQdt lJVcY+Us
+  o2AyXmkg 7A6Ymiyx x/NgWMeg 8Jiags1M VX6fD5Si pYPK6ssS e/08/OSX qekSXLRQ Vae6FufB SvCjshtQ US3EFlxP f1dnecrb S5HLzIpS dEg7VYWb zl/OTF4G PRu4oiM8
+  hQf8iJeX BM2bJx/A 5OwEkmHj Yrbdn6Dc pkBpfBwX pWa96sO5 i+dh6k1Q NTLNp09R WRtoIseg A/80cYJs rL68+K4y JPDGdphn w6A0Bnh7 o7MFiSM6 6FooNjr+ x8NcWgPF
+  MMDTE/fM Atfooswv hpbUIjO8 YHGaicuX iSk6ZC+o ny6cGTYd DZXQsurf EYVF8jTO hfg8KUGl V+dyG6pW PyglrZpR c0BfzmgQ 25fxMeIN svACId3j 7q6ON2zS RBVGwsI3
+  PR0cZMdR XfKGhkDV M8DDHWZ5 IYhilSr7 54nzYQ7/ 252dYQnk KUKyhplL 5Xw53V8C B58HPd3l NRBbGAay cCiuwVCC t7m4iCuI M3pRoTpf lsdb1Igf i6Ap/N2E BFWQmAWz
+  w3Csv/n7 yG9pafIV lNKY9Glo G8nyIRSh WROKjZWw HvXxFMe8 HEmFIuOg vH73LslE O+wB8h8H 5U5fcTGE wzKcF33Y DYHE9gwG Rk5E/AvP jiChV2Ig 3Yz+QmLc DOW2CaqN
+  95a42iE8 DRIbg3Df ZY4zmHCs /n7rWB/l r9IKEJPc 7vEKVIkc b3H2kpTV l5ZCjVu4 WJmKVFd9 3HxkzIw8 VY+0Pv9b feBNXIQb 6gBCo3+P kxNcr+o6 Zx5MI50/ YyaOx1lR
+  nh9V5Ttx SYrQWEeU SvPp4AhF upwIGeAX omK+Wgvt GdDXwNGQ dSDZsN1h WtzsaC/X WFrJQDSS HrY28vfw kMsfmv7l 3qNHJA9E xJqLWw4c VGlkLEAe oWjwGr5J TJDfG0kL
+  zenzB90x 2NhayUo0 KAay+kIJ PI/RejZM EfpK9sMU VbSo/13+ 0U6JTuO/ wcQwGT1C XEC0RZs3 ybsRulTm LDzC2pdv RkWo8nEa 6lyN8oM9 A/OKEynd HB2kAxTo E1BsWvoj
+  /lbjpWt0 KN29G2Sc JBOhCh52 HyuJMEfN 0MF+T02R n5ITZdfh 5tdLeB2m qPusfHV/ OfNJNfpm 6DiVwOAb PLMfYRrl lJZKbwdH qWzCVbL3 +DG5390N 5jHLIY6X BzGIJS5b
+  Jj+lTJS7 8H4ABiXv ObOlI8g8 HsqkKQTg 3tLX55Kb LR75efJP KLbbYIra ZqeLDZTg 3RhEPh4f j06vv3/q /7XBNvU5 lH0YFHFI wQJ53Mtd VmJQ+hED wkcgMhLb XJh4TF0/
+  KCREzEDy jYE+tidh ZbCQMtdD P+jhKo9D WT3gMRb9 3RlEFSRP 4Rnf5ewo r6JtNeaT pJ+WZm0R rJXvcB6h BQUyamqa jMhMV7Ge w6B4OdM6 DGruGwze M0r+xGIu 9WHt7r2q
+  VgDJi341 5WODCUoz 9PXoeLHK naneu97a Wb1vP3OO GqGICrDz b9OzVO42 EhwJZmBg qE5NLSpW hWCKtmyV Jdu2q6y8 WXgdAfPx d5i7DPpV y7iGWyjV +G3KFFlh kGKa5QFJ
+  rjzm7TCN 38C52M3M l/DFxfLb tEz13nU4 Z/oDeW7p Jc2rctQQ NKKKWFSk Un4zh/y3 8dFo4HOU P6IXFEt2 aQlMyiio r8aV4RcJ 8fJ1sq6+ AJ20r6Hz 5W3Q5ZDb DSVxB44V
+  CvXVEHgm 06DqctA4 4ooXy3uR EbKoarP8 OmmSvAFz pAdUDxNc qn3r6SFF Wzar4hqs 9l594ph8 mcRYxOHy PtQjExT+ iM77VVLt tbi1oTso 1R9DX7pi dDexMFPq oS7q66Aa
+  6Cj/JiFO esGcfxKm N/1FX6PR P+TJor6l MB2PN3sC gngNxEb/ 12kMPs/6 +Sh/05u4 H1G4l4vQ 4d4e5y+h UGB3Ors0 SWxbcG23 o0OzeHI6 zLGhaanK 5GOsX3+3 sVCymeII
+  kmLhlMaq 2vP8w2Am OsDkHJub q0IheJz3 oyKlD87D PD1drDMz 5RYMDi+O C5RyfUhF fZfNQGoW Dzp55qxS yk9C+dP/ yQkmS5h3 b+CYbKck rLegDrlP Y6BiewRk NDojXQVj
+  70HbYyWq j2Bum4wc Lb9MTlOT WqztsROk pgVw1wcS 20NQpZyt d509Rz4F SdtkTJM7 Qd4sAPMJ BpbrLc1V pa8hsCq0 8JuriUaJ jZi8dr1+ ZlG3OP5R /xCYmylq QuHTpBT5
+  YmKq8sHR eU/19FZM Qk01K6Jw S5VaLH8P JxcsYbIM t9RtY2xV GAkzbfCv yRh0kBFW OjIzs1Pk xCy4eRWX nLylMCf+ NXma2p+k xvWfVIQe c+dL3DLd 6gIWRh4Y GKY+o4k6
+  uo1MUMZE dQNpfDle VxuAsUvx IDofmDwD 0MhiFy+U f8HEqEKn aAgsVWYy fLhk60uW UZZ/Hhsl q3fqzNdZ UBvXj/hD cvWOfA11 2/mKbVUy Om2SvBwS LPfDdAxE 5+Gqh8hF
+  i0EU9hgR a1eSN4T/ ggViMnSI /DRJV6rw e5CJQ25O jdk3auoU Gay/xvrA Q2rHXbdj p3RAg70b aqsanYLw B9nbY5Sm T6sh8OvV 6Eg/Q61x MGAc3etQ Gd0xaKwz iJdqKp7L
+  EAxTGJI6 GQNmqdzl 5CT5+PsW Bo0AKBxO UrDC2KRV K5ul2Iqh hPs4OcBM XKj8aENA YCOnpio/ Xl8XJ/kF ipITOL/C xLWD4mHQ b33g6QdD 3X0cGye/ w1z8Effc FIPBPzAY
+  PTMuWJzy 8iRgwXyZ BDX40rgA KOfwBld8 8Bo0DAoZ B3PzUv0P m9wZ8hrO TQPDM5qa PFA+Ni8P MQexckKK 1fa/m5Ak D8AacJs9 W/mCH8Jz jcBgcKiJ er8ktgeh 9gs3VcpP
+  qWkyfIou zfzncbFK rTFukGn0 WT+V2NfM 4O8rQZPE RjjPng/S slcq6uWI WBlXWCRO s2bL95On ykt4TVOQ Ckr5wUBu JMDR2Tlq tlQDb07+ xkrxnFeo yOnNmPGq oPHjICEq
+  tDeixiuf mMuc+TKj rAKjxCU/ yBaYW/Sz 9XX3Vf4y Bgk/6Bss d8EU5Uwo zVA3kNtH iRNVDJs6 D3N7+TIl TZnUbYER 06dLJ3Nz qajWdTyS x51jcR5e 3nKtpY3c ho4Qpi/a
+  21B/ZMHl f4SFq3AC DTTrNFKh j2toSrIq H0hox+Hf k+fPyYLK jfIlTNV7 XJxV0Q6C JjBnZukH 2Xn4kKrl WayfLa57 Hlx+Rd8L FRIDMAll Php0mj9A bN/AbGsO fGCOmfz2
+  mxrlNZhN myomP/2g FASrmhH1 EayGYBDt ezCFP4uJ kh9gfrYW H0MVPAal 1sveRqVe YnnCl2By ++IcNeSU l0sPOzuV LLUueIoM qSCo7O5D p564aoXc CZIMgik5 efVK1WHv
+  c3cXj9mz ZMy0NNzL qdLf2Um2 N0KUZXur 5d3wUDXr /UlkmKyo 2iLrdu+S p2BK0h+6 Ds88e32J vIRByiE3 TxEYzfi6 t0x7ZxUs l05mo2sF gVtDPb4e FaF/JfIG wz2aIDYq
+  u4cxKLLw 9mIQ0p1Q 3h/GxKgJ JoIlJrkK pa+NlUzW z3I3BM6s P+brI4OC AuUWK0sp qNwgO/Ds e9laq9Ao 8gAr+LP4 E0N5GN92 tdEsYuMt HQKzkhk0 OMvI+pxc Q0qlRjOV
+  Ze+6gEye C41SyR5v ckRngwnZ 29UbCmqq ZJSUQuY2 4LBtoNFz iQ7V2hCY liQwqi8q x26OHvLj lOloaKvF NDNHKTOa m0x+OQgk q5SjuYO8 HZuoGndb gA2xm6WZ qrCtgbM+
+  JJRejk7y TUqK3APJ PQKqqbHw iPMYGWkC 6Nz5tVHX L6dbdnJp vw3oBC/7 +yplw2lz gkkwbTOm yzvRMWop 1Tx0nucD /WX/8fpH RJoTK0CA /vPmQnXU DuDUAnd/ B7H9MDlV
+  /bs+0M9I p7JH/izp invSy9ZG ZutnwHkJ JOl/TZwI cvtRFRfm /oZXdgQD HDt5weYt 8i3MYJrS a9FZ98Ms ZjArTa3W gKboEKii 9Xv2qMkN 3uunfP1k HBQb/YUz 1sOkxLV1
+  Q8fbqk9Q Wh9UDBuU zNdQ3wur qmSgn79a XfAL1CV9 kc8H+Mlv UGw0J6l+ H4LCYX2H +sBr/wSK 9JVxQUqt 3AySGIZz YCm6WJju 09askgdg rg3Bs+Oq iYEwDfce PdZQl1Aq
+  l0G097iR JOgz1u05 CmYfJ680 vBgYCKXU eHGeY1Bs 9CM+D/I3 y0xXs/Se c+ZIMEjd DYTmPX++ BOMcv0+Z IMOnpil/ bkNg1XrG xPnPnyuz MOAzAPcp XMsL/n4q zpUlMTtb
+  W4gPPn8l OEh+ntRQ 8HDboVnE RjAbxreT pko7K0fl mKepSFJh mb6eILOf QDbD0rPU X5qQJCDl J4NyYrgF JxqYoNI6 N18tyaJ6 Ww5TZu2u PSpUZHbl Jhm/YqWq A/pJ0iR5
+  0G8cvg+S gllKFchJ Aa6GoBmc CaKcX1kp 6Wisg5Mn SSd7NxVM zEBc7vsG zOF9J1oe +FsXHD1J OIw7usfN tZZ5Rd/D QB+fmpit EjTczlB0 HvmXap82 D2yc2qYD R2fdq0vv
+  MVZqz5HD +mBJgWl1 WMn7vIpy sUGniF+6 VE3VD47X ZUhpDLHF i+SnWqoM v6P/KSq2 H1MbJjY6 qG8yHy0d xoyQ90FK hktlNG6m n9V1Zq54 416cq5Ml hB3qO5xj fxAMzSXN
+  J7vj8GE1 q6vV0Wgp XkHHZnCy Bs7KPevt qWaLM0Ag /Wws5DZ7 OxkNRVk3 cQCh3Wne Yy5Pm43r XAYT6wHc 48JNm2Qp rnM9OihJ jDN9nOTp b2ev4r90 g9XlYPuJ WVSkZhaJ
+  0dOmyANo R4wNey0k SJ4AgT6P 8y7ZvUdN 6hSB8LkO uSEs21IF M9tBEldo YTC6s+bz 5ASABpKp PdoEoV1X XXAAYUiI iluLCJX3 YC6/Cmvi FZjvr+A9 bq+GBcvf oQRfCPSV
+  DL2FUB84 YfWgiwPU qc6aeRPk xdUPjCAg OOH1HVRa f9zLl2Di 0nTVNbmG zu7K0Wxi Izgaq9RG ZrZKqTGS vz0U0lcw +ebj4TuA lBjv9jyU my7OzV3N pnImVS3N gglJJcfs
+  GyRIzqwy VTdnPEmS DPqlMqP/ jOqMhMiZ TQb9Ph4U ppZ10Rx1 ys+X1NVr JGxxsbyD z7gigseg UnsP5MlA 17ZC6qqV wvWfzjNr Exav9z6M eNv1M3fz N2yQfug4 ycsal+1t
+  hbL91crB vRSNhNPt dNwOnzJZ fGY3nLlE a0ZUSOno 7DrUblxD odZqk15t bD10QKLR kZZuq6rl 92kIF89z cNC/0IPm 70p8XwPJ OhrP8hko 0pYSmxoE 8APsLPQT ae/ymIs3
+  b1KrMBhB X4bPmNr+ PFUwz6ee U+eQwY2q kn4nnifN /1P1EOH2 QwdBfFub 9D9poPrm T7KM41Z8 lyns6XLg uTUL+DJO SXajvZ2/ cK7Wvee/ 1CCMa6ZS 3XX4EBTd Ubx/+UXy
+  HfUu/sfv 8DrpL2ag OCc7+H2+ p218j5/V tSgMQZVL /9rhk6fU sRnWcUQf AaHuN8Bj 7YMa1ZI2 XNYo2hgt IjYN3guK lPlJIiKp fDspDeST IK6z50nI wkVqtQL9 XFxXyrWk
+  9IGRuOh7 I9l1Amk9 CZOWSo/k xmNcBxIj manX2Ph3 8MRU8Zq/ QJJXrZLP J0xSJicn G14Mj4Xy m6nyqvG7 N+A9EwtH GQpzualI +Zbi87gY ENsfsrhO GT1TjL7P +/pg5NM1
+  zPU7dxiU 2ru6D41g aID7rDwo iINqFQRN nA9jIg2C cy8Hz8qw PdHYrdv4 R05JlUCY DM1FfVfK pqy9X9/n dUG18mlM tJqRbclM qA68gkvf 4b94iEYP 08hnjX1N AQducp86
+  4P5NX5bh XbsczflV kk8twmvw K/yg6eO1 BoZH5fnU d971tbu2 RquIjcgs q1DmIoN0 SVasl/Bt aprKeUaT kIGxX6dM VtPhQ6dl 6MxWfVbe l8JjYL8v kkERMSoc pA/MWgb2
+  MjHkt6lT 5JXIOGln 7ihm2XlK MTE2iT69 Pq7eivA4 WUFS1BQe Q1J85heq G9mW4M1n bNiPNJFO 1VYSXPS+ qolI8asF 1Vz0Jilf nTh3Rikd OusvXKS6 aPl94De4 kRi58BwD
+  bK1OcrWg /S5N1JO4 Do7sRhhx pWg1sRE0 wxiXRtOR EwUDYS5q la4YWDsJ 5qLX/AIV rEsVRkX2 GkhrIhRY RPES6e/l r5z9/bEv l0BNXLVa JqxYKT9M nqZyqj2J 4yUsXy7T
+  161Vpidn YLXU5fxN Ehv9dit3 6TJctDUM 3d7NGwn/ JOD3tf5P E6etAKux Bi0JtbgS KJI2+C2+ NsKIK8UV EZuG3PIN 8nr0eEU2 VHA0F2km /iMuUSWm ZFiIbkbT XexmzpLM
+  khKVEJJ+ ON3kg6e4 z50nMUuX qay3X06c rI7FdN+M l2NacqYq pynL9xnH xhCRxJWr a5zpRhhh hBEa2oTY CE6xT1tX qlIX9Xb1 VQG43Jii m+YpFRsD Z39Mm6rW nZL8WFOB
+  ZMcYOJqr X6ekKRIk kWk+OV1s nKM6Fvd9 KzYBBLhC DtcxDY0w wggjNLQZ sRli9e49 4r2gUKk4 +r+oshiG wRlRktMA v2CVH41p kegz419V DQuqTgvy 5b78HrNy sF6off5c
+  Wbh1W7PW IBphhBH/ 27gqxKaB Uf/r9+yV +OUrxTxn pgyGifkU TEhWlb/d 3VfucPeT Ozyw4S9V HWPjWGGK KwiGZ8xQ +d6Wbt+h gvyMMMII I5qLq0ps 9YHBeruO HFVLLrhs
+  Stv4mtuB kydVLI0R RhhhRGvx pxObEUYY YcTVhpHY jDDCiL8c jMRmhBFG /OVgJDYj jDDiLwcj sRlhhBF/ MYj8P9dn 4yB5dNqx AAAAAElF TkSuQmCC</ImageDataBase64String>
+                </Image>
+             </Element>
+             <Element xsi:type="XString" WhitespaceCount="8">
+                <InnerID>1101</InnerID>
+                <Text>        </Text>
+             </Element>
+             <Element xsi:type="XString" StyleIndex="5">
+                <InnerID>1102</InnerID>
+                <Text>急诊病历</Text>
+             </Element>
+             <Element xsi:type="XParagraphFlag">
+                <InnerID>11</InnerID>
+             </Element>
+             <Element xsi:type="XTextTable" NumOfRows="1" NumOfColumns="4">
+                <InnerID>12</InnerID>
+                <ID>table4</ID>
+                <XElements>
+                   <Element xsi:type="XTextTableRow">
+                      <InnerID>13</InnerID>
+                      <XElements>
+                         <Element xsi:type="XTextTableCell" StyleIndex="4">
+                            <InnerID>14</InnerID>
+                            <XElements>
+                               <Element xsi:type="XString" StyleIndex="1">
+                                  <InnerID>1103</InnerID>
+                                  <Text>姓名</Text>
+                               </Element>
+                               <Element xsi:type="XString" StyleIndex="2">
+                                  <InnerID>1104</InnerID>
+                                  <Text>:</Text>
+                               </Element>
+                               <Element xsi:type="XInputField" StyleIndex="2">
+                                  <InnerID>17</InnerID>
+                                  <ID>pat.name</ID>
+                                  <EnableValueValidate>true</EnableValueValidate>
+                                  <ContentReadonly>True</ContentReadonly>
+                                  <Deleteable>false</Deleteable>
+                                  <BorderElementColor />
+                                  <UserEditable>false</UserEditable>
+                                  <Name>pat.name</Name>
+                                  <BackgroundText>姓名</BackgroundText>
+                                  <FieldSettings />
+                               </Element>
+                               <Element xsi:type="XParagraphFlag" StyleIndex="6">
+                                  <InnerID>18</InnerID>
+                               </Element>
+                            </XElements>
+                         </Element>
+                         <Element xsi:type="XTextTableCell" StyleIndex="4">
+                            <InnerID>19</InnerID>
+                            <XElements>
+                               <Element xsi:type="XString" StyleIndex="7">
+                                  <InnerID>1105</InnerID>
+                                  <Text>诊疗卡号</Text>
+                               </Element>
+                               <Element xsi:type="XString" StyleIndex="3">
+                                  <InnerID>1106</InnerID>
+                                  <Text>:</Text>
+                               </Element>
+                               <Element xsi:type="XInputField" StyleIndex="6">
+                                  <InnerID>22</InnerID>
+                                  <ID>med.outPatNum</ID>
+                                  <EnableValueValidate>true</EnableValueValidate>
+                                  <ContentReadonly>True</ContentReadonly>
+                                  <Deleteable>false</Deleteable>
+                                  <BorderElementColor />
+                                  <UserEditable>false</UserEditable>
+                                  <Name>med.outPatNum</Name>
+                                  <BackgroundText>门诊号</BackgroundText>
+                                  <FieldSettings />
+                               </Element>
+                               <Element xsi:type="XParagraphFlag" StyleIndex="6">
+                                  <InnerID>23</InnerID>
+                               </Element>
+                            </XElements>
+                         </Element>
+                         <Element xsi:type="XTextTableCell" StyleIndex="4">
+                            <InnerID>24</InnerID>
+                            <XElements>
+                               <Element xsi:type="XString" StyleIndex="1">
+                                  <InnerID>1107</InnerID>
+                                  <Text>性别</Text>
+                               </Element>
+                               <Element xsi:type="XString" StyleIndex="2">
+                                  <InnerID>1108</InnerID>
+                                  <Text>:</Text>
+                               </Element>
+                               <Element xsi:type="XInputField" StyleIndex="2">
+                                  <InnerID>27</InnerID>
+                                  <ID>pat.sexName</ID>
+                                  <EnableValueValidate>true</EnableValueValidate>
+                                  <ContentReadonly>True</ContentReadonly>
+                                  <Deleteable>false</Deleteable>
+                                  <BorderElementColor />
+                                  <UserEditable>false</UserEditable>
+                                  <Name>pat.sexName</Name>
+                                  <BackgroundText>性别</BackgroundText>
+                                  <FieldSettings />
+                               </Element>
+                               <Element xsi:type="XParagraphFlag" StyleIndex="6">
+                                  <InnerID>28</InnerID>
+                               </Element>
+                            </XElements>
+                         </Element>
+                         <Element xsi:type="XTextTableCell" StyleIndex="4">
+                            <InnerID>29</InnerID>
+                            <XElements>
+                               <Element xsi:type="XString" StyleIndex="1">
+                                  <InnerID>1109</InnerID>
+                                  <Text>年龄</Text>
+                               </Element>
+                               <Element xsi:type="XString" StyleIndex="2">
+                                  <InnerID>1110</InnerID>
+                                  <Text>:</Text>
+                               </Element>
+                               <Element xsi:type="XInputField" StyleIndex="2">
+                                  <InnerID>32</InnerID>
+                                  <ID>pat.ageYear</ID>
+                                  <EnableValueValidate>true</EnableValueValidate>
+                                  <ContentReadonly>True</ContentReadonly>
+                                  <Deleteable>false</Deleteable>
+                                  <BorderElementColor />
+                                  <UserEditable>false</UserEditable>
+                                  <Name>pat.ageYear</Name>
+                                  <BackgroundText>年龄</BackgroundText>
+                                  <FieldSettings />
+                               </Element>
+                               <Element xsi:type="XParagraphFlag" StyleIndex="6">
+                                  <InnerID>33</InnerID>
+                               </Element>
+                            </XElements>
+                         </Element>
+                      </XElements>
+                   </Element>
+                </XElements>
+                <Columns>
+                   <Element xsi:type="XTextTableColumn">
+                      <InnerID>34</InnerID>
+                      <Width>307.410217</Width>
+                   </Element>
+                   <Element xsi:type="XTextTableColumn">
+                      <InnerID>35</InnerID>
+                      <Width>540.463257</Width>
+                   </Element>
+                   <Element xsi:type="XTextTableColumn">
+                      <InnerID>36</InnerID>
+                      <Width>305.463318</Width>
+                   </Element>
+                   <Element xsi:type="XTextTableColumn">
+                      <InnerID>37</InnerID>
+                      <Width>318.413269</Width>
+                   </Element>
+                </Columns>
+             </Element>
+             <Element xsi:type="XParagraphFlag" StyleIndex="0">
+                <InnerID>38</InnerID>
+             </Element>
+          </XElements>
+       </Element>
+       <Element xsi:type="XTextBody">
+          <InnerID>39</InnerID>
+          <AcceptTab>true</AcceptTab>
+          <XElements>
+             <Element xsi:type="XTextSubDocument">
+                <Attributes>
+                   <Attribute>
+                      <Name>姓名</Name>
+                      <Value>张三</Value>
+                   </Attribute>
+                   <Attribute>
+                      <Name>科室</Name>
+                      <Value>胸外科</Value>
+                   </Attribute>
+                   <Attribute>
+                      <Name>床号</Name>
+                      <Value>12345</Value>
+                   </Attribute>
+                </Attributes>
+                <InnerID>380</InnerID>
+                <ID>sub0</ID>
+                <AcceptTab>true</AcceptTab>
+                <XElements>
+                   <Element xsi:type="XString" StyleIndex="9">
+                      <InnerID>1111</InnerID>
+                      <Text>职  业：</Text>
+                   </Element>
+                   <Element xsi:type="XInputField" StyleIndex="10">
+                      <InnerID>318</InnerID>
+                      <ID>emr.DE02.01.052.00</ID>
+                      <EnableValueValidate>true</EnableValueValidate>
+                      <BorderElementColor />
+                      <Name>emr.DE02.01.052.00</Name>
+                      <BackgroundText>*职业为必填项*</BackgroundText>
+                   </Element>
+                   <Element xsi:type="XParagraphFlag" StyleIndex="11">
+                      <InnerID>319</InnerID>
+                   </Element>
+                   <Element xsi:type="XString" StyleIndex="9">
+                      <InnerID>1112</InnerID>
+                      <Text>主  诉：</Text>
+                   </Element>
+                   <Element xsi:type="XInputField" StyleIndex="10">
+                      <InnerID>322</InnerID>
+                      <ID>emr.DE04.01.119.00</ID>
+                      <EnableValueValidate>true</EnableValueValidate>
+                      <BorderElementColor />
+                      <Name>emr.DE04.01.119.00</Name>
+                      <BackgroundText>点击此处输入主诉</BackgroundText>
+                   </Element>
+                   <Element xsi:type="XParagraphFlag" StyleIndex="11">
+                      <InnerID>323</InnerID>
+                   </Element>
+                   <Element xsi:type="XString" StyleIndex="9">
+                      <InnerID>1113</InnerID>
+                      <Text>现病史：</Text>
+                   </Element>
+                   <Element xsi:type="XInputField" StyleIndex="10">
+                      <InnerID>326</InnerID>
+                      <ID>emr.DE02.10.071.00</ID>
+                      <EnableValueValidate>true</EnableValueValidate>
+                      <BorderElementColor />
+                      <Name>emr.DE02.10.071.00</Name>
+                      <BackgroundText>点击此处输入病史</BackgroundText>
+                   </Element>
+                   <Element xsi:type="XParagraphFlag" StyleIndex="12">
+                      <InnerID>327</InnerID>
+                   </Element>
+                   <Element xsi:type="XString" StyleIndex="9">
+                      <InnerID>1114</InnerID>
+                      <Text>既往史：</Text>
+                   </Element>
+                   <Element xsi:type="XInputField" StyleIndex="13">
+                      <InnerID>330</InnerID>
+                      <ID>emr.DE02.10.099.00</ID>
+                      <EnableValueValidate>true</EnableValueValidate>
+                      <XElements>
+                         <Element xsi:type="XString" StyleIndex="13">
+                            <InnerID>1124</InnerID>
+                            <Text>平素体健，否认“肝炎、结核”等传染病史，否认药物、食物过敏史，无外伤史，无手术史，无输血、血制品史。</Text>
+                         </Element>
+                      </XElements>
+                      <BorderElementColor />
+                      <Name>emr.DE02.10.099.00</Name>
+                      <InnerValue>平素体健，否认“肝炎、结核”等传染病史，否认药物、食物过敏史，无外伤史，无手术史，无输血、血制品史。</InnerValue>
+                      <BackgroundText>既往史</BackgroundText>
+                   </Element>
+                   <Element xsi:type="XParagraphFlag" StyleIndex="12">
+                      <InnerID>332</InnerID>
+                   </Element>
+                   <Element xsi:type="XString" StyleIndex="9">
+                      <InnerID>1115</InnerID>
+                      <Text>过敏史：</Text>
+                   </Element>
+                   <Element xsi:type="XInputField" StyleIndex="10">
+                      <InnerID>335</InnerID>
+                      <ID>pat.allergicHist</ID>
+                      <EnableValueValidate>true</EnableValueValidate>
+                      <BorderElementColor />
+                      <Name>pat.allergicHist</Name>
+                      <BackgroundText>过敏史请在患者信息栏修改</BackgroundText>
+                   </Element>
+                   <Element xsi:type="XParagraphFlag" StyleIndex="12">
+                      <InnerID>336</InnerID>
+                   </Element>
+                   <Element xsi:type="XString" StyleIndex="9">
+                      <InnerID>1116</InnerID>
+                      <Text>新冠肺炎流行病学史：</Text>
+                   </Element>
+                   <Element xsi:type="XParagraphFlag" StyleIndex="11">
+                      <InnerID>339</InnerID>
+                   </Element>
+                   <Element xsi:type="XTextTable" NumOfRows="8" NumOfColumns="2">
+                      <InnerID>341</InnerID>
+                      <ID>table3</ID>
+                      <XElements>
+                         <Element xsi:type="XTextTableRow" StyleIndex="10">
+                            <InnerID>344</InnerID>
+                            <XElements>
+                               <Element xsi:type="XTextTableCell" StyleIndex="14">
+                                  <InnerID>345</InnerID>
+                                  <XElements>
+                                     <Element xsi:type="XString" StyleIndex="10">
+                                        <InnerID>1125</InnerID>
+                                        <Text>1.您21天是否有发热、干咳、乏力、嗅（味）觉减退、鼻塞、流涕、咽痛、结膜炎、肌痛和腹泻等症状？</Text>
+                                     </Element>
+                                     <Element xsi:type="XParagraphFlag" StyleIndex="11">
+                                        <InnerID>348</InnerID>
+                                     </Element>
+                                  </XElements>
+                               </Element>
+                               <Element xsi:type="XTextTableCell" StyleIndex="15">
+                                  <InnerID>349</InnerID>
+                                  <XElements>
+                                     <Element xsi:type="XTextRadioBox" StyleIndex="10">
+                                        <InnerID>351</InnerID>
+                                        <ID>流行病学史11</ID>
+                                        <Name>流行病学史1</Name>
+                                        <Caption>是</Caption>
+                                        <Width>115.75</Width>
+                                        <Height>49.90234</Height>
+                                        <GroupName>流行病学史1</GroupName>
+                                        <ControlStyle>RadioBox</ControlStyle>
+                                        <CheckedValue>true</CheckedValue>
+                                        <VisualStyle>SystemDefault</VisualStyle>
+                                     </Element>
+                                     <Element xsi:type="XTextRadioBox" StyleIndex="10">
+                                        <InnerID>352</InnerID>
+                                        <ID>流行病学史12</ID>
+                                        <Name>流行病学史1</Name>
+                                        <Caption>否</Caption>
+                                        <Width>115.75</Width>
+                                        <Height>49.90234</Height>
+                                        <GroupName>流行病学史1</GroupName>
+                                        <ControlStyle>RadioBox</ControlStyle>
+                                        <Checked>true</Checked>
+                                        <CheckedValue>false</CheckedValue>
+                                        <VisualStyle>SystemDefault</VisualStyle>
+                                     </Element>
+                                     <Element xsi:type="XParagraphFlag" StyleIndex="16">
+                                        <InnerID>353</InnerID>
+                                     </Element>
+                                  </XElements>
+                               </Element>
+                            </XElements>
+                         </Element>
+                         <Element xsi:type="XTextTableRow" StyleIndex="10">
+                            <InnerID>354</InnerID>
+                            <XElements>
+                               <Element xsi:type="XTextTableCell" StyleIndex="14">
+                                  <InnerID>355</InnerID>
+                                  <XElements>
+                                     <Element xsi:type="XString" StyleIndex="10">
+                                        <InnerID>1126</InnerID>
+                                        <Text>2.近21天内是否到过境外.境内中高风险地区*，或有病例报告的社区? </Text>
+                                     </Element>
+                                     <Element xsi:type="XParagraphFlag" StyleIndex="11">
+                                        <InnerID>358</InnerID>
+                                     </Element>
+                                  </XElements>
+                               </Element>
+                               <Element xsi:type="XTextTableCell" StyleIndex="15">
+                                  <InnerID>359</InnerID>
+                                  <XElements>
+                                     <Element xsi:type="XTextRadioBox" StyleIndex="10">
+                                        <InnerID>361</InnerID>
+                                        <ID>流行病学史21</ID>
+                                        <Name>流行病学史2</Name>
+                                        <Caption>是</Caption>
+                                        <Width>115.75</Width>
+                                        <Height>49.90234</Height>
+                                        <GroupName>流行病学史2</GroupName>
+                                        <ControlStyle>RadioBox</ControlStyle>
+                                        <CheckedValue>1</CheckedValue>
+                                        <VisualStyle>SystemDefault</VisualStyle>
+                                     </Element>
+                                     <Element xsi:type="XTextRadioBox" StyleIndex="10">
+                                        <InnerID>362</InnerID>
+                                        <ID>流行病学史22</ID>
+                                        <Name>流行病学史2</Name>
+                                        <Caption>否</Caption>
+                                        <Width>115.75</Width>
+                                        <Height>49.90234</Height>
+                                        <GroupName>流行病学史2</GroupName>
+                                        <ControlStyle>RadioBox</ControlStyle>
+                                        <Checked>true</Checked>
+                                        <CheckedValue>0</CheckedValue>
+                                        <VisualStyle>SystemDefault</VisualStyle>
+                                     </Element>
+                                     <Element xsi:type="XParagraphFlag" StyleIndex="16">
+                                        <InnerID>363</InnerID>
+                                     </Element>
+                                  </XElements>
+                               </Element>
+                            </XElements>
+                         </Element>
+                         <Element xsi:type="XTextTableRow" StyleIndex="10">
+                            <InnerID>364</InnerID>
+                            <XElements>
+                               <Element xsi:type="XTextTableCell" StyleIndex="14">
+                                  <InnerID>365</InnerID>
+                                  <XElements>
+                                     <Element xsi:type="XString" StyleIndex="10">
+                                        <InnerID>1127</InnerID>
+                                        <Text>3.近21关内是否接触过来自境外.境内中高风险地区*的人员? </Text>
+                                     </Element>
+                                     <Element xsi:type="XParagraphFlag" StyleIndex="11">
+                                        <InnerID>368</InnerID>
+                                     </Element>
+                                  </XElements>
+                               </Element>
+                               <Element xsi:type="XTextTableCell" StyleIndex="15">
+                                  <InnerID>369</InnerID>
+                                  <XElements>
+                                     <Element xsi:type="XTextRadioBox" StyleIndex="10">
+                                        <InnerID>371</InnerID>
+                                        <ID>流行病学史31</ID>
+                                        <Name>流行病学史3</Name>
+                                        <Caption>是</Caption>
+                                        <Width>115.75</Width>
+                                        <Height>49.90234</Height>
+                                        <GroupName>流行病学史3</GroupName>
+                                        <ControlStyle>RadioBox</ControlStyle>
+                                        <VisualStyle>SystemDefault</VisualStyle>
+                                     </Element>
+                                     <Element xsi:type="XTextRadioBox" StyleIndex="10">
+                                        <InnerID>372</InnerID>
+                                        <ID>流行病学史32</ID>
+                                        <Name>流行病学史3</Name>
+                                        <Caption>否</Caption>
+                                        <Width>115.75</Width>
+                                        <Height>49.90234</Height>
+                                        <GroupName>流行病学史3</GroupName>
+                                        <ControlStyle>RadioBox</ControlStyle>
+                                        <Checked>true</Checked>
+                                        <VisualStyle>SystemDefault</VisualStyle>
+                                     </Element>
+                                     <Element xsi:type="XParagraphFlag" StyleIndex="16">
+                                        <InnerID>373</InnerID>
+                                     </Element>
+                                  </XElements>
+                               </Element>
+                            </XElements>
+                         </Element>
+                         <Element xsi:type="XTextTableRow" StyleIndex="10">
+                            <InnerID>374</InnerID>
+                            <XElements>
+                               <Element xsi:type="XTextTableCell" StyleIndex="14">
+                                  <InnerID>375</InnerID>
+                                  <XElements>
+                                     <Element xsi:type="XString" StyleIndex="10">
+                                        <InnerID>1128</InnerID>
+                                        <Text>4.近21天内是否接触过确诊病例或无症状感染者(核酸检测阳性者)?</Text>
+                                     </Element>
+                                     <Element xsi:type="XParagraphFlag" StyleIndex="11">
+                                        <InnerID>378</InnerID>
+                                     </Element>
+                                  </XElements>
+                               </Element>
+                               <Element xsi:type="XTextTableCell" StyleIndex="15">
+                                  <InnerID>379</InnerID>
+                                  <XElements>
+                                     <Element xsi:type="XTextRadioBox" StyleIndex="10">
+                                        <InnerID>381</InnerID>
+                                        <ID>流行病学史41</ID>
+                                        <Name>流行病学史4</Name>
+                                        <Caption>是</Caption>
+                                        <Width>115.75</Width>
+                                        <Height>49.90234</Height>
+                                        <GroupName>流行病学史4</GroupName>
+                                        <ControlStyle>RadioBox</ControlStyle>
+                                        <VisualStyle>SystemDefault</VisualStyle>
+                                     </Element>
+                                     <Element xsi:type="XTextRadioBox" StyleIndex="10">
+                                        <InnerID>382</InnerID>
+                                        <ID>流行病学史42</ID>
+                                        <Name>流行病学史4</Name>
+                                        <Caption>否</Caption>
+                                        <Width>115.75</Width>
+                                        <Height>49.90234</Height>
+                                        <GroupName>流行病学史4</GroupName>
+                                        <ControlStyle>RadioBox</ControlStyle>
+                                        <Checked>true</Checked>
+                                        <VisualStyle>SystemDefault</VisualStyle>
+                                     </Element>
+                                     <Element xsi:type="XParagraphFlag" StyleIndex="16">
+                                        <InnerID>383</InnerID>
+                                     </Element>
+                                  </XElements>
+                               </Element>
+                            </XElements>
+                         </Element>
+                         <Element xsi:type="XTextTableRow" StyleIndex="10">
+                            <InnerID>384</InnerID>
+                            <XElements>
+                               <Element xsi:type="XTextTableCell" StyleIndex="14">
+                                  <InnerID>385</InnerID>
+                                  <XElements>
+                                     <Element xsi:type="XString" StyleIndex="10">
+                                        <InnerID>1129</InnerID>
+                                        <Text>5.近21关内您的亲庭、办公空、学校或托幼机构班级、车间等身体单位是否出现2例及以上发热和/或呼吸道症状的聚集性病例? </Text>
+                                     </Element>
+                                     <Element xsi:type="XParagraphFlag" StyleIndex="11">
+                                        <InnerID>388</InnerID>
+                                     </Element>
+                                  </XElements>
+                               </Element>
+                               <Element xsi:type="XTextTableCell" StyleIndex="15">
+                                  <InnerID>389</InnerID>
+                                  <XElements>
+                                     <Element xsi:type="XTextRadioBox" StyleIndex="10">
+                                        <InnerID>391</InnerID>
+                                        <ID>流行病学史51</ID>
+                                        <Name>流行病学史5</Name>
+                                        <Caption>是</Caption>
+                                        <Width>115.75</Width>
+                                        <Height>49.90234</Height>
+                                        <GroupName>流行病学史5</GroupName>
+                                        <ControlStyle>RadioBox</ControlStyle>
+                                        <VisualStyle>SystemDefault</VisualStyle>
+                                     </Element>
+                                     <Element xsi:type="XTextRadioBox" StyleIndex="10">
+                                        <InnerID>392</InnerID>
+                                        <ID>流行病学史52</ID>
+                                        <Name>流行病学史5</Name>
+                                        <Caption>否</Caption>
+                                        <Width>115.75</Width>
+                                        <Height>49.90234</Height>
+                                        <GroupName>流行病学史5</GroupName>
+                                        <ControlStyle>RadioBox</ControlStyle>
+                                        <Checked>true</Checked>
+                                        <VisualStyle>SystemDefault</VisualStyle>
+                                     </Element>
+                                     <Element xsi:type="XParagraphFlag" StyleIndex="16">
+                                        <InnerID>393</InnerID>
+                                     </Element>
+                                  </XElements>
+                               </Element>
+                            </XElements>
+                         </Element>
+                         <Element xsi:type="XTextTableRow" StyleIndex="10">
+                            <InnerID>394</InnerID>
+                            <XElements>
+                               <Element xsi:type="XTextTableCell" StyleIndex="14">
+                                  <InnerID>395</InnerID>
+                                  <XElements>
+                                     <Element xsi:type="XString" StyleIndex="10">
+                                        <InnerID>1130</InnerID>
+                                        <Text>6.是否在隔离管控期的入境人员?</Text>
+                                     </Element>
+                                     <Element xsi:type="XParagraphFlag" StyleIndex="11">
+                                        <InnerID>398</InnerID>
+                                     </Element>
+                                  </XElements>
+                               </Element>
+                               <Element xsi:type="XTextTableCell" StyleIndex="15">
+                                  <InnerID>399</InnerID>
+                                  <XElements>
+                                     <Element xsi:type="XTextRadioBox" StyleIndex="10">
+                                        <InnerID>401</InnerID>
+                                        <ID>流行病学史61</ID>
+                                        <Name>流行病学史6</Name>
+                                        <Caption>是</Caption>
+                                        <Width>115.75</Width>
+                                        <Height>49.90234</Height>
+                                        <GroupName>流行病学史6</GroupName>
+                                        <ControlStyle>RadioBox</ControlStyle>
+                                        <VisualStyle>SystemDefault</VisualStyle>
+                                     </Element>
+                                     <Element xsi:type="XTextRadioBox" StyleIndex="10">
+                                        <InnerID>402</InnerID>
+                                        <ID>流行病学史62</ID>
+                                        <Name>流行病学史6</Name>
+                                        <Caption>否</Caption>
+                                        <Width>115.75</Width>
+                                        <Height>49.90234</Height>
+                                        <GroupName>流行病学史6</GroupName>
+                                        <ControlStyle>RadioBox</ControlStyle>
+                                        <Checked>true</Checked>
+                                        <VisualStyle>SystemDefault</VisualStyle>
+                                     </Element>
+                                     <Element xsi:type="XParagraphFlag" StyleIndex="16">
+                                        <InnerID>403</InnerID>
+                                     </Element>
+                                  </XElements>
+                               </Element>
+                            </XElements>
+                         </Element>
+                         <Element xsi:type="XTextTableRow" StyleIndex="10">
+                            <InnerID>404</InnerID>
+                            <XElements>
+                               <Element xsi:type="XTextTableCell" StyleIndex="14">
+                                  <InnerID>405</InnerID>
+                                  <XElements>
+                                     <Element xsi:type="XString" StyleIndex="10">
+                                        <InnerID>1131</InnerID>
+                                        <Text>7.是否在隔离管控期的国内密接人员?</Text>
+                                     </Element>
+                                     <Element xsi:type="XParagraphFlag" StyleIndex="11">
+                                        <InnerID>408</InnerID>
+                                     </Element>
+                                  </XElements>
+                               </Element>
+                               <Element xsi:type="XTextTableCell" StyleIndex="15">
+                                  <InnerID>409</InnerID>
+                                  <XElements>
+                                     <Element xsi:type="XTextRadioBox" StyleIndex="10">
+                                        <InnerID>411</InnerID>
+                                        <ID>流行病学史71</ID>
+                                        <Name>流行病学史7</Name>
+                                        <Caption>是</Caption>
+                                        <Width>115.75</Width>
+                                        <Height>49.90234</Height>
+                                        <GroupName>流行病学史7</GroupName>
+                                        <ControlStyle>RadioBox</ControlStyle>
+                                        <VisualStyle>SystemDefault</VisualStyle>
+                                     </Element>
+                                     <Element xsi:type="XTextRadioBox" StyleIndex="10">
+                                        <InnerID>412</InnerID>
+                                        <ID>流行病学史72</ID>
+                                        <Name>流行病学史7</Name>
+                                        <Caption>否</Caption>
+                                        <Width>115.75</Width>
+                                        <Height>49.90234</Height>
+                                        <GroupName>流行病学史7</GroupName>
+                                        <ControlStyle>RadioBox</ControlStyle>
+                                        <Checked>true</Checked>
+                                        <VisualStyle>SystemDefault</VisualStyle>
+                                     </Element>
+                                     <Element xsi:type="XParagraphFlag" StyleIndex="16">
+                                        <InnerID>413</InnerID>
+                                     </Element>
+                                  </XElements>
+                               </Element>
+                            </XElements>
+                         </Element>
+                         <Element xsi:type="XTextTableRow" StyleIndex="10">
+                            <InnerID>414</InnerID>
+                            <XElements>
+                               <Element xsi:type="XTextTableCell" StyleIndex="14">
+                                  <InnerID>415</InnerID>
+                                  <XElements>
+                                     <Element xsi:type="XString" StyleIndex="10">
+                                        <InnerID>1132</InnerID>
+                                        <Text>8.是否黄码、橙码、红码人员?</Text>
+                                     </Element>
+                                     <Element xsi:type="XParagraphFlag" StyleIndex="11">
+                                        <InnerID>418</InnerID>
+                                     </Element>
+                                  </XElements>
+                               </Element>
+                               <Element xsi:type="XTextTableCell" StyleIndex="15">
+                                  <InnerID>419</InnerID>
+                                  <XElements>
+                                     <Element xsi:type="XTextCheckBox" StyleIndex="17">
+                                        <InnerID>421</InnerID>
+                                        <ID>checkbox1</ID>
+                                        <Name>lxbxs8</Name>
+                                        <Caption>是</Caption>
+                                        <Width>122</Width>
+                                        <Height>57.0312424</Height>
+                                        <GroupName>lxbxs8</GroupName>
+                                        <CheckedValue>1</CheckedValue>
+                                        <VisualStyle>SystemDefault</VisualStyle>
+                                     </Element>
+                                     <Element xsi:type="XTextCheckBox" StyleIndex="17">
+                                        <InnerID>422</InnerID>
+                                        <ID>checkbox2</ID>
+                                        <Name>lxbxs8</Name>
+                                        <Caption>否</Caption>
+                                        <Width>122</Width>
+                                        <Height>57.0312424</Height>
+                                        <GroupName>lxbxs8</GroupName>
+                                        <CheckedValue>2</CheckedValue>
+                                        <VisualStyle>SystemDefault</VisualStyle>
+                                     </Element>
+                                     <Element xsi:type="XTextCheckBox" StyleIndex="17">
+                                        <InnerID>423</InnerID>
+                                        <ID>checkbox3</ID>
+                                        <Name>lxbxs8</Name>
+                                        <Caption>未知</Caption>
+                                        <Width>172</Width>
+                                        <Height>57.0312424</Height>
+                                        <GroupName>lxbxs8</GroupName>
+                                        <CheckedValue>3</CheckedValue>
+                                        <VisualStyle>SystemDefault</VisualStyle>
+                                     </Element>
+                                     <Element xsi:type="XParagraphFlag" StyleIndex="16">
+                                        <InnerID>424</InnerID>
+                                     </Element>
+                                  </XElements>
+                               </Element>
+                            </XElements>
+                         </Element>
+                      </XElements>
+                      <Columns>
+                         <Element xsi:type="XTextTableColumn">
+                            <InnerID>342</InnerID>
+                            <Width>1391.375</Width>
+                         </Element>
+                         <Element xsi:type="XTextTableColumn">
+                            <InnerID>343</InnerID>
+                            <Width>264.375</Width>
+                         </Element>
+                      </Columns>
+                   </Element>
+                   <Element xsi:type="XParagraphFlag" StyleIndex="11">
+                      <InnerID>426</InnerID>
+                   </Element>
+                   <Element xsi:type="XString" StyleIndex="10">
+                      <InnerID>1117</InnerID>
+                      <Text>医生以上问诊内容与患者（家属)陈述内容一致且真实。患者（家属）确认签名:_______医生确认签名:______</Text>
+                   </Element>
+                   <Element xsi:type="XParagraphFlag" StyleIndex="11">
+                      <InnerID>429</InnerID>
+                   </Element>
+                   <Element xsi:type="XString" StyleIndex="9">
+                      <InnerID>1118</InnerID>
+                      <Text>体格检查：</Text>
+                   </Element>
+                   <Element xsi:type="XInputField" StyleIndex="10">
+                      <InnerID>432</InnerID>
+                      <ID>emr.DE04.10.258.00</ID>
+                      <EnableValueValidate>true</EnableValueValidate>
+                      <BorderElementColor />
+                      <Name>emr.DE04.10.258.00</Name>
+                      <BackgroundText>点击此处输入体格检查内容</BackgroundText>
+                   </Element>
+                   <Element xsi:type="XParagraphFlag" StyleIndex="12">
+                      <InnerID>433</InnerID>
+                   </Element>
+                   <Element xsi:type="XString" StyleIndex="9">
+                      <InnerID>1119</InnerID>
+                      <Text>辅助检查：</Text>
+                   </Element>
+                   <Element xsi:type="XInputField" StyleIndex="10">
+                      <InnerID>436</InnerID>
+                      <ID>field6</ID>
+                      <EnableValueValidate>true</EnableValueValidate>
+                      <BorderElementColor />
+                      <BackgroundText>点击此处输入辅助检查内容</BackgroundText>
+                   </Element>
+                   <Element xsi:type="XParagraphFlag" StyleIndex="12">
+                      <InnerID>437</InnerID>
+                   </Element>
+                   <Element xsi:type="XString" StyleIndex="9">
+                      <InnerID>1120</InnerID>
+                      <Text>诊  断：</Text>
+                   </Element>
+                   <Element xsi:type="XInputField" StyleIndex="10">
+                      <InnerID>440</InnerID>
+                      <ID>emr.DE05.01.025.00</ID>
+                      <EnableValueValidate>true</EnableValueValidate>
+                      <XElements>
+                         <Element xsi:type="XString" StyleIndex="17" WhitespaceCount="1">
+                            <InnerID>1133</InnerID>
+                            <Text> </Text>
+                         </Element>
+                         <Element xsi:type="XParagraphFlag" StyleIndex="12">
+                            <InnerID>442</InnerID>
+                         </Element>
+                         <Element xsi:type="XString" StyleIndex="18">
+                            <InnerID>1134</InnerID>
+                            <Text>005771</Text>
+                         </Element>
+                         <Element xsi:type="XParagraphFlag" StyleIndex="12">
+                            <InnerID>444</InnerID>
+                         </Element>
+                         <Element xsi:type="XString" StyleIndex="18">
+                            <InnerID>1135</InnerID>
+                            <Text>  1急性广泛前壁、高侧壁心肌梗死  </Text>
+                         </Element>
+                         <Element xsi:type="XParagraphFlag" StyleIndex="12">
+                            <InnerID>446</InnerID>
+                         </Element>
+                         <Element xsi:type="XString" StyleIndex="18">
+                            <InnerID>1136</InnerID>
+                            <Text>  2双侧乳腺癌术后化疗 </Text>
+                         </Element>
+                      </XElements>
+                      <BorderElementColor />
+                      <Name>emr.DE05.01.025.00</Name>
+                      <BackgroundText>点击输入急诊诊断</BackgroundText>
+                   </Element>
+                   <Element xsi:type="XParagraphFlag" StyleIndex="12">
+                      <InnerID>448</InnerID>
+                   </Element>
+                   <Element xsi:type="XString" StyleIndex="9">
+                      <InnerID>1121</InnerID>
+                      <Text>处理意见：</Text>
+                   </Element>
+                   <Element xsi:type="XInputField" StyleIndex="10">
+                      <InnerID>451</InnerID>
+                      <ID>DE06.00.018.00</ID>
+                      <EnableValueValidate>true</EnableValueValidate>
+                      <BorderElementColor />
+                      <Name>DE06.00.018.00</Name>
+                      <BackgroundText>点击输入处理意见</BackgroundText>
+                   </Element>
+                   <Element xsi:type="XParagraphFlag" StyleIndex="12">
+                      <InnerID>452</InnerID>
+                   </Element>
+                   <Element xsi:type="XString" StyleIndex="9">
+                      <InnerID>1122</InnerID>
+                      <Text>备  注：</Text>
+                   </Element>
+                   <Element xsi:type="XInputField" StyleIndex="10">
+                      <InnerID>455</InnerID>
+                      <ID>field7</ID>
+                      <EnableValueValidate>true</EnableValueValidate>
+                      <BorderElementColor />
+                      <BackgroundText>点击此处输入备注</BackgroundText>
+                   </Element>
+                   <Element xsi:type="XParagraphFlag" StyleIndex="12">
+                      <InnerID>456</InnerID>
+                   </Element>
+                   <Element xsi:type="XString" StyleIndex="9">
+                      <InnerID>1123</InnerID>
+                      <Text>嘱  托：</Text>
+                   </Element>
+                   <Element xsi:type="XInputField" StyleIndex="10">
+                      <InnerID>459</InnerID>
+                      <ID>field8</ID>
+                      <EnableValueValidate>true</EnableValueValidate>
+                      <BorderElementColor />
+                      <BackgroundText>点击此处输入嘱托</BackgroundText>
+                   </Element>
+                   <Element xsi:type="XParagraphFlag" StyleIndex="19">
+                      <InnerID>460</InnerID>
+                   </Element>
+                </XElements>
+                <ForeColorForCollapsed />
+                <DocumentInfo>
+                   <LicenseText>广东医通软件:广东医通软件有限公司</LicenseText>
+                   <CreationTime>1980-01-01T00:00:00</CreationTime>
+                   <LastModifiedTime>2022-06-02T09:41:14.2719+08:00</LastModifiedTime>
+                   <LastPrintTime>1980-01-01T00:00:00</LastPrintTime>
+                   <Operator>DCSoft.Writer Version:1.2019.1.29</Operator>
+                   <NumOfPage>2</NumOfPage>
+                </DocumentInfo>
+                <ContentLoaded>true</ContentLoaded>
+             </Element>
+             <Element xsi:type="XTextSubDocument">
+                <Attributes>
+                   <Attribute>
+                      <Name>姓名</Name>
+                      <Value>张三</Value>
+                   </Attribute>
+                   <Attribute>
+                      <Name>科室</Name>
+                      <Value>胸外科</Value>
+                   </Attribute>
+                   <Attribute>
+                      <Name>床号</Name>
+                      <Value>12345</Value>
+                   </Attribute>
+                </Attributes>
+                <InnerID>866</InnerID>
+                <ID>sub1</ID>
+                <AcceptTab>true</AcceptTab>
+                <XElements>
+                   <Element xsi:type="XString" StyleIndex="9">
+                      <InnerID>1137</InnerID>
+                      <Text>职  业：</Text>
+                   </Element>
+                   <Element xsi:type="XInputField" StyleIndex="10">
+                      <InnerID>318</InnerID>
+                      <ID>emr.DE02.01.052.00</ID>
+                      <EnableValueValidate>true</EnableValueValidate>
+                      <BorderElementColor />
+                      <Name>emr.DE02.01.052.00</Name>
+                      <BackgroundText>*职业为必填项*</BackgroundText>
+                   </Element>
+                   <Element xsi:type="XParagraphFlag" StyleIndex="11">
+                      <InnerID>319</InnerID>
+                   </Element>
+                   <Element xsi:type="XString" StyleIndex="9">
+                      <InnerID>1138</InnerID>
+                      <Text>主  诉：</Text>
+                   </Element>
+                   <Element xsi:type="XInputField" StyleIndex="10">
+                      <InnerID>322</InnerID>
+                      <ID>emr.DE04.01.119.00</ID>
+                      <EnableValueValidate>true</EnableValueValidate>
+                      <BorderElementColor />
+                      <Name>emr.DE04.01.119.00</Name>
+                      <BackgroundText>点击此处输入主诉</BackgroundText>
+                   </Element>
+                   <Element xsi:type="XParagraphFlag" StyleIndex="11">
+                      <InnerID>323</InnerID>
+                   </Element>
+                   <Element xsi:type="XString" StyleIndex="9">
+                      <InnerID>1139</InnerID>
+                      <Text>现病史：</Text>
+                   </Element>
+                   <Element xsi:type="XInputField" StyleIndex="10">
+                      <InnerID>326</InnerID>
+                      <ID>emr.DE02.10.071.00</ID>
+                      <EnableValueValidate>true</EnableValueValidate>
+                      <BorderElementColor />
+                      <Name>emr.DE02.10.071.00</Name>
+                      <BackgroundText>点击此处输入病史</BackgroundText>
+                   </Element>
+                   <Element xsi:type="XParagraphFlag" StyleIndex="12">
+                      <InnerID>327</InnerID>
+                   </Element>
+                   <Element xsi:type="XString" StyleIndex="9">
+                      <InnerID>1140</InnerID>
+                      <Text>既往史：</Text>
+                   </Element>
+                   <Element xsi:type="XInputField" StyleIndex="13">
+                      <InnerID>330</InnerID>
+                      <ID>emr.DE02.10.099.00</ID>
+                      <EnableValueValidate>true</EnableValueValidate>
+                      <XElements>
+                         <Element xsi:type="XString" StyleIndex="13">
+                            <InnerID>1150</InnerID>
+                            <Text>平素体健，否认“肝炎、结核”等传染病史，否认药物、食物过敏史，无外伤史，无手术史，无输血、血制品史。</Text>
+                         </Element>
+                      </XElements>
+                      <BorderElementColor />
+                      <Name>emr.DE02.10.099.00</Name>
+                      <InnerValue>平素体健，否认“肝炎、结核”等传染病史，否认药物、食物过敏史，无外伤史，无手术史，无输血、血制品史。</InnerValue>
+                      <BackgroundText>既往史</BackgroundText>
+                   </Element>
+                   <Element xsi:type="XParagraphFlag" StyleIndex="12">
+                      <InnerID>332</InnerID>
+                   </Element>
+                   <Element xsi:type="XString" StyleIndex="9">
+                      <InnerID>1141</InnerID>
+                      <Text>过敏史：</Text>
+                   </Element>
+                   <Element xsi:type="XInputField" StyleIndex="10">
+                      <InnerID>335</InnerID>
+                      <ID>pat.allergicHist</ID>
+                      <EnableValueValidate>true</EnableValueValidate>
+                      <BorderElementColor />
+                      <Name>pat.allergicHist</Name>
+                      <BackgroundText>过敏史请在患者信息栏修改</BackgroundText>
+                   </Element>
+                   <Element xsi:type="XParagraphFlag" StyleIndex="12">
+                      <InnerID>336</InnerID>
+                   </Element>
+                   <Element xsi:type="XString" StyleIndex="9">
+                      <InnerID>1142</InnerID>
+                      <Text>新冠肺炎流行病学史：</Text>
+                   </Element>
+                   <Element xsi:type="XParagraphFlag" StyleIndex="11">
+                      <InnerID>339</InnerID>
+                   </Element>
+                   <Element xsi:type="XTextTable" NumOfRows="8" NumOfColumns="2">
+                      <InnerID>341</InnerID>
+                      <ID>table3</ID>
+                      <XElements>
+                         <Element xsi:type="XTextTableRow" StyleIndex="10">
+                            <InnerID>344</InnerID>
+                            <XElements>
+                               <Element xsi:type="XTextTableCell" StyleIndex="14">
+                                  <InnerID>345</InnerID>
+                                  <XElements>
+                                     <Element xsi:type="XString" StyleIndex="10">
+                                        <InnerID>1151</InnerID>
+                                        <Text>1.您21天是否有发热、干咳、乏力、嗅（味）觉减退、鼻塞、流涕、咽痛、结膜炎、肌痛和腹泻等症状？</Text>
+                                     </Element>
+                                     <Element xsi:type="XParagraphFlag" StyleIndex="11">
+                                        <InnerID>348</InnerID>
+                                     </Element>
+                                  </XElements>
+                               </Element>
+                               <Element xsi:type="XTextTableCell" StyleIndex="15">
+                                  <InnerID>349</InnerID>
+                                  <XElements>
+                                     <Element xsi:type="XTextRadioBox" StyleIndex="10">
+                                        <InnerID>351</InnerID>
+                                        <ID>流行病学史11</ID>
+                                        <Name>流行病学史1</Name>
+                                        <Caption>是</Caption>
+                                        <Width>115.75</Width>
+                                        <Height>49.90234</Height>
+                                        <GroupName>流行病学史1</GroupName>
+                                        <ControlStyle>RadioBox</ControlStyle>
+                                        <CheckedValue>true</CheckedValue>
+                                        <VisualStyle>SystemDefault</VisualStyle>
+                                     </Element>
+                                     <Element xsi:type="XTextRadioBox" StyleIndex="10">
+                                        <InnerID>352</InnerID>
+                                        <ID>流行病学史12</ID>
+                                        <Name>流行病学史1</Name>
+                                        <Caption>否</Caption>
+                                        <Width>115.75</Width>
+                                        <Height>49.90234</Height>
+                                        <GroupName>流行病学史1</GroupName>
+                                        <ControlStyle>RadioBox</ControlStyle>
+                                        <Checked>true</Checked>
+                                        <CheckedValue>false</CheckedValue>
+                                        <VisualStyle>SystemDefault</VisualStyle>
+                                     </Element>
+                                     <Element xsi:type="XParagraphFlag" StyleIndex="16">
+                                        <InnerID>353</InnerID>
+                                     </Element>
+                                  </XElements>
+                               </Element>
+                            </XElements>
+                         </Element>
+                         <Element xsi:type="XTextTableRow" StyleIndex="10">
+                            <InnerID>354</InnerID>
+                            <XElements>
+                               <Element xsi:type="XTextTableCell" StyleIndex="14">
+                                  <InnerID>355</InnerID>
+                                  <XElements>
+                                     <Element xsi:type="XString" StyleIndex="10">
+                                        <InnerID>1152</InnerID>
+                                        <Text>2.近21天内是否到过境外.境内中高风险地区*，或有病例报告的社区? </Text>
+                                     </Element>
+                                     <Element xsi:type="XParagraphFlag" StyleIndex="11">
+                                        <InnerID>358</InnerID>
+                                     </Element>
+                                  </XElements>
+                               </Element>
+                               <Element xsi:type="XTextTableCell" StyleIndex="15">
+                                  <InnerID>359</InnerID>
+                                  <XElements>
+                                     <Element xsi:type="XTextRadioBox" StyleIndex="10">
+                                        <InnerID>361</InnerID>
+                                        <ID>流行病学史21</ID>
+                                        <Name>流行病学史2</Name>
+                                        <Caption>是</Caption>
+                                        <Width>115.75</Width>
+                                        <Height>49.90234</Height>
+                                        <GroupName>流行病学史2</GroupName>
+                                        <ControlStyle>RadioBox</ControlStyle>
+                                        <CheckedValue>1</CheckedValue>
+                                        <VisualStyle>SystemDefault</VisualStyle>
+                                     </Element>
+                                     <Element xsi:type="XTextRadioBox" StyleIndex="10">
+                                        <InnerID>362</InnerID>
+                                        <ID>流行病学史22</ID>
+                                        <Name>流行病学史2</Name>
+                                        <Caption>否</Caption>
+                                        <Width>115.75</Width>
+                                        <Height>49.90234</Height>
+                                        <GroupName>流行病学史2</GroupName>
+                                        <ControlStyle>RadioBox</ControlStyle>
+                                        <Checked>true</Checked>
+                                        <CheckedValue>0</CheckedValue>
+                                        <VisualStyle>SystemDefault</VisualStyle>
+                                     </Element>
+                                     <Element xsi:type="XParagraphFlag" StyleIndex="16">
+                                        <InnerID>363</InnerID>
+                                     </Element>
+                                  </XElements>
+                               </Element>
+                            </XElements>
+                         </Element>
+                         <Element xsi:type="XTextTableRow" StyleIndex="10">
+                            <InnerID>364</InnerID>
+                            <XElements>
+                               <Element xsi:type="XTextTableCell" StyleIndex="14">
+                                  <InnerID>365</InnerID>
+                                  <XElements>
+                                     <Element xsi:type="XString" StyleIndex="10">
+                                        <InnerID>1153</InnerID>
+                                        <Text>3.近21关内是否接触过来自境外.境内中高风险地区*的人员? </Text>
+                                     </Element>
+                                     <Element xsi:type="XParagraphFlag" StyleIndex="11">
+                                        <InnerID>368</InnerID>
+                                     </Element>
+                                  </XElements>
+                               </Element>
+                               <Element xsi:type="XTextTableCell" StyleIndex="15">
+                                  <InnerID>369</InnerID>
+                                  <XElements>
+                                     <Element xsi:type="XTextRadioBox" StyleIndex="10">
+                                        <InnerID>371</InnerID>
+                                        <ID>流行病学史31</ID>
+                                        <Name>流行病学史3</Name>
+                                        <Caption>是</Caption>
+                                        <Width>115.75</Width>
+                                        <Height>49.90234</Height>
+                                        <GroupName>流行病学史3</GroupName>
+                                        <ControlStyle>RadioBox</ControlStyle>
+                                        <VisualStyle>SystemDefault</VisualStyle>
+                                     </Element>
+                                     <Element xsi:type="XTextRadioBox" StyleIndex="10">
+                                        <InnerID>372</InnerID>
+                                        <ID>流行病学史32</ID>
+                                        <Name>流行病学史3</Name>
+                                        <Caption>否</Caption>
+                                        <Width>115.75</Width>
+                                        <Height>49.90234</Height>
+                                        <GroupName>流行病学史3</GroupName>
+                                        <ControlStyle>RadioBox</ControlStyle>
+                                        <Checked>true</Checked>
+                                        <VisualStyle>SystemDefault</VisualStyle>
+                                     </Element>
+                                     <Element xsi:type="XParagraphFlag" StyleIndex="16">
+                                        <InnerID>373</InnerID>
+                                     </Element>
+                                  </XElements>
+                               </Element>
+                            </XElements>
+                         </Element>
+                         <Element xsi:type="XTextTableRow" StyleIndex="10">
+                            <InnerID>374</InnerID>
+                            <XElements>
+                               <Element xsi:type="XTextTableCell" StyleIndex="14">
+                                  <InnerID>375</InnerID>
+                                  <XElements>
+                                     <Element xsi:type="XString" StyleIndex="10">
+                                        <InnerID>1154</InnerID>
+                                        <Text>4.近21天内是否接触过确诊病例或无症状感染者(核酸检测阳性者)?</Text>
+                                     </Element>
+                                     <Element xsi:type="XParagraphFlag" StyleIndex="11">
+                                        <InnerID>378</InnerID>
+                                     </Element>
+                                  </XElements>
+                               </Element>
+                               <Element xsi:type="XTextTableCell" StyleIndex="15">
+                                  <InnerID>379</InnerID>
+                                  <XElements>
+                                     <Element xsi:type="XTextRadioBox" StyleIndex="10">
+                                        <InnerID>381</InnerID>
+                                        <ID>流行病学史41</ID>
+                                        <Name>流行病学史4</Name>
+                                        <Caption>是</Caption>
+                                        <Width>115.75</Width>
+                                        <Height>49.90234</Height>
+                                        <GroupName>流行病学史4</GroupName>
+                                        <ControlStyle>RadioBox</ControlStyle>
+                                        <VisualStyle>SystemDefault</VisualStyle>
+                                     </Element>
+                                     <Element xsi:type="XTextRadioBox" StyleIndex="10">
+                                        <InnerID>382</InnerID>
+                                        <ID>流行病学史42</ID>
+                                        <Name>流行病学史4</Name>
+                                        <Caption>否</Caption>
+                                        <Width>115.75</Width>
+                                        <Height>49.90234</Height>
+                                        <GroupName>流行病学史4</GroupName>
+                                        <ControlStyle>RadioBox</ControlStyle>
+                                        <Checked>true</Checked>
+                                        <VisualStyle>SystemDefault</VisualStyle>
+                                     </Element>
+                                     <Element xsi:type="XParagraphFlag" StyleIndex="16">
+                                        <InnerID>383</InnerID>
+                                     </Element>
+                                  </XElements>
+                               </Element>
+                            </XElements>
+                         </Element>
+                         <Element xsi:type="XTextTableRow" StyleIndex="10">
+                            <InnerID>384</InnerID>
+                            <XElements>
+                               <Element xsi:type="XTextTableCell" StyleIndex="14">
+                                  <InnerID>385</InnerID>
+                                  <XElements>
+                                     <Element xsi:type="XString" StyleIndex="10">
+                                        <InnerID>1155</InnerID>
+                                        <Text>5.近21关内您的亲庭、办公空、学校或托幼机构班级、车间等身体单位是否出现2例及以上发热和/或呼吸道症状的聚集性病例? </Text>
+                                     </Element>
+                                     <Element xsi:type="XParagraphFlag" StyleIndex="11">
+                                        <InnerID>388</InnerID>
+                                     </Element>
+                                  </XElements>
+                               </Element>
+                               <Element xsi:type="XTextTableCell" StyleIndex="15">
+                                  <InnerID>389</InnerID>
+                                  <XElements>
+                                     <Element xsi:type="XTextRadioBox" StyleIndex="10">
+                                        <InnerID>391</InnerID>
+                                        <ID>流行病学史51</ID>
+                                        <Name>流行病学史5</Name>
+                                        <Caption>是</Caption>
+                                        <Width>115.75</Width>
+                                        <Height>49.90234</Height>
+                                        <GroupName>流行病学史5</GroupName>
+                                        <ControlStyle>RadioBox</ControlStyle>
+                                        <VisualStyle>SystemDefault</VisualStyle>
+                                     </Element>
+                                     <Element xsi:type="XTextRadioBox" StyleIndex="10">
+                                        <InnerID>392</InnerID>
+                                        <ID>流行病学史52</ID>
+                                        <Name>流行病学史5</Name>
+                                        <Caption>否</Caption>
+                                        <Width>115.75</Width>
+                                        <Height>49.90234</Height>
+                                        <GroupName>流行病学史5</GroupName>
+                                        <ControlStyle>RadioBox</ControlStyle>
+                                        <Checked>true</Checked>
+                                        <VisualStyle>SystemDefault</VisualStyle>
+                                     </Element>
+                                     <Element xsi:type="XParagraphFlag" StyleIndex="16">
+                                        <InnerID>393</InnerID>
+                                     </Element>
+                                  </XElements>
+                               </Element>
+                            </XElements>
+                         </Element>
+                         <Element xsi:type="XTextTableRow" StyleIndex="10">
+                            <InnerID>394</InnerID>
+                            <XElements>
+                               <Element xsi:type="XTextTableCell" StyleIndex="14">
+                                  <InnerID>395</InnerID>
+                                  <XElements>
+                                     <Element xsi:type="XString" StyleIndex="10">
+                                        <InnerID>1156</InnerID>
+                                        <Text>6.是否在隔离管控期的入境人员?</Text>
+                                     </Element>
+                                     <Element xsi:type="XParagraphFlag" StyleIndex="11">
+                                        <InnerID>398</InnerID>
+                                     </Element>
+                                  </XElements>
+                               </Element>
+                               <Element xsi:type="XTextTableCell" StyleIndex="15">
+                                  <InnerID>399</InnerID>
+                                  <XElements>
+                                     <Element xsi:type="XTextRadioBox" StyleIndex="10">
+                                        <InnerID>401</InnerID>
+                                        <ID>流行病学史61</ID>
+                                        <Name>流行病学史6</Name>
+                                        <Caption>是</Caption>
+                                        <Width>115.75</Width>
+                                        <Height>49.90234</Height>
+                                        <GroupName>流行病学史6</GroupName>
+                                        <ControlStyle>RadioBox</ControlStyle>
+                                        <VisualStyle>SystemDefault</VisualStyle>
+                                     </Element>
+                                     <Element xsi:type="XTextRadioBox" StyleIndex="10">
+                                        <InnerID>402</InnerID>
+                                        <ID>流行病学史62</ID>
+                                        <Name>流行病学史6</Name>
+                                        <Caption>否</Caption>
+                                        <Width>115.75</Width>
+                                        <Height>49.90234</Height>
+                                        <GroupName>流行病学史6</GroupName>
+                                        <ControlStyle>RadioBox</ControlStyle>
+                                        <Checked>true</Checked>
+                                        <VisualStyle>SystemDefault</VisualStyle>
+                                     </Element>
+                                     <Element xsi:type="XParagraphFlag" StyleIndex="16">
+                                        <InnerID>403</InnerID>
+                                     </Element>
+                                  </XElements>
+                               </Element>
+                            </XElements>
+                         </Element>
+                         <Element xsi:type="XTextTableRow" StyleIndex="10">
+                            <InnerID>404</InnerID>
+                            <XElements>
+                               <Element xsi:type="XTextTableCell" StyleIndex="14">
+                                  <InnerID>405</InnerID>
+                                  <XElements>
+                                     <Element xsi:type="XString" StyleIndex="10">
+                                        <InnerID>1157</InnerID>
+                                        <Text>7.是否在隔离管控期的国内密接人员?</Text>
+                                     </Element>
+                                     <Element xsi:type="XParagraphFlag" StyleIndex="11">
+                                        <InnerID>408</InnerID>
+                                     </Element>
+                                  </XElements>
+                               </Element>
+                               <Element xsi:type="XTextTableCell" StyleIndex="15">
+                                  <InnerID>409</InnerID>
+                                  <XElements>
+                                     <Element xsi:type="XTextRadioBox" StyleIndex="10">
+                                        <InnerID>411</InnerID>
+                                        <ID>流行病学史71</ID>
+                                        <Name>流行病学史7</Name>
+                                        <Caption>是</Caption>
+                                        <Width>115.75</Width>
+                                        <Height>49.90234</Height>
+                                        <GroupName>流行病学史7</GroupName>
+                                        <ControlStyle>RadioBox</ControlStyle>
+                                        <VisualStyle>SystemDefault</VisualStyle>
+                                     </Element>
+                                     <Element xsi:type="XTextRadioBox" StyleIndex="10">
+                                        <InnerID>412</InnerID>
+                                        <ID>流行病学史72</ID>
+                                        <Name>流行病学史7</Name>
+                                        <Caption>否</Caption>
+                                        <Width>115.75</Width>
+                                        <Height>49.90234</Height>
+                                        <GroupName>流行病学史7</GroupName>
+                                        <ControlStyle>RadioBox</ControlStyle>
+                                        <Checked>true</Checked>
+                                        <VisualStyle>SystemDefault</VisualStyle>
+                                     </Element>
+                                     <Element xsi:type="XParagraphFlag" StyleIndex="16">
+                                        <InnerID>413</InnerID>
+                                     </Element>
+                                  </XElements>
+                               </Element>
+                            </XElements>
+                         </Element>
+                         <Element xsi:type="XTextTableRow" StyleIndex="10">
+                            <InnerID>414</InnerID>
+                            <XElements>
+                               <Element xsi:type="XTextTableCell" StyleIndex="14">
+                                  <InnerID>415</InnerID>
+                                  <XElements>
+                                     <Element xsi:type="XString" StyleIndex="10">
+                                        <InnerID>1158</InnerID>
+                                        <Text>8.是否黄码、橙码、红码人员?</Text>
+                                     </Element>
+                                     <Element xsi:type="XParagraphFlag" StyleIndex="11">
+                                        <InnerID>418</InnerID>
+                                     </Element>
+                                  </XElements>
+                               </Element>
+                               <Element xsi:type="XTextTableCell" StyleIndex="15">
+                                  <InnerID>419</InnerID>
+                                  <XElements>
+                                     <Element xsi:type="XTextCheckBox" StyleIndex="17">
+                                        <InnerID>421</InnerID>
+                                        <ID>checkbox1</ID>
+                                        <Name>lxbxs8</Name>
+                                        <Caption>是</Caption>
+                                        <Width>122</Width>
+                                        <Height>57.0312424</Height>
+                                        <GroupName>lxbxs8</GroupName>
+                                        <CheckedValue>1</CheckedValue>
+                                        <VisualStyle>SystemDefault</VisualStyle>
+                                     </Element>
+                                     <Element xsi:type="XTextCheckBox" StyleIndex="17">
+                                        <InnerID>422</InnerID>
+                                        <ID>checkbox2</ID>
+                                        <Name>lxbxs8</Name>
+                                        <Caption>否</Caption>
+                                        <Width>122</Width>
+                                        <Height>57.0312424</Height>
+                                        <GroupName>lxbxs8</GroupName>
+                                        <CheckedValue>2</CheckedValue>
+                                        <VisualStyle>SystemDefault</VisualStyle>
+                                     </Element>
+                                     <Element xsi:type="XTextCheckBox" StyleIndex="17">
+                                        <InnerID>423</InnerID>
+                                        <ID>checkbox3</ID>
+                                        <Name>lxbxs8</Name>
+                                        <Caption>未知</Caption>
+                                        <Width>172</Width>
+                                        <Height>57.0312424</Height>
+                                        <GroupName>lxbxs8</GroupName>
+                                        <CheckedValue>3</CheckedValue>
+                                        <VisualStyle>SystemDefault</VisualStyle>
+                                     </Element>
+                                     <Element xsi:type="XParagraphFlag" StyleIndex="16">
+                                        <InnerID>424</InnerID>
+                                     </Element>
+                                  </XElements>
+                               </Element>
+                            </XElements>
+                         </Element>
+                      </XElements>
+                      <Columns>
+                         <Element xsi:type="XTextTableColumn">
+                            <InnerID>342</InnerID>
+                            <Width>1391.375</Width>
+                         </Element>
+                         <Element xsi:type="XTextTableColumn">
+                            <InnerID>343</InnerID>
+                            <Width>264.375</Width>
+                         </Element>
+                      </Columns>
+                   </Element>
+                   <Element xsi:type="XParagraphFlag" StyleIndex="11">
+                      <InnerID>426</InnerID>
+                   </Element>
+                   <Element xsi:type="XString" StyleIndex="10">
+                      <InnerID>1143</InnerID>
+                      <Text>医生以上问诊内容与患者（家属)陈述内容一致且真实。患者（家属）确认签名:_______医生确认签名:______</Text>
+                   </Element>
+                   <Element xsi:type="XParagraphFlag" StyleIndex="11">
+                      <InnerID>429</InnerID>
+                   </Element>
+                   <Element xsi:type="XString" StyleIndex="9">
+                      <InnerID>1144</InnerID>
+                      <Text>体格检查：</Text>
+                   </Element>
+                   <Element xsi:type="XInputField" StyleIndex="10">
+                      <InnerID>432</InnerID>
+                      <ID>emr.DE04.10.258.00</ID>
+                      <EnableValueValidate>true</EnableValueValidate>
+                      <BorderElementColor />
+                      <Name>emr.DE04.10.258.00</Name>
+                      <BackgroundText>点击此处输入体格检查内容</BackgroundText>
+                   </Element>
+                   <Element xsi:type="XParagraphFlag" StyleIndex="12">
+                      <InnerID>433</InnerID>
+                   </Element>
+                   <Element xsi:type="XString" StyleIndex="9">
+                      <InnerID>1145</InnerID>
+                      <Text>辅助检查：</Text>
+                   </Element>
+                   <Element xsi:type="XInputField" StyleIndex="10">
+                      <InnerID>436</InnerID>
+                      <ID>field6</ID>
+                      <EnableValueValidate>true</EnableValueValidate>
+                      <BorderElementColor />
+                      <BackgroundText>点击此处输入辅助检查内容</BackgroundText>
+                   </Element>
+                   <Element xsi:type="XParagraphFlag" StyleIndex="12">
+                      <InnerID>437</InnerID>
+                   </Element>
+                   <Element xsi:type="XString" StyleIndex="9">
+                      <InnerID>1146</InnerID>
+                      <Text>诊  断：</Text>
+                   </Element>
+                   <Element xsi:type="XInputField" StyleIndex="10">
+                      <InnerID>440</InnerID>
+                      <ID>emr.DE05.01.025.00</ID>
+                      <EnableValueValidate>true</EnableValueValidate>
+                      <XElements>
+                         <Element xsi:type="XString" StyleIndex="17" WhitespaceCount="1">
+                            <InnerID>1159</InnerID>
+                            <Text> </Text>
+                         </Element>
+                         <Element xsi:type="XParagraphFlag" StyleIndex="12">
+                            <InnerID>442</InnerID>
+                         </Element>
+                         <Element xsi:type="XString" StyleIndex="18">
+                            <InnerID>1160</InnerID>
+                            <Text>005771</Text>
+                         </Element>
+                         <Element xsi:type="XParagraphFlag" StyleIndex="12">
+                            <InnerID>444</InnerID>
+                         </Element>
+                         <Element xsi:type="XString" StyleIndex="18">
+                            <InnerID>1161</InnerID>
+                            <Text>  1急性广泛前壁、高侧壁心肌梗死  </Text>
+                         </Element>
+                         <Element xsi:type="XParagraphFlag" StyleIndex="12">
+                            <InnerID>446</InnerID>
+                         </Element>
+                         <Element xsi:type="XString" StyleIndex="18">
+                            <InnerID>1162</InnerID>
+                            <Text>  2双侧乳腺癌术后化疗 </Text>
+                         </Element>
+                      </XElements>
+                      <BorderElementColor />
+                      <Name>emr.DE05.01.025.00</Name>
+                      <BackgroundText>点击输入急诊诊断</BackgroundText>
+                   </Element>
+                   <Element xsi:type="XParagraphFlag" StyleIndex="12">
+                      <InnerID>448</InnerID>
+                   </Element>
+                   <Element xsi:type="XString" StyleIndex="9">
+                      <InnerID>1147</InnerID>
+                      <Text>处理意见：</Text>
+                   </Element>
+                   <Element xsi:type="XInputField" StyleIndex="10">
+                      <InnerID>451</InnerID>
+                      <ID>DE06.00.018.00</ID>
+                      <EnableValueValidate>true</EnableValueValidate>
+                      <BorderElementColor />
+                      <Name>DE06.00.018.00</Name>
+                      <BackgroundText>点击输入处理意见</BackgroundText>
+                   </Element>
+                   <Element xsi:type="XParagraphFlag" StyleIndex="12">
+                      <InnerID>452</InnerID>
+                   </Element>
+                   <Element xsi:type="XString" StyleIndex="9">
+                      <InnerID>1148</InnerID>
+                      <Text>备  注：</Text>
+                   </Element>
+                   <Element xsi:type="XInputField" StyleIndex="10">
+                      <InnerID>455</InnerID>
+                      <ID>field7</ID>
+                      <EnableValueValidate>true</EnableValueValidate>
+                      <BorderElementColor />
+                      <BackgroundText>点击此处输入备注</BackgroundText>
+                   </Element>
+                   <Element xsi:type="XParagraphFlag" StyleIndex="12">
+                      <InnerID>456</InnerID>
+                   </Element>
+                   <Element xsi:type="XString" StyleIndex="9">
+                      <InnerID>1149</InnerID>
+                      <Text>嘱  托：</Text>
+                   </Element>
+                   <Element xsi:type="XInputField" StyleIndex="10">
+                      <InnerID>459</InnerID>
+                      <ID>field8</ID>
+                      <EnableValueValidate>true</EnableValueValidate>
+                      <BorderElementColor />
+                      <BackgroundText>点击此处输入嘱托</BackgroundText>
+                   </Element>
+                   <Element xsi:type="XParagraphFlag" StyleIndex="19">
+                      <InnerID>460</InnerID>
+                   </Element>
+                </XElements>
+                <ForeColorForCollapsed />
+                <DocumentInfo>
+                   <LicenseText>广东医通软件:广东医通软件有限公司</LicenseText>
+                   <CreationTime>1980-01-01T00:00:00</CreationTime>
+                   <LastModifiedTime>2022-06-02T09:41:14.2719+08:00</LastModifiedTime>
+                   <LastPrintTime>1980-01-01T00:00:00</LastPrintTime>
+                   <Operator>DCSoft.Writer Version:1.2019.1.29</Operator>
+                   <NumOfPage>2</NumOfPage>
+                </DocumentInfo>
+                <ContentLoaded>true</ContentLoaded>
+             </Element>
+             <Element xsi:type="XParagraphFlag">
+                <InnerID>866</InnerID>
+                <AutoCreate>true</AutoCreate>
+             </Element>
+          </XElements>
+       </Element>
+       <Element xsi:type="XTextFooter">
+          <InnerID>128</InnerID>
+          <AcceptTab>true</AcceptTab>
+          <XElements>
+             <Element xsi:type="XString" StyleIndex="0">
+                <InnerID>1163</InnerID>
+                <Text>页脚测试：</Text>
+             </Element>
+             <Element xsi:type="XInputField" StyleIndex="0">
+                <InnerID>130</InnerID>
+                <ID>field1</ID>
+                <EnableValueValidate>true</EnableValueValidate>
+                <BorderElementColor />
+                <SpecifyWidth>354.330719</SpecifyWidth>
+             </Element>
+             <Element xsi:type="XParagraphFlag" StyleIndex="0">
+                <InnerID>131</InnerID>
+             </Element>
+             <Element xsi:type="XParagraphFlag" StyleIndex="0">
+                <InnerID>132</InnerID>
+             </Element>
+             <Element xsi:type="XInputField" StyleIndex="8">
+                <InnerID>133</InnerID>
+                <ID>field3</ID>
+                <EnableValueValidate>true</EnableValueValidate>
+                <BorderElementColor />
+                <SpecifyWidth>472.440948</SpecifyWidth>
+             </Element>
+             <Element xsi:type="XParagraphFlag">
+                <InnerID>134</InnerID>
+             </Element>
+             <Element xsi:type="XInputField" StyleIndex="8">
+                <InnerID>135</InnerID>
+                <ID>field3</ID>
+                <EnableValueValidate>true</EnableValueValidate>
+                <BorderElementColor />
+                <SpecifyWidth>354.330719</SpecifyWidth>
+             </Element>
+             <Element xsi:type="XParagraphFlag">
+                <InnerID>136</InnerID>
+             </Element>
+             <Element xsi:type="XParagraphFlag" StyleIndex="8">
+                <InnerID>137</InnerID>
+             </Element>
+          </XElements>
+       </Element>
+    </XElements>
+    <Parameters>
+       <Parameter Name="当前时间" />
+       <Parameter Name="T_DA_0001" ValueTypeFullName="WebApplication1.DA_0001_Model,WebApplication1" />
+    </Parameters>
+    <FileName>D:desktop页头页脚.xml</FileName>
+    <FileFormat>XML</FileFormat>
+    <ContentStyles>
+       <Default xsi:type="DocumentContentStyle">
+          <FontName>宋体</FontName>
+          <FontSize>12</FontSize>
+       </Default>
+       <Styles>
+          <Style Index="0">
+             <FontName>宋体</FontName>
+             <FontSize>12</FontSize>
+             <Align>Center</Align>
+          </Style>
+          <Style Index="1">
+             <FontName>宋体</FontName>
+             <FontSize>9</FontSize>
+             <Bold>true</Bold>
+          </Style>
+          <Style Index="2">
+             <FontName>宋体</FontName>
+             <FontSize>9</FontSize>
+          </Style>
+          <Style Index="3">
+             <FontName>宋体</FontName>
+             <FontSize>9</FontSize>
+             <LineSpacingStyle>SpaceSpecify</LineSpacingStyle>
+             <LineSpacing>100</LineSpacing>
+          </Style>
+          <Style Index="4">
+             <FontName>宋体</FontName>
+             <FontSize>12</FontSize>
+             <VerticalAlign>Bottom</VerticalAlign>
+             <BorderWidth>1</BorderWidth>
+             <PaddingLeft>15</PaddingLeft>
+             <PaddingTop>10</PaddingTop>
+             <PaddingRight>15</PaddingRight>
+             <PaddingBottom>10</PaddingBottom>
+          </Style>
+          <Style Index="5">
+             <FontName>宋体</FontName>
+             <FontSize>12</FontSize>
+             <Bold>true</Bold>
+          </Style>
+          <Style Index="6">
+             <FontName>宋体</FontName>
+             <FontSize>9</FontSize>
+             <Align>Justify</Align>
+          </Style>
+          <Style Index="7">
+             <FontName>宋体</FontName>
+             <FontSize>9</FontSize>
+             <Bold>true</Bold>
+             <LineSpacingStyle>SpaceSpecify</LineSpacingStyle>
+             <LineSpacing>100</LineSpacing>
+          </Style>
+          <Style Index="8">
+             <FontName>宋体</FontName>
+             <FontSize>12</FontSize>
+          </Style>
+          <Style Index="9">
+             <BackgroundColor>#78C0D4</BackgroundColor>
+             <FontName>宋体</FontName>
+             <FontSize>10.5</FontSize>
+             <Bold>true</Bold>
+             <Align>Justify</Align>
+          </Style>
+          <Style Index="10">
+             <FontName>宋体</FontName>
+             <FontSize>10.5</FontSize>
+             <Align>Justify</Align>
+          </Style>
+          <Style Index="11">
+             <FontName>宋体</FontName>
+             <FontSize>10.5</FontSize>
+          </Style>
+          <Style Index="12">
+             <FontName>宋体</FontName>
+             <FontSize>10.5</FontSize>
+             <Bold>true</Bold>
+          </Style>
+          <Style Index="13">
+             <BackgroundColor>#FFFFFF</BackgroundColor>
+             <FontName>宋体</FontName>
+             <FontSize>10.5</FontSize>
+             <Align>Justify</Align>
+          </Style>
+          <Style Index="14">
+             <FontName>宋体</FontName>
+             <FontSize>10.5</FontSize>
+             <Align>Justify</Align>
+             <BorderWidth>1</BorderWidth>
+             <PaddingLeft>15</PaddingLeft>
+             <PaddingTop>10</PaddingTop>
+             <PaddingRight>15</PaddingRight>
+             <PaddingBottom>10</PaddingBottom>
+          </Style>
+          <Style Index="15">
+             <FontName>宋体</FontName>
+             <FontSize>10.5</FontSize>
+             <Align>Justify</Align>
+             <VerticalAlign>Middle</VerticalAlign>
+             <BorderWidth>1</BorderWidth>
+             <PaddingLeft>15</PaddingLeft>
+             <PaddingTop>10</PaddingTop>
+             <PaddingRight>15</PaddingRight>
+             <PaddingBottom>10</PaddingBottom>
+          </Style>
+          <Style Index="16">
+             <FontName>宋体</FontName>
+             <FontSize>10.5</FontSize>
+             <Align>Center</Align>
+          </Style>
+          <Style Index="17">
+             <FontName>宋体</FontName>
+             <FontSize>12</FontSize>
+             <Align>Justify</Align>
+          </Style>
+          <Style Index="18">
+             <FontName>宋体</FontName>
+             <FontSize>0.9999998</FontSize>
+             <Align>Justify</Align>
+          </Style>
+          <Style Index="19">
+             <FontName>宋体</FontName>
+             <FontSize>7.5</FontSize>
+          </Style>
+       </Styles>
+    </ContentStyles>
+    <Info>
+       <LicenseText>南京都昌信息科技有限公司:南京都昌信息科技有限公司1并发数</LicenseText>
+       <CreationTime>2014-07-14T11:24:34.140625+08:00</CreationTime>
+       <LastModifiedTime>2022-06-08T17:12:13.3916212+08:00</LastModifiedTime>
+       <LastPrintTime>1980-01-01T00:00:00</LastPrintTime>
+       <Operator>DCSoft.Writer Version:1.2014.1217.1</Operator>
+       <NumOfPage>2</NumOfPage>
+    </Info>
+    <BodyText>职  业：
+ 主  诉：
+ 现病史：
+ 既往史：平素体健，否认“肝炎、结核”等传染病史，否认药物、食物过敏史，无外伤史，无手术史，无输血、血制品史。
+ 过敏史：
+ 新冠肺炎流行病学史：
+ 
+ 1.您21天是否有发热、干咳、乏力、嗅（味）觉减退、鼻塞、流涕、咽痛、结膜炎、肌痛和腹泻等症状？ ○是●否 
+ 2.近21天内是否到过境外.境内中高风险地区*，或有病例报告的社区?  ○是●否 
+ 3.近21关内是否接触过来自境外.境内中高风险地区*的人员?  ○是●否 
+ 4.近21天内是否接触过确诊病例或无症状感染者(核酸检测阳性者)? ○是●否 
+ 5.近21关内您的亲庭、办公空、学校或托幼机构班级、车间等身体单位是否出现2例及以上发热和/或呼吸道症状的聚集性病例?  ○是●否 
+ 6.是否在隔离管控期的入境人员? ○是●否 
+ 7.是否在隔离管控期的国内密接人员? ○是●否 
+ 8.是否黄码、橙码、红码人员? □是□否□未知 
+ 医生以上问诊内容与患者（家属)陈述内容一致且真实。患者（家属）确认签名:_______医生确认签名:______
+ 体格检查：
+ 辅助检查：
+ 诊  断： 
+ 005771
+   1急性广泛前壁、高侧壁心肌梗死  
+   2双侧乳腺癌术后化疗 
+ 处理意见：
+ 备  注：
+ 嘱  托：职  业：
+ 主  诉：
+ 现病史：
+ 既往史：平素体健，否认“肝炎、结核”等传染病史，否认药物、食物过敏史，无外伤史，无手术史，无输血、血制品史。
+ 过敏史：
+ 新冠肺炎流行病学史：
+ 
+ 1.您21天是否有发热、干咳、乏力、嗅（味）觉减退、鼻塞、流涕、咽痛、结膜炎、肌痛和腹泻等症状？ ○是●否 
+ 2.近21天内是否到过境外.境内中高风险地区*，或有病例报告的社区?  ○是●否 
+ 3.近21关内是否接触过来自境外.境内中高风险地区*的人员?  ○是●否 
+ 4.近21天内是否接触过确诊病例或无症状感染者(核酸检测阳性者)? ○是●否 
+ 5.近21关内您的亲庭、办公空、学校或托幼机构班级、车间等身体单位是否出现2例及以上发热和/或呼吸道症状的聚集性病例?  ○是●否 
+ 6.是否在隔离管控期的入境人员? ○是●否 
+ 7.是否在隔离管控期的国内密接人员? ○是●否 
+ 8.是否黄码、橙码、红码人员? □是□否□未知 
+ 医生以上问诊内容与患者（家属)陈述内容一致且真实。患者（家属）确认签名:_______医生确认签名:______
+ 体格检查：
+ 辅助检查：
+ 诊  断： 
+ 005771
+   1急性广泛前壁、高侧壁心肌梗死  
+   2双侧乳腺癌术后化疗 
+ 处理意见：
+ 备  注：
+ 嘱  托：</BodyText>
+    <LocalConfig />
+    <PageSettings>
+       <SwapGutter>false</SwapGutter>
+       <HeaderDistance>0</HeaderDistance>
+       <FooterDistance>0</FooterDistance>
+       <LeftMargin>46</LeftMargin>
+       <TopMargin>0</TopMargin>
+       <RightMargin>46</RightMargin>
+       <BottomMargin>59</BottomMargin>
+       <StrictUsePageSize>false</StrictUsePageSize>
+    </PageSettings>
+ </XTextDocument>

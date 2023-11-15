@@ -19,7 +19,7 @@
         :name="item.name"
       >
         {{ item.content }}
-        <div id="myWriterControl2" dctype="WriterControlForWASM">
+        <div :id="'myWriterControl' + item.name" dctype="WriterControlForWASM">
           正在加载...
         </div>
       </el-tab-pane>

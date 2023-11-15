@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script type="text/javascript" src="ServicePage.aspx?js=1"></script>
+  <title>Document</title>
+</head>
+<body>
+</body>
+</html>
+
+
+<script>
+  var content1 = `<XTextDocument xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" EditorVersionString="0.0.0.0">
+   <XElements>
+      <Element xsi:type="XTextHeader">
+         <InnerID>1</InnerID>
+         <AcceptTab>true</AcceptTab>
+         <XElements>
+            <Element xsi:type="XString" StyleIndex="0">
+               <InnerID>21</InnerID>
+               <Text>页眉1</Text>
+            </Element>
+            <Element xsi:type="XParagraphFlag" StyleIndex="0">
+               <InnerID>6</InnerID>
+               <AutoCreate>true</AutoCreate>
+            </Element>
+         </XElements>
+      </Element>
+      <Element xsi:type="XTextBody">
+         <InnerID>2</InnerID>
+         <AcceptTab>true</AcceptTab>
+         <XElements>
+            <Element xsi:type="XString">
+               <InnerID>22</InnerID>
+               <Text>文档体1</Text>
+            </Element>
+            <Element xsi:type="XParagraphFlag">
+               <InnerID>7</InnerID>
+               <AutoCreate>true</AutoCreate>
+            </Element>
+         </XElements>
+      </Element>
+      <Element xsi:type="XTextFooter">
+         <InnerID>3</InnerID>
+         <AcceptTab>true</AcceptTab>
+         <XElements>
+            <Element xsi:type="XString">
+               <InnerID>23</InnerID>
+               <Text>页脚1</Text>
+            </Element>
+            <Element xsi:type="XParagraphFlag">
+               <InnerID>8</InnerID>
+               <AutoCreate>true</AutoCreate>
+            </Element>
+         </XElements>
+      </Element>
+   </XElements>
+   <ContentStyles>
+      <Default xsi:type="DocumentContentStyle">
+         <FontSize>12</FontSize>
+      </Default>
+      <Styles>
+         <Style Index="0">
+            <FontSize>12</FontSize>
+            <Align>Center</Align>
+         </Style>
+      </Styles>
+   </ContentStyles>
+   <Info>
+      <LicenseText>南京都昌信息科技有限公司:南京都昌信息科技有限公司内测码</LicenseText>
+      <CreationTime>2022-03-22T11:03:48.3280062+08:00</CreationTime>
+      <LastModifiedTime>2022-03-22T11:07:51.261306+08:00</LastModifiedTime>
+      <LastPrintTime>1980-01-01T00:00:00</LastPrintTime>
+      <Operator>DCSoft.Writer Version:0.0.0.0</Operator>
+      <NumOfPage>1</NumOfPage>
+   </Info>
+   <BodyText>文档体1</BodyText>
+   <LocalConfig />
+   <PageSettings>
+      <StrictUsePageSize>false</StrictUsePageSize>
+   </PageSettings>
+</XTextDocument>`;
+</script>
+
+<script>
+  var content2 = `<XTextDocument xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" EditorVersionString="0.0.0.0">
+   <XElements>
+      <Element xsi:type="XTextHeader">
+         <InnerID>1</InnerID>
+         <AcceptTab>true</AcceptTab>
+         <XElements>
+            <Element xsi:type="XString" StyleIndex="0">
+               <InnerID>21</InnerID>
+               <Text>页眉2</Text>
+            </Element>
+            <Element xsi:type="XParagraphFlag" StyleIndex="0">
+               <InnerID>6</InnerID>
+               <AutoCreate>true</AutoCreate>
+            </Element>
+         </XElements>
+      </Element>
+      <Element xsi:type="XTextBody">
+         <InnerID>2</InnerID>
+         <AcceptTab>true</AcceptTab>
+         <XElements>
+            <Element xsi:type="XString">
+               <InnerID>22</InnerID>
+               <Text>文档体2</Text>
+            </Element>
+            <Element xsi:type="XParagraphFlag">
+               <InnerID>7</InnerID>
+               <AutoCreate>true</AutoCreate>
+            </Element>
+         </XElements>
+      </Element>
+      <Element xsi:type="XTextFooter">
+         <InnerID>3</InnerID>
+         <AcceptTab>true</AcceptTab>
+         <XElements>
+            <Element xsi:type="XString">
+               <InnerID>23</InnerID>
+               <Text>页脚2</Text>
+            </Element>
+            <Element xsi:type="XParagraphFlag">
+               <InnerID>8</InnerID>
+               <AutoCreate>true</AutoCreate>
+            </Element>
+         </XElements>
+      </Element>
+   </XElements>
+   <ContentStyles>
+      <Default xsi:type="DocumentContentStyle">
+         <FontSize>12</FontSize>
+      </Default>
+      <Styles>
+         <Style Index="0">
+            <FontSize>12</FontSize>
+            <Align>Center</Align>
+         </Style>
+      </Styles>
+   </ContentStyles>
+   <Info>
+      <LicenseText>南京都昌信息科技有限公司:南京都昌信息科技有限公司内测码</LicenseText>
+      <CreationTime>2022-03-22T11:03:48.3280062+08:00</CreationTime>
+      <LastModifiedTime>2022-03-22T11:07:51.261306+08:00</LastModifiedTime>
+      <LastPrintTime>1980-01-01T00:00:00</LastPrintTime>
+      <Operator>DCSoft.Writer Version:0.0.0.0</Operator>
+      <NumOfPage>1</NumOfPage>
+   </Info>
+   <BodyText>文档体2</BodyText>
+   <LocalConfig />
+   <PageSettings>
+      <StrictUsePageSize>false</StrictUsePageSize>
+   </PageSettings>
+</XTextDocument>`
+</script>
+
+<script>
+
+document.body.innerHTML = ''
+
+const WFetch = async (url) => {
+  const response = await window.fetch(url)
+  const content = await response.text()
+  return content
+}
+
+
+const data = {
+  number:0
+}
+
+const createEditor = () => {
+  const editor = document.createElement('div')
+  editor.id = `ID${++data.number}`
+  const option = {
+    contentrendermode:'NormalHtmlEditable',
+    workspacebackcolorstring:'#fff',
+    ServicePageURL:'ServicePage.aspx',
+    heightcompress:'true',
+    imagedataembedinhtml:'true',
+    serversleepfordebug:'0',
+    allowcopy:'true',
+    supportactivex:'false',
+    pixelpagespacing:'5',
+    clientcontextmenutype:"Custom",
+    showdebuginfo:"false",
+    registercodeindex:"0",
+    OutputHeaderFooter:"false",
+    ShowHeaderBottomLine:"false",
+  }
+  Object.entries(option).forEach(([key,value]) => {
+    editor.setAttribute(key,value)
+  })
+  editor.setAttribute('style','width:500px;height:500px;display:inline-block')
+  return editor
+}
+
+const initEditor = async () => {
+  const editor = createEditor()
+  const initBindDcClientControl = () => {
+    window.BindingDCWriterClientControl(editor);
+  }
+  const initDcEditorConfig = (opts) => {
+    const option = Object.assign({ Readonly: false }, opts);
+    editor.Options.CustomCSSString = this.customCSS;
+    editor.Options.OutputHeaderFooter = false;
+    editor.Options.AutoScrollToCaretWhenGotFocus = true;
+    editor.Options.AutoFocusWhenOpenDocument = true;
+    // 只能纯文本粘贴内容
+    editor.DocumentOptions.BehaviorOptions.AcceptDataFormats = 'Text';
+    // issue BSDCWRIT-449 修复复制预览病历内容，粘贴到编辑模式下的病历问题
+    editor.DocumentOptions.BehaviorOptions.WordBreak = 'BreakAll';
+    // readonly 背景色
+    editor.DocumentOptions.ViewOptions.ReadonlyFieldBackColorValue = '#fff';
+    editor.DocumentOptions.ViewOptions.FieldInvalidateValueBackColorValue = 'Transparent';
+    // 输出内容不包含被逻辑删除的内容
+    editor.Options.ExcludeLogicDeleted = true;
+    // 表单模式,输入域外无法输入文字
+    editor.Options.FormView = 'Normal'; //表单模式
+    editor.Options.FreeSelection = true; //表单模式下，自由选择
+    editor.Options.BackgroundTextOutputMode = 'Whitespace';
+    editor.Options.HeaderFooterEditable = true;
+    editor.Options.Readonly = option.Readonly;
+  }
+
+  const initDcBuildFrame = (record, fn) => {
+    document.body.appendChild(editor)
+    // 绑定框架
+    editor.BuildFrame(() => {
+      record && editor.LoadDocumentFromString(record, 'XML'),
+      // 绑定编辑器操作对象
+      editor.DocumentLoad = fn
+    });
+  }
+  initBindDcClientControl()
+  initDcEditorConfig()
+
+  const p = new Promise((resolve,reject) => {
+    // 加载完时触发
+    initDcBuildFrame(content1,() => {
+      editor.ClearDocumentBody()
+      const doc = editor.GetContentDocument();
+      resolve([doc.body.textContent,editor.id])
+    })
+  })
+  
+  return p.then(() => {
+    // 重新加载Body部分
+    editor.LoadDocumentFromString(content2,'XML','Body')
+    return new Promise(resolve => {
+      editor.DocumentLoad = () => {
+        resolve()
+      }
+    })
+  })
+}
+
+
+(async() => {
+  const results = [...Array(50)].map(initEditor)
+  const values = await Promise.all(results)
+})()
+
+</script>

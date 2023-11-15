@@ -1,0 +1,298 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <script type="text/javascript" src="jquery-1.7.2.min.js"></script>
+    <!--<script type="text/javascript" src="ServicePage.aspx?js=1"></script>-->
+
+    <script type="text/javascript" src="ServicePage.aspx?js=1"></script>
+    <title></title>
+</head>
+<body>
+    <input type="button" value="插入包含没有痕迹的内容的子文档" onclick="exp21();" />
+    <input type="button" value="插入包含带痕迹的内容的子文档" onclick="exp21(true);" />
+    <input type="button" value="保存子文档" onclick="xmlforsubsave = document.WriterControl.SaveSubDocumentToString({SubDocID:'subdoc1',SmartMode:'true'});" />
+    <input type="button" value="加载保存的子文档" onclick="document.WriterControl.LoadDocumentFromString(xmlforsubsave,'xml');" />
+
+
+    <div id="myWriterControl" style="width: 100%; border: 2px solid black; border-radius: 5px;height:900px;"
+         LocalServerPort="2345"
+         TransformUseBase64="false"
+         FieldBorderPrintVisibility="None"
+         FormView="Disabled"
+         ReadOnly="false"
+         PreviewUseAdvancedLayout="false"
+         BackgroundTextOutputMode="Underline"
+         contentrendermode="NormalHTMLEditable"
+         AutoSaveIntervalInSecond="0"
+         workspacebackcolorstring="#B1CAEB"
+         servicepageurl="ServicePage.aspx"
+         useclassattribute="false"
+         heightcompress="true"
+         imagedataembedinhtml="true"
+         ExcludeLogicDeleted="false"
+         HeaderFooterEditable="true"
+         UseDCWriterMiniJS="false"
+         serversleepfordebug="0"
+         allowcopy="true"
+         supportactivex="false"
+         pixelpagespacing="5"
+         clientcontextmenutype="Custom"
+         showdebuginfo="false"
+         ismobiledevice="False"
+         IndentHtmlCode="false"
+         FreeSelection="true"
+         urlencodecountforpostdata="0"
+         AutoZoom="false"
+         registercodeindex="0" />
+
+
+    <script type="text/javascript">
+        // HTML页面加载后执行本函数
+        function BuildDCWriterControlFrame() {
+            // 获得控件容器元素
+            var ctl = document.getElementById("myWriterControl");
+            // 绑定控件
+            BindingDCWriterClientControl(ctl);
+
+            ctl.Options.LogUserEditTrack = true;
+            ctl.Options.CurrentUserID = "zhangsan";
+            ctl.Options.CurrentUserName = "张三主任医师";
+            ctl.Options.CurrentUserPermissionLevel = "3";
+            ctl.Options.ClientMachineName = "123";
+            ctl.Options.ExcludeLogicDeleted = false;
+            ctl.DocumentOptions.SecurityOptions.EnablePermission = true;
+            ctl.DocumentOptions.SecurityOptions.EnableLogicDelete = true;
+            ctl.DocumentOptions.SecurityOptions.ShowLogicDeletedContent = true;
+            ctl.DocumentOptions.SecurityOptions.ShowPermissionMark = true;
+            ctl.DocumentOptions.SecurityOptions.ShowPermissionTip = true;
+
+            ctl.Options.OutputOriginUserTrackInfos = true;
+
+            // 创建编辑器框架
+            ctl.BuildFrame(function () {
+            });
+        }
+        BuildDCWriterControlFrame();
+
+
+
+        function exp21(hastrace) {
+            var ctl = document.getElementById("myWriterControl");
+            if (ctl != null) {
+                ctl.GetContentContainer().focus();
+                var file = new Array();
+
+                if (hastrace === true) {
+                    file.push(xmlhastrace);
+                } else {
+                    file.push(xmlhasnotrace);
+                }
+
+                //构造两个选项分别对应两个子文档
+                var options = new Array();
+                var attr1 = {
+                    "Attributes": { "姓名": "张三", "科室": "胸外科", "床号": "12345" }, //自定义属性
+                    //"NewPage": "false", //是否新起一页
+                    //"ReadOnly": "true", //是否可编辑
+                    "Title": "张三的病程记录", //病程收缩时显示的文档标题
+                    "ToolTip": "提示：张三的病程记录", //病程鼠标移上去时的提示文本
+                    "ID": "subdoc1",//
+                    //"TitleLevel": "0",//导航级别，从0到7的整数
+                    //"CSSStyle": "border: 3px solid #FF0000; background-color: #FFFF00;", //自定义的样式
+                    //"Parameters": { "fieldTime": "2020-09-09 15:12:13", "fieldMedic": "王二麻子" } ,//绑定的数据格式
+                    //"DataBindingXML": "<DataSourceName><Name>张三</Name></DataSourceName><DataSourceName2><Name>李四</Name></DataSourceName2>",
+                    //"LoadOriginHeaderFooter": "false",
+                    "EnablePermission": "true"
+                };
+
+                options.push(attr1);
+                //options.push(attr2);
+                var options = {
+                    Files: file,
+                    Options: options,
+                    Usebase64: "false",
+                    ShowMaskUI: "true"
+                };
+
+
+                ctl.AppendSubDocuments(options);
+            }
+        }
+
+        var xmlhasnotrace = `
+<XTextDocument xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" EditorVersionString="0.0.0.0">
+   <XElements>
+      <Element xsi:type="XTextHeader">
+         <InnerID>1</InnerID>
+         <AcceptTab>true</AcceptTab>
+         <XElements>
+            <Element xsi:type="XParagraphFlag" StyleIndex="0">
+               <InnerID>6</InnerID>
+               <AutoCreate>true</AutoCreate>
+            </Element>
+         </XElements>
+      </Element>
+      <Element xsi:type="XTextBody">
+         <InnerID>2</InnerID>
+         <AcceptTab>true</AcceptTab>
+         <XElements>
+            <Element xsi:type="XString">
+               <InnerID>31</InnerID>
+               <Text>这是没有痕迹的</Text>
+            </Element>
+            <Element xsi:type="XInputField">
+               <InnerID>20</InnerID>
+               <ID>field1</ID>
+               <EnableValueValidate>true</EnableValueValidate>
+               <XElements>
+                  <Element xsi:type="XString">
+                     <InnerID>33</InnerID>
+                     <Text>子文档内的输入域</Text>
+                  </Element>
+               </XElements>
+               <BorderElementColor />
+               <InnerValue>子文档内的输入域</InnerValue>
+            </Element>
+            <Element xsi:type="XString">
+               <InnerID>32</InnerID>
+               <Text>文档</Text>
+            </Element>
+            <Element xsi:type="XParagraphFlag">
+               <InnerID>7</InnerID>
+               <AutoCreate>true</AutoCreate>
+            </Element>
+         </XElements>
+      </Element>
+      <Element xsi:type="XTextFooter">
+         <InnerID>3</InnerID>
+         <AcceptTab>true</AcceptTab>
+         <XElements>
+            <Element xsi:type="XParagraphFlag">
+               <InnerID>8</InnerID>
+               <AutoCreate>true</AutoCreate>
+            </Element>
+         </XElements>
+      </Element>
+   </XElements>
+   <FileName>C:\Users\DCSOFTWU\Desktop\aaaaaa.xml</FileName>
+   <FileFormat>XML</FileFormat>
+   <ContentStyles>
+      <Default xsi:type="DocumentContentStyle">
+         <FontSize>12</FontSize>
+      </Default>
+      <Styles>
+         <Style Index="0">
+            <FontSize>12</FontSize>
+            <Align>Center</Align>
+         </Style>
+      </Styles>
+   </ContentStyles>
+   <Info>
+      <LicenseText>南京都昌信息科技有限公司内部使用:南京都昌信息科技有限公司内测旗舰版</LicenseText>
+      <CreationTime>2023-01-18T11:18:01.3141297+08:00</CreationTime>
+      <LastModifiedTime>2023-01-18T11:19:03.0572489+08:00</LastModifiedTime>
+      <LastPrintTime>1980-01-01T00:00:00</LastPrintTime>
+      <Operator>DCSoft.Writer Version:0.0.0.0</Operator>
+      <NumOfPage>1</NumOfPage>
+   </Info>
+   <BodyText>这是没有痕迹的子文档内的输入域文档</BodyText>
+   <LocalConfig />
+   <PageSettings>
+      <StrictUsePageSize>false</StrictUsePageSize>
+   </PageSettings>
+</XTextDocument>`;
+
+        var xmlhastrace = `
+<XTextDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" EditorVersionString="1.2023.1.10">
+               <InnerID>3556</InnerID>
+               <XElements>
+                  <Element xsi:type="XTextHeader">
+                     <InnerID>3570</InnerID>
+                     <AcceptTab>true</AcceptTab>
+                     <XElements>
+                        <Element xsi:type="XParagraphFlag" StyleIndex="0">
+                           <InnerID>3576</InnerID>
+                           <AutoCreate>true</AutoCreate>
+                        </Element>
+                     </XElements>
+                  </Element>
+                  <Element xsi:type="XTextBody">
+                     <InnerID>3571</InnerID>
+                     <AcceptTab>true</AcceptTab>
+                     <XElements>
+                        <Element xsi:type="XString" StyleIndex="1">
+                           <InnerID>3595</InnerID>
+                           <Text>这是有痕迹的文档</Text>
+                        </Element>
+                        <Element xsi:type="XParagraphFlag">
+                           <InnerID>3575</InnerID>
+                           <AutoCreate>true</AutoCreate>
+                        </Element>
+                     </XElements>
+                  </Element>
+                  <Element xsi:type="XTextFooter">
+                     <InnerID>3572</InnerID>
+                     <AcceptTab>true</AcceptTab>
+                     <XElements>
+                        <Element xsi:type="XParagraphFlag">
+                           <InnerID>3577</InnerID>
+                           <AutoCreate>true</AutoCreate>
+                        </Element>
+                     </XElements>
+                  </Element>
+               </XElements>
+               <Parameters>
+                  <Parameter Name="当前时间" />
+               </Parameters>
+               <FileName>C:\Users\DCSOFTWU\Desktop\aaaaaa.xml</FileName>
+               <FileFormat>XML</FileFormat>
+               <UserHistories>
+                  <History>
+                     <ID>wang</ID>
+                     <Name>王医师</Name>
+                     <SavedTime>2023-01-18T09:32:51.2182635+08:00</SavedTime>
+                  </History>
+                  <History>
+                     <ID>wang</ID>
+                     <Name>王医师</Name>
+                     <SavedTime>1980-01-01T00:00:00</SavedTime>
+                  </History>
+               </UserHistories>
+               <ContentStyles>
+                  <Default xsi:type="DocumentContentStyle">
+                     <FontName>宋体</FontName>
+                     <FontSize>12</FontSize>
+                  </Default>
+                  <Styles>
+                     <Style Index="0">
+                        <FontName>宋体</FontName>
+                        <FontSize>12</FontSize>
+                        <Align>Center</Align>
+                     </Style>
+                     <Style Index="1">
+                        <FontName>宋体</FontName>
+                        <FontSize>12</FontSize>
+                        <CreatorIndex>0</CreatorIndex>
+                     </Style>
+                  </Styles>
+               </ContentStyles>
+               <Info>
+                  <LicenseText>南京都昌信息科技有限公司内部使用:南京都昌信息科技有限公司内测旗舰版</LicenseText>
+                  <CreationTime>1980-01-01T00:00:00</CreationTime>
+                  <LastModifiedTime>2023-01-18T09:32:51.2182635+08:00</LastModifiedTime>
+                  <LastPrintTime>1980-01-01T00:00:00</LastPrintTime>
+                  <Operator>DCSoft.Writer Version:1.2023.1.10</Operator>
+                  <NumOfPage>1</NumOfPage>
+               </Info>
+               <BodyText>这是有痕迹的文档</BodyText>
+               <LocalConfig />
+               <PageSettings>
+                  <StrictUsePageSize>false</StrictUsePageSize>
+               </PageSettings>
+</XTextDocument>`;
+
+        var xmlforsubsave = null;
+    </script>
+</body>
+</html>

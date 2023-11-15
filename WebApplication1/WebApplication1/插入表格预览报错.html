@@ -1,0 +1,125 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <script type="text/javascript" src="jquery-1.7.2.min.js"></script>
+    <!--<script type="text/javascript" src="ServicePage.aspx?js=1"></script>-->
+
+    <script type="text/javascript" src="ServicePage.aspx?js=1"></script>
+    <title></title>
+</head>
+<body>
+    <div>
+
+        <input type="button" value="1.插入表格" onclick="inserttable();" />
+        <input type="button" value="2.显示打印预览" onclick="document.getElementById('myWriterControl').LoadPrintPreview();" />
+    </div>
+
+    <div id="myWriterControl" style="width: 100%; border: 2px solid black; border-radius: 5px;height:900px;"
+         LocalServerPort="2345"
+         TidyHTMLForEdit="true"
+         TransformUseBase64="false"
+         FieldBorderPrintVisibility="None"
+         FormView="Disabled"
+         ReadOnly="false"
+         PreviewUseAdvancedLayout="false"
+         BackgroundTextOutputMode="Visible"
+         contentrendermode="NormalHTMLEditable"
+         AutoSaveIntervalInSecond="0"
+         workspacebackcolorstring="#B1CAEB"
+         servicepageurl="ServicePage.aspx"
+         useclassattribute="false"
+         heightcompress="true"
+         imagedataembedinhtml="true"
+         ExcludeLogicDeleted="false"
+         HeaderFooterEditable="false"
+         UseDCWriterMiniJS="false"
+         serversleepfordebug="0"
+         allowcopy="true"
+         supportactivex="false"
+         pixelpagespacing="5"
+         clientcontextmenutype="Custom"
+         showdebuginfo="false"
+         ismobiledevice="False"
+         IndentHtmlCode="false"
+         FreeSelection="true"
+         urlencodecountforpostdata="0"
+         AutoZoom="false"
+
+           RegisterCodeIndex="0"
+                     
+                    ondocumentdblclick="MyDocumentDblClick"
+                    ToolbarForPrintPreview="btrPrintPreview"
+                    ButtonForUndo="btnUndo",
+                    ButtonForRedo="btnRedo" 
+                    StatusUIElement="lblServerTime"
+
+                   
+                    fileprintautoclose="false"
+
+
+         registercodeindex="0" />
+    <!--LogUserEditTrack="true"
+    CurrentUserID="liusanjie"
+    CurrentUserName="刘三姐主任医师"
+    CurrentUserPermissionLevel="2"
+    ClientMachineName="3病区2号电脑"
+    DocumentOptions.SecurityOptions.ShowPermissionMark = "true"
+    DocumentOptions.SecurityOptions.ShowLogicDeletedContent = "true"
+    DocumentOptions.SecurityOptions.ShowPermissionTip = "true"-->
+    <!--AutoZoom="true"-->
+    <!--ismobiledevice="True"-->
+    <!--AutoZoomView="true"-->
+
+    <div id="btrPrintPreview" style="border:2px solid black;z-index:1000;border:1px solid black;background-color:#cccccc;display:none;">
+        <input type="button" value="打印" onclick="PrintDocument();" class="button" />
+        <input type="checkbox" id="chkJumpPrint" onclick="JumpPrint(this.checked);" /><label for="chkJumpPrint">续打</label>|
+        <input type="checkbox" id="chkMouseDragScroll" onclick="SetMouseDragScroll(this.checked);" />
+        <label for="chkMouseDragScroll">鼠标拖拽选择</label>
+        <input type="button" value="关闭打印预览" onclick="ClosePrintPreview();" class="button" />
+
+    </div>
+
+
+    <script language="javascript">
+
+
+    </script>
+
+
+    <script type="text/javascript">
+        // HTML页面加载后执行本函数
+        function BuildDCWriterControlFrame() {
+            // 获得控件容器元素
+            var ctl = document.getElementById("myWriterControl");
+            // 绑定控件
+            BindingDCWriterClientControl(ctl);
+            ctl.BuildFrame(function () {
+            });
+            
+        }
+        //$(document).ready(BuildDCWriterControlFrame);
+        BuildDCWriterControlFrame();
+        //var ctl = document.getElementById("myWriterControl");
+        //if (ctl !== null) {
+        //    ctl.LoadDocumentFromFile('aaa');
+        //}
+
+
+        function inserttable() {
+            var ctl = document.getElementById("myWriterControl");
+            if (ctl != null) {
+                var options = {
+                    RowCount: 3,
+                    ColumnCount: 3,
+                    TableID: "table1",
+                    Alignment: "Center"
+                }
+                ctl.DCExecuteCommand("InsertTable", false, options);
+            }
+        }
+
+
+    </script>
+</body>
+</html>

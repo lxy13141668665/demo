@@ -1,0 +1,195 @@
+﻿<!DOCTYPE html >
+<html>
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+    <title>签名元素保存后加载失效</title>
+    <script type="text/javascript" src="jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="ServicePage.aspx?js=1"></script>
+    <style>
+        html, body {
+            height: 100%;
+
+        }
+    </style>
+</head>
+<body style="overflow: hidden;">
+    <input type="button" value="1.加载文档" onclick="exp();" />
+    <input type="button" value="2.保存文档" onclick="exp2();" />
+    <input type="button" value="3.加载保存的文档" onclick="exp3();" />
+
+
+    <div id="myWriterControl"
+         style="width: 100%; height: 100%"
+         contentrendermode="NormalHTMLEditable"
+         workspacebackcolorstring="#F1F3F5"
+         useclassattribute="false"
+         FormView="Disabled"
+         ClientContextMenuType="Custom"
+         UseDCWriterMiniJS="false"
+         LogUserEditTrack="false"
+         TidyHtmlForEdit="true"
+         heightcompress="true"
+         backgroundtextoutputmode="None"
+         imagedataembedinhtml="true"
+         serversleepfordebug="0"
+         ShowPageBorderLine="false"
+         allowcopy="true"
+         supportactivex="false"
+         pixelpagespacing="1"
+         showdebuginfo="false"
+         HeaderFooterEditable="true"
+         registercodeindex="0"
+         fileprintautoclose="false"
+         servicepageurl="ServicePage.aspx">
+
+    </div>
+    <script type="text/javascript">
+
+        // 获得控件容器元素
+        var ctl = document.getElementById("myWriterControl");
+
+        // 绑定控件
+        BindingDCWriterClientControl(ctl);
+
+        // 创建编辑器框架
+        ctl.BuildFrame(function () {
+            //ctl.LoadDocumentFromString(saveString, "xml");
+            //menu()
+        });
+
+
+
+        function exp() {
+            var ctl = document.WriterControl;
+            ctl.LoadDocumentFromString(xmlforload, "xml");
+        }
+        function exp2() {
+            var ctl = document.WriterControl;
+            xmlforsave = ctl.SaveDocumentToString();
+        }
+        function exp3() {
+            var ctl = document.WriterControl;
+            ctl.LoadDocumentFromString(xmlforsave, "xml");
+        }
+        var xmlforsave = "";
+        var xmlforload = `<XTextDocument xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" EditorVersionString="0.0.0.0">
+           <XElements>
+              <Element xsi:type="XTextHeader">
+                 <InnerID>3556</InnerID>
+                 <AcceptTab>true</AcceptTab>
+                 <XElements>
+                    <Element xsi:type="XParagraphFlag">
+                       <InnerID>3562</InnerID>
+                    </Element>
+                 </XElements>
+              </Element>
+              <Element xsi:type="XTextBody">
+                 <InnerID>3557</InnerID>
+                 <AcceptTab>true</AcceptTab>
+                 <XElements>
+                    <Element xsi:type="XString" StyleIndex="1">
+                       <InnerID>3139</InnerID>
+                       <Text>护士签字:</Text>
+                    </Element>
+                    <Element xsi:type="XInputField" StyleIndex="2">
+                       <InnerID>739</InnerID>
+                       <ID>pgrqm</ID>
+                       <EnableValueValidate>true</EnableValueValidate>
+                       <XElements>
+                          <Element xsi:type="XSignImage" SignUserName="郝芳" SignProviderName="PDA" SignTime="2022-07-20T16:36:58.5656743+08:00" UseInnerSignProvider="true" SignRange="InputField">
+                             <InnerID>3125</InnerID>
+                             <ID>IMGQM</ID>
+                             <Width>250</Width>
+                             <Height>93.75</Height>
+                             <SignUserID>14232</SignUserID>
+                             <LastVerifyResult>oymKHwIAAABMQN3dhtzG3Mfdh52HmYGbgZufcdePe7Gm28XbwdvB48p1axhnlsl0CNzmF/F5CVdJU0lTaFVVcJ0rbgD0DWHIv+Ai8et0FCac/0l9Xq0U94+5mitYe091VuLW5DRM0QyrzIE=</LastVerifyResult>
+                             <DataForSelfCheck>o2NKRIHpLLSn9W0qgQQHiA==</DataForSelfCheck>
+                             <ImageData>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</ImageData>
+                             <Title>ID:14232 Name:郝芳 Time:2022-07-20 16:36:58</Title>
+                          </Element>
+                       </XElements>
+                       <BorderElementColor />
+                       <SpecifyWidth>236.220474</SpecifyWidth>
+                    </Element>
+                    <Element xsi:type="XString" StyleIndex="3" WhitespaceCount="4">
+                       <InnerID>3140</InnerID>
+                       <Text>    </Text>
+                    </Element>
+                    <Element xsi:type="XParagraphFlag">
+                       <InnerID>3561</InnerID>
+                       <AutoCreate>true</AutoCreate>
+                    </Element>
+                 </XElements>
+              </Element>
+              <Element xsi:type="XTextFooter">
+                 <InnerID>3558</InnerID>
+                 <AcceptTab>true</AcceptTab>
+                 <XElements>
+                    <Element xsi:type="XParagraphFlag">
+                       <InnerID>3563</InnerID>
+                       <AutoCreate>true</AutoCreate>
+                    </Element>
+                 </XElements>
+              </Element>
+           </XElements>
+           <Parameters>
+              <Parameter Name="EMR" />
+           </Parameters>
+           <FileName>C:\Users\DCSOFTWU\Desktop\签名文档.xml</FileName>
+           <FileFormat>XML</FileFormat>
+           <ContentStyles>
+              <Default xsi:type="DocumentContentStyle">
+                 <FontName>宋体</FontName>
+                 <FontSize>12</FontSize>
+              </Default>
+              <Styles>
+                 <Style Index="0">
+                    <FontName>宋体</FontName>
+                    <FontSize>12</FontSize>
+                    <Align>Center</Align>
+                 </Style>
+                 <Style Index="1">
+                    <BackgroundColor>#00000000</BackgroundColor>
+                    <FontName>宋体</FontName>
+                    <FontSize>10.5</FontSize>
+                    <Bold>true</Bold>
+                 </Style>
+                 <Style Index="2">
+                    <BackgroundColor>#00000000</BackgroundColor>
+                    <FontName>宋体</FontName>
+                    <FontSize>10.5</FontSize>
+                 </Style>
+                 <Style Index="3">
+                    <BackgroundColor>#00000000</BackgroundColor>
+                    <FontName>宋体</FontName>
+                    <FontSize>10.5</FontSize>
+                    <LineSpacingStyle>SpaceMultiple</LineSpacingStyle>
+                    <LineSpacing>1.5</LineSpacing>
+                    <BorderWidth>10</BorderWidth>
+                 </Style>
+              </Styles>
+           </ContentStyles>
+           <Info>
+              <LicenseText>南京都昌信息科技有限公司:南京都昌信息科技有限公司内测版</LicenseText>
+              <CreationTime>1980-01-01T00:00:00</CreationTime>
+              <LastModifiedTime>2022-08-03T14:07:34.4257156+08:00</LastModifiedTime>
+              <LastPrintTime>1980-01-01T00:00:00</LastPrintTime>
+              <Operator>DCSoft.Writer Version:1.2022.2.21</Operator>
+              <NumOfPage>1</NumOfPage>
+           </Info>
+           <BodyText>护士签字:    </BodyText>
+           <LocalConfig />
+           <PageSettings>
+              <LeftMargin>86</LeftMargin>
+              <RightMargin>86</RightMargin>
+              <StrictUsePageSize>false</StrictUsePageSize>
+           </PageSettings>
+</XTextDocument>`;
+
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" style="overflow: hidden">
+  <head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
+    <title>南京都昌电子病历编辑器</title>
+    <script
+      type="text/javascript"
+      src="jquery-1.7.2.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="ServicePage.aspx?js=1"
+    ></script>
+    <style>
+      html,
+      body {
+        height: 100%;
+      }
+
+      #myWriterControl {
+        width: 100%;
+        height: 92%;
+        border: 2px solid black;
+        border-radius: 5px;
+      }
+    </style>
+  </head>
+
+  <body>
+
+    <div style="display: flex">
+     
+      <div
+        id="myWriterControl1"
+        style="
+          flex: 1;
+          width: 100%;
+          border: 2px solid black;
+          border-radius: 5px;
+          height: 900px;
+        "
+		imagedataembedinhtml="true"
+        contentrendermode="NormalHtmlEditable"
+        workspacebackcolorstring="#B1CAEB"
+        servicepageurl="ServicePage.aspx"
+      ></div>
+    </div>
+    <script>
+      function BuildDCWriterControlFrame() {
+     
+        var ctl2 = document.getElementById("myWriterControl1");
+
+        BindingDCWriterClientControl(ctl2);
+
+        ctl2.BuildFrame(function () {
+          
+        });
+      }
+      BuildDCWriterControlFrame();
+
+    </script>
+  </body>
+</html>

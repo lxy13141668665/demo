@@ -1,0 +1,95 @@
+/* 移动端.css */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: none;
+}
+
+.cd-scale-150 {
+    font-size: 150% !important;
+}
+
+.header {
+    height: 38px;
+}
+
+.header input {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 16px;
+    text-align: center;
+    width: 108px;
+    height: 38px;
+    line-height: 38px;
+    background: #e02433;
+    border-radius: 3px;
+    font-size: 14px;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+.he {
+    height: calc(100vh - 38px);
+    padding: 10px;
+    box-shadow: rgb(0 0 0 / 5%) 0px 0px 0px 1px;
+}
+
+.pc {
+    float: left;
+    width: 70%;
+    /* border: 1px solid red; */
+}
+
+.pc #myWriterControl {
+    width: 100%;
+    height: 100%;
+    /* height: calc(100% - 40px); */
+}
+
+.mobile {
+    float: right;
+    width: 30%;
+    /* border: 1px solid black; */
+}
+
+.cd-mac,
+.cd-ipad {
+
+    margin: 0 auto;
+}
+
+.title {
+    height: 40px;
+    line-height: 40px;
+}
+
+#writer {
+    background: white;
+    /*overflow-y: scroll;*/
+}
+
+/*#writer * {
+    position: initial;
+    color: initial;
+}*/
+
+/* 移动端样式 */
+.listItem {
+    width: 100%;
+    padding: 0.9em;
+    box-shadow: rgb(0 0 0 / 5%) 0px 0px 0px 1px;
+}
+
+.listItem>div {
+    display: inline-block;
+}
+
+.listItem>div.name {
+    width: 20%;
+}

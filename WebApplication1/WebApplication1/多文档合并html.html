@@ -1,0 +1,225 @@
+<!DOCTYPE html
+   PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" style="overflow: hidden;">
+
+<head runat="server">
+   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+   <title>多文档合并html</title>
+   <script type="text/javascript" src="jquery-1.7.2.min.js"></script> 
+   <script type="text/javascript" src="ServicePage.aspx?js=1"></script>
+
+
+
+</head>
+
+<body style="overflow: hidden;">
+   <input type="button" value="多文档合并html" onclick="dcxmlstohtml();" />
+
+   <div id="myWriterControl" style="width: 100%;height:800px; border: 2px solid black; border-radius: 5px"
+      contentrendermode="NormalHtmlEditable" HeaderFooterEditable="true" workspacebackcolorstring="#B1CAEB"
+      servicepageurl="ServicePage.aspx">
+   </div>
+
+
+
+   <script type="text/javascript">
+      // 获得控件容器元素
+      var ctl = document.getElementById("myWriterControl");
+      // 绑定控件
+      BindingDCWriterClientControl(ctl);
+      // 创建编辑器框架
+      ctl.BuildFrame(function () {
+         ctl.LoadDocumentFromString(xml1);
+      });
+      function dcxmlstohtml() {
+         var ctl = document.getElementById("myWriterControl");
+
+         var file = new Array();
+         file.push(xml1);
+         file.push(xml2);
+         file.push(xml1);
+         var obj = {
+            "files": file,//数组对象，存的是xml文档 
+            "format": "xml",//xml文档格式
+            "base64": "false",//是否是base64字符串
+            "modefile": xml1,//病程合并模式下提供页眉页脚的主文档XML字符串
+            "splitmode": "pagebreak"
+         }
+         ctl.getHtmlByFiles(obj, function (responseText, textStatus, jqXHR) {
+            // ctl.PrintByHtml(responseText);
+            responseText = ctl.GetPrintNowHTML(responseText)
+            // ctl.PrintByHtml(responseText);
+            console.log(responseText);
+            var myPrntWin = window.open("", "", "width=450,height=470,left=400,top=100,  menubar=yes,toolbar=no,location=no,scrollbars=yes,resizable=yes");
+            myPrntWin.document.write(responseText);
+            $(myPrntWin.document).ready(function () {
+               setTimeout(function () {
+                  myPrntWin.print();
+               }, 100);
+            })
+         });
+
+      }
+
+
+       var xml1 = `<XTextDocument xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" EditorVersionString="0.0.0.0">
+   <XElements>
+      <Element xsi:type="XTextHeader">
+         <InnerID>1</InnerID>
+         <AcceptTab>true</AcceptTab>
+         <XElements>
+            <Element xsi:type="XString">
+               <InnerID>23</InnerID>
+               <Text>文档页眉1</Text>
+            </Element>
+            <Element xsi:type="XParagraphFlag" StyleIndex="0">
+               <InnerID>6</InnerID>
+               <AutoCreate>true</AutoCreate>
+            </Element>
+         </XElements>
+      </Element>
+      <Element xsi:type="XTextBody">
+         <InnerID>2</InnerID>
+         <AcceptTab>true</AcceptTab>
+         <XElements>
+            <Element xsi:type="XString">
+               <InnerID>24</InnerID>
+               <Text>文档1</Text>
+            </Element>
+            <Element xsi:type="XParagraphFlag">
+               <InnerID>7</InnerID>
+               <AutoCreate>true</AutoCreate>
+            </Element>
+         </XElements>
+      </Element>
+      <Element xsi:type="XTextFooter">
+         <InnerID>3</InnerID>
+         <AcceptTab>true</AcceptTab>
+         <XElements>
+            <Element xsi:type="XPageInfo" StyleIndex="1">
+               <InnerID>22</InnerID>
+               <Width>100</Width>
+               <AutoHeight>true</AutoHeight>
+               <Height>62.7343674</Height>
+            </Element>
+            <Element xsi:type="XParagraphFlag">
+               <InnerID>8</InnerID>
+               <AutoCreate>true</AutoCreate>
+            </Element>
+         </XElements>
+      </Element>
+   </XElements>
+   <FileFormat>XML</FileFormat>
+   <ContentStyles>
+      <Default xsi:type="DocumentContentStyle">
+         <FontSize>12</FontSize>
+      </Default>
+      <Styles>
+         <Style Index="0">
+            <FontSize>12</FontSize>
+            <Align>Center</Align>
+         </Style>
+         <Style Index="1">
+            <FontSize>12</FontSize>
+         </Style>
+      </Styles>
+   </ContentStyles>
+   <Info>
+      <LicenseText>南京都昌公司2023年测试用旗舰版(2并发):南京都昌公司2023年测试用旗舰版(2并发)</LicenseText>
+      <CreationTime>2023-03-20T10:49:45.6602587+08:00</CreationTime>
+      <LastModifiedTime>2023-03-20T10:53:29.5100051+08:00</LastModifiedTime>
+      <LastPrintTime>1980-01-01T00:00:00</LastPrintTime>
+      <Operator>DCSoft.Writer Version:0.0.0.0</Operator>
+      <NumOfPage>1</NumOfPage>
+   </Info>
+   <BodyText>文档1</BodyText>
+   <LocalConfig />
+   <PageSettings>
+      <StrictUsePageSize>false</StrictUsePageSize>
+   </PageSettings>
+</XTextDocument>`;
+
+       var xml2 = `<XTextDocument xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" EditorVersionString="0.0.0.0">
+   <XElements>
+      <Element xsi:type="XTextHeader">
+         <InnerID>1</InnerID>
+         <AcceptTab>true</AcceptTab>
+         <XElements>
+            <Element xsi:type="XString">
+               <InnerID>23</InnerID>
+               <Text>文档页眉2</Text>
+            </Element>
+            <Element xsi:type="XParagraphFlag" StyleIndex="0">
+               <InnerID>6</InnerID>
+               <AutoCreate>true</AutoCreate>
+            </Element>
+         </XElements>
+      </Element>
+      <Element xsi:type="XTextBody">
+         <InnerID>2</InnerID>
+         <AcceptTab>true</AcceptTab>
+         <XElements>
+            <Element xsi:type="XString">
+               <InnerID>24</InnerID>
+               <Text>文档2</Text>
+            </Element>
+            <Element xsi:type="XParagraphFlag">
+               <InnerID>7</InnerID>
+               <AutoCreate>true</AutoCreate>
+            </Element>
+         </XElements>
+      </Element>
+      <Element xsi:type="XTextFooter">
+         <InnerID>3</InnerID>
+         <AcceptTab>true</AcceptTab>
+         <XElements>
+            <Element xsi:type="XPageInfo" StyleIndex="1">
+               <InnerID>22</InnerID>
+               <Width>100</Width>
+               <AutoHeight>true</AutoHeight>
+               <Height>62.7343674</Height>
+            </Element>
+            <Element xsi:type="XParagraphFlag">
+               <InnerID>8</InnerID>
+               <AutoCreate>true</AutoCreate>
+            </Element>
+         </XElements>
+      </Element>
+   </XElements>
+   <FileFormat>XML</FileFormat>
+   <ContentStyles>
+      <Default xsi:type="DocumentContentStyle">
+         <FontSize>12</FontSize>
+      </Default>
+      <Styles>
+         <Style Index="0">
+            <FontSize>12</FontSize>
+            <Align>Center</Align>
+         </Style>
+         <Style Index="1">
+            <FontSize>12</FontSize>
+         </Style>
+      </Styles>
+   </ContentStyles>
+   <Info>
+      <LicenseText>南京都昌公司2023年测试用旗舰版(2并发):南京都昌公司2023年测试用旗舰版(2并发)</LicenseText>
+      <CreationTime>2023-03-20T10:49:45.6602587+08:00</CreationTime>
+      <LastModifiedTime>2023-03-20T10:53:29.5100051+08:00</LastModifiedTime>
+      <LastPrintTime>1980-01-01T00:00:00</LastPrintTime>
+      <Operator>DCSoft.Writer Version:0.0.0.0</Operator>
+      <NumOfPage>1</NumOfPage>
+   </Info>
+   <BodyText>文档1</BodyText>
+   <LocalConfig />
+   <PageSettings>
+      <StrictUsePageSize>false</StrictUsePageSize>
+   </PageSettings>
+</XTextDocument>`
+
+   </script>
+
+</body>
+
+</html>

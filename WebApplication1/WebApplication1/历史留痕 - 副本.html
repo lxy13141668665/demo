@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!--<meta charset="utf-8" />-->
+    <script type="text/javascript" src="jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="ServicePage.aspx?js=1"></script>
+    <title></title>
+    <style>
+        html {
+            height: 100%;
+        }
+
+        body {
+            height: calc(100% - 37px);
+        }
+
+        dl>div {
+            background-color: #eee;
+        }
+
+        dt {
+            border: 1px solid #000;
+            background-color: #e2ecf7;
+            cursor: default;
+            font-size: 12px
+        }
+
+        dd {
+            /*background-color: #eee;*/
+            margin-left: 0;
+            padding-left: 40px;
+            cursor: default;
+            font-size: 12px;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="button" value="打开本地文件" onclick="FileOpen();" />
+    <input type="button" value="留痕预览" onclick="printpriviewdoc2();" />
+    <button type="button" class="layui-btn" onclick="dcDownload('xml')">下载为xml</button>
+
+
+    <button onclick="document.getElementById('list').style.display = 'block'">显示留痕列表</button>
+
+    <div id="myWriterControl" style="width: 100%; border: 2px solid black; border-radius: 5px;height:100%;"
+        contentrendermode="NormalHtmlEditable" workspacebackcolorstring="#B1CAEB"
+        servicepageurl="ServicePage.aspx" useclassattribute="true" heightcompress="true" UseDCWriterMiniJS="false"
+        backgroundtextoutputmode="None" imagedataembedinhtml="true" serversleepfordebug="0" allowcopy="true"
+        supportactivex="false" pixelpagespacing="5" clientcontextmenutype="Custom" showdebuginfo="false"
+        HeaderFooterEditable="true" FreeSelection="true" registercodeindex="0" TransformUseBase64="true">
+    </div>
+    <div id="list"
+        style="display: none;position: absolute; top: 200px; left: 10px; background-color: #fff; padding: 10px;box-shadow: 0 0 5px rgba(0,0,0,0.5);">
+        <div class="tabheader" style="line-height: 32px; border-bottom: 1px solid #ddd;">
+            <span style="font-size: 16px; color: #000; padding-top: 10px;">病程更改记录</span>
+            <span style="position: absolute; right: 20px; top: 10px; cursor: pointer;"
+                onclick="document.querySelector('#list').style.display = 'none'">X</span>
+        </div>
+        <div class="tabbody" style="height: 500px;width: 300px; overflow-y: auto;">
+            <dl>
+            </dl>
+        </div>
+
+    </div>
+
+
+    <script type="text/javascript">
+        // HTML页面加载后执行本函数
+        function BuildDCWriterControlFrame() {
+            // 获得控件容器元素
+            var ctl = document.getElementById("myWriterControl");
+            // 绑定控件
+            BindingDCWriterClientControl(ctl);
+            ctl.Options.LogUserEditTrack = true;
+            ctl.Options.CurrentUserID = "zhangsan";
+            ctl.Options.CurrentUserName = "张三主任医师";
+            ctl.Options.CurrentUserPermissionLevel = "1";
+            ctl.Options.ClientMachineName = "123";
+            ctl.Options.ExcludeLogicDeleted = true;
+            ctl.Options.OutputOriginUserTrackInfos = true; //获取留痕列表
+            ctl.DocumentOptions.SecurityOptions.EnablePermission = true;
+            ctl.DocumentOptions.SecurityOptions.EnableLogicDelete = true;
+            ctl.DocumentOptions.SecurityOptions.ShowLogicDeletedContent = false;
+            ctl.DocumentOptions.SecurityOptions.ShowPermissionMark = false;
+            ctl.DocumentOptions.SecurityOptions.ShowPermissionTip = false;
+
+            ctl.DocumentOptions.SecurityOptions.TrackVisibleLevel1.DeleteLineNum = "2";
+            ctl.DocumentOptions.SecurityOptions.TrackVisibleLevel1.DeleteLineColorString = "Black";
+            ctl.DocumentOptions.SecurityOptions.TrackVisibleLevel1.UnderLineColorString = "Yellow";
+            ctl.DocumentOptions.SecurityOptions.TrackVisibleLevel1.UnderLineColorNum = "2";
+            ctl.DocumentOptions.SecurityOptions.TrackVisibleLevel1.BackgroundColorString = "LightGrey";
+
+            var ss = '111';
+            // 创建编辑器框架
+            ctl.BuildFrame(function () {
+                if (ctl.Options.ContentRenderMode == "PagePreviewHtml") {
+                    // 打印页面模式，则鼠标拖拽滚动.
+                    ctl.setMouseDragScrollMode(true);
+                }
+                else {
+                    // 不启用鼠标拖拽滚动。
+                    ctl.setMouseDragScrollMode(false);
+                }
+
+            });
+        }
+        BuildDCWriterControlFrame();
+
+        function dcDownload(xml) {
+            var ctl = document.getElementById("myWriterControl");
+            ctl.DownLoadFile("xml");
+        }
+
+
+        function setPopUp(bool) {
+            var ctl = document.getElementById("myWriterControl");
+            if (ctl.IsPrintPreview()) {
+                var contentHtml = document.getElementById('myWriterControl_PreviewFrame').contentDocument;
+            } else {
+                var contentHtml = document.getElementById('myWriterControl_Frame').contentDocument;
+            }
+
+            var modifyRecord = [] //修改记录
+            //在文件刚加载时调用获取修改记录(异步)
+            if (bool) {
+                modifyRecord = ctl.GetDocumentUserTrackInfos(true)
+                console.log(modifyRecord);
+            } else {
+                modifyRecord = ctl.GetDocumentUserTrackInfos(true)
+                console.log(modifyRecord);
+
+            }
+            $('#list dl>div').remove()
+            for (var i = 0; i < modifyRecord.length; i++) {
+                var div = document.createElement('div')
+                div.setAttribute('class', modifyRecord[i].InnerID)
+                var dt = document.createElement('dt')
+                dt.innerHTML = modifyRecord[i].StdTitle
+                var dd1 = document.createElement('dd')
+                dd1.innerHTML = modifyRecord[i].UserName
+                var dd2 = document.createElement('dd')
+                dd2.innerHTML = modifyRecord[i].SaveTime
+                var dd3 = document.createElement('dd')
+                switch (modifyRecord[i].InfoType) {
+                    case "Create":
+                        modifyRecord[i].InfoType = '创建'
+                        break;
+                    case "Delete":
+                        modifyRecord[i].InfoType = '删除'
+                        break;
+                }
+                dd3.innerHTML = modifyRecord[i].InfoType + modifyRecord[i].Text
+                document.querySelector('#list dl').append(div)
+                document.querySelectorAll('#list dl>div')[i].append(dt)
+                document.querySelectorAll('#list dl>div')[i].append(dd1)
+                document.querySelectorAll('#list dl>div')[i].append(dd2)
+                document.querySelectorAll('#list dl>div')[i].append(dd3)
+            }
+            //contentHtml.querySelectorAll('span[innerid]')
+            //获取当前点击的节点
+            $(contentHtml).on('click', function () {
+                var target = ctl.CurrnetElement(function (element) {
+                    if (element.getAttribute && element.getAttribute("innerid")) {
+                        return true;
+                    }
+                    return false;
+                })
+                if (target) {
+                    var inid = $(target).attr('innerid')
+                    var indiv = $('body .tabbody .' + inid)
+
+                    $('body .tabbody').scrollTop(indiv.offset().top - 500)
+                    var colorFlag = 0
+                    var a = setInterval(function () {
+                        if (!colorFlag) {
+                            indiv.css("background-color", "#409EFF");
+                            colorFlag = 1;
+                        } else {
+                            indiv.css("background-color", "");
+                            colorFlag = 0;
+                        }
+                    }, 100);
+                    setTimeout(function () {
+                        clearInterval(a);
+                        indiv.css("background-color", "#eee");
+                    }, 1000);
+                }
+            })
+
+            //点击列表项时回调
+            $('#list dl>div').on('click', function (e) {
+                var innerId = e.srcElement.parentElement.getAttribute('class')
+                var target = $(contentHtml).find('[innerid=' + innerId + ']')
+                var colorFlag = 0
+                var a = setInterval(function () {
+                    if (!colorFlag) {
+                        $(target).css("cssText", "background-color:#409EFF !important");
+                        colorFlag = 1;
+                    } else {
+                        $(target).css("background-color", "");
+                        colorFlag = 0;
+                    }
+                }, 100);
+                setTimeout(function () {
+                    clearInterval(a);
+                    $(target).css("background-color", "#D3D3D3");
+                }, 1000);
+            })
+            document.querySelector('#list').style.display = 'block'
+        }
+
+        //移动列表弹窗
+        function dragable(id) {
+            var d = document, o = d.getElementById(id), s = o.style, x, y, p = 'onmousemove', z = d.querySelector('.tabheader');
+            z.onmousedown = function (e) {
+                e = e || event;
+                x = e.clientX - o.offsetLeft;
+                y = e.clientY - o.offsetTop;
+                d[p] = function (e) {
+                    e = e || event;
+                    s.left = e.clientX - x + 'px';
+                    s.top = e.clientY - y + 'px'
+                };
+                d.onmouseup = function () {
+                    d[p] = null
+                }
+            }
+        }
+        dragable('list')
+
+
+        //刷新按钮回调
+        function changeList() {
+            var ctl = document.getElementById("myWriterControl");
+            setPopUp(true)
+        }
+
+
+        function printpriviewdoc2() {
+            document.querySelector('#list').style.display = 'none'
+            var ctl = document.getElementById("myWriterControl");
+            ctl.LoadPrintPreviewWithPermissionMark();
+            ctl.EventAfterPrintPreview = function () {
+                setPopUp()
+            }
+        }
+        function FileOpen() {
+            var ctl = document.getElementById("myWriterControl");
+            //在前端调用FileOpen命令接口，会显示打开本地文件目录对话框，选择要打印的文件点击“打开”，编辑器直接打开本地选中的文件
+            ctl.DCExecuteCommand("FileOpen", true, null);
+        }
+      
+    </script>
+</body>
+
+</html>

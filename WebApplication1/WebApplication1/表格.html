@@ -1,0 +1,82 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <script type="text/javascript" src="jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="ServicePage.aspx?js=1">
+      </script>
+</head>
+<body tyle="overflow: hidden;">
+    <input type="button" value="保存" onclick="saveopen();" />
+    <input type="button" value="插入列" onclick="optinux();" />
+    <input type="button" value="合并单元格" onclick="text();" />
+    <input type="button" value="插入表格" onclick="opxinst();" />
+        <div id="myWriterControl" style="width: 100%;height:940px; border: 2px solid black; border-radius: 5px"
+             contentrendermode="NormalHtmlEditable" workspacebackcolorstring="#B1CAEB" imagedataembedinhtml="true" ContentRenderMode="NormalHtmlEditable"
+             ClientContextMenuType="Custom" servicepageurl="ServicePage.aspx" fileprintautoclose="false" AutoZoom="false" TidyHtmlForEdit=true
+             UrlEncodeCountForPostData=0 LogUserEditTrack=false DocumentOptions.BehaviorOptions.AcceptDataFormats=All DocumentOptions.BehaviorOptions. FastInputMode="true"
+             DocumentOptions.BehaviorOptions.WordBreak="true" DocumentOptions.BehaviorOptions.ParagraphFlagFollowTableOrSection="false" DocumentOptions. ViewOptions. FieldFocusedBackColorValue=" #FFFF00">
+</div>
+<script type="text/javascript">
+          var oneXml;
+            // 获得控件容器元素
+            var ctl = document.getElementById("myWriterControl");
+            function commands11() {
+                var ctl = document.getElementById("myWriterControl");
+                if (ctl.CommitDocumentUserTrace() == true) {
+                    ctl.SaveDocumentToFile();  //保存文档
+                } else {
+                    alert("出错");
+                }
+    
+            }
+    
+            // 绑定控件
+            BindingDCWriterClientControl(ctl);
+            ctl.ToolbarForPrintPreview = document.getElementById("btrPrintPreview");
+            //ctl.Options.FormView = "Normal";
+            //ctl.Options.AutoZoom = true; 
+            ctl.Options.HeaderFooterEditable = true;
+            ctl.Options.ExcludeLogicDeleted = true;
+            ctl.Options.OutputOriginUserTrackInfos = true;
+            //批注
+            ctl.Options.MergeCommentNode = true;
+            ctl.Options.TidyHtmlForPrint = true;
+            ctl.Options.ShowJSVersionConflictTip = false;
+            ctl.Options.HeaderFooterEditable = true;
+            ctl.Options.GeneratePrintPreviewPDF = true;
+            ctl.DocumentOptions.ViewOptions.ShowCellNoneBorder = false;
+            ctl.DocumentOptions.ViewOptions.BothBlackWhenPrint = true;
+            ctl.Options.BackgroundTextOutputMode = "Underline";
+            ctl.DocumentOptions.SecurityOptions.ShowLogicDeletedContent ="false";
+            ctl.DocumentOptions.ViewOptions.ShowHeaderBottomLine = "true";
+            ctl.DocumentOptions.ViewOptions.HeaderBottomLineWidth = "3";
+            ctl.DocumentOptions.ViewOptions.BothBlackWhenPrint = "true";
+            ctl.DocumentOptions.ViewOptions.ShowCellNoneBorder = "true";
+            ctl.DocumentOptions.ViewOptions.ShowFieldBorderElement = "false";
+            ctl.Options.ExcludeKeywords = "子宫, 卵巢"
+            ctl.BuildFrame(function () {
+                //ctl.LoadDocumentFromString(saveString, "xml");
+            });
+            ctl.DocumentLoad = function () {
+            };
+            
+            function optinux(){
+            var ctl = document.getElementById("myWriterControl");
+            ctl.DCExecuteCommand('Table_InsertColumnRight', false, null);
+        }
+          
+          function text(){
+            var ctl = document.getElementById("myWriterControl")
+            ctl.DCExecuteCommand('mergedown', false, null);
+          }
+
+          function opxinst(){
+            var ctl = document.getElementById("myWriterControl")
+            ctl.DCExecuteCommand('InsertTable', true, '3,5');
+          }
+</script>
+</html>

@@ -1,0 +1,167 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <script type="text/javascript" src="jquery-1.7.2.min.js"></script>
+    <!--<script type="text/javascript" src="ServicePage.aspx?js=1"></script>-->
+
+    <script type="text/javascript" src="ServicePage.aspx?js=1"></script>
+    <title></title>
+</head>
+<body>
+    <div>
+        <input type="button" value="加载预览" onclick="document.WriterControl.LoadPrintPreview();" />
+		<input type="button" value="打印" onclick="PrintDocument();" />
+        <input type="button" value="关闭预览" onclick="document.WriterControl.ClosePrintPreview();" />
+
+        <input type="button" value="设置红色字体颜色" onclick="document.WriterControl.DCExecuteCommand('Color',true,'#92D050');" />
+        <input type="button" value="设置黄色背景颜色" onclick="document.WriterControl.DCExecuteCommand('BackColor',true,'rgb(255,255,0)');;" />
+    </div>
+
+    <div id="myWriterControl" style="width: 100%; border: 2px solid black; border-radius: 5px;height:900px;"
+         LocalServerPort="2345"
+         TransformUseBase64="false"
+         FieldBorderPrintVisibility="None"
+         FormView="Disable"
+         ReadOnly="false"
+         PreviewUseAdvancedLayout="false"
+         BackgroundTextOutputMode="Underline"
+         contentrendermode="NormalHTMLEditable"
+         AutoSaveIntervalInSecond="0"
+         workspacebackcolorstring="#B1CAEB"
+         servicepageurl="ServicePage.aspx"
+         useclassattribute="false"
+         heightcompress="true"
+         imagedataembedinhtml="true"
+         ExcludeLogicDeleted="false"
+         HeaderFooterEditable="true"
+         UseDCWriterMiniJS="false"
+         serversleepfordebug="0"
+         allowcopy="true"
+         supportactivex="false"
+         pixelpagespacing="5"
+         clientcontextmenutype="Custom"
+         showdebuginfo="false"
+         ismobiledevice="False"
+         IndentHtmlCode="false"
+         FreeSelection="true"
+         urlencodecountforpostdata="0"
+         AutoZoom="false"
+         registercodeindex="0" />
+
+
+    <script type="text/javascript">
+        // HTML页面加载后执行本函数
+        function BuildDCWriterControlFrame() {
+            // 获得控件容器元素
+            var ctl = document.getElementById("myWriterControl");
+            // 绑定控件
+            BindingDCWriterClientControl(ctl);
+            ctl.DocumentOptions.ViewOptions.ShowHeaderBottomLine = true;
+            
+            // 创建编辑器框架
+            ctl.BuildFrame(function () {
+                ctl.LoadDocumentFromString(xmlforload, "xml");
+            });
+        }
+        BuildDCWriterControlFrame();
+		function PrintDocument(){
+			var ctl = document.getElementById("myWriterControl");
+			ctl.ClosePrintPreview()
+			// 打印
+			var printPreviewHTML = ctl.GetPrintPreviewHTML()
+			var iframe = document.querySelector('iframe#printdoc')
+			if (!iframe) {
+			  iframe = document.createElement('iframe')
+			  iframe.id = 'printdoc'
+			  document.body.appendChild(iframe)
+			}
+			iframe.style.display = 'none'
+			var win = iframe.contentWindow
+            var doc = win.document
+            debugger;
+			doc.write(printPreviewHTML)
+			doc.close()
+			setTimeout(() => {
+			  win.focus()
+			  win.print()
+			}, 100)
+		}
+
+        function exp(p) {
+            var ctl = document.WriterControl;
+            ctl.DocumentOptions.ViewOptions.ShowHeaderBottomLine = p;
+            ctl.ApplyDocumentOptions();
+            ctl.ChangeDocumentSettings(ctl.GetDocumentPageSettings());
+        }
+        var xmlforsave = null;
+
+        var xmlforload = `<XTextDocument xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" EditorVersionString="0.0.0.0">
+   <XElements>
+      <Element xsi:type="XTextHeader">
+         <InnerID>1</InnerID>
+         <AcceptTab>true</AcceptTab>
+         <XElements>
+            <Element xsi:type="XParagraphFlag" StyleIndex="0">
+               <InnerID>6</InnerID>
+               <AutoCreate>true</AutoCreate>
+            </Element>
+         </XElements>
+      </Element>
+      <Element xsi:type="XTextBody">
+         <InnerID>2</InnerID>
+         <AcceptTab>true</AcceptTab>
+         <XElements>
+            <Element xsi:type="XString">
+               <InnerID>53</InnerID>
+               <Text>adfasfasfasfadsfasfdsafdasfas</Text>
+            </Element>
+            <Element xsi:type="XParagraphFlag">
+               <InnerID>14</InnerID>
+               <AutoCreate>true</AutoCreate>
+            </Element>
+         </XElements>
+      </Element>
+      <Element xsi:type="XTextFooter">
+         <InnerID>3</InnerID>
+         <AcceptTab>true</AcceptTab>
+         <XElements>
+            <Element xsi:type="XParagraphFlag">
+               <InnerID>8</InnerID>
+               <AutoCreate>true</AutoCreate>
+            </Element>
+         </XElements>
+      </Element>
+   </XElements>
+   <FileFormat>XML</FileFormat>
+   <ContentStyles>
+      <Default xsi:type="DocumentContentStyle">
+         <FontName>宋体</FontName>
+         <FontSize>12</FontSize>
+      </Default>
+      <Styles>
+         <Style Index="0">
+            <FontName>宋体</FontName>
+            <FontSize>12</FontSize>
+            <Align>Center</Align>
+         </Style>
+      </Styles>
+   </ContentStyles>
+   <Info>
+      <LicenseText>南京都昌信息科技有限公司内部使用:南京都昌信息科技有限公司内测旗舰版</LicenseText>
+      <CreationTime>2022-12-21T13:21:44.889143+08:00</CreationTime>
+      <LastModifiedTime>2022-12-21T13:22:07.4292912+08:00</LastModifiedTime>
+      <LastPrintTime>1980-01-01T00:00:00</LastPrintTime>
+      <Operator>DCSoft.Writer Version:0.0.0.0</Operator>
+      <NumOfPage>1</NumOfPage>
+   </Info>
+   <BodyText>adfasfasfasfadsfasfdsafdasfas</BodyText>
+   <LocalConfig />
+   <PageSettings>
+      <StrictUsePageSize>false</StrictUsePageSize>
+   </PageSettings>
+</XTextDocument>`;
+
+    </script>
+</body>
+</html>

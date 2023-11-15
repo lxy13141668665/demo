@@ -1,0 +1,2303 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <script type="text/javascript" src="jquery-1.7.2.min.js"></script>
+    <!--<script type="text/javascript" src="ServicePage.aspx?js=1"></script>-->
+
+    <script type="text/javascript" src="ServicePage.aspx?js=1"></script>
+    <title></title>
+</head>
+<body>
+    <div>
+        <input type="button" value="加载文档体" onclick="document.getElementById('myWriterControl').DCExecuteCommand('FileOpen', true, { SpecifyLoadPart: 'Body' });" />
+        <input type="button" value="加载文档页眉" onclick="document.getElementById('myWriterControl').DCExecuteCommand('FileOpen', true, { SpecifyLoadPart: 'Header' });" />
+        <input type="button" value="加载文档页脚" onclick="document.getElementById('myWriterControl').DCExecuteCommand('FileOpen', true, { SpecifyLoadPart: 'Footer' });" />
+        <input type="button" value="加载文档页眉页脚" onclick="document.getElementById('myWriterControl').DCExecuteCommand('FileOpen', true, { SpecifyLoadPart: 'HeaderFooter' });" />
+        <input type="button" value="元素属性" onclick="document.getElementById('myWriterControl').DCExecuteCommand('ElementProperties', true, null);" />
+    </div>
+    <div>
+        <input type="button" value="新建文档" onclick="document.getElementById('myWriterControl').DCExecuteCommand('FileNew', true, null);" />
+        <input type="button" value="加载文档" onclick="document.getElementById('myWriterControl').LoadDocumentFromFile('输入域内段落数字列表.xml');" />
+        <input type="button" value="加载本地文档" onclick="document.getElementById('myWriterControl').DCExecuteCommand('FileOpen', true, {UseBASE64:'false'});" />
+        <input type="button" value="加载保存的文档" onclick="document.getElementById('myWriterControl').LoadDocumentFromFile('LoadSavedFile');" />
+        <input type="button" value="保存文档SaveDocumentToFile" onclick="document.getElementById('myWriterControl').SaveDocumentToFile('鞢dfassdfsdaffdsfasfasdfasdfasdfasdfasdfasdfas');" />
+        <input type="button" value="保存文档SaveDocumentToString" onclick="advancedsavedocumenttostring();" />
+        <input type="button" value="保存文档命令FileSave" onclick="console.log( document.getElementById('myWriterControl').DCExecuteCommand('FileSave', true, 'aaa') );" />
+    </div>
+    <div>
+        <input type="button" value="打印文档" onclick="document.getElementById('myWriterControl').PrintDocument({ AutoClose:'false' });" />
+        <input type="button" value="合并打印" onclick="exp14();" />
+        <input type="button" value="显示打印预览" onclick="document.getElementById('myWriterControl').LoadPrintPreview();" />
+        <input type="button" value="显示打印预览带痕迹" onclick="document.getElementById('myWriterControl').LoadPrintPreviewWithPermissionMark();" />
+        <input type="button" value="测试GetPrintPrivewHTML" onclick="exp20();" />
+    </div>
+    <div>
+
+        <input type="button" value="插入表格" onclick="inserttable();" />
+        <input type="button" value="插入表格行" onclick="document.getElementById('myWriterControl').DCExecuteCommand('table_insertrowdown', false,null);" />
+        <input type="button" value="左边插入表格列" onclick="document.getElementById('myWriterControl').DCExecuteCommand('table_insertcolumnleft', false,null);" />
+        <input type="button" value="右边插入表格列" onclick="document.getElementById('myWriterControl').DCExecuteCommand('table_insertcolumnright', false,null);" />
+        <input type="button" value="删除表格行" onclick="document.getElementById('myWriterControl').DCExecuteCommand('table_deleterow', false,null);" />
+        <input type="button" value="当前表格设置无边框" onclick="exp();" />
+        <input type="button" value="当前表格设置满边框" onclick="exp2();" />
+        <input type="button" value="将数据赋值当前表格" onclick="exp7();" />
+        <input type="button" value="提取当前表格数据" onclick="exp8();" />
+        <input type="button" value="将JSON对象数据绑定到文档表格" onclick="exp7adv();" />
+        <input type="button" value="从表格提取数据到JSON对象修改并重新绑定到表格" onclick="exp8adv();" />
+        <input type="button" value="对单元格赋空值" onclick="exp10();" />
+        <input type="button" value="对单元格赋普通文本" onclick="exp11();" />
+        <input type="button" value="对单元格赋复杂文本" onclick="exp12();" />
+        <input type="button" value="提取单元格的文本" onclick="exp11_5();" />
+        <input type="button" value="对单元格赋值刚刚提取的文本" onclick="exp12_5();" />
+    </div>
+    <div>
+        <input type="button" value="插入按钮" onclick="insertbutton();" />
+        <input type="button" value="插入输入域" onclick="insertinputfield();" />
+        <input type="button" value="插入条形码" onclick="insertbarcode();" />
+        <input type="button" value="插入二维码" onclick="inserttdbarcode();" />
+        <input type="button" value="插入标签元素" onclick="insertlabel();" />
+        <input type="button" value="插入单选多选框" onclick="exp22();" />
+        <input type="button" value="插入字符串" onclick="document.getElementById('myWriterControl').DCExecuteCommand('Spechars', true, 'AAAAAAA');" />
+        <input type="button" value="插入页码" onclick="document.getElementById('myWriterControl').DCExecuteCommand('InsertPageInfoElement', false, null);" />
+        <input type="button" value="插入分页符" onclick="document.getElementById('myWriterControl').DCExecuteCommand('InsertPageBreak', false, null);" />
+        <input type="button" value="删除分页符" onclick="document.getElementById('myWriterControl').DCExecuteCommand('DeletePageBreak', false, null);" />
+        <input type="button" value="插入医学表达式" onclick="exp9();" />
+        <input type="button" value="插入旧版水平线" onclick="document.getElementById('myWriterControl').DCExecuteCommand('PageBreak', false, null);" />
+        <input type="button" value="插入新版水平线" onclick="exp13();" />
+        <input type="button" value="插入图片" onclick="document.WriterControl.DCExecuteCommand('dcinsertimage', true, null);" />
+        <input type="button" value="插入批注" onclick="exp30();" />
+        <input type="button" value="InsertImageByJSONText插图" onclick="insertsrcimage();" />
+        <input type="button" value="field1中插图" onclick="exp15('field1');" />
+    </div>
+    <div>
+        <input type="button" value="前端插入图表" onclick="exp25();" />
+        <input type="button" value="前端插入饼图" onclick="exp25_2();" />
+        <input type="button" value="修改图表数据并刷新1" onclick="exp26();;" />
+        <input type="button" value="修改图表数据并刷新2" onclick="exp27();" />
+    </div>
+
+    <input type="button" value="删除光标所在元素" onclick="document.getElementById('myWriterControl').DCExecuteCommand('DeleteField', true, null);" />
+    <input type="button" value="对页眉赋值" onclick="FuZhi();" />
+    <input type="button" value="自定义下拉列表" onclick="CustomDropdownList();" />
+    <input type="button" value="获取选中的html" onclick="GetSelectHtml();" />
+    <input type="button" value="前端注册" onclick="setregister();" />
+    <input type="button" value="测试文档比较" onclick="MergeDocumentWithTrackUseXmlString111();" class="button" />
+    <input type="button" value="上标" onclick="document.getElementById('myWriterControl').DCExecuteCommand('Superscript', true, null);;" />
+    <input type="button" value="下划线" onclick="document.getElementById('myWriterControl').DCExecuteCommand('Underline', false, null);;" />
+    <input type="button" value="删除线" onclick="document.getElementById('myWriterControl').DCExecuteCommand('Strikethrough', false, null);;" />
+    <input type="button" value="字号" onclick="document.getElementById('myWriterControl').DCExecuteCommand('FontSize', true, '12pt');;" />
+    <input type="button" value="勾选" onclick="setelementchecked(true);" />
+    <input type="button" value="不勾选" onclick="setelementchecked(false);" />
+    <input type="button" value="文档校验" onclick="exp3();" />
+    <input type="button" value="加载病程记录" onclick="exp5();" />
+    <input type="button" value="加载base64数据到文档" onclick="exp6();" />
+    <input type="button" value="1.5倍行距" onclick="document.getElementById('myWriterControl').DCExecuteCommand('LineHeight', false, 1.5);" />
+    <input type="button" value="2倍行距" onclick="document.getElementById('myWriterControl').DCExecuteCommand('LineHeight', false, 2);" />
+    <input type="button" value="对当前输入域赋值当前时间" onclick="exp16();" />
+    <input type="button" value="对当前输入域签名" onclick="exp17();" />
+
+    <input type="button" value="数据源绑定测试" onclick="exp18();" />
+    <input type="button" value="测试打印窗体大小" onclick="exp19();" />
+    <input type="button" value="测试InsertSubDocuments" onclick="exp21();" />
+    <input type="button" value="测试AppendSubDocuments" onclick="exp21(true);" />
+    <input type="button" value="测试GetXMLByString" onclick="exp31();" />
+    <input type="button" value="测试提交痕迹后保存" onclick="exp23();" />
+    <input type="button" value="测试GetPDFByFiles接口函数" onclick="exp24();" />
+    <input type="button" value="测试WC_DCWriterFrontEndPrint后端命令接口" onclick="exp28();" />
+    <input type="button" value="前端临时添加页码" onclick="exp29();" />
+    <input type="button" value="测试获取PDF二进制" onclick="exp32();" />
+    <input type="button" value="测试INSERTXMLSTRING" onclick="exp33();" />
+    <input type="button" value="测试设置右键菜单" onclick="exp34();" />
+    <input type="button" value="当前文档转成PDF直接在前端打开" onclick="exp35();" />
+    <input type="button" value="测试DCFormTransmission" onclick="exp36();" />
+
+    <input type="button" value="设置当前单元格的网格线" onclick="exptestcellgridline();" />
+    <div>
+        <input type="button" value="选择一个文档测试" onclick="expselect();" />
+    </div>
+
+    <div id="myWriterControl" style="width: 100%; border: 2px solid black; border-radius: 5px;height:900px;"
+         LocalServerPort="2345"
+         TidyHTMLForEdit="false"
+         TransformUseBase64="true"
+         FieldBorderPrintVisibility="None"
+         FormView="Disable"
+         ReadOnly="false"
+         PreviewUseAdvancedLayout="false"
+         BackgroundTextOutputMode="Visible"
+         contentrendermode="NormalHTMLEditable"
+         AutoSaveIntervalInSecond="0"
+         workspacebackcolorstring="#B1CAEB"
+         servicepageurl="ServicePage.aspx"
+         useclassattribute="false"
+         heightcompress="true"
+         ExcludeLogicDeleted="false"
+         HeaderFooterEditable="true"
+         HeaderFooterReadonly="false"
+         UseDCWriterMiniJS="false"
+         serversleepfordebug="0"
+
+         allowcopy="true"
+         supportactivex="false"
+         pixelpagespacing="5"
+         clientcontextmenutype="Custom"
+         showdebuginfo="false"
+         ismobiledevice="AutoDetect"
+         IndentHtmlCode="false"
+         FreeSelection="true"
+         urlencodecountforpostdata="0"
+         AutoZoom="false"
+         RegisterCodeIndex="0"
+         ondocumentdblclick="MyDocumentDblClick"
+         ToolbarForPrintPreview="btrPrintPreview"
+         ButtonForUndo="btnUndo" ,
+         ButtonForRedo="btnRedo"
+         StatusUIElement="lblServerTime"
+         fileprintautoclose="false"
+         registercodeindex="0" />
+    <!--LogUserEditTrack="true"
+    CurrentUserID="liusanjie"
+    CurrentUserName="刘三姐主任医师"
+    CurrentUserPermissionLevel="2"
+    ClientMachineName="3病区2号电脑"
+    DocumentOptions.SecurityOptions.ShowPermissionMark = "true"
+    DocumentOptions.SecurityOptions.ShowLogicDeletedContent = "true"
+    DocumentOptions.SecurityOptions.ShowPermissionTip = "true"-->
+    <!--AutoZoom="true"-->
+    <!--ismobiledevice="True"-->
+    <!--imagedataembedinhtml="true"-->
+    <!--AutoZoomView="true"-->
+
+    <div id="btrPrintPreview" style="border:2px solid black;z-index:1000;border:1px solid black;background-color:#cccccc;display:none;">
+        <input type="button" value="打印" onclick="PrintDocument();" class="button" />
+        <input type="checkbox" id="chkJumpPrint" onclick="JumpPrint(this.checked);" /><label for="chkJumpPrint">续打</label>|
+        <input type="checkbox" id="chkMouseDragScroll" onclick="SetMouseDragScroll(this.checked);" />
+        <label for="chkMouseDragScroll">鼠标拖拽选择</label>
+        <input type="button" value="关闭打印预览" onclick="ClosePrintPreview();" class="button" />
+        
+    </div>
+
+
+    <script language="javascript">
+
+        function GetSelectHtml() {
+            var html = document.getElementById('myWriterControl').SelectionHtml();
+            var htmlc = html.toString();
+            alert(html);
+            
+        }
+
+        function MergeDocumentWithTrackUseXmlString111() {
+            //alert("MergeDocumentWithTrackUseXmlString");
+            // 获得旧文件XML内容
+            var fileContent1 = null;
+            // 获得新文件XML内容
+            
+            var fileContent2 = null;
+            // 合并文档并自动创建痕迹，然后以打印预览模式查看。
+            var ctl = document.getElementById('myWriterControl');
+            $.ajax({
+                url: "对比文档1.xml",
+                dataType: 'text',
+                type: 'GET',
+                timeout: 2000,
+                xhrFields: { withCredentials: true },
+                crossDomain: true,
+                async: false,
+                error: function (xml) {
+                    alert("获取XML出错！");
+                },
+                success: function (xml) {
+                    fileContent1 = xml;//atob(xml);
+                }
+            });
+            $.ajax({
+                url: "对比文档2.xml",
+                dataType: 'text',
+                type: 'GET',
+                timeout: 2000,
+                xhrFields: { withCredentials: true },
+                crossDomain: true,
+                async: false,
+                error: function (xml) {
+                    alert("获取XML出错！");
+                },
+                success: function (xml) {
+                    fileContent2 = xml;//atob(xml);
+                }
+            });
+
+            var args = {
+                OldUserID: "zhangsan", // 保存旧文件的用户名
+                OldUserName: "张三主治医生", // 保存旧文件的用户姓名
+                OldSaveTime: "2018-3-4 12:30:02",// 保存旧文件的时间
+                OldPermissionLevel: 0, // 旧用户授权等级
+                OldFileContent: fileContent1, // 旧文件内容
+                OldClientName: "192.168.0.4",// 保存旧文件的客户端名称
+                NewUserID: "lisi",// 保存新文件的用户名
+                NewUserName: "李四主任医生",// 保存新文件的用户姓名
+                NewSaveTime: "2018-3-8 9:30:14",// 新文件保存时间
+                NewPermissionLevel: 2, // 新用户授权等级
+                NewFileContent: document.WriterControl.SaveDocumentToString(),//fileContent2,// 新文件内容
+                NewClientName: "192.168.0.99",//新用的客户端名称
+                FileFormat: "xml", // 文件格式
+
+                ReturnHTML: false   //false直接预览，设为true则只返回预览的HTML
+            };
+            //console.log(JSON.stringify(args));
+            ctl.MergeDocumentByFileContent(args);
+
+            //var txt = encodeURIComponent(JSON.stringify(args));
+            // alert(ssss);
+        }
+
+
+
+        function FuZhi() {
+            var ctl = document.getElementById('myWriterControl');
+            ctl.SetElementTextByID("field1", "1345");
+        }
+
+        function MergeDocumentWithTrack() {
+            // 合并文档并自动创建痕迹，然后以打印预览模式查看。
+            var ctl = document.getElementById('myWriterControl');
+            var args = {
+                OldUserID: "zhangsan", // 保存旧文件的用户名
+                OldUserName: "张三主治医生", // 保存旧文件的用户姓名
+                OldSaveTime: "2018-3-4 12:30:02",// 保存旧文件的时间
+                OldPermissionLevel: 0, // 旧用户授权等级
+                OldFileName: "cc-1.xml", // 旧文件名
+                OldClientName: "192.168.0.4",// 保存旧文件的客户端名称
+
+                NewUserID: "lisi",// 保存新文件的用户名
+                NewUserName: "李四主任医生",// 保存新文件的用户姓名
+                NewSaveTime: "2018-3-8 9:30:14",// 新文件保存时间
+                NewPermissionLevel: 2, // 新用户授权等级
+                NewFileName: "cc-2.xml",// 新文件名
+                NewClientName: "192.168.0.99",//新用的客户端名称
+                FileFormat: "xml", // 文件格式
+
+                ReturnHTML: false   //false直接预览，设为true则只返回预览的HTML
+            };
+            ctl.MergeDocumentByFileName(args);
+        }
+
+
+
+            
+        // 自定义下拉列表
+        function CustomDropdownList() {
+            var ctl = document.getElementById('myWriterControl');
+
+            if (ctl.EventDropdownEditor == null) {
+                // 绑定控件的EventDropdownEditor事件。
+                // 提供自定义的下拉列表内容。
+                ctl.EventDropdownEditor = function (args) {
+                    var sel = document.createElement("input");
+                    sel.type = "text";
+                    sel.placeholder = "请输入过滤的关键字";
+                    sel.style.width = "200px";
+                    args.container.appendChild(sel);
+                    sel.oninput = function () {
+                        var reg = new RegExp(this.value);
+                        console.log(reg);
+                        //console.log(this.value);
+                        var chil = this.parentNode.children;
+                        for (var i = 0; i < chil.length; i++) {
+                            if (chil[i].getAttribute("type") == "button") {
+                                chil[i].style.display = "block";
+                                console.log(!reg.test(chil[i].value));
+                                if (!(reg).test(chil[i].value)) {
+                                    chil[i].style.display = "none";
+                                } else {
+                                    chil[i].style.display = "block";
+                                }
+                            }
+                        }
+                    }
+                    //if (args.element.id == "123")// 在这里可以判断输入域元素编号
+                    //{
+                    for (var iCount = 0; iCount < 20; iCount++) {
+                        var btn = document.createElement("input");
+                        btn.type = "button";
+                        btn.style.display = "block";
+                        btn.value = "数值" + iCount;
+                        btn.style.width = "200px";
+                        btn.onclick = function () {
+                            args.setValue(
+                                this.value, // 输入域文本值
+                                this.value + "_value");// 输入域数值
+                            args.close();// 关闭下拉列表
+                        };
+                        // args.container是承载内容的一个DIV元素。
+                        args.container.appendChild(btn);
+                        //args.container.appendChild(document.createElement("br"));
+                    }//for
+                    args.container.style.width = "210px";
+                    args.container.style.height = "300px";
+                    //}
+                }
+            }
+            else {
+                ctl.EventDropdownEditor = null;
+            }
+        }
+        
+    </script>
+
+    <script type="text/javascript">
+        //设置续打
+
+
+
+
+
+        function JumpPrint(setValue) {
+            var ctl = document.getElementById("myWriterControl");
+            ctl.SetJumpPrintMode(setValue);
+            document.getElementById("chkMouseDragScroll").checked = false;
+            ctl.setMouseDragScrollMode(false);
+        }
+        function OpenPreview() {
+            //获得最外面的容器元素并设置位置
+            var ctl = document.getElementById("myWriterControl");
+
+            var callback = function () {
+                var ctl = document.getElementById("myWriterControl");
+                ctl.SetElementTextByID("field1", "1345");
+            }
+            ////填充打印预览内容
+            ctl.LoadPrintPreview(callback);
+
+
+
+        }
+
+
+
+        //设置在预览中，使用鼠标滚轮拖拽
+        function SetMouseDragScroll(setValue) {
+            var ctl = document.getElementById("myWriterControl");
+            ctl.setMouseDragScrollMode(setValue);
+        }
+        //打印文档
+        function PrintDocument() {
+            var ctl = document.getElementById("myWriterControl");
+            ctl.PrintDocument();
+        }
+        //关闭打印预览
+        function ClosePrintPreview() {
+            var ctl = document.getElementById("myWriterControl");
+            ctl.ClosePrintPreview();
+        }
+
+        function PrintDocumentByCommand() {
+            var ctl = document.getElementById("myWriterControl");
+            ctl.DCExecuteCommand('Print', true, null);
+        }
+    </script>
+
+
+    <script type="text/javascript">
+        // HTML页面加载后执行本函数
+        function BuildDCWriterControlFrame() {
+            // 获得控件容器元素
+            var ctl = document.getElementById("myWriterControl");
+            // 绑定控件
+            BindingDCWriterClientControl(ctl);
+            ctl.ToolbarForPrintPreview = document.getElementById("btrPrintPreview");
+            
+            //ctl.Options.LogUserEditTrack = true;
+            //ctl.Options.CurrentUserID = "zhangsan";
+            //ctl.Options.CurrentUserName = "张三主任医师";
+            //ctl.Options.CurrentUserPermissionLevel = "2";
+            //ctl.Options.ClientMachineName = "123";
+            //ctl.Options.ExcludeLogicDeleted = true;
+            //ctl.DocumentOptions.SecurityOptions.EnablePermission = true;
+            //ctl.DocumentOptions.SecurityOptions.EnableLogicDelete = true;
+            //ctl.DocumentOptions.SecurityOptions.ShowLogicDeletedContent = false;
+            //ctl.DocumentOptions.SecurityOptions.ShowPermissionMark = false;
+            //ctl.DocumentOptions.SecurityOptions.ShowPermissionTip = false;
+            //ctl.Options.OutputOriginUserTrackInfos = true;
+
+            //ctl.DocumentOptions.ViewOptions.FieldHoverBackColorValue = "#00FFFFFF";
+            //ctl.DocumentOptions.ViewOptions.FieldBackColorValue = "#00FFFFFF";
+            //ctl.DocumentOptions.ViewOptions.FieldHoverBackColor = "Transparent";
+            //ctl.DocumentOptions.ViewOptions.FieldFocusedBackColorValue = "red";
+
+            //ctl.DocumentOptions.SecurityOptions.TrackVisibleLevel2.BackgroundColorString = "yellow";
+            //ctl.DocumentOptions.SecurityOptions.TrackVisibleLevel2.DeleteLineColorString = "black";
+            //ctl.DocumentOptions.SecurityOptions.TrackVisibleLevel2.DeleteLineNum = 1;
+            //ctl.DocumentOptions.SecurityOptions.TrackVisibleLevel2.UnderLineColorString = "red";
+            //ctl.DocumentOptions.SecurityOptions.TrackVisibleLevel2.UnderLineColorNum = 1;
+
+            //ctl.Options.DefaultFontName = "宋体";
+            //ctl.Options.DefaultFontSize = 9;
+
+            //ctl.Options.BlankCellPrintSlantStyle = "BottomLeftOneLine";
+
+            //ctl.Options.AutoFixFontSize9 = 9;
+
+            //ctl.Options.CommentPrintVisible = false;
+            //ctl.Options.CommentVisible = false;
+            ctl.Options.PageTitlePosition = "TopRight";
+            //ctl.Options.CurrentUserID = "chenle";
+            //ctl.Options.FormView = "Normal";
+
+            //ctl.DocumentOptions.BehaviorOptions.DocumentTextOutputMode = 3;
+            ctl.DocumentOptions.BehaviorOptions.DocumentTextOutputMode = "IncludeHeader,IncludeBody,IncludeFooter";
+
+            ctl.Options.MergeCommentNode = true;
+
+            ctl.DocumentOptions.ViewOptions.ShowCellNoneBorder = false;
+            //ctl.DocumentOptions.ViewOptions.NoneBorderColor = "#00FF00";
+            ctl.DocumentOptions.BehaviorOptions.ParagraphFlagFollowTableOrSection = true;
+            ctl.Options.OutputJavaScript = true;
+            ctl.Options.OutputOriginUserTrackInfos = true;
+            ctl.Options.AllowSmallPiecesWhenMergeDocument = true;
+
+            ctl.Options.HeaderFooterPrintVisibility = "Visible";
+
+            ctl.Options.GeneratePrintPreviewPDF = true;
+
+            //ctl.Options.PrintSpecifyPageIndexsString = "1,2,3,4,5,6,7,8";
+
+            //ctl.Options.ShowJSVersionConflictTip = false;
+
+            //ctl.Options.AttachedAJAXHeader = "{\"aaaaaaaa\":\"bbbbbbb2\"}";
+            //ctl.Options.InitJSUsingAJAX = true;
+
+            //ctl.Options.FreeSelection = "true";
+            //ctl.Options.CustomizeSpanInputElementBorderCssStyle = '{"font-weight":"700" }';
+
+            //ctl.Options.ShowPageBorderLine = false;
+            //ctl.DocumentOptions.BehaviorOptions.DefaultEditorActiveMode = "MouseClick";
+
+            //ctl.DocumentOptions.ViewOptions.PrintBackgroundText = false;
+            //ctl.DocumentOptions.ViewOptions.PreserveBackgroundTextWhenPrint = false;
+
+            //ctl.DocumentOptions.ViewOptions.ShowCellNoneBorder = false;
+            ctl.DocumentOptions.ViewOptions.ShowHeaderBottomLine = true;
+            ctl.DocumentOptions.ViewOptions.HeaderBottomLineWidth = 1;
+            //ctl.DocumentOptions.ViewOptions.ShowFieldBorderElement = false;
+
+            //ctl.DocumentOptions.ViewOptions.ShowPageBreak = true;
+
+            //ctl.DocumentOptions.SecurityOptions.ShowPermissionMark = true;
+            //ctl.DocumentOptions.SecurityOptions.ShowLogicDeletedContent = true;
+            //ctl.DocumentOptions.BehaviorOptions.AcceptDataFormats = "Text";
+
+            ctl.DocumentOptions.BehaviorOptions.WordBreak = 1;
+            //ctl.Options.showGridLine = 'true';
+
+            //ctl.DocumentOptions.ViewOptions.TableCellBorderVisibility = 5;  //表格边框编辑时有打印时无
+            //ctl.DocumentOptions.ViewOptions.TableCellBorderVisibility = 6;  //表格边框编辑时无打印时有
+            //ctl.DocumentOptions.ViewOptions.TableCellBorderVisibility = 0;  //表格边框编辑打印都无
+
+            //ctl.DocumentOptions.ViewOptions.FieldBorderColorValue = "#11223344";//44是alpha通道值
+
+            //ctl.Options.PrintENSPasWhitespace = false;
+            //ctl.DocumentOptions.ViewOptions.SupportUG = true;
+
+            //ctl.EventAfterFieldContentEdit = function (element, datas, hint) {
+                //debugger;
+                //var win = ctl.GetContentWindow();
+                //if (win != null && win.DCMedicalExpressionManager) {
+                //    if (win.DCMedicalExpressionManager.IsMedicalExpressionElement(element) == true) {
+                //        //代表元素为医学表达式，因为输入域也会触发这个事件
+                //        if (hint == "cancel") {//代表用户按的是取消，如果按的是确定的话这里是"ok"
+                //            //在这里可以对datas数组做一些自定义处理后，对医学表达式赋值
+                //            win.DCMedicalExpressionManager.SetElementText(element, datas);
+                //        }
+                //    }
+                //}
+                //ctl.SetElementTextByID(element, "");
+            //}
+
+            //ctl.ondocumentdblclick = function (e) {
+            //    console.log(e);
+            //};
+
+
+            //ctl.EventQueryListItems = function (eventObject) {
+            //    //if (eventObject.ListSourceName == "H12030")
+            //    {
+            //        eventObject.AddResultItemByTextValue("前端动态下拉项1", "CN");
+            //        eventObject.AddResultItemByTextValue("前端动态下拉项2", "AM");
+            //    }
+            //}
+
+            //ctl.Options.CheckBoxCheckedImageBase64 = `iVBORw0KGgoAAAANSUhEUgAAABEAAAARCAIAAAC0D9CtAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAEGSURBVDhPY/z//z8DKSD7dDsTlEkcSD7R6CVlwwC0h0jw5sd7pY2+QAYJeuQ3eH34+QnIINZtax7tdhY342fjBXEgZhAEbMvNoCwi3ZZ2snnVw11QDjF6gH4A+gTKAQPCepQ3+gJDDMoBAyb9beFgT2IHm54ctBY1EGYXgPIh4PDLc+JrnaEmYABkr8MByG1n315jWWYC4SOD3NOdi+9tgXKQANQ/z769Yl5m8uvvLwgXCL79/i69zh3KQQWIMHj/8xP7cnMgCeFqbQl++u0VhI0GUMLt599f7MvN3v/8uP/F6fDD5VBRDIAlL4iudWJiZHoZtAfKxwQQrWhgwo2lUBYm+P8fALqHUq04mGDRAAAAAElFTkSuQmCC`;
+            //ctl.Options.CheckBoxUnCheckedImageBase64 = `iVBORw0KGgoAAAANSUhEUgAAABEAAAARCAYAAAA7bUf6AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsIAAA7CARUoSoAAAAE8SURBVDhPY3yrrv9f6MYFBnLAl+IKBkYODgaGv69e/X/NzPOfVPApLef/x9BoMJsBRPx58pQkg762df3/4OQJ5UENAQFiDfra1ff/vb0blAcBcENAgJBB2AwAARRDQODP02f/XzIw/P/3+zdUBAK+9kz4/97CHspDBRiGgMDf589RDPq+bOX/t8paYDY2gNUQEAAZ9JqN///35av+v9M2gopiBzgNAYHvM+f+fw50ESGAU8WPdRv/v9Mz/f/v69f/r7CEETLAasivg4f/v+YWgfKQwujXL6gIKsAw5NepM//fCEhCeQjw99lzoIvY///7+RMqggAohoAN4JeA8jAByIBXDBwYBsEN+XXmHNAFuA2AAWwGgQ35c/sOUIIVLEAMQDcIkotZeMEcUgDcIGBgM4DKE3IByID3Du7/AXKe+uyHxsQvAAAAAElFTkSuQmCC`;
+
+            ctl.EventButtonClick = function (id) {
+                alert(id);
+            }
+
+            
+
+            //ctl.EventBeforeFieldContentEdit = function (element) {
+            //    var win = ctl.GetContentWindow();
+            //    if (win != null && win.DCMedicalExpressionManager) {
+            //        if (win.DCMedicalExpressionManager.IsMedicalExpressionElement(element) == true) {
+            //            var contenttext = element.getAttribute("dc_innerserializetext");
+            //        }
+            //    }
+            //}
+
+            //ctl.EventAfterPrintPreview = function (doc) {
+            //    var list = doc.querySelectorAll(".dcinputfieldbgtext");
+            //    for (var i = 0; i < list.length; i++) {
+            //        var element = list[i];
+            //        if (element.style.visibility == "hidden") {
+            //            var field = element.parentElement;
+            //            var div = field.parentElement;
+            //            div.style.display = "none";
+            //        }
+            //    }
+            //    debugger;
+            //}
+
+            ctl.EventBeforePrint = function (doc) {
+                var body = doc.body;
+                //debugger;
+                //var position = ctl.GetLastJumpPrintPosition();
+                //body.style.marginLeft = "-100px";
+                //body.style.marginTop = "-100px";
+                //return false;
+            }
+
+            sessionStorage.setItem("localInfo", JSON.stringify({姓名: "张三"}));
+
+            // 创建编辑器框架
+            ctl.BuildFrame(function () {
+                //var doc = ctl.GetContentDocument();
+                //var body = doc.getElementById("divAllContainer");   //取文档体DIV
+                //var header = doc.getElementById("divXTextDocumentHeaderElement");   //取页眉DIV
+                //var footer = doc.getElementById("divXTextDocumentFooterElement");   //取页脚DIV
+                //body.style.outlineStyle = "dashed";    //设置边框的线型，若失去焦点就不显示则设为""空字符串
+                //body.style.outlineColor = "red";    //设置边框颜色
+            });
+
+            ctl.DocumentLoad = function () {
+                //debugger;
+                //alert("documentload");
+                //ctl.ExecuteAllEffectExpressions();
+            }
+
+            ctl.onDocumentLoad = function () {
+                //alert("ondocumentload");
+                //ctl.ExecuteAllEffectExpressions();
+            }
+
+            window.onbeforeunload = function (event) {
+                var ctl = document.getElementById("myWriterControl");
+                ctl.ReleaseSession();
+            };
+        }
+        //$(document).ready(BuildDCWriterControlFrame);
+        BuildDCWriterControlFrame();
+        //var ctl = document.getElementById("myWriterControl");
+        //if (ctl !== null) {
+        //    ctl.LoadDocumentFromFile('aaa');
+        //}
+
+        function AjaxLoad(fileName) {
+            var ctl = document.getElementById("myWriterControl");
+            ctl.preserveScrollPosition = true; // 加载文档时尽量保留页面滚动位置。
+
+            ctl.DocumentLoad = function () {
+                ctl.setMouseDragScrollMode(false); // 文档加载后设置控件的鼠标拖拽滚动模式
+                var performances = ctl.getServerPerformances();
+                //ctl.ExecuteAllEffectExpressions();
+            }
+
+            // 在服务器端响应控件的EventReadFileContent事件，即可使用AJAX模式加载文档。
+            ctl.LoadDocumentFromFile("File/new病历首页2.xml", null);
+
+
+
+        }
+
+        function advancedsavedocumenttostring() {
+            var ctl = document.getElementById("myWriterControl");
+            var options = {
+                FileFormat: "xml",
+                CommitUserTrace: "false",
+                OutputFormatXML: "true"
+            };
+            console.log(ctl.SaveDocumentToString(options));
+        }
+
+        function filesave() {
+            var ctl = document.getElementById("myWriterControl");
+            if (ctl.SaveDocumentToFile("373749-02", "xml") == true) {
+                alert("保存成功" + ctl.ServerMessage);
+            }
+            else {
+                alert("保存失败" + ctl.ServerMessage);
+            }
+
+            //var ctl = document.getElementById("myWriterControl");
+
+            //if (ctl.DCExecuteCommand('FileSave', true, null) == true) {
+            //    alert("保存成功" + ctl.ServerMessage);
+            //}
+            //else {
+            //    alert("保存失败" + ctl.ServerMessage);
+            //}
+        }
+
+        function setelementchecked(checked) {
+            var ctl = document.getElementById("myWriterControl");
+            if (ctl != null) {
+                ctl.SetElementCheckedByID("checkbox1", checked);
+            }
+        }
+        function insertinputfield() {
+            var ctl = document.WriterControl;
+            //var options = {
+            //    "ContentReadonly": null,
+            //    "UserEditable": false,
+            //    "ToolTip": "请输入年龄",
+            //    "BackgroundText": "年龄",
+            //    "Text": "30",
+            //    "InnerValue": "30",
+            //    "ValidateStyle": "Required:True;ValueType:Numeric;CheckMaxValue:True;MaxValue:150;CheckMinValue:True;MinValue:0",
+            //    "EnableValueValidate": true,
+            //    "Name": "年龄",
+            //    "ID": "txtAge",
+            //    "Color": "red",
+            //    "BackgroundColor": "yellow",
+            //    "StartBorderText": "【",
+            //    "EndBorderText": "】",
+            //    "UnitText": "岁"
+            //};
+            //var field = ctl.DCExecuteCommand("InsertInputField", true, options);              // 插入性别输入域
+            var options = {
+                "ContentReadonly": false,
+                "UserEditable": false,
+                "ToolTip": "请选择性别",
+                "BackgroundText": "性别",
+                "EnableValueValidate": true,
+                "Name": "性别",
+                "ID": "txtSex",
+                "StartBorderText": "<",
+                "EndBorderText": ">",
+                "ListItems": [{
+                    "Text": "男",
+                    "Value": "1"
+                },
+                {
+                    "Text": "女",
+                    "Value": "0"
+                },
+                {
+                    "Text": "其他",
+                    "Value": "2"
+                }],
+                "InnerEditStyle": "DropdownList",
+                "RepulsionForGroup": true,
+                "EditorActiveMode": "MouseClick"
+            };
+            var field = ctl.DCExecuteCommand("InsertInputField", true, options);            // 插入日期输入域
+            //var options = {
+            //    "ContentReadonly": false,
+            //    "UserEditable": false,
+            //    "ToolTip": "请输入日期",
+            //    "BackgroundText": "日期",
+            //    "Text": "2015-01-09 09:39",
+            //    "InnerEditStyle": "DateTime",
+            //    "EditorActiveMode": "MouseClick",
+            //    "EnableValueValidate": true,
+            //    "DisplayFormat": "Format:yyyy年MM月dd日  HH时mm分ss秒;Style:DateTime",
+            //    "Name": "日期",
+            //    "ID": "txtDate"
+            //};
+            //var field = ctl.DCExecuteCommand("InsertInputField", true, options);
+        }
+
+        function inserttdbarcode() {
+            var ctl = document.WriterControl;
+            var tdoptions = {
+                ID: 'barcodeID', //元素ID
+                Text: "05555", //条形码内容文本
+                Width: 180, //像素宽度
+                Height: 180, //像素高度
+                ValueBinding: {
+                    DataSource: "datasourcefortdbarcode2",
+                    BindingPath: "path2"
+                }
+            }
+            ctl.DCExecuteCommand('InsertTDBarcodeElement', false, tdoptions)
+        }
+
+        function insertlabel() {
+            var ctl = document.getElementById("myWriterControl");
+            if (ctl != null) {
+                var options = {
+                    ID: "label1",       //标签ID
+                    Text: "测试用标签",   //标签文本
+                    Bold: true,        //标签文本是否加粗，不设置则不加粗
+                    Deletable: true,   //标签是否可以删除，不设置则可以删除
+                    TitleLevel: -1,       //标签大纲级别，值从0到7，若不设置则此标签不作为大纲节点
+                    Attributes: {       //自定义属性，直接传JSON对象
+                        Name: "张三",
+                        Sex: "男",
+                        Age: "20"
+                    },
+                    PageTexts: [
+                        {
+                            PageIndex: 0,
+                            PageIndexText: "自定义文本aaa"
+                        },
+                        {
+                            PageIndex: 1,
+                            PageIndexText: "自定义文本bbb"
+                        },
+                        {
+                            PageIndex: 2,
+                            PageIndexText: "自定义文本ccc"
+                        },
+                        {
+                            PageIndex: 3,
+                            PageIndexText: "自定义文本ddd"
+                        }
+                    ],
+                    ContactAction: "Normal",    //连接模式
+                    AttributeNameForContactAction: "科室",    //连接模式提取值的来源属性名称
+                    LinkTextForContactAction: "-"   //连接字符串
+                };
+                ctl.DCExecuteCommand("InsertLabelElement", false, options);
+            }
+        }
+
+
+        function inserttable() {
+            var ctl = document.getElementById("myWriterControl");
+            if (ctl != null) {
+                var options = {
+                    RowCount: 3,
+                    ColumnCount: 3,
+                    TableID: "table1",
+                    Alignment: "Center"
+                }
+                ctl.DCExecuteCommand("InsertTable", false, options);
+            }
+        }
+
+        function exp() {
+            var ctl = document.getElementById("myWriterControl");
+            if (ctl != null) {
+                var cell = ctl.CurrentTable();
+                var options = {
+                    BorderLeft: "false",
+                    BorderTop: "false",
+                    BorderBottom: "false",
+                    BorderRight: "false",
+                    BorderWidth: 3
+                }
+                //ctl.DocumentOptions.ViewOptions.ShowCellNoneBorder = false;
+                ctl.SetTableBorder(cell, options);
+            }
+        }
+
+        function exp2() {
+            var ctl = document.getElementById("myWriterControl");
+            if (ctl != null) {
+                var table = ctl.CurrentTable();
+                var options = {
+                    BorderLeft: "false",
+                    BorderTop: "false",
+                    BorderBottom: "false",
+                    BorderRight: "false",
+                    BorderWidth: 3
+                }
+                //ctl.DocumentOptions.ViewOptions.ShowCellNoneBorder = false;
+                ctl.SetTableBorder(table, options);
+            }
+        }
+
+        function exp3() {
+            var ctl = document.getElementById("myWriterControl");
+            if (ctl != null) {
+                var result = ctl.DCExecuteCommand('DocumentValueValidate', true, null);
+                debugger;
+            }
+        }
+
+        function exp5() {
+            var ctl = document.getElementById("myWriterControl");
+            if (ctl != null) {
+                ctl.GetContentContainer().focus();
+                var file = new Array();
+                $.ajax({
+                    url: "inserXML2.txt",
+                    dataType: 'text',
+                    type: 'GET',
+                    timeout: 2000,
+                    xhrFields: { withCredentials: true },
+                    crossDomain: true,
+                    async: false,
+                    error: function (xml) {
+                        alert("获取XML出错！");
+                    },
+                    success: function (xml) {
+                        var options = {
+                            "Attributes": {
+                                "姓名": "张三",
+                                "科室": "胸外科",
+                                "床号": "12345"
+                            }, //自定义属性
+                            "DCTitle": "病程记录1", //子文档标题
+                            "Contenteditable": "true", //是否可编辑
+                            "Title": "文档标题", //文档标题
+                            "Style": "border: 1px solid #808080;background-color: #FFF0F5;"//样式
+                        };
+                        var result = ctl.InsertXmlString(xml, false, null, null, false);
+                        //file.push(xml);
+                        //file.push(xml);
+                        //file.push(xml);
+
+                        //var options = {
+                        //    Files: file
+                        //};
+                        //ctl.InsertSubDocuments(options);
+
+                    }
+                });
+
+                //$.ajax({
+                //    url: "废文档.xml",
+                //    dataType: 'text',
+                //    type: 'GET',
+                //    timeout: 2000,
+                //    error: function (xml) {
+                //        alert("获取XML出错！");
+                //    },
+                //    success: function (xml) {
+                //        var options = {
+                //            "Attributes": {
+                //                "姓名": "张三",
+                //                "科室": "胸外科",
+                //                "床号": "12345"
+                //            }, //自定义属性
+                //            "DCTitle": "病程记录1", //子文档标题
+                //            "Contenteditable": "true", //是否可编辑
+                //            "Title": "文档标题", //文档标题
+                //            "Style": "border: 1px solid #808080;background-color: #FFF0F5;"//样式
+                //        };
+                //        var result = ctl.InsertXmlString(xml, true, options, null, false);
+                //    }
+                //});
+            }
+        }
+
+        function exp6() {
+            var ctl = document.getElementById("myWriterControl");
+            if (ctl != null) {
+                ctl.GetContentContainer().focus();
+                var file = "";
+                $.ajax({
+                    url: "base64数据.txt",
+                    dataType: 'text',
+                    type: 'GET',
+                    timeout: 2000,
+                    error: function (xml) {
+                        alert("获取XML出错！");
+                    },
+                    success: function (xml) {
+                        var result = ctl.LoadDocumentFromBase64String(xml, "xml");
+                    }
+                });
+            }
+        }
+
+
+        var data = [
+            ["张三", "李四", "王五"],
+            ["123", "456", "789"],
+            ["汪汪汪", "喵喵喵", "咩咩咩"]
+        ];;
+
+        function exp7() {
+            var ctl = document.getElementById("myWriterControl");
+            if (ctl != null) {
+                var table = ctl.CurrentTable();
+                if (table != null && data != null) {
+                    var options = {
+                        TableElement: table, //指定的表格
+                        DataArray: [
+                            ["张三", "李四", "王五"],
+                            ["123", "456", "789"],
+                            ["汪汪汪", "喵喵喵", "咩咩咩"]
+                        ], //数据集数组
+                        RowIndex: 1, //指定从哪一行开始写
+                        TableRowExtendable: true //新增属性，设为false则不扩展表格行只写入数据，不处理溢出数据
+                    };
+                    ctl.DCExecuteCommand("Table_WriteDataToTable", false, options);
+                }
+            }
+        }
+
+        function exp7adv() {
+            var ctl = document.getElementById("myWriterControl");
+            if (ctl != null) {
+                var arr = new Array();
+                var obj1 = {
+                    name: "张三",
+                    sex: "男",
+                    age: "22",
+                    address: "上海路",
+                    sign: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJkAAAA3CAIAAACQKH9zAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACtSURBVHhe7dGhCYAAAABBBzE6scFBxLWsgk2z0aI8B5e+/rCPEw1ednjZ4WWHlx1ednjZ4WWHlx1ednjZ4WWHlx1ednjZ4WWHlx1ednjZ4WWHlx1ednjZ4WWHlx1ednjZ4WWHlx1evnSu2zEvj/gtL1/628iblx1ednjZ4WWHlx1ednjZ4WWHlx1ednjZ4WWHlx1ednjZ4WWHlx1ednjZ4WWHlx1ednjZ4WXFOF0QF6uCJ/U6cQAAAABJRU5ErkJggg=="
+                };
+                var obj2 = {
+                    name: "李四",
+                    sex: "女",
+                    age: "37",
+                    address: "南京路",
+                    sign: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJkAAAA3CAIAAACQKH9zAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACtSURBVHhe7dGhCYAAAABBBzE6scFBxLWsgk2z0aI8B5e+/rCPEw1ednjZ4WWHlx1ednjZ4WWHlx1ednjZ4WWHlx1ednjZ4WWHlx1ednjZ4WWHlx1ednjZ4WWHlx1ednjZ4WWHlx1evnSu2zEvj/gtL1/628iblx1ednjZ4WWHlx1ednjZ4WWHlx1ednjZ4WWHlx1ednjZ4WWHlx1ednjZ4WWHlx1ednjZ4WXFOF0QF6uCJ/U6cQAAAABJRU5ErkJggg=="
+                };
+                arr.push(obj1);
+                arr.push(obj2);
+                ctl.SetDocumentParameterValue("peopledatasource", arr);
+                ctl.WriteDataFromDataSourceToDocument();
+            }
+        }
+
+        function exp8adv() {
+            var ctl = document.getElementById("myWriterControl");
+            if (ctl != null) {
+                ctl.WriteDataFromDocumentToDataSource();
+                var arr = ctl.GetDocumentParameterValue("peopledatasource");
+                arr[0].sign = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJkAAAA3CAYAAAAfSugkAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAADPSURBVHhe7dyxCQJBEEDR1aJMTdVSLFDBEsQi5CKbEE22hQ938F4yTP6ZcHbH0+s3ILSfEzIiIycyciIjJzJyIiMnMnIiIycyciIjJzJyIiMnMnIiIycyciIjJzJyIiMnMnIiIycyciIjJzJyIiMnMnIiIycyciIjJ7KVe1w/4355zm2bRLZy3/cyzrfD3LbJ6yhyLhk5kZETGTmRkRMZOZGRExk5kZETGTmRkRMZOZGRExk5kZETGTmRkRMZOZGRExk5kZETGTmRkRMZsTH+mx8M3GA9GlMAAAAASUVORK5CYII=";
+                var obj3 = {
+                    name: "王五",
+                    sex: "未知",
+                    age: "55",
+                    address: "北京路",
+                    sign: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJkAAAA3CAYAAAAfSugkAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsIAAA7CARUoSoAAAADQSURBVHhe7dKxCQJRAAXBfzYiGFuJWIjtmViJYKr2IYrwW1i4g5nk8fJdDtfzd0BoNxcyIiMnMnIiIycyciIjJzJyIiMnMnIiIycyciIjJzJyIiMnMnIiIycyciIjJzJyIiMnMnIiIycyciIjJzJyIiMnMnIiIyeylXssl3F/nebbJpGt3Of5Hsf9bb5tEtnKbT2wP5GRExk5kZETGTmRkRMZOZGRExk5kZETGTmRkRMZOZGRExk5kZETGTmRkRMZOZGRExk5kZETGTmRERvjB/XKCox1g0oBAAAAAElFTkSuQmCC"
+                };
+                arr.push(obj3);
+                ctl.SetDocumentParameterValue("peopledatasource", arr);
+                ctl.WriteDataFromDataSourceToDocument();
+            }
+        }
+
+        function exp8() {
+            var ctl = document.getElementById("myWriterControl");
+            if (ctl != null) {
+                var table = ctl.CurrentTable();
+                if (table != null) {
+                    data = ctl.DCExecuteCommand("Table_ReadDataFromTable", false, table);
+                }
+            }
+        }
+
+        function exp9() {
+            var ctl = document.getElementById("myWriterControl");
+            if (ctl != null) {
+                var options = {
+                    ID: "medical",
+                    ExpressionStyle: "FourValues2",
+                    Width: "500",
+                    Height: "500",
+                    Values: "Value1: 14; Value2: 7; Value3: 38; Value4: 30"
+                };
+                ctl.DCExecuteCommand("insertmedicalexpression", false, options);
+            }
+        }
+
+        function exp10() {
+            var ctl = document.getElementById("myWriterControl");
+            if (ctl != null) {
+                var doc = ctl.GetContentDocument();
+                var cell = doc.getElementById("txtYSJY");
+                ctl.SetElementTextByID("txtYSJY", "")
+            }
+        }
+
+        function exp11() {
+            var ctl = document.getElementById("myWriterControl");
+            if (ctl != null) {
+                var doc = ctl.GetContentDocument();
+                var cell = doc.getElementById("txtYSJY");
+                ctl.SetElementTextByID("txtYSJY", "喵喵喵")
+            }
+        }
+
+
+        var tempvalue = "";
+
+        function exp11_5() {
+            var ctl = document.getElementById("myWriterControl");
+            if (ctl != null) {
+                var doc = ctl.GetContentDocument();
+                var cell = doc.getElementById("txtYSJY");
+                tempvalue = ctl.GetElementTextByID("txtYSJY");
+            }
+        }
+
+        function exp12_5() {
+            var ctl = document.getElementById("myWriterControl");
+            if (ctl != null) {
+                var doc = ctl.GetContentDocument();
+                var cell = doc.getElementById("txtYSJY");
+                ctl.SetElementTextByID("txtYSJY", tempvalue);
+            }
+        }
+
+        function exp12() {
+            var ctl = document.getElementById("myWriterControl");
+            if (ctl != null) {
+                $.ajax({
+                    url: "后台显示这段文字看看，然后再保存.txt",
+                    dataType: 'text',
+                    type: 'GET',
+                    timeout: 2000,
+                    error: function (xml) {
+                        alert("获取XML出错！");
+                    },
+                    success: function (xml) {
+                        ctl.SetElementTextByID("txtYSJY", xml)
+                    }
+                });
+            }
+        }
+
+        function exp13() {
+            var ctl = document.WriterControl;
+            if (ctl != null) {
+                var options = {
+                    //Length: "200px",
+                    Width: "1px",
+                    Color: "#888888",
+                    //Style: "dashed",
+                    ID: "hr1"
+                };
+                ctl.DCExecuteCommand('InsertHorizontalLine', false, options);
+            }
+        }
+
+        function exp14() {
+            var arr1 = new Array();
+            var modefile = null;
+            var ctl = document.WriterControl;
+            $.ajax({
+                url: "TESTFILES/20220829132224.xml",
+                dataType: 'text',
+                type: 'GET',
+                timeout: 2000,
+                async: false,
+                error: function (xml) {
+                    alert("加载XML 文件出错！");
+                },
+                success: function (xml) {
+                    var ctl = document.getElementById("myWriterControl");
+                    arr1.push(xml);
+                    arr1.push(xml);
+                    arr1.push(xml);
+                }
+            });
+            //$.ajax({
+            //    url: "TESTFILES/20220829132228.xml",
+            //    dataType: 'text',
+            //    type: 'GET',
+            //    timeout: 2000,
+            //    async: false,
+            //    error: function (xml) {
+            //        alert("加载XML 文件出错！");
+            //    },
+            //    success: function (xml) {
+            //        arr1.push(xml);
+
+            //    }
+            //});
+
+            var obj = {
+                "files": arr1,
+                "format": "xml",
+                //"base64": "false",
+                "megedoc": "false",
+                "modefile": null,
+                "splitmode": "none"
+            };
+            ctl.getHtmlByFiles(obj, function (responseText, textStatus, jqXHR) {
+                var settings = {
+                    //PrintWindowWidth: 450,
+                    //PrintWindowHeight: 470,
+                    //PrintWindowTop: 100,
+                    //PrintWindowLeft: 400,
+                    AutoClose: "false"
+                };
+                ctl.PrintByHtml(responseText, settings);
+            });
+        }
+
+
+        function exp15(id) {
+            $.ajax({
+                url: "图片数据.txt",
+                dataType: 'text',
+                type: 'GET',
+                timeout: 2000,
+                error: function (xml) {
+                    alert("加载XML 文件出错！");
+                },
+                success: function (xml) {
+                    var ctl = document.getElementById("myWriterControl");
+                    var signInput = ctl.GetContentDocument().getElementById(id);
+                    if (signInput) {
+                        ctl.SetElementTextByID(id, '');
+                        ctl.FocusAdjacent('beforeEnd', signInput);
+                        var options = [{ "src": xml, "width": "80px", "height": "20px" }];
+                        var jsonText = JSON.stringify(options);
+                        ctl.InsertImageByJsonText(jsonText);
+                        $(signInput).find("label[dctype='backgroundtext']").remove();
+                        //console.log("签名");
+                        //ctl.PrintDocument();
+                    }
+                }
+            });
+        }
+
+        function exp16() {
+            var ctl = document.getElementById("myWriterControl");
+            if (ctl != null) {
+                var win = ctl.GetContentWindow();
+                if (win != null) {
+                    var input = win.DCSelectionManager.GetCurrentInputField();
+                    if (input != null) {
+                        ctl.SetElementTextByID(input.id, "汪汪汪汪汪汪");
+                    }
+                }
+            }
+        }
+
+        function exp17() {
+            var ctl = document.getElementById("myWriterControl");
+            debugger;
+            if (ctl != null) {
+                var win = ctl.GetContentWindow();
+                if (win != null) {
+                    var input = win.DCSelectionManager.GetCurrentInputField();
+                    if (input == null) {
+                        alert("当前输入域为空");
+                        return;
+                    }
+                    var obj = {
+                        "id": "img1",
+                        "base64Img": picturebase64string,
+                        "scope": "InputField",
+                        "userID": "zhangsan",
+                        "userName": "zhangsan",
+                        "imageInFrontOfText": "false",
+                        "clientName": "(local)",
+                        "width": "80",
+                        "height": "30",
+                        "providerName": "1" //1:软签 2：诺安签名
+                    };
+
+                    ctl.CASignature(obj, function (result) {
+                        if (result.success == "true") {
+                            ctl.LoadDocumentFromString(result.result, "xml");
+                        } else {
+                            alert("签名失败：" + result.message);
+                        }
+                    });
+                }
+            }
+        }
+
+
+
+        function exp18() {
+            var ctl = document.getElementById("myWriterControl");
+            if (ctl != null) {
+                //var datas2 = {
+                //    c1: true,
+                //    c2: false,
+                //    c3: true
+                //};
+                //var datas3 = {
+                //    r1: false,
+                //    r2: false,
+                //    r3: true
+                //};
+                //ctl.SetDocumentParameterValue("dcradiosource", datas3);
+                //ctl.SetDocumentParameterValue("dcchecksource", datas2);
+                //ctl.WriteDataFromDataSourceToDocument();
+                var values = {
+                    NAME: "123434",
+                    //病人ID
+                    BirthPlace: "112233",
+                    sex: "女",
+                    Job: "护士",
+                    age: "33",
+                    // 住院次数
+                    indate: "2019-3-27",
+                    //门诊号
+                    mingzu: "汉族",
+                    //一卡通号
+                    recorddate: "2019-3-28",
+                    //住院号
+                    marriage: "3333",
+                    //住院病区号（病室）
+                    patientname: "004",
+                    icon: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJkAAAA3CAIAAACQKH9zAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACtSURBVHhe7dGhCYAAAABBBzE6scFBxLWsgk2z0aI8B5e+/rCPEw1ednjZ4WWHlx1ednjZ4WWHlx1ednjZ4WWHlx1ednjZ4WWHlx1ednjZ4WWHlx1ednjZ4WWHlx1ednjZ4WWHlx1evnSu2zEvj/gtL1/628iblx1ednjZ4WWHlx1ednjZ4WWHlx1ednjZ4WWHlx1ednjZ4WWHlx1ednjZ4WWHlx1ednjZ4WXFOF0QF6uCJ/U6cQAAAABJRU5ErkJggg=="
+                };
+                ctl.SetDocumentParameterValue("EMR_Patients", values);//EMR_Patients
+
+                ctl.SetDocumentParameterValue("radiodatasource", "单选值2");
+                ctl.SetDocumentParameterValue("checkdatasource", "复选值3,复选值4");
+
+                ctl.WriteDataFromDataSourceToDocument();
+            }
+        }
+
+        function exp19() {
+            var ctl = document.getElementById("myWriterControl");
+            if (ctl != null) {
+                var settings = {
+                    PrintWindowWidth: "1920",
+                    PrintWindowHeight: "1080",
+                    PrintWindowTop: "0",
+                    PrintWindowLeft: "0"
+                };
+                ctl.PrintDocument(settings);
+            }
+        }
+
+        function exp20() {
+            var ctl = document.getElementById("myWriterControl");
+            if (ctl != null) {
+                var html = ctl.GetPrintPreviewHTML();
+                var oPrntWin = window.open("", "_blank", "width=450,height=470,left=100,top=400,menubar=yes,toolbar=no,location=no,scrollbars=yes,resizable=yes");
+                oPrntWin.document.open();
+                $(oPrntWin.document).ready(function () {
+
+                });
+                oPrntWin.document.write(html);
+                oPrntWin.document.title = document.title;
+            }
+        }
+
+        function exp21(append) {
+            var ctl = document.getElementById("myWriterControl");
+            if (ctl != null) {
+                ctl.GetContentContainer().focus();
+                var file = new Array();
+                ////获取一个文档字符串用来反复加载subdoc
+                //$.ajax({
+                //    url: "合并前xml.xml",
+                //    dataType: 'text',
+                //    type: 'GET',
+                //    async: false,
+                //    timeout: 2000,
+                //    error: function (xml) {
+                //        alert("获取XML出错！");
+                //    },
+                //    success: function (xml) {
+                //        //加载两次
+                //        file.push(xml);
+                //        file.push(xml);
+                //    }
+                //});
+
+                var xml = `<XTextDocument xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" EditorVersionString="0.0.0.0"><XElements><Element xsi:type="XTextHeader"><InnerID>1</InnerID><AcceptTab>true</AcceptTab><XElements><Element xsi:type="XParagraphFlag" StyleIndex="0"><InnerID>6</InnerID><AutoCreate>true</AutoCreate></Element></XElements></Element><Element xsi:type="XTextBody"><InnerID>2</InnerID><AcceptTab>true</AcceptTab><XElements><Element xsi:type="XString"><InnerID>81</InnerID><Text>AAAAAA</Text></Element><Element xsi:type="XInputField"><InnerID>44</InnerID><ID>field1</ID><EnableValueValidate>true</EnableValueValidate><BorderElementColor /></Element><Element xsi:type="XString"><InnerID>82</InnerID><Text>AAAAAAAA</Text></Element><Element xsi:type="XTextCheckBox"><InnerID>47</InnerID><ID>checkbox1</ID><Name>chkgroup1</Name><Caption>BBB</Caption><Width>166.0104</Width><Height>57.0312424</Height><GroupName>chkgroup1</GroupName><VisualStyle>SystemDefault</VisualStyle></Element><Element xsi:type="XString"><InnerID>83</InnerID><Text>AAAAAAAAAA</Text></Element><Element xsi:type="XParagraphFlag"><InnerID>48</InnerID></Element><Element xsi:type="XTextTable" NumOfRows="1" NumOfColumns="3"><InnerID>50</InnerID><ID>table1</ID><XElements><Element xsi:type="XTextTableRow"><InnerID>54</InnerID><XElements><Element xsi:type="XTextTableCell" StyleIndex="1"><InnerID>55</InnerID><XElements><Element xsi:type="XInputField"><InnerID>61</InnerID><ID>field2</ID><EnableValueValidate>true</EnableValueValidate><BorderElementColor /></Element><Element xsi:type="XParagraphFlag"><InnerID>56</InnerID></Element></XElements></Element><Element xsi:type="XTextTableCell" StyleIndex="1"><InnerID>57</InnerID><XElements><Element xsi:type="XString"><InnerID>84</InnerID><Text>CCCC</Text></Element><Element xsi:type="XParagraphFlag"><InnerID>58</InnerID></Element></XElements></Element><Element xsi:type="XTextTableCell" StyleIndex="1"><InnerID>59</InnerID><XElements><Element xsi:type="XTextCheckBox"><InnerID>72</InnerID><ID>checkbox2</ID><Caption>DDD</Caption><Width>166.0104</Width><Height>57.0312424</Height><VisualStyle>SystemDefault</VisualStyle></Element><Element xsi:type="XParagraphFlag"><InnerID>60</InnerID></Element></XElements></Element></XElements></Element></XElements><Columns><Element xsi:type="XTextTableColumn"><InnerID>51</InnerID><Width>624.9167</Width></Element><Element xsi:type="XTextTableColumn"><InnerID>52</InnerID><Width>624.9167</Width></Element><Element xsi:type="XTextTableColumn"><InnerID>53</InnerID><Width>624.9167</Width></Element></Columns></Element><Element xsi:type="XParagraphFlag"><InnerID>7</InnerID><AutoCreate>true</AutoCreate></Element></XElements></Element><Element xsi:type="XTextFooter"><InnerID>3</InnerID><AcceptTab>true</AcceptTab><XElements><Element xsi:type="XParagraphFlag"><InnerID>8</InnerID><AutoCreate>true</AutoCreate></Element></XElements></Element></XElements><FileName>C:\Users\DCSOFTWU\Desktop\子文档.xml</FileName><FileFormat>XML</FileFormat><ContentStyles><Default xsi:type="DocumentContentStyle"><FontSize>12</FontSize></Default><Styles><Style Index="0"><FontSize>12</FontSize><Align>Center</Align></Style><Style Index="1"><FontSize>12</FontSize><BorderWidth>1</BorderWidth><BorderLeft>true</BorderLeft><BorderBottom>true</BorderBottom><BorderTop>true</BorderTop><BorderRight>true</BorderRight><PaddingLeft>15</PaddingLeft><PaddingTop>10</PaddingTop><PaddingRight>15</PaddingRight><PaddingBottom>10</PaddingBottom></Style></Styles></ContentStyles><Info><LicenseText>南京都昌信息科技有限公司:南京都昌信息科技有限公司内测版</LicenseText><CreationTime>2022-11-01T13:04:24.6111908+08:00</CreationTime><LastModifiedTime>2022-11-01T13:25:16.050188+08:00</LastModifiedTime><LastPrintTime>1980-01-01T00:00:00</LastPrintTime><Operator>DCSoft.Writer Version:0.0.0.0</Operator><NumOfPage>1</NumOfPage></Info><BodyText></BodyText><LocalConfig /><PageSettings><StrictUsePageSize>false</StrictUsePageSize></PageSettings></XTextDocument>`;
+                file.push(xml);
+                file.push(xml);
+
+                //构造两个选项分别对应两个子文档
+                var options = new Array();
+                var attr1 = {
+                    "Attributes": { "姓名": "张三", "科室": "胸外科", "床号": "12345" }, //自定义属性
+                    //"NewPage": "false", //是否新起一页
+                    //"ReadOnly": "false", //是否可编辑
+                    "Title": "张三的病程记录", //病程收缩时显示的文档标题
+                    "ToolTip": "提示：张三的病程记录", //病程鼠标移上去时的提示文本
+                    "ID": "subdoc1",//
+                    "TitleLevel": "0",//导航级别，从0到7的整数
+                    "CSSStyle": "border: 3px solid #FF0000; background-color: #FFFF00;", //自定义的样式
+                    "Parameters": { "emr.DE02.01.052.00": "汪汪汪", "fieldMedic": "王二麻子" },//绑定的数据格式
+                    //"DataBindingXML": "<DataSourceName><Name>张三</Name></DataSourceName><DataSourceName2><Name>李四</Name></DataSourceName2>",
+                    //"EnablePermission": "false",
+                    "LoadOriginHeaderFooter": "false",
+                    "AutoFitTableWidth": "false" //设置子文档内的表格列宽进行缩放适应主文档宽度
+                };
+                var attr2 = {
+                    "Attributes": { "姓名": "李四", "科室": "太平间", "床号": "45678" }, //自定义属性
+                    //"NewPage": "true", //是否新起一页
+                    //"ReadOnly": "true", //是否可编辑
+                    "Title": "李四的病程记录", //文档标题
+                    "ToolTip": "提示：李四的病程记录", //文档标题
+                    "ID": "subdoc2",//
+                    "TitleLevel": "0",//导航级别，从0到7的整数
+                    "CSSStyle": "border: 1px solid #0000FF; background-color: #FFF0F5;", //自定义的样式
+                    "Parameters": { "emr.DE02.01.052.00": "喵喵喵", "fieldMedic": "刘三姐" }, //绑定的数据格式
+                    //"DataBindingXML": "<DataSourceName><Name>李四</Name></DataSourceName>",
+                    //"EnablePermission": "false",
+                    "LoadOriginHeaderFooter": "false",
+                    "AutoFitTableWidth": "false" //设置子文档内的表格列宽进行缩放适应主文档宽度
+                };
+                options.push(attr1);
+                options.push(attr2);
+                var options = {
+                    Files: file,
+                    Options: options,
+                    Usebase64: "false",
+                    ShowMaskUI: "true"
+                };
+
+
+                //$.ajax({
+                //    url: "options.txt",
+                //    dataType: 'text',
+                //    type: 'GET',
+                //    async: false,
+                //    timeout: 2000,
+                //    error: function (xml) {
+                //        alert("获取XML出错！");
+                //    },
+                //    success: function (xml) {
+                //        //加载两次
+                //        options = JSON.parse(xml);
+                //    }
+                //});
+
+                if (append === true) {
+                    ctl.AppendSubDocuments(options);
+                } else {
+                    ctl.InsertSubDocuments(options);
+                }
+            }
+        }
+
+        function insertbutton() {
+            var ctl = document.getElementById("myWriterControl");
+            var options = {
+                isShow: false,
+                id: '测试id',  //编号 
+                name: '测试name', //名称 
+                //deleteable: 'true', //能否被删除 
+                //enabled: 'false', //能否被使用 
+                //printvisibility: 'hidden', //打印时是否可见 
+                scripttextforclick: 'console.log(1111)', //脚本文本
+                commandname: '命令模板', //命令模板 
+                value: '测试value', //文本 
+                imgbase64: './官网logo.png',
+                imgbase64fordown: './image68.png',
+                imgbase64forover: './image67.png',
+            }
+            ctl.DCExecuteCommand("InsertButton", true, options);
+        }
+
+
+        function exp22() {
+            var ctl = document.getElementById("myWriterControl");
+            var options = {
+                "Name": "name001", //单选框的Name属性相同
+                "Type": "radio", //radio、checkbox
+                "ListItems": [
+                    {
+                        "ID": "chk1",
+                        "ToolTip": "提示信息1",
+                        "MultiLine": "true",
+                        "Checked": "false",
+                        "StringTag": "附加数据1",
+                        "VisualStyle": "CheckBox", //"Default", "CheckBox", "RadioBox", "SystemDefault", "SystemCheckBox", "SystemRadioBox"
+                        "Text": "内容111",
+                        "Value": "值1",
+                        "CaptionFlowLayout": "true"
+                    },
+                    {
+                        "ID": "chk2",
+                        "ToolTip": "提示信息2",
+                        "MultiLine": "false",
+                        "Checked": "true",
+                        "StringTag": "附加数据2",
+                        "VisualStyle": "CheckBox", //"Default", "CheckBox", "RadioBox", "SystemDefault", "SystemCheckBox", "SystemRadioBox"
+                        "Text": "内容222",
+                        "Value": "值2",
+                        "CaptionFlowLayout": "true"
+                    }
+                ]
+            };
+            ctl.DCExecuteCommand("insertcheckboxorradio", true, options);
+        }
+
+        function exp23() {
+            var ctl = document.getElementById("myWriterControl");
+            if (ctl.CommitDocumentUserTrace() == true) {
+                ctl.SaveDocumentToFile('鞢dfa');
+            } else {
+                alert("大王，出事了");
+            }
+        }
+
+        function exp24() {
+            var arr1 = new Array();
+            var ctl = document.getElementById("myWriterControl");
+            var xml = ctl.SaveDocumentToString(); //这里是转换PDF的字符串
+            arr1.push(xml);
+
+            var obj = {
+                "files": arr1,
+                "base64": "false",
+                "megedoc": "false",
+                "filename": "自定义PDF文件名",
+                "splitmode": "none",
+                "resulttype": "DownloadFile",   //"DownloadFile"表示直接下载文件;"Base64String"表示返回pdf二进制的BASE64字符串+
+                "forceblacktextcolor": "false", //是否强制输出黑白色的PDF
+                "commentvisible": "true" //PDF是否输出文档批注样式
+            };
+            var result = ctl.GetPDFByFiles(obj);
+            console.log(result);
+        }
+
+        function exp25_2() {
+            var ctl = document.getElementById("myWriterControl");
+            if (ctl != null) {
+                var options = {
+                    ID: "pie1",
+                    Name: "pieName",
+                    Width: 300,//注意这里给的是数字，单位是像素
+                    Height: 300, //注意这里给的是数字，单位是像素
+                    ShowLegend: "false",//是否显示图例
+                    Thickness: 100,//饼图的厚度
+                    PieDatas: [
+                        {
+                            Text: "aa",
+                            Value: 10
+                        },
+                        {
+                            Text: "bb",
+                            Value: 10
+                        },
+                        {
+                            Text: "cc",
+                            Value: 10
+                        },
+                        {
+                            Text: "dd",
+                            Value: 10
+                        },
+                        {
+                            Text: "ee",
+                            Value: 10
+                        },
+                        {
+                            Text: "ff",
+                            Value: 10
+                        }
+                    ]
+                };
+                ctl.DCExecuteCommand("InsertPieElement", false, options);
+            }
+        }
+
+        function exp25() {
+            var ctl = document.getElementById("myWriterControl");
+            if (ctl != null) {
+                //为插入图表元素创建参数对象
+                var options = new Object();
+                //设置图表元素的ID，NAME，宽与高
+                options.ID = "chart1";
+                options.Name = "chartName";
+                options.Width = 600;//注意这里给的是数字，单位是像素
+                options.Height = 300; //注意这里给的是数字，单位是像素
+                //设置图表元素的图表数据
+                options.ChartDatas = new Object();
+                options.ChartDatas.GridYSplitNum = 8;//设置纵向网格分割数
+                options.ChartDatas.LegendVisible = false;//设置图例是否显示
+                //设置内边距
+                options.ChartDatas.PaddingBottom = 50;
+                options.ChartDatas.PaddingLeft = 30;
+                options.ChartDatas.PaddingRight = 30;
+                options.ChartDatas.PaddingTop = 30;
+                //设置图表类型
+                options.ChartDatas.ViewStyle = "Line";
+
+                //为图表元素添加Y轴
+                options.ChartDatas.YAxises = new Array();//初始化Y轴列表
+                //创建第一个Y轴
+                var yaxis1 = new Object();
+                yaxis1.Color = "#FF0000";//设置Y轴的颜色，从属该Y轴的数据点都使用这个颜色
+                yaxis1.GridStep = 10;//设置Y轴坐标刻度的步长
+                yaxis1.LeftSide = true;//设置Y轴刻度是否在数据轴左侧，为false则在右侧
+                yaxis1.MaxValue = 100;//设置Y轴坐标刻度的最大值
+                yaxis1.MinValue = 0;//设置Y轴坐标刻度的最小值
+                yaxis1.Name = "Y轴名称1";//设置Y轴名称，从属该Y轴的数据点的序列名必须要指向该名称
+                yaxis1.Visible = true;//设置Y轴刻度是否显示
+                //创建第二个Y轴
+                var yaxis2 = new Object();
+                yaxis2.Color = "#00FFFF";//设置Y轴的颜色，从属该Y轴的数据点都使用这个颜色
+                yaxis2.GridStep = 10;//设置Y轴坐标刻度的步长
+                yaxis2.LeftSide = false;//设置Y轴刻度是否在数据轴左侧，为false则在右侧
+                yaxis2.MaxValue = 50;//设置Y轴坐标刻度的最大值
+                yaxis2.MinValue = 0;//设置Y轴坐标刻度的最小值
+                yaxis2.Name = "Y轴名称2";//设置Y轴名称，从属该Y轴的数据点的序列名必须要指向该名称
+                yaxis2.Visible = true;//设置Y轴刻度是否显示
+                //添加Y轴到列表
+                options.ChartDatas.YAxises.push(yaxis1);
+                options.ChartDatas.YAxises.push(yaxis2);
+
+                //为图表元素添加数据点
+                options.ChartDatas.Values = new Array();//初始化图表元素数据集
+                //为名称为"Y轴名称1"的Y轴添加数据点
+                for (var i = 0; i < 5; i++) {
+                    var value = new Object();
+                    value.SeriesName = "Y轴名称1";//指定该数据点所属的Y轴
+                    value.GroupName = "分组" + i.toString();//指定该数据点所属的X轴
+                    value.SymbolType = "Diamond";//Bar类型无效，在Line类型里有效
+                    value.Value = Math.random() * (100 - 0) + 0;//生成0到100之间的随机数
+                    options.ChartDatas.Values.push(value);
+                }
+                //为名称为"Y轴名称2"的Y轴添加数据点
+                for (var i = 0; i < 5; i++) {
+                    var value = new Object();
+                    value.SeriesName = "Y轴名称2";//指定该数据点所属的Y轴
+                    value.GroupName = "分组" + i.toString();//指定该数据点所属的X轴
+                    value.SymbolType = "Circle";//Bar类型无效，在Line类型里有效
+                    value.Value = Math.random() * (50 - 0) + 0;//生成0到50之间的随机数
+                    options.ChartDatas.Values.push(value);
+                }
+
+                var test = `{
+    "ID": "chart1",
+    "Name": "chartName",
+    "Width": 600,
+    "Height": 300,
+    "ChartDatas": {
+        "GridYSplitNum": 8,
+        "LegendVisible": false,
+        "PaddingBottom": 50,
+        "PaddingLeft": 30,
+        "PaddingRight": 30,
+        "PaddingTop": 30,
+        "ViewStyle": "Line",
+        "YAxises": [
+            {
+                "Color": "#FF0000",
+                "GridStep": 10,
+                "LeftSide": true,
+                "MaxValue": 100,
+                "MinValue": 0,
+                "Name": "Y轴名称1",
+                "Visible": true
+            },
+            {
+                "Color": "#00FFFF",
+                "GridStep": 10,
+                "LeftSide": false,
+                "MaxValue": 50,
+                "MinValue": 0,
+                "Name": "Y轴名称2",
+                "Visible": true
+            }
+        ],
+        "Values": [
+            {
+                "SeriesName": "Y轴名称1",
+                "GroupName": "分组0",
+                "SymbolType": "Diamond",
+                "Value": 32.52174316139571
+            },
+            {
+                "SeriesName": "Y轴名称2",
+                "GroupName": "分组0",
+                "SymbolType": "Diamond",
+                "Value": 46.402377963935706
+            }
+        ]
+    }
+}`;
+                var testobj = JSON.parse(test);
+                ctl.DCExecuteCommand("InsertChartElement", false, options);
+
+
+                //图表数据整备完毕，添加元素
+                //ctl.DCExecuteCommand("InsertChartElement", false, options);
+            }
+        }
+
+        function exp26() {
+            var ctl = document.getElementById("myWriterControl");
+            if (ctl != null) {
+                //为简单起见，这里只是改变一下图表的Y轴的显示全部到左侧
+                var datas = ctl.GetChartElementDataByID("chart1");
+                for (var i = 0; i < datas.YAxises.length; i++) {
+                    var yaxis = datas.YAxises[i];
+                    yaxis.LeftSide = true;
+                }
+                ctl.SetChartElementDataByID("chart1", datas);
+            }
+        }
+
+        function exp27() {
+            var ctl = document.getElementById("myWriterControl");
+            if (ctl != null) {
+                //为简单起见，这里只是改变一下图表的Y轴的显示全部到右侧
+                var datas = ctl.GetChartElementDataByID("chart1");
+                for (var i = 0; i < datas.YAxises.length; i++) {
+                    var yaxis = datas.YAxises[i];
+                    yaxis.LeftSide = false;
+                }
+                ctl.SetChartElementDataByID("chart1", datas);
+            }
+        }
+
+        function exp28() {
+            var ctl = document.getElementById("myWriterControl");
+            if (ctl != null) {
+                var win = document.getElementById(ctl.id + "Frame");
+                if (win != null && win.style.display != "none") {
+                    //可以保存
+                }
+
+
+                var options = {
+                    ShowUI: true
+                    //PrinterName: "Fax",//为空则使用默认的打印机名
+                    //PrintPageRange: "1-2"//"All"则全部打印
+                };
+                debugger;
+                ctl.LocalPrintDocument(options);
+            }
+        }
+
+        function exp29() {
+            var ctl = document.WriterControl;
+            if (ctl != null) {
+                //var doc = ctl.GetContentDocument();
+                //var win = ctl.GetContentWindow();
+                //var footer = doc.getElementById("divXTextDocumentFooterElement");
+                //var elep = footer.querySelector("p");
+                //if (win != null && win.DCBarcodeManager != null) {
+                //    var pageinfo = win.DCBarcodeManager.createPageInfo();
+                //    elep.appendChild(pageinfo);
+                //    elep.setAttribute("align", "center");
+                //}
+
+                var options = {
+                    ID: "pageinfo1", //页码ID，可为空
+                    Height: "65",   //页码元素高度，可为空
+                    Width: "400",   //页码元素宽度，可为空
+                    ValueType: "PageIndex", //页码元素类型,PageIndex代表显示为当前页号，NumOfPages显示为总页数，可为空
+                    FormatString: "第[%PageIndex%]页 共[%NumOfPages%]页", //页码文本格式化字符串，可为空
+                    SpecifyPageIndexTextList: "4,3,2,1"//自定义页码序号列表，可为空
+                };
+                ctl.DCExecuteCommand('InsertPageInfoElement', false, options)
+            }
+        }
+
+        function exp30() {
+            var ctl = document.getElementById("myWriterControl");
+            if (ctl != null) {
+                var opts = {
+                    ID: "comment1",
+                    Text: "批注文本汪汪汪",
+                    UserName: "李四主任医师",
+                    UserID: "lisi",
+                    elebgColor: "red",
+                    BackgroundColor: "yellow",
+                    Attributes: {
+                        "键1": "值1",
+                        "键2": "值2"
+                    }
+                }
+                ctl.NewComment(opts);
+            }
+        }
+
+        function exp31() {
+            var ctl = document.getElementById("myWriterControl");
+            if (ctl != null) {
+                $.ajax({
+                    url: "单个病程.xml",
+                    dataType: 'text',
+                    type: 'GET',
+                    async: false,
+                    timeout: 2000,
+                    error: function (xml) {
+                        alert("获取XML出错！");
+                    },
+                    success: function (xml) {
+                        //加载两次
+                        var html = ctl.getHtmlByXMLString(xml, "two");
+                        console.log(html);
+                    }
+                });
+            }
+        }
+
+        function exp32() {
+            var ctl = document.getElementById("myWriterControl");
+            if (ctl != null) {
+                var arr = new Array();
+                var options = new Object();
+                $.ajax({
+                    url: "单个病程.xml",
+                    dataType: 'text',
+                    type: 'GET',
+                    async: false,
+                    timeout: 2000,
+                    error: function (xml) {
+                        alert("获取XML出错！");
+                    },
+                    success: function (xml) {
+                        //加载两次
+                        arr.push(xml);
+                        options.files = arr;
+                    }
+                });
+
+                if (options.files != null) {
+                    //ctl.GetPDFByFiles(options);
+                    ////debugger;
+                    var servicePageUrl = ctl.getAttribute("servicepageurl");
+                    var url = servicePageUrl + "?dcgetpdfbyfiles=xml&tick=" + new Date().valueOf();
+
+                    var postData = "";
+                    var input = document.getElementById(ctl.id + "_WebWriterControlOptions");
+                    if (input != null) {
+                        postData = input.value;
+                    };
+
+                    var content = null;
+                    var parms = {
+                        "param": JSON.stringify(options),
+                        "webwritercontroloptions": postData
+                    };
+                    var settings = {
+                        method: "POST",
+                        //responseType: 'blob',
+                        type: "POST",
+                        url: url,
+                        async: false,
+                        data: parms,
+                        success: function (result) {
+                            content = new Blob([result], {
+                                type: 'application/pdf;chartset=UTF-8'
+                            })
+                        },
+                        error: function (request) {
+                            ConnectionError();
+                        }
+                    };
+                    DCDomTools.fixAjaxSettings(settings);
+                    $.ajax(settings);
+
+                    //var xhr = new XMLHttpRequest()
+                    //xhr.open('POST', url, true)
+                    //xhr.withCredentials = true;
+                    //xhr.responseType = 'blob';
+                    //xhr.onload = function () {
+                    //    if (this.status == 200) {
+                    //        content = this.response;
+                    //        var fileURL = URL.createObjectURL(content)
+                    //        var Dom = `<object data="${fileURL}" type="application/pdf" style="width:100%; height:100%;"></object>`
+                    //        var html = "<html><body>" + Dom + "</body></html>";
+                    //        var oPrntWin = window.open("", "_blank", "width=450,height=470,left=0,top=0,menubar=yes,toolbar=no,location=no,scrollbars=yes,resizable=yes");
+                    //        setTimeout(function () {
+                    //            oPrntWin.document.write(html);
+                    //        }, 500);
+                    //    }
+                    //}
+                    //xhr.send(parms);
+
+                    if (content != null) {
+                        var fileURL = URL.createObjectURL(content)
+                        var embed = "<embed style='position:absolute; left:0;top:0;' width='100%' height='100%' src=\"" + fileURL + "\" type='application/pdf'>";
+                        var dom = "<object data=\"" + fileURL + "\" type='application/pdf' style='width:100%; height:100%;'>" + embed + "</object> ";
+
+                        //var Dom = `<object data="${fileURL}" type="application/pdf" style="width:100%; height:100%;"></object>`
+                        var html = "<html><body>" + dom + "</body></html>";
+                        var oPrntWin = window.open("", "_blank", "width=450,height=470,left=0,top=0,menubar=yes,toolbar=no,location=no,scrollbars=yes,resizable=yes");
+                        setTimeout(function () {
+                            oPrntWin.document.write(html);
+                        }, 500);
+                        //$('body').append(dom);
+                    }
+
+                }
+
+            }
+        }
+
+        function exp33() {
+            var ctl = document.getElementById("myWriterControl");
+            if (ctl != null) {
+                var xmltext = null;
+                var options = new Object();
+                $.ajax({
+                    url: "病程结点.xml",
+                    dataType: 'text',
+                    type: 'GET',
+                    async: false,
+                    timeout: 2000,
+                    error: function (xml) {
+                        alert("获取XML出错！");
+                    },
+                    success: function (xml) {
+                        //加载两次
+                        //xmltext = xml;
+                        var options = {
+                            ID: "subdoc1",
+                            FileContentXML: xml
+                        };
+                        ctl.LoadSubDocumentFromString(options);
+                    }
+                });
+
+                //if (xmltext != null) {
+                //    $.ajax({
+                //        //要用post方式
+                //        type: "POST",
+                //        //方法所在页面和方法名
+                //        url: "DCWebServiceFileConvert.asmx?TransformXMLToPDF",
+                //        contentType: "application/json; charset=utf-8",
+                //        data: {
+                //            xml: xmltext
+                //        },
+                //        dataType: "json",
+                //        success: function (data) {
+                //            debugger;
+                //        },
+                //        error: function (XMLHttpRequest, textStatus, errorThrown) {
+                //            // console.log("失败");
+                //            alert("文件打开失败");
+                //        }
+                //    });
+                //}
+
+            }
+        }
+
+        function InsertDList() {
+            var ctl = document.getElementById("myWriterControl");
+
+            var options = {
+                "BackgroundText": "下拉列表",
+                "InnerEditStyle": "DropdownList",
+                "Innerlistsourcename": "H12030",
+                "EditorActiveMode": "MouseClick"
+            };
+            var field = ctl.DCExecuteCommand("InsertInputField", true, options);
+
+            ctl.EventQueryListItems = function (eventObject) {
+                if (eventObject.ListSourceName == "H12030") {
+                    eventObject.AddResultItemByTextValue("前端动态下拉项1", "CN");
+                    eventObject.AddResultItemByTextValue("前端动态下拉项2", "AM");
+                }
+            }
+        }
+
+        function exp34() {
+            var str = "[{\"cmdName\":\"copy\"},{\"label\":\"剪切(Ctrl + x)\",\"cmdName\":\"cut\"},{\"label\":\"粘贴\",\"cmdName\":\"paste\"},\"-\",{\"label\":\"元素属性\",\"cmdName\":\"aligntd\"},\"-\",{\"label\":\"表格属性\",\"cmdName\":\"edittable\"},{\"label\":\"表格行属性\",\"cmdName\":\"edittd\"},{\"label\":\"删除表格\",\"cmdName\":\"deletetable\"},{\"label\":\"删除表格行\",\"cmdName\":\"deleterow\"},{\"label\":\"在上方插入表格行\",\"cmdName\":\"insertrow\"},{\"label\":\"在下方插入表格行\",\"cmdName\":\"insertrownext\"},{\"label\":\"在左方插入表格列\",\"cmdName\":\"insertcol\"},{\"label\":\"在右方插入表格列\",\"cmdName\":\"insertcolnext\"},{\"label\":\"右合并单元格\",\"cmdName\":\"mergeright\"},{\"label\":\"下合并单元格\",\"cmdName\":\"mergedown\"}]";
+            document.WriterControl.SetContextMenu(JSON.parse(str));
+        }
+
+        function exp35() {
+            var ctl = document.getElementById("myWriterControl");
+            var arr1 = new Array();
+            var xml = ctl.SaveDocumentToString();
+            arr1.push(xml);
+            var obj = {
+                "files": arr1,
+                "base64": "false",
+                "megedoc": "false",
+                "filename": "自定义PDF文件名",
+                "splitmode": "none",
+                "resulttype": "Base64String",    //"DownloadFile"表示直接下载文件;"Base64String"表示返回pdf二进制的BASE64字符串
+                //"commentvisible": "true", //PDF是否输出文档批注样式
+                "forceblacktextcolor": "false"
+                
+            };
+            var back = ctl.Options.AJAXAsync;
+            ctl.Options.AJAXAsync = false;
+            var result = ctl.GetPDFByFiles(obj);
+            //var result = ctl.SaveDocumentToBase64String({ FileFormat: "pdf" });
+            ctl.Options.AJAXAsync = back;
+            str = "data:application/pdf;base64," + result;
+            var embed = document.createElement("embed");
+            embed.setAttribute("src", str);
+            embed.setAttribute("type", "application/pdf");
+            embed.style.width = "100%";
+            embed.style.height = "100%";
+            myWindow = window.open('', '');
+            myWindow.document.body.style.margin = 0;
+            myWindow.document.body.appendChild(embed);
+            myWindow.focus();
+        }
+
+        function exp36() {
+            var ctl = document.WriterControl;
+            $.ajax({
+                url: "DCFORM测试文档.xml",
+                dataType: 'text',
+                type: 'GET',
+                async: false,
+                timeout: 2000,
+                error: function (xml) {
+                    alert("获取XML出错！");
+                },
+                success: function (xml) {
+
+                    //编一个数据集用来绑定文档
+                    var tabledata = [
+                        ["2014-01-01", "08:22", "0.9%氯化钠注射液(生理盐水注射液)", "", "512", "", "01-01 10:21"],
+                        ["2014-01-01", "08:22", "低分子量肝素钙注射液（万脉舒）", "血滤", "512", "", "01-01 10:21"],
+                        ["2014-01-01", "08:22", "普通胰岛素注射剂", "", "512", "", "01-01 08:30"]
+                    ];
+
+                    //对扩充列的表格提供的数据，这里一组数据用来填充一整列，当列数超过表格最大数时，会再复制一个表格到下面继续填充
+                    var tabledata2 = [
+                        ['01-02', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'aa', 'bb'],
+                        ['03-04', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'cc', 'dd'],
+                        ['05-06', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'ee', 'ff'],
+                        ['07-08', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'gg', 'kk'],
+                        ['07-08', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'gg', 'kk'],
+                        ['07-08', 'AAA', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'gg', 'kk'],
+                        ['03-04', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'cc', 'dd'],
+                        ['05-06', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'ee', 'ff'],
+                        ['07-08', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'gg', 'kk'],
+                        ['07-08', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'gg', 'kk'],
+                        ['09-10', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'mm', 'll']
+                    ];
+                    var dataobj = {
+                        "checkname": "0",   //设置示例文档中的组名为"checkname"的多选框组，0不选1选女2选男
+                        "radiogroup": "0",
+                        "table1": tabledata,     //填充示例文档中的表格
+                        "TableMain": tabledata2,    //横向扩充列表格的数据
+
+                        "姓名": "张Sir",   //设置页眉内给定ID的输入域
+                        "科别": "太平间",
+                        "床号": "007",
+                        "病人ID": "1234",
+                        "住院号": "5678"
+                    };
+
+                    var options = {
+                        IsUseBase64: false,     //加载和保存的字符串是否是BASE64
+                        IsReturnStruct: true,      //是否返回加载文档的前端FORM结构
+                        IsReturnFileContent: true,      //是否将文档保存字符串返回前端
+                        IsBindingData: true,    //是否将数据绑定到文档
+                        Datas: dataobj,     //绑定文档所需要的数据集
+                        FileContentXML: xml,     //需要加载的文档字符串
+                        OutputElementInnerXML: true, //输出元素的XML
+                        NestedMode: false  //是否输出元素嵌套关系
+                    };
+                    var obj = ctl.DCFormTransmission(options);
+                    console.log(obj);
+                    if (obj.SaveFileContent.length > 0) {
+                        ctl.LoadDocumentFromString(obj.SaveFileContent, "xml");
+                    }
+                }
+            });
+        }
+
+        function expselect() {
+            var input = document.getElementById("tempfileopen");
+            if (input === null) {
+                input = document.createElement("input");
+                input.id = "tempfileopen";
+                input.type = "file";
+                input.name = "file";
+                input.accept = "text/xml, application/xml";
+                input.style.display = "none";
+                input.onchange = function () {
+                    fileurl = window.URL.createObjectURL(input.files[0]);
+                    $(input).remove();
+                    if (fileurl != null) {
+                        $.ajax({
+                            url: fileurl,
+                            dataType: 'text',
+                            type: 'GET',
+                            async: false,
+                            timeout: 2000,
+                            error: function (xml) {
+                                return null;
+                            },
+                            success: function (xml) {
+                                debugger;
+                                var str = decodeURIComponent(xml);
+                                var options = JSON.parse(str);
+                                var result = document.WriterControl.GetPDFByFiles(options);
+                                str = "data:application/pdf;base64," + result;
+                                var embed = document.createElement("embed");
+                                embed.setAttribute("src", str);
+                                embed.setAttribute("type", "application/pdf");
+                                embed.style.width = "100%";
+                                embed.style.height = "100%";
+                                myWindow = window.open('', '');
+                                myWindow.document.body.style.margin = 0;
+                                myWindow.document.body.appendChild(embed);
+                                myWindow.focus();
+
+                            }
+                        });
+                    }
+                    return;
+                };
+                document.body.appendChild(input);
+                input.click();
+            } else {
+                input.click();
+            }
+        }
+
+        function exp37() {
+            var xml = expselect();
+            if (xml != null) {
+                var options = JSON.parse(xml);
+                var ctl = document.WriterControl;
+                ctl.AppendSubDocuments(options);
+
+            }
+        }
+
+        function exp38() {
+            var id = "field1";
+            var ctl = document.WriterControl;
+            var xml = ctl.GetElementInnerXmlById(id);
+            var options = {
+                "file": xml,
+                "format": "xml",
+                "base64": "false",
+                "type": "two",
+                "position": "start",
+                "ClearFormat":"true"
+
+            };
+            ctl.InsertXmlById(options, id)
+        }
+
+        function insertbarcode() {
+            var ctl = document.WriterControl;
+            var options = {
+                ID: "barcode1",
+                Text: "1234566",
+                Width: 130,
+                Height: 60,
+                ValueBinding: {
+                    DataSource: "datasourceforbarcode2",
+                    BindingPath: "path2"
+                }
+            };
+            ctl.DCExecuteCommand("insertbarcodeelement", false, options);
+
+            var str = JSON.stringify(options);
+        }
+
+        function exptestcellgridline() {
+            var ctl = document.WriterControl;
+            var cell = ctl.CurrentTableCell();
+            var settings = {
+                AlignToGridLine: "True",
+                ColorValue: "#000000",
+                GridSpanInCM: 1,
+                LineStyle: "Solid",
+                LineWidth: 1,
+                Printable: "True",
+                Visible: "True",
+            };
+            ctl.SetTableCellGridLineInfo(cell, settings);
+        }
+
+        function expsaveattatched() {
+            var obj = {
+                AttachedCustomAttributes: {
+                    "文本1": "值1",
+                    "文本2": "值2",
+                    "文本3": "值3"
+                }
+            }
+            console.log(document.WriterControl.SaveDocumentToString(obj));
+        }
+
+        function insertlineunderheader() {
+            var ctl = document.WriterControl;
+            var doc = ctl.GetContentDocument();
+            var win = ctl.GetContentWindow();
+            var header = doc.getElementById("divXTextDocumentHeaderElement");
+            if (header != null && win != null && win.WriterCommandModuleFile) {
+                var hrline = document.createElement("hr");
+                hrline.setAttribute("dctype", "XTextHorizontalLineElement");
+                hrline.style.borderBottom = "none";
+                hrline.style.borderRight = "none";
+                hrline.style.borderLeft = "none";
+                var div = header.firstChild;
+                div.appendChild(hrline);
+            }
+        }
+
+        function switchHeaderBottomLine(showline) {
+            var ctl = document.WriterControl;
+            var doc = ctl.GetContentDocument();
+            var header = doc.getElementById("divXTextDocumentHeaderElement");
+            var div = header.firstChild;
+            if (showline === true) {
+                div.style = "border-bottom:1px solid #888888";
+            } else {
+                div.style = "border-bottom:1px solid #FFFFFF";
+            }
+        }
+
+        function switchHeaderBottomLineForPrint(showline) {
+            var ctl = document.WriterControl;
+            if (showline === true) {
+                ctl.DocumentOptions.ViewOptions.ShowHeaderBottomLine = true;
+            } else {
+                ctl.DocumentOptions.ViewOptions.ShowHeaderBottomLine = false;
+            }
+            ctl.ApplyDocumentOptions();
+        }
+
+        function insertsrcimage() {
+            var ctl = document.WriterControl;
+            var obj = {
+                id: "image1",
+                src: "pic.png",//得保证这个SRC在客户端前端有效
+                width: 120,
+                height: 20,
+                savecontentinfile: false, //新增属性，设成false则图片原样存储src不再保存实际图片的数据
+                Attributes: {               //
+                    Name: "张三",
+                    Sex: "男"
+                }
+            };
+            var arr = new Array();
+            arr.push(obj);
+            debugger;
+            ctl.InsertImageByJsonText(arr);
+        }
+
+        function loadprintpreviewwithwatermark() {
+            var ctl = document.WriterControl;
+            var wmobj = {
+                Type: "Text",
+                Text: "aaaaaaaaaaa",
+                Repeat: "True",
+                ImageDataBase64String: null,
+                Font: "Tahoma, 12, style=Italic",
+                DensityForRepeat: "0.2",
+                ColorValue: "#1A3E72",
+                BackColorValue: "White",
+                Angle: "30",
+                Alpha: "80"
+            };
+            ctl.LoadPrintPreview({ WaterMark: wmobj });
+        }
+
+        function uploadlogfile() {
+            var input = document.getElementById('dcupdonwnloadlogfile');
+            if (input === null) {
+                input = document.createElement('input');
+                input.id = 'dcupdonwnloadlogfile';
+                input.type = 'file';
+                input.name = 'file';
+                input.accept = 'text/xml,application/xml,application/json';
+                input.style.display = 'none';
+                input.onchange = function () {
+                    if (input.files[0]) {
+                        var formdatas = new FormData();
+                        formdatas.enctype = 'multipart/form-data';
+                        formdatas.append('file', input.files[0]);
+                        var xhr = new XMLHttpRequest();
+                        var url1 = window.location.href + '1';
+                        xhr.open('POST', url1, false);
+                        xhr.onreadystatechange = function () {
+                            if (xhr.readyState == 4 && xhr.status == 200) {
+                                document.write(xhr.responseText);
+                            }
+                        }
+                        xhr.send(formdatas);
+                    } else {
+                        alert('请选择XML或JSON文件打开!!!');
+                    }
+                    input.parentElement.removeChild(input);
+                    return;
+                };
+                document.body.appendChild(input);
+                input.click();
+            } else {
+                input.click();
+            }
+        }
+
+        function downloadlogfile() {
+            var xhr = new XMLHttpRequest();
+            var url1 = window.location.href + '2';
+            xhr.open('POST', url1, false);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    document.write(xhr.responseText);
+                }
+            }
+            xhr.send();
+
+            var frm = document.createElement('form');
+            frm.action = window.location.href + '2';
+            frm.method = 'POST';
+            frm.target = '_blank';
+            document.body.appendChild(frm);
+            frm.submit();
+            document.body.removeChild(frm);
+        }
+
+        function ppppppp() {
+            var ctl = document.WriterControl;
+            var win = ctl.GetContentWindow();
+            var doc = ctl.GetContentDocument();
+            if (win.DCWriterControllerEditor && win.DCWriterControllerEditor.InitFileContentDom) {
+                var divs = doc.querySelectorAll("[dctype='XTextSubDocumentElement']");
+                for (var i = 0; i < divs.length; i++) {
+                    win.DCWriterControllerEditor.InitFileContentDom(divs[i], true);
+                }
+            }
+        }
+
+        function jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj() {
+            var ctl = document.WriterControl;
+            var table = ctl.CurrentTable()
+            var options = {
+                BorderLeft: 'true',
+                BorderLeftColor: '#888888',
+                BorderTop: 'true',
+                BorderTopColor: '#888888',
+                BorderBottom: 'true',
+                BorderBottomColor: '#888888',
+                BorderRight: 'true',
+                BorderRightColor: '#888888',
+                BorderWidth: '1',
+            }
+            ctl.SetTableBorder(table, options)
+        }
+
+        function changedocumentsettings() {
+            var ctl = document.WriterControl;
+            var ps = ctl.GetDocumentPageSettings();
+            if (ps != null) {
+                ps.Landscape = true;
+                ps.PaperKind = "Custom";
+                ps.PaperWidth = 100;
+                ps.PaperHeight = 100;
+                ctl.ChangeDocumentSettings(ps);
+            }
+        }
+
+        function SetInputFieldDefaultExpression(element, expression) {
+            var ctl = DefaultEventExpression;
+            var option = {
+                DefaultEventExpression: expression
+            };
+            ctl.SetElementProperties(element, option);
+        }
+
+        var picturebase64string = "iVBORw0KGgoAAAANSUhEUgAAAJ0AAAAcCAIAAAD0qCr8AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAMKSURBVGhD7ZFblsIwDENn/5tm0kgNbuJXksJw5nA/ANuS7Jafx5f/yPd//Z98/9c/4GcGeibZ+l+5eRKaV2FKBNUfA8+qsJVgSiyZs+GsEKrvJh/+uhuWWTtp+UGyr6nB1hvh4snVs/pXgLMBW2nWXI3AKdPVNRCMcLzHTpTjxSiE6nno33sJu3Z+D4yXoeNA3R3cEmglOOGy78h81lwASwusV7n4GVlhy2bUJI0ht4QU1Jx6o5k/jqAvsM5BjwulJ2pzmWdQMhTrC6wHOBZwEEG1gINVxoQw0xHs39NRAiXs3sQzLhm9cEE9Ows9Vxdbk0hjMsfXZBJC6iGkKwFkmzxTMqF3bS1gXYG1TUaj0oz4ccuuIsjkqCS9kHVwlqY3MOaE3b3nUZlKw3bAVgKI5WeILyvTTRg0D/0CDgyi8flSwqAkiCqwnifvlYsyrlAjBclAwDrnasDbwVkUlT2ORQWdDDScjJ01nJy6NoZqgdUH6tTRgwULOJYZyjayBCBYI1PwY4rOtZCg0mVK2L2ulv1CVxbGDjgiKqwHnFFhnIZ6wNqGOucwfmuMNj/LorkWvBZh4LHynHYyv5Q4o4ZvB6xtcSfzkUrLZWY5a44T0kc04GqwOw/9fw2vcV9Uo1lUcZsm6cSqV4/LrDlumbmmIPWwF1hHUC3gQKMToFSh4orVl8DeYNeAogpbArWpoiao9q01hVnxqEdzAfoH/CnwBaF9pO40ochIVpsqefvWGuDryzQJDRr+VAKloz82RWmhYERa6oaDrgRodnBWYeuKNTL1/BbR8vctIN8h1GQEoCtHIPBJyiSw1A2eFwLA1oAcQVlgLbD6gAOIGmhOseYqZIyW5rj1hK07mAqEGLBlIzWwqFBx1Us62QhnoS7DQkLSUq9T4Pg1OPnYDloHP3ySMtCJj2UnbNlMrAnJ7JPM6t9PfYcKHAvU5khSBuqqJ+zmuPPN5ncvHPp+cGQHZ1ecUUdSts+dazJH1zfwpmdbAOcBtq5wtgpTXs+b/lc8VYH1p7J25Mc91+PxC6VyT/9v8nmqAAAAAElFTkSuQmCC";
+
+    </script>
+</body>
+</html>

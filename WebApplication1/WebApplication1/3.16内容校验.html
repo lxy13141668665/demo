@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+   <script type="text/javascript" src="jquery-1.7.2.min.js"></script>
+   <script type="text/javascript" src="ServicePage.aspx?js=1"></script>
+   <meta charset="utf-8" />
+   <title></title>
+   <style>
+      html {
+         height: 100%;
+      }
+
+      body {
+         height: calc(100% - 37px);
+      }
+   </style>
+</head>
+
+<body>
+   <input type="button" value="校验" onclick="DocumentValueValidate();" />
+   <input type="button" value="插入复选框" onclick="insertcheckbox();" />
+   <input type="button" value="打开本地文件" onclick="FileOpen();" />
+
+   <div id="myWriterControl" style="width: 100%; border: 2px solid black; border-radius: 5px;height:100%;"
+      ContentRenderMode="NormalHtmlEditable" workspacebackcolorstring="#DEDEDE"
+      servicepageurl="ServicePage.aspx" useclassattribute="true" heightcompress="true"
+      backgroundtextoutputmode="None" imagedataembedinhtml="true" HeaderFooterEditable="true" pixelpagespacing="5"
+      clientcontextmenutype="Custom" usedcwriterminijs="True" showdebuginfo="false" registercodeindex="0">
+   </div>
+   <script type="text/javascript">
+      // 获得控件容器元素
+      var ctl = document.getElementById("myWriterControl");
+      // 绑定控件
+      BindingDCWriterClientControl(ctl);
+      ctl.Options.MergeCommentNode = true;
+      // 创建编辑器框架
+      ctl.BuildFrame(function () {
+         if (ctl != null) {
+            ctl.GetContentContainer().focus();
+         }
+         
+         // ctl.LoadDocumentFromString(xmlstr, "xml");
+      });
+
+      function DocumentValueValidate() {
+         var ctl = document.getElementById("myWriterControl");
+
+         var result = ctl.DCExecuteCommand("DocumentValueValidate", false, null);
+         var ss = "";
+         for (var i = 0; i < result.length; i++) {
+            ss += result[i].ElementID + ":" + result[i].Message + "\r\n";
+         }
+         alert(ss);
+      }
+
+      function insertcheckbox() {
+         var ctl = document.getElementById("myWriterControl");
+         var options = {
+            "Name": "name002", //单选框的Name属性相同          
+            "Type": "checkbox", //radio、checkbox   
+            "ListItems": [
+               {
+                  "ID": "name001-1",
+                  "ToolTip": "提示信息",
+                  "Text": "内容1",
+                  "Value": "值1"
+               },
+               {
+                  "ID": "name001-2",
+                  "ToolTip": "提示信息",
+                  "Text": "内容2",
+                  "Value": "值2",
+                  "requried": "true"
+
+               },
+               {
+                  "ID": "name001-3",
+                  "ToolTip": "提示信息",
+                  "Text": "内容3",
+                  "Value": "值3",
+                  "Required": "true"
+               }
+            ]
+         };
+         ctl.DCExecuteCommand("insertcheckboxorradio", true, options);
+      }
+
+      function FileOpen(){
+         var ctl = document.getElementById("myWriterControl");
+         ctl.DCExecuteCommand('FileOpen', true, null);
+      }
+
+
+
+
+   </script>
+</body>
+
+</html>

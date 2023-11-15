@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link rel="stylesheet" href="http://www.dcwriter.cn:6788/static/css/index.css" />
+    <style>
+        html {
+            height: 100%;
+        }
+
+        body {
+            height: calc(100% - 35px);
+        }
+
+
+
+
+        #zclbgdkz {
+            float: left;
+            height: 900px;
+        }
+
+        .layui-body {
+            position: absolute;
+            float: right;
+            top: 10px;
+            left: 350px;
+            right: 10px;
+            z-index: 998;
+            width: auto;
+            box-sizing: border-box;
+        }
+
+        .content_left {
+            width: 320px;
+        }
+
+        #left1 {
+            padding: 0 10px;
+        }
+
+        #left1 p {
+            font-size: 20px;
+            color: #847f7f;
+            font-weight: 600;
+            margin-top: 5px;
+        }
+
+        .Chart {
+            margin-bottom: 10px;
+        }
+
+        .Chart label {
+            display: inline-block;
+            width: 100px;
+            height: 100%;
+            /* background-color: rgb(255, 0, 21); */
+        }
+    </style>
+    <script src="http://www.dcwriter.cn:6788/jquery/jquery-1.7.2.min.js"></script>
+</head>
+
+<body>
+    <!-- <input type="button" value="加载xml文档" onclick="dcLoadxmlstring();" /> -->
+
+    <div id="zclbgdkz" style="height: 98.5%">
+        <div id="left1" class="content_left docnav stickem">
+            <p>图表属性</p>
+
+            <div class="ID Chart">
+                <label>图表的ID：</label> <input type="text" name="" id="">
+            </div>
+            <div class="Name Chart">
+                <label>图表的名称：</label> <input type="text" name="" id="">
+            </div>
+            <div class="Width Chart">
+                <label>图表的宽度：</label> <input type="text" name="" id="">
+            </div>
+            <div class="Height Chart">
+                <label>图表的高度：</label> <input type="text" name="" id="">
+            </div>
+            <div class="GridYSplitNum Chart">
+                <label>纵向网格分割数：</label> <input type="text" name="" id="">
+            </div>
+            <div class="GridYSplitNum Chart">
+                <label>图例是否显示：</label> <input type="radio" name="show">是 <input type="radio" name="show">否
+            </div>
+            <div class="PaddingBottom Chart">
+                <label>下边距：</label> <input type="text" name="" id="">
+            </div>
+            <div class="PaddingLeft Chart">
+                <label>左边距：</label> <input type="text" name="" id="">
+            </div>
+            <div class="PaddingRight Chart">
+                <label>右边距：</label> <input type="text" name="" id="">
+            </div>
+            <div class="PaddingTop Chart">
+                <label>上边距：</label> <input type="text" name="" id="">
+            </div>
+            <div class="ViewStyle Chart">
+                <label>图表的类型：</label> <input type="text" name="" id="">
+            </div>
+
+
+            <button onclick="InsertChart()">插入图表</button>
+        </div>
+
+
+        <div class="layui-body" style="height: calc(100% - 55px)">
+            <div id="myWriterControl" style="
+          width: 100%;
+          border: 2px solid black;
+          border-radius: 5px;
+          height: 100%;
+        " ContentRenderMode="NormalHtmlEditable" workspacebackcolorstring="#DEDEDE"
+                servicepageurl="http://www.dcwriter.cn:6788/ServicePage.aspx" useclassattribute="true"
+                heightcompress="true" backgroundtextoutputmode="None" imagedataembedinhtml="true"
+                HeaderFooterEditable="true" pixelpagespacing="5" clientcontextmenutype="Custom" usedcwriterminijs="true"
+                showdebuginfo="false" registercodeindex="0"></div>
+        </div>
+    </div>
+    <script type="text/javascript" src="http://www.dcwriter.cn:6788/ServicePage.aspx?js=1"></script>
+    <script type="text/javascript">
+        var ctl = document.getElementById("myWriterControl");
+        function BuildDCWriterControlFrame() {
+            BindingDCWriterClientControl(ctl);
+            // 创建编辑器框架
+            ctl.BuildFrame(function () { });
+        }
+        BuildDCWriterControlFrame();
+
+        function InsertChart() {
+            //为插入图表元素创建参数对象        
+            var options = new Object();        //设置图表元素的ID，NAME，宽与高        
+            options.ID = "chart1";
+            options.Name = "chartName";
+            options.Width = 600;//注意这里给的是数字，单位是像素        
+            options.Height = 300;//注意这里给的是数字，单位是像素         
+            //设置图表元素的图表数据        
+            options.ChartDatas = new Object();
+            options.ChartDatas.GridYSplitNum = 8;//设置纵向网格分割数        
+            options.ChartDatas.LegendVisible = false;//设置图例是否显示        //设置内边距        
+            options.ChartDatas.PaddingBottom = 50;
+            options.ChartDatas.PaddingLeft = 30;
+            options.ChartDatas.PaddingRight = 30;
+            options.ChartDatas.PaddingTop = 30;        //设置图表类型        
+            options.ChartDatas.ViewStyle = "HorizArea";
+            // options.ChartDatas.ViewStyle = "Bar";
+            //为图表元素添加Y轴          
+            options.ChartDatas.YAxises = new Array();//初始化Y轴列表        
+            //创建第一个Y轴        
+            var yaxis1 = new Object();
+            yaxis1.Color = "#FF0000";//设置Y轴的颜色，从属该Y轴的数据点都使用这个颜色        
+            yaxis1.GridStep = 10;//设置Y轴坐标刻度的步长        
+            yaxis1.LeftSide = true;//设置Y轴刻度是否在数据轴左侧，为false则在右侧        
+            yaxis1.MaxValue = 100;//设置Y轴坐标刻度的最大值        
+            yaxis1.MinValue = 0;//设置Y轴坐标刻度的最小值        
+            yaxis1.Name = "Y轴名称1";//设置Y轴名称，从属该Y轴的数据点的序列名必须要指向该名称        
+            yaxis1.Visible = true;//设置Y轴刻度是否显示        
+            //创建第二个Y轴        
+            var yaxis2 = new Object();
+            yaxis2.Color = "#00FFFF";//设置Y轴的颜色，从属该Y轴的数据点都使用这个颜色        
+            yaxis2.GridStep = 10;//设置Y轴坐标刻度的步长        
+            yaxis2.LeftSide = false;//设置Y轴刻度是否在数据轴左侧，为false则在右侧        
+            yaxis2.MaxValue = 50;//设置Y轴坐标刻度的最大值        
+            yaxis2.MinValue = 0;//设置Y轴坐标刻度的最小值        
+            yaxis2.Name = "Y轴名称2";//设置Y轴名称，从属该Y轴的数据点的序列名必须要指向该名称        
+            yaxis2.Visible = true;//设置Y轴刻度是否显示         
+            //添加Y轴到列表          
+            options.ChartDatas.YAxises.push(yaxis1);
+            options.ChartDatas.YAxises.push(yaxis2);
+            //为图表元素添加数据点        
+            options.ChartDatas.Values = new Array();//初始化图表元素数据集        
+            //为名称为"Y轴名称1"的Y轴添加数据点        
+            for (var i = 0; i < 5; i++) {
+                var value = new Object();
+                value.SeriesName = "Y轴名称1";//指定该数据点所属的Y轴          
+                value.GroupName = "分组" + i.toString();//指定该数据点所属的X轴          
+                value.SymbolType = "Diamond";//Bar类型无效，在Line类型里有效          
+                value.Value = Math.random() * (50 - 0) + 0;//生成0到100之间的随机数            
+                options.ChartDatas.Values.push(value);
+            }
+            //为名称为"Y轴名称2"的Y轴添加数据点        
+            for (var i = 0; i < 5; i++) {
+                var value = new Object();
+                value.SeriesName = "Y轴名称2";//指定该数据点所属的Y轴          
+                value.GroupName = "分组" + i.toString();//指定该数据点所属的X轴          
+                value.SymbolType = "Circle";//Bar类型无效，在Line类型里有效          
+                value.Value = Math.random() * (50 - 0) + 0;//生成0到50之间的随机数            
+                options.ChartDatas.Values.push(value);
+            }
+            //图表数据整备完毕，添加元素          
+            ctl.DCExecuteCommand("InsertChartElement", false, options);
+        }
+
+
+    </script>
+</body>
+
+</html>

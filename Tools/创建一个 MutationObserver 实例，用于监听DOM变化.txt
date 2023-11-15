@@ -1,0 +1,32 @@
+// 创建一个 MutationObserver 实例，用于监听DOM变化
+const observer = new MutationObserver((mutationsList) => {
+    for (const mutation of mutationsList) {
+        if (mutation.type === 'childList' && mutation.removedNodes.length > 0) {
+            // 检查是否有节点被移除
+            const removedNode = mutation.removedNodes[0];
+            if (removedNode === yourControlElement) {
+                // 在这里执行资源释放的逻辑
+                console.log('Control element was removed. Dispose resources...');
+                // 可以在这里调用自定义的销毁方法
+                yourControl.dispose();
+            }
+        }
+    }
+});
+
+// 要监测的目标节点
+const targetNode = document.getElementById('yourControlId'); // 替换为你的控件的实际元素
+
+// 配置并启动观察器
+const config = { childList: true };
+observer.observe(targetNode, config);
+——————————————————————————————————————————————————————
+// 第一个监听器
+const observer1 = new MutationObserver(callback1);
+const targetNode1 = document.getElementById('targetNode1');
+observer1.observe(targetNode1, config1);
+
+// 第二个监听器
+const observer2 = new MutationObserver(callback2);
+const targetNode2 = document.getElementById('targetNode2');
+observer2.observe(targetNode2, config2);

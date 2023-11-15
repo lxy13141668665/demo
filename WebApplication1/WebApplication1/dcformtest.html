@@ -1,0 +1,89 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <script type="text/javascript" src="jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="ServicePage.aspx?js=1"></script>
+    <title></title>
+</head>
+<body>
+    <input type="button" value="测试DCFormTransmission" onclick="exp36();" />
+
+
+    <script language="javascript">
+
+        function exp36() {
+            $.ajax({
+                url: "DCFORM测试文档.xml",
+                dataType: 'text',
+                type: 'GET',
+                async: false,
+                timeout: 2000,
+                error: function (xml) {
+                    alert("获取XML出错！");
+                },
+                success: function (xml) {
+
+                    //编一个数据集用来绑定文档
+                    var tabledata = [
+                        ["2014-01-01", "08:22", "0.9%氯化钠注射液(生理盐水注射液)", "", "512", "", "01-01 10:21"],
+                        ["2014-01-01", "08:22", "低分子量肝素钙注射液（万脉舒）", "血滤", "512", "", "01-01 10:21"],
+                        ["2014-01-01", "08:22", "普通胰岛素注射剂", "", "512", "", "01-01 08:30"]
+                    ];
+
+                    //对扩充列的表格提供的数据，这里一组数据用来填充一整列，当列数超过表格最大数时，会再复制一个表格到下面继续填充
+                    //源文档中表格需要添加HorizontalExpand=true的自定义属性，以及OutputBeginColIndex自定义属性声明从第几列开始容纳数据
+                    var tabledata2 = [
+                        ['01-02', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'aa', 'bb'],
+                        ['03-04', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'cc', 'dd'],
+                        ['05-06', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'ee', 'ff'],
+                        ['07-08', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'gg', 'kk'],
+                        ['07-08', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'gg', 'kk'],
+                        ['07-08', 'AAA', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'gg', 'kk'],
+                        ['03-04', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'cc', 'dd'],
+                        ['05-06', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'ee', 'ff'],
+                        ['07-08', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'gg', 'kk'],
+                        ['07-08', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'gg', 'kk'],
+                        ['09-10', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'mm', 'll']
+                    ];
+                    var dataobj = {
+                        "checkname": "1",   //设置示例文档中的组名为"checkname"的多选框组，0不选1选女2选男
+                        "table1": tabledata,     //填充示例文档中的表格
+                        "TableMain": tabledata2,    //横向扩充列表格的数据
+
+                        "姓名": "张Sir",   //设置页眉内给定ID的输入域
+                        "科别": "太平间",
+                        "床号": "007",
+                        "病人ID": "1234",
+                        "住院号": "5678"
+                    };
+
+                    //初始化一个专门用来调用dcform功能的编辑器DIV
+                    var ctl = document.createElement("div");
+                    ctl.style.display = "none";
+                    ctl.id = "myWriterControl";
+                    ctl.setAttribute("contentrendermode", "NormalHTMLEditable");
+                    ctl.setAttribute("servicepageurl", "ServicePage.aspx");
+                    document.body.appendChild(ctl);                   
+                    BindingDCWriterClientControl(ctl);
+                    ctl.BuildFrame(function () {
+
+                        //初始化后的DCFORM函数操作
+                        var options = {
+                            IsUseBase64: false,     //加载和保存的字符串是否是BASE64
+                            IsReturnStruct: true,      //是否返回加载文档的前端FORM结构
+                            IsReturnFileContent: false,      //是否将文档保存字符串返回前端
+                            IsBindingData: true,    //是否将数据绑定到文档
+                            Datas: dataobj,     //绑定文档所需要的数据集
+                            FileContentXML: xml     //需要加载的文档字符串
+                        };
+                        var obj = ctl.DCFormTransmission(options);
+                        console.log(JSON.stringify(obj));
+
+                    });                 
+                }
+            });
+        }
+    </script>
+</body>
+</html>

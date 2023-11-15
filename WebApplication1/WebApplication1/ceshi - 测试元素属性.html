@@ -1,0 +1,262 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <script type="text/javascript" src="ServicePage.aspx?js=1"></script>
+    <title></title>
+</head>
+
+<body>
+    <div>
+        <input type="button" value="打开当前输入域的元素属性" onclick="step1();" />
+    </div>
+    <div id="myWriterControl" style="width: 100%; border: 2px solid black; border-radius: 5px;height:900px;"
+        ContentRenderMode="NormalHtmlEditable" servicepageurl="ServicePage.aspx"
+        useclassattribute="true"></div>
+
+
+    <script type="text/javascript">
+
+        
+        // HTML页面加载后执行本函数
+        function BuildDCWriterControlFrame() {
+            // 获得控件容器元素
+            var ctl = document.getElementById("myWriterControl");
+            // 绑定控件
+            BindingDCWriterClientControl(ctl);
+
+            // 创建编辑器框架
+            ctl.BuildFrame(function () {
+                ctl.LoadDocumentFromString(filecontent, 'xml');
+            });
+        }
+        BuildDCWriterControlFrame();
+
+        function step1() {
+            var ctl = document.WriterControl;
+            //var doc = ctl.GetContentDocument();
+            //var field = doc.getElementById("field1");
+            ctl.DCExecuteCommand("ElementProperties", true, null);
+        }
+
+        var filecontent = `<XTextDocument xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" EditorVersionString="0.0.0.0">
+   <XElements>
+      <Element xsi:type="XTextHeader">
+         <InnerID>1</InnerID>
+         <AcceptTab>true</AcceptTab>
+         <XElements>
+            <Element xsi:type="XParagraphFlag" StyleIndex="0">
+               <InnerID>6</InnerID>
+               <AutoCreate>true</AutoCreate>
+            </Element>
+         </XElements>
+      </Element>
+      <Element xsi:type="XTextBody">
+         <InnerID>2</InnerID>
+         <AcceptTab>true</AcceptTab>
+         <XElements>
+            <Element xsi:type="XTextTable" NumOfRows="4" NumOfColumns="3">
+               <InnerID>11</InnerID>
+               <ID>table1</ID>
+               <XElements>
+                  <Element xsi:type="XTextTableRow">
+                     <InnerID>15</InnerID>
+                     <XElements>
+                        <Element xsi:type="XTextTableCell" StyleIndex="1">
+                           <InnerID>16</InnerID>
+                           <XElements>
+                              <Element xsi:type="XParagraphFlag">
+                                 <InnerID>17</InnerID>
+                              </Element>
+                           </XElements>
+                        </Element>
+                        <Element xsi:type="XTextTableCell" StyleIndex="1">
+                           <InnerID>18</InnerID>
+                           <XElements>
+                              <Element xsi:type="XParagraphFlag">
+                                 <InnerID>19</InnerID>
+                              </Element>
+                           </XElements>
+                        </Element>
+                        <Element xsi:type="XTextTableCell" StyleIndex="1">
+                           <InnerID>20</InnerID>
+                           <XElements>
+                              <Element xsi:type="XParagraphFlag">
+                                 <InnerID>21</InnerID>
+                              </Element>
+                           </XElements>
+                        </Element>
+                     </XElements>
+                  </Element>
+                  <Element xsi:type="XTextTableRow">
+                     <InnerID>22</InnerID>
+                     <XElements>
+                        <Element xsi:type="XTextTableCell" StyleIndex="1">
+                           <InnerID>23</InnerID>
+                           <XElements>
+                              <Element xsi:type="XParagraphFlag">
+                                 <InnerID>24</InnerID>
+                              </Element>
+                           </XElements>
+                        </Element>
+                        <Element xsi:type="XTextTableCell" StyleIndex="1">
+                           <InnerID>25</InnerID>
+                           <XElements>
+                              <Element xsi:type="XParagraphFlag">
+                                 <InnerID>26</InnerID>
+                              </Element>
+                           </XElements>
+                        </Element>
+                        <Element xsi:type="XTextTableCell" StyleIndex="1">
+                           <InnerID>27</InnerID>
+                           <XElements>
+                              <Element xsi:type="XParagraphFlag">
+                                 <InnerID>28</InnerID>
+                              </Element>
+                           </XElements>
+                        </Element>
+                     </XElements>
+                  </Element>
+                  <Element xsi:type="XTextTableRow">
+                     <InnerID>29</InnerID>
+                     <XElements>
+                        <Element xsi:type="XTextTableCell" StyleIndex="1">
+                           <InnerID>30</InnerID>
+                           <XElements>
+                              <Element xsi:type="XParagraphFlag">
+                                 <InnerID>31</InnerID>
+                              </Element>
+                           </XElements>
+                        </Element>
+                        <Element xsi:type="XTextTableCell" StyleIndex="1">
+                           <InnerID>32</InnerID>
+                           <XElements>
+                              <Element xsi:type="XParagraphFlag">
+                                 <InnerID>33</InnerID>
+                              </Element>
+                           </XElements>
+                        </Element>
+                        <Element xsi:type="XTextTableCell" StyleIndex="1">
+                           <InnerID>34</InnerID>
+                           <XElements>
+                              <Element xsi:type="XParagraphFlag">
+                                 <InnerID>35</InnerID>
+                              </Element>
+                           </XElements>
+                        </Element>
+                     </XElements>
+                  </Element>
+                  <Element xsi:type="XTextTableRow">
+                     <InnerID>36</InnerID>
+                     <XElements>
+                        <Element xsi:type="XTextTableCell" StyleIndex="1">
+                           <InnerID>37</InnerID>
+                           <XElements>
+                              <Element xsi:type="XParagraphFlag">
+                                 <InnerID>38</InnerID>
+                              </Element>
+                           </XElements>
+                        </Element>
+                        <Element xsi:type="XTextTableCell" StyleIndex="1">
+                           <InnerID>39</InnerID>
+                           <XElements>
+                              <Element xsi:type="XParagraphFlag">
+                                 <InnerID>40</InnerID>
+                              </Element>
+                           </XElements>
+                        </Element>
+                        <Element xsi:type="XTextTableCell" StyleIndex="1">
+                           <InnerID>41</InnerID>
+                           <XElements>
+                              <Element xsi:type="XInputField">
+                                 <InnerID>43</InnerID>
+                                 <ID>field1</ID>
+                                 <EnableValueValidate>true</EnableValueValidate>
+                                 <BorderElementColor />
+                              </Element>
+                              <Element xsi:type="XParagraphFlag">
+                                 <InnerID>42</InnerID>
+                              </Element>
+                           </XElements>
+                        </Element>
+                     </XElements>
+                  </Element>
+               </XElements>
+               <Columns>
+                  <Element xsi:type="XTextTableColumn">
+                     <InnerID>12</InnerID>
+                     <Width>624.9167</Width>
+                  </Element>
+                  <Element xsi:type="XTextTableColumn">
+                     <InnerID>13</InnerID>
+                     <Width>624.9167</Width>
+                  </Element>
+                  <Element xsi:type="XTextTableColumn">
+                     <InnerID>14</InnerID>
+                     <Width>624.9167</Width>
+                  </Element>
+               </Columns>
+            </Element>
+            <Element xsi:type="XParagraphFlag">
+               <InnerID>7</InnerID>
+               <AutoCreate>true</AutoCreate>
+            </Element>
+         </XElements>
+      </Element>
+      <Element xsi:type="XTextFooter">
+         <InnerID>3</InnerID>
+         <AcceptTab>true</AcceptTab>
+         <XElements>
+            <Element xsi:type="XParagraphFlag">
+               <InnerID>8</InnerID>
+               <AutoCreate>true</AutoCreate>
+            </Element>
+         </XElements>
+      </Element>
+   </XElements>
+   <ContentStyles>
+      <Default xsi:type="DocumentContentStyle">
+         <FontSize>12</FontSize>
+      </Default>
+      <Styles>
+         <Style Index="0">
+            <FontSize>12</FontSize>
+            <Align>Center</Align>
+         </Style>
+         <Style Index="1">
+            <FontSize>12</FontSize>
+            <BorderWidth>1</BorderWidth>
+            <BorderLeft>true</BorderLeft>
+            <BorderBottom>true</BorderBottom>
+            <BorderTop>true</BorderTop>
+            <BorderRight>true</BorderRight>
+            <PaddingLeft>15</PaddingLeft>
+            <PaddingTop>10</PaddingTop>
+            <PaddingRight>15</PaddingRight>
+            <PaddingBottom>10</PaddingBottom>
+         </Style>
+      </Styles>
+   </ContentStyles>
+   <Info>
+      <LicenseText>都昌:都昌旗舰版（100并发）</LicenseText>
+      <CreationTime>2023-08-30T08:32:37.7018641+08:00</CreationTime>
+      <LastModifiedTime>2023-08-30T08:33:31.3296927+08:00</LastModifiedTime>
+      <LastPrintTime>1980-01-01T00:00:00</LastPrintTime>
+      <Operator>DCSoft.Writer Version:0.0.0.0</Operator>
+      <NumOfPage>1</NumOfPage>
+   </Info>
+   <BodyText>
+
+
+      </BodyText>
+   <LocalConfig />
+   <PageSettings>
+      <StrictUsePageSize>false</StrictUsePageSize>
+   </PageSettings>
+</XTextDocument>`;
+
+    </script>
+</body>
+
+</html>

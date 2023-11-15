@@ -1,0 +1,232 @@
+<!-- <!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        #canvasContainer {
+            position: relative;
+            width: 500px;
+            height: 500px;
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="canvasContainer">
+        <canvas id="myCanvas"></canvas>
+    </div>
+
+    <script>
+        //    const canvas = document.getElementById('myCanvas');
+        //         const ctx = canvas.getContext('2d');
+
+        //         let isDragging = false;
+        //         let startX, startY;
+
+        //         canvas.width = 500;
+        //         canvas.height = 500;
+
+        //         canvas.addEventListener('mousedown', handleMouseDown);
+        //         canvas.addEventListener('mousemove', handleMouseMove);
+        //         canvas.addEventListener('mouseup', handleMouseUp);
+
+        //         function handleMouseDown(event) {
+        //             startX = event.offsetX;
+        //             startY = event.offsetY;
+        //             isDragging = true;
+        //         }
+
+        //         function handleMouseMove(event) {
+        //             if (!isDragging) return;
+
+        //             const currentX = event.offsetX;
+        //             const currentY = event.offsetY;
+
+        //             ctx.clearRect(0, 0, canvas.width, canvas.height);
+        //             drawRect(startX, startY, currentX - startX, currentY - startY);
+        //         }
+
+        //         function handleMouseUp(event) {
+        //             if (!isDragging) return;
+
+        //             const endX = event.offsetX;
+        //             const endY = event.offsetY;
+        //             isDragging = false;
+
+        //             const selectedRegion = getSelectedRegionCoordinates(startX, startY, endX, endY);
+        //             console.log(selectedRegion);
+
+        //             // ctx.clearRect(0, 0, canvas.width, canvas.height);
+        //         }
+
+        //         function drawRect(x, y, width, height) {
+        //             ctx.strokeStyle = '#000';
+        //             ctx.lineWidth = 2;
+        //             ctx.strokeRect(x, y, width, height);
+        //         }
+
+        //         function getSelectedRegionCoordinates(startX, startY, endX, endY) {
+        //             const x = Math.min(startX, endX);
+        //             const y = Math.min(startY, endY);
+        //             const width = Math.abs(startX - endX);
+        //             const height = Math.abs(startY - endY);
+
+        //             return {
+        //                 x: x,
+        //                 y: y,
+        //                 width: width,
+        //                 height: height
+        //             };
+        //         }
+
+        const canvas = document.getElementById('myCanvas');
+        const ctx = canvas.getContext('2d');
+        let isDragging = false;
+        let startX, startY, endX, endY;
+
+        canvas.width = 500;
+        canvas.height = 500;
+
+        canvas.addEventListener('mousedown', handleMouseDown);
+        canvas.addEventListener('mousemove', handleMouseMove);
+        canvas.addEventListener('mouseup', handleMouseUp);
+
+        function handleMouseDown(event) {
+            startX = event.offsetX;
+            startY = event.offsetY;
+            isDragging = true;
+        }
+
+        function handleMouseMove(event) {
+            if (!isDragging) return;
+
+            endX = event.offsetX;
+            endY = event.offsetY;
+
+            draw();
+        }
+
+        function handleMouseUp(event) {
+            if (!isDragging) return;
+
+            endX = event.offsetX;
+            endY = event.offsetY;
+            isDragging = false;
+
+            draw();
+
+            const selectedRegion = getSelectedRegionCoordinates(startX, startY, endX, endY);
+            console.log(selectedRegion);
+        }
+
+        function draw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // 绘制半透明遮罩
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.5)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            // 绘制选中区域
+            ctx.globalAlpha = 1; // 重置透明度为不透明
+            ctx.clearRect(startX, startY, endX - startX, endY - startY);
+            ctx.globalAlpha = 0.5; // 设置透明度为半透明
+        }
+
+        function getSelectedRegionCoordinates(startX, startY, endX, endY) {
+            const x = Math.min(startX, endX);
+            const y = Math.min(startY, endY);
+            const width = Math.abs(startX - endX);
+            const height = Math.abs(startY - endY);
+
+            return {
+                x: x,
+                y: y,
+                width: width,
+                height: height
+            };
+        }
+
+    </script>
+</body>
+
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>透明遮罩层示例</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+
+        canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    </style>
+</head>
+
+<body>
+    对方回复哈代发货
+    <canvas id="overlay"></canvas>
+    <script>
+        const canvas = document.getElementById('overlay');
+        const context = canvas.getContext('2d');
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        let isDrawing = false;
+        let startX, startY, endX, endY;
+
+        // 绘制透明度为0.4的遮罩层
+        context.fillStyle = 'rgba(0, 0, 0, 0.1)';
+        context.fillRect(0, 0, canvas.width, canvas.height);
+
+        canvas.addEventListener('mousedown', (e) => {
+            isDrawing = true;
+            startX = e.clientX;
+            startY = e.clientY;
+        });
+
+        canvas.addEventListener('mousemove', (e) => {
+            if (!isDrawing) return;
+
+            endX = e.clientX;
+            endY = e.clientY;
+
+            // 清空画布
+            context.clearRect(0, 0, canvas.width, canvas.height);
+
+            // 绘制非选中区域
+            context.fillStyle = 'rgba(0, 0, 0, 0.1)';
+            context.fillRect(0, 0, canvas.width, canvas.height);
+
+            // 绘制选中区域（透明）
+            context.clearRect(startX, startY, endX - startX, endY - startY);
+        });
+
+        canvas.addEventListener('mouseup', () => {
+            isDrawing = false;
+
+            // 获取选中区域的坐标和尺寸
+            const selectedX = Math.min(startX, endX);
+            const selectedY = Math.min(startY, endY);
+            const selectedWidth = Math.abs(endX - startX);
+            const selectedHeight = Math.abs(endY - startY);
+
+            console.log('选中区域坐标：', selectedX, selectedY);
+            console.log('选中区域尺寸：', selectedWidth, selectedHeight);
+        });
+    </script>
+</body>
+
+</html>

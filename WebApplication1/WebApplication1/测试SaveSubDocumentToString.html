@@ -1,0 +1,158 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <script type="text/javascript" src="jquery-1.7.2.min.js"></script>
+    <!--<script type="text/javascript" src="ServicePage.aspx?js=1"></script>-->
+
+    <script type="text/javascript" src="ServicePage.aspx?js=1"></script>
+    <title></title>
+</head>
+<body>
+    <div>
+        <input type="button" value="加载主文档" onclick="document.WriterControl.LoadDocumentFromString(xmlforload, 'xml');" />
+        <input type="button" value="插入子文档" onclick="exp();" />
+        <input type="button" value="保存子文档并加载保存" onclick="exp2();" />
+        <input type="button" value="打开留痕" onclick="exp3();" />
+        <input type="button" value="关闭留痕" onclick="exp4();" />
+    </div>
+
+    <div id="myWriterControl" style="width: 100%; border: 2px solid black; border-radius: 5px;height:900px;"
+         LocalServerPort="2345"
+         TransformUseBase64="false"
+         FieldBorderPrintVisibility="None"
+         FormView="Disable"
+         ReadOnly="false"
+         PreviewUseAdvancedLayout="false"
+         BackgroundTextOutputMode="Underline"
+         contentrendermode="NormalHTMLEditable"
+         AutoSaveIntervalInSecond="0"
+         workspacebackcolorstring="#B1CAEB"
+         servicepageurl="ServicePage.aspx"
+         useclassattribute="false"
+         heightcompress="true"
+         ExcludeLogicDeleted="false"
+         HeaderFooterEditable="true"
+         UseDCWriterMiniJS="false"
+         serversleepfordebug="0"
+         allowcopy="true"
+         supportactivex="false"
+         pixelpagespacing="5"
+         clientcontextmenutype="Custom"
+         showdebuginfo="false"
+         ismobiledevice="False"
+         IndentHtmlCode="false"
+         FreeSelection="true"
+         urlencodecountforpostdata="0"
+         AutoZoom="false"
+         registercodeindex="0" />
+
+    <!--imagedataembedinhtml="true"-->
+
+    <script type="text/javascript">
+        // HTML页面加载后执行本函数
+        function BuildDCWriterControlFrame() {
+            // 获得控件容器元素
+            var ctl = document.getElementById("myWriterControl");
+            // 绑定控件
+            BindingDCWriterClientControl(ctl);
+
+            //ctl.Options.LogUserEditTrack = true;
+            ctl.Options.CurrentUserID = "zhangsan";
+            ctl.Options.CurrentUserName = "张三主任医师";
+            ctl.Options.CurrentUserPermissionLevel = "3";
+            ctl.Options.ClientMachineName = "123";
+            //ctl.Options.ExcludeLogicDeleted = false;
+            //ctl.DocumentOptions.SecurityOptions.EnablePermission = true;
+            //ctl.DocumentOptions.SecurityOptions.EnableLogicDelete = true;
+            //ctl.DocumentOptions.SecurityOptions.ShowLogicDeletedContent = true;
+            //ctl.DocumentOptions.SecurityOptions.ShowPermissionMark = true;
+            //ctl.DocumentOptions.SecurityOptions.ShowPermissionTip = true;
+
+
+            // 创建编辑器框架
+            ctl.BuildFrame(function () {
+                ctl.LoadDocumentFromString(xmlforload, "xml");
+            });
+        }
+        BuildDCWriterControlFrame();
+
+        function exp() {
+            var ctl = document.getElementById("myWriterControl");
+            if (ctl != null) {
+                ctl.GetContentContainer().focus();
+                var file = new Array();
+                file.push(subdocxml)
+
+                //构造两个选项分别对应两个子文档
+                var options = new Array();
+                var attr1 = {
+                    "Attributes": { "姓名": "张三", "科室": "胸外科", "床号": "12345" }, //自定义属性
+                    //"NewPage": "false", //是否新起一页
+                    //"ReadOnly": "false", //是否可编辑
+                    "Title": "张三的病程记录", //病程收缩时显示的文档标题
+                    "ToolTip": "提示：张三的病程记录", //病程鼠标移上去时的提示文本
+                    "ID": "subdoc1",//
+                    "TitleLevel": "0",//导航级别，从0到7的整数
+                    "CSSStyle": "border: 3px solid #FF0000; background-color: #FFFF00;", //自定义的样式
+                    "Parameters": { "emr.DE02.01.052.00": "汪汪汪", "fieldMedic": "王二麻子" },//绑定的数据格式
+                    //"DataBindingXML": "<DataSourceName><Name>张三</Name></DataSourceName><DataSourceName2><Name>李四</Name></DataSourceName2>",
+                    //"EnablePermission: "true",
+                    "LoadOriginHeaderFooter": "false"
+                };
+                debugger;
+                options.push(attr1);
+                var options = {
+                    Files: file,
+                    Options: options,
+                    Usebase64: "false",
+                    ShowMaskUI: "true"
+                };
+
+                ctl.AppendSubDocuments(options);
+            }
+        }
+
+        function exp2() {
+            var opt = {
+                SubDocID: "subdoc1",
+                SaveHeaderFooter: false,
+                SaveOriginHeaderFooter: false,
+                SmartMode: true
+            };
+            var ctl = document.WriterControl;
+            debugger;
+            var str = ctl.SaveSubDocumentToString(opt);
+            ctl.LoadDocumentFromString(str, "xml");
+        }
+
+        function exp3() {
+            var ctl = document.WriterControl;
+            ctl.Options.LogUserEditTrack = true;
+            ctl.Options.ExcludeLogicDeleted = false;
+            ctl.DocumentOptions.SecurityOptions.EnablePermission = true;
+            ctl.DocumentOptions.SecurityOptions.EnableLogicDelete = true;
+            ctl.DocumentOptions.SecurityOptions.ShowLogicDeletedContent = true;
+            ctl.DocumentOptions.SecurityOptions.ShowPermissionMark = true;
+            ctl.DocumentOptions.SecurityOptions.ShowPermissionTip = true;
+            ctl.ApplyDocumentOptions();
+        }
+
+        function exp4() {
+            var ctl = document.WriterControl;
+            ctl.Options.LogUserEditTrack = false;
+            ctl.Options.ExcludeLogicDeleted = true;
+            ctl.DocumentOptions.SecurityOptions.EnablePermission = false;
+            ctl.DocumentOptions.SecurityOptions.EnableLogicDelete = false;
+            ctl.DocumentOptions.SecurityOptions.ShowLogicDeletedContent = false;
+            ctl.DocumentOptions.SecurityOptions.ShowPermissionMark = false;
+            ctl.DocumentOptions.SecurityOptions.ShowPermissionTip = false;
+            ctl.ApplyDocumentOptions();
+        }
+
+        var xmlforload = `<XTextDocument xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" EditorVersionString="0.0.0.0"><XElements><Element xsi:type="XTextHeader"><InnerID>1</InnerID><AcceptTab>true</AcceptTab><XElements><Element xsi:type="XString"><InnerID>28</InnerID><Text>我是原文档页眉</Text></Element><Element xsi:type="XParagraphFlag" StyleIndex="0"><InnerID>6</InnerID><AutoCreate>true</AutoCreate></Element></XElements></Element><Element xsi:type="XTextBody"><InnerID>2</InnerID><AcceptTab>true</AcceptTab><XElements><Element xsi:type="XParagraphFlag"><InnerID>7</InnerID><AutoCreate>true</AutoCreate></Element></XElements></Element><Element xsi:type="XTextFooter"><InnerID>3</InnerID><AcceptTab>true</AcceptTab><XElements><Element xsi:type="XString"><InnerID>29</InnerID><Text>我是原文档页脚</Text></Element><Element xsi:type="XParagraphFlag"><InnerID>8</InnerID><AutoCreate>true</AutoCreate></Element></XElements></Element></XElements><FileName>C:\Users\DCSOFTWU\Desktop\aaaaa.xml</FileName><FileFormat>XML</FileFormat><ContentStyles><Default xsi:type="DocumentContentStyle"><FontSize>12</FontSize></Default><Styles><Style Index="0"><FontSize>12</FontSize><Align>Center</Align></Style></Styles></ContentStyles><Info><LicenseText>南京都昌信息科技有限公司:南京都昌信息科技有限公司内测版</LicenseText><CreationTime>2022-10-26T14:13:27.8850394+08:00</CreationTime><LastModifiedTime>2022-10-26T14:15:47.8033162+08:00</LastModifiedTime><LastPrintTime>1980-01-01T00:00:00</LastPrintTime><Operator>DCSoft.Writer Version:0.0.0.0</Operator><NumOfPage>1</NumOfPage></Info><LocalConfig /><PageSettings><StrictUsePageSize>false</StrictUsePageSize></PageSettings></XTextDocument>`;
+
+        var subdocxml = `<XTextDocument xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" EditorVersionString="0.0.0.0"><XElements><Element xsi:type="XTextHeader"><InnerID>1</InnerID><AcceptTab>true</AcceptTab><XElements><Element xsi:type="XString"><InnerID>44</InnerID><Text>我是子文档页眉</Text></Element><Element xsi:type="XParagraphFlag" StyleIndex="0"><InnerID>6</InnerID><AutoCreate>true</AutoCreate></Element></XElements></Element><Element xsi:type="XTextBody"><InnerID>2</InnerID><AcceptTab>true</AcceptTab><XElements><Element xsi:type="XString"><InnerID>45</InnerID><Text>我是子文档体</Text></Element><Element xsi:type="XParagraphFlag"><InnerID>7</InnerID><AutoCreate>true</AutoCreate></Element></XElements></Element><Element xsi:type="XTextFooter"><InnerID>3</InnerID><AcceptTab>true</AcceptTab><XElements><Element xsi:type="XString"><InnerID>46</InnerID><Text>我是子文档页脚</Text></Element><Element xsi:type="XParagraphFlag"><InnerID>8</InnerID><AutoCreate>true</AutoCreate></Element></XElements></Element></XElements><FileName>C:\Users\DCSOFTWU\Desktop\aaaaa.xml</FileName><FileFormat>XML</FileFormat><ContentStyles><Default xsi:type="DocumentContentStyle"><FontSize>12</FontSize></Default><Styles><Style Index="0"><FontSize>12</FontSize><Align>Center</Align></Style></Styles></ContentStyles><Info><LicenseText>南京都昌信息科技有限公司:南京都昌信息科技有限公司内测版</LicenseText><CreationTime>2022-10-26T14:13:27.8850394+08:00</CreationTime><LastModifiedTime>2022-10-26T14:18:09.8643682+08:00</LastModifiedTime><LastPrintTime>1980-01-01T00:00:00</LastPrintTime><Operator>DCSoft.Writer Version:0.0.0.0</Operator><NumOfPage>1</NumOfPage></Info><BodyText>我是子文档体</BodyText><LocalConfig /><PageSettings><StrictUsePageSize>false</StrictUsePageSize></PageSettings></XTextDocument>`;
+    </script>
+</body>
+</html>

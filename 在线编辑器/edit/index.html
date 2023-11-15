@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="lib/codemirror.css">
+    <link rel="stylesheet" href="lib/bootstrap.min.css">
+    <script src="lib/codemirror.js"></script>
+    <style>
+        .logo h1 {
+            /* text-indent: -9999px; */
+            width: 160px;
+            height: 39px;
+            margin-top: 10px;
+            display: block;
+        }
+
+        #demotext {
+            width: 100%;
+            height: 500px;
+        }
+
+        .container {
+            width: 98%;
+            padding-right: 15px;
+            padding-left: 15px;
+            margin-right: auto;
+            margin-left: auto;
+        }
+
+        #iframeResult {
+            display: block;
+            overflow: hidden;
+            border: 0 !important;
+            min-width: 100px;
+            width: 100%;
+            min-height: 300px;
+            background-color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-default">
+        <div class="container">
+            <div class="navbar-header logo">
+                <h1>DCWRITER</h1>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <form class="form-inline">
+                            <div class="row">
+                                <div class="col-xs-6">
+                                    <button type="button" class="btn btn-default">源代码：</button>
+                                </div>
+                                <div class="col-xs-6 text-right">
+                                    <button type="button" class="btn btn-success" onclick="submitTryit()"
+                                        id="submitBTN">点击运行</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="panel-body">
+                        <textarea id="demotext"><div></div></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <form class="form-inline"> <button type="button" class="btn btn-default">运行结果</button></form>
+                    </div>
+                    <div class="panel-body">
+                        <div id="iframewrapper"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+<script>
+    var editor = CodeMirror.fromTextArea(document.getElementById("demotext"), {
+        lineNumbers: false,
+        mode: "text/html",
+        matchBrackets: true
+    });
+</script>
+<script src="http://www.dcwriter.cn:6789/static/js/jquery-1.7.2.min.js"></script>
+<script>
+    function autodivheight() {
+        var winHeight = 0;
+        if (window.innerHeight) {
+            winHeight = window.innerHeight;
+        } else if ((document.body) && (document.body.clientHeight)) {
+            winHeight = document.body.clientHeight;
+        }
+        //通过深入Document内部对body进行检测，获取浏览器窗口高度
+        if (document.documentElement && document.documentElement.clientHeight) {
+            winHeight = document.documentElement.clientHeight;
+        }
+        height = winHeight * 0.74
+        editor.setSize('100%', height);
+        document.getElementById("iframeResult").style.height = height + "px";
+    }
+
+    function submitTryit() {
+        var text = editor.getValue();
+        var ifr = document.createElement("iframe");
+        ifr.setAttribute("frameborder", "0");
+        ifr.setAttribute("id", "iframeResult");
+        document.getElementById("iframewrapper").innerHTML = "";
+        document.getElementById("iframewrapper").appendChild(ifr);
+
+        var ifrw = (ifr.contentWindow) ? ifr.contentWindow : (ifr.contentDocument.document) ? ifr.contentDocument
+            .document : ifr.contentDocument;
+        ifrw.document.open();
+        ifrw.document.write(text);
+        ifrw.document.close();
+        autodivheight();
+    }
+    window.addEventListener("resize", autodivheight);
+    // submitTryit();
+
+    function GetQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) {
+            //return unescape(r[2]);
+            return decodeURI(r[2]);
+        }
+        return null;
+    }
+    (function () {
+        //从路由获取apiname
+        let apiName = (/[?&]+([^=&]+)=([^&]*)/g).exec(window.location.href)[2]
+        let origin = window.location.origin
+        let urlToDownload = `${origin}/apiDocument/pages/${apiName}.html`
+        fetch(urlToDownload)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('网络请求失败');
+                }
+                return response.text(); // 将响应内容作为文本返回
+            })
+            .then(pageContent => {
+                editor.setValue(pageContent)
+                submitTryit();
+            })
+            .catch(error => {
+                console.error('加载失败：', error);
+            });
+    })()
+
+</script>
+
+</html>

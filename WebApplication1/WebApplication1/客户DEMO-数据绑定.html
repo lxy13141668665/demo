@@ -1,0 +1,1059 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="ServicePage.aspx?js=1"></script>
+    <style>
+        html {
+            height: 100%;
+        }
+
+        body {
+            height: calc(100% - 37px);
+        }
+    </style>
+</head>
+
+<body>
+    <input type="button" value="绑定数据" onclick="exp7adv();" />
+    <div id="myWriterControl" style="width: 100%; border: 2px solid black; border-radius: 5px;height:100%;"
+        ContentRenderMode="NormalHtmlEditable" workspacebackcolorstring="#DEDEDE"
+        servicepageurl="ServicePage.aspx" useclassattribute="true" heightcompress="true"
+        backgroundtextoutputmode="None" imagedataembedinhtml="true" HeaderFooterEditable="true" pixelpagespacing="5"
+        clientcontextmenutype="Custom" usedcwriterminijs="True" showdebuginfo="false" registercodeindex="0"
+        PageTitlePosition="TopLeft">
+    </div>
+    <script>
+        function BuildDCWriterControlFrame() {
+            var ctl = document.getElementById("myWriterControl");
+            BindingDCWriterClientControl(ctl);
+            // 创建编辑器框架
+            ctl.BuildFrame(function () {
+                if (ctl != null) {
+                    ctl.GetContentContainer().focus();
+                }
+                // ctl.LoadDocumentFromFile("Test\\演示文档\\常规文档\\入院记录通用测试.xml", "xml");
+                ctl.LoadDocumentFromString(xml);
+            });
+
+        }
+        BuildDCWriterControlFrame();
+        function exp7adv() {
+            debugger;
+            var ddddx = document.getElementById('myWriterControl').WriteDataFromDocumentToDataSource();
+            //console.log(ddddx);
+             var ddffdd = document.getElementById('myWriterControl').ParameterValues;
+            var ctl = document.getElementById("myWriterControl");
+            ctl.SetDocumentParameterValue("VAA1SOURSE", { VAA05: "王一", VAA10: 54, ABW01: "0" });
+            ctl.WriteDataFromDataSourceToDocument();
+        }
+
+        var xml =`<XTextDocument xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" EditorVersionString="0.0.0.0">
+   <XElements>
+      <Element xsi:type="XTextHeader">
+         <InnerID>6</InnerID>
+         <AcceptTab>true</AcceptTab>
+         <XElements>
+            <Element xsi:type="XParagraphFlag" StyleIndex="0">
+               <InnerID>24</InnerID>
+            </Element>
+            <Element xsi:type="XInputField" StyleIndex="1">
+               <InnerID>26</InnerID>
+               <ID>机构名称</ID>
+               <EnableValueValidate>true</EnableValueValidate>
+               <XElements>
+                  <Element xsi:type="XString" StyleIndex="1">
+                     <InnerID>366</InnerID>
+                     <Text>XXXXXX医院</Text>
+                  </Element>
+               </XElements>
+               <Deleteable>false</Deleteable>
+               <BorderElementColor />
+               <MoveFocusHotKey>Tab</MoveFocusHotKey>
+               <SpecifyWidth>1181.102</SpecifyWidth>
+               <Alignment>Center</Alignment>
+               <Name>机构名称</Name>
+               <InnerValue>XXXXXX医院</InnerValue>
+               <BackgroundText>机构名称</BackgroundText>
+            </Element>
+            <Element xsi:type="XTDBarcodeField">
+               <InnerID>35</InnerID>
+               <ID>tdbarcode1</ID>
+               <Width>231.25</Width>
+               <Height>143.75</Height>
+               <Text>12121</Text>
+            </Element>
+            <Element xsi:type="XParagraphFlag" StyleIndex="2">
+               <InnerID>36</InnerID>
+            </Element>
+            <Element xsi:type="XString">
+               <InnerID>362</InnerID>
+               <Text>科别：</Text>
+            </Element>
+            <Element xsi:type="XInputField">
+               <InnerID>41</InnerID>
+               <ID>科别</ID>
+               <EnableValueValidate>true</EnableValueValidate>
+               <BorderElementColor />
+               <Name>科别</Name>
+               <BackgroundText>科别</BackgroundText>
+            </Element>
+            <Element xsi:type="XString">
+               <InnerID>363</InnerID>
+               <Text>     床号：</Text>
+            </Element>
+            <Element xsi:type="XInputField">
+               <InnerID>50</InnerID>
+               <ID>床号</ID>
+               <EnableValueValidate>true</EnableValueValidate>
+               <BorderElementColor />
+               <Name>床号</Name>
+               <BackgroundText>床号</BackgroundText>
+            </Element>
+            <Element xsi:type="XString">
+               <InnerID>364</InnerID>
+               <Text>床    姓名：</Text>
+            </Element>
+            <Element xsi:type="XInputField">
+               <InnerID>59</InnerID>
+               <ID>姓名YM</ID>
+               <EnableValueValidate>true</EnableValueValidate>
+               <BorderElementColor />
+               <Name>姓名</Name>
+               <BackgroundText>姓名</BackgroundText>
+            </Element>
+            <Element xsi:type="XString" StyleIndex="3">
+               <InnerID>365</InnerID>
+               <Text>    住院号：</Text>
+            </Element>
+            <Element xsi:type="XInputField" StyleIndex="3">
+               <InnerID>68</InnerID>
+               <ID>住院号</ID>
+               <EnableValueValidate>true</EnableValueValidate>
+               <BorderElementColor />
+               <Name>住院号</Name>
+               <BackgroundText>住院号</BackgroundText>
+            </Element>
+            <Element xsi:type="XParagraphFlag" StyleIndex="4">
+               <InnerID>69</InnerID>
+            </Element>
+         </XElements>
+      </Element>
+      <Element xsi:type="XTextBody">
+         <InnerID>20</InnerID>
+         <AcceptTab>true</AcceptTab>
+         <XElements>
+            <Element xsi:type="XString" StyleIndex="5">
+               <InnerID>367</InnerID>
+               <Text>入 院 记 录</Text>
+            </Element>
+            <Element xsi:type="XParagraphFlag" StyleIndex="6">
+               <InnerID>118</InnerID>
+            </Element>
+            <Element xsi:type="XTextTable" NumOfRows="9" NumOfColumns="2">
+               <InnerID>120</InnerID>
+               <ID>table1</ID>
+               <XElements>
+                  <Element xsi:type="XTextTableRow">
+                     <InnerID>123</InnerID>
+                     <XElements>
+                        <Element xsi:type="XTextTableCell" StyleIndex="7">
+                           <InnerID>26</InnerID>
+                           <XElements>
+                              <Element xsi:type="XString">
+                                 <InnerID>369</InnerID>
+                                 <Text> 姓名：</Text>
+                              </Element>
+                              <Element xsi:type="XInputField">
+                                 <InnerID>130</InnerID>
+                                 <ID>姓名</ID>
+                                 <EnableValueValidate>true</EnableValueValidate>
+                                 <ValidateStyle>
+                                    <Required>true</Required>
+                                 </ValidateStyle>
+                                 <ValueBinding>
+                                    <DataSource>VAA1SOURSE</DataSource>
+                                    <BindingPath>VAA05</BindingPath>
+                                 </ValueBinding>
+                                 <ContentReadonly>False</ContentReadonly>
+                                 <XElements>
+                                    <Element xsi:type="XString">
+                                       <InnerID>371</InnerID>
+                                       <Text>王一</Text>
+                                    </Element>
+                                 </XElements>
+                                 <BorderElementColor />
+                                 <MoveFocusHotKey>Tab</MoveFocusHotKey>
+                                 <Name>姓名</Name>
+                                 <InnerValue>王一</InnerValue>
+                                 <BackgroundText>姓名</BackgroundText>
+                              </Element>
+                              <Element xsi:type="XString" WhitespaceCount="1">
+                                 <InnerID>370</InnerID>
+                                 <Text> </Text>
+                              </Element>
+                              <Element xsi:type="XParagraphFlag">
+                                 <InnerID>134</InnerID>
+                              </Element>
+                           </XElements>
+                        </Element>
+                        <Element xsi:type="XTextTableCell" StyleIndex="7">
+                           <InnerID>1</InnerID>
+                           <XElements>
+                              <Element xsi:type="XString">
+                                 <InnerID>372</InnerID>
+                                 <Text>出生地：</Text>
+                              </Element>
+                              <Element xsi:type="XInputField">
+                                 <InnerID>141</InnerID>
+                                 <ID>出生地</ID>
+                                 <ToolTip>数据不得为空。</ToolTip>
+                                 <EnableValueValidate>true</EnableValueValidate>
+                                 <ValidateStyle>
+                                    <Required>true</Required>
+                                 </ValidateStyle>
+                                 <ValueBinding>
+                                    <DataSource>EMR_Patients</DataSource>
+                                    <BindingPath>BirthPlace</BindingPath>
+                                 </ValueBinding>
+                                 <BorderElementColor />
+                                 <MoveFocusHotKey>Tab</MoveFocusHotKey>
+                                 <Name>出生地</Name>
+                                 <BackgroundText>出生地</BackgroundText>
+                              </Element>
+                              <Element xsi:type="XParagraphFlag">
+                                 <InnerID>142</InnerID>
+                              </Element>
+                           </XElements>
+                        </Element>
+                     </XElements>
+                  </Element>
+                  <Element xsi:type="XTextTableRow">
+                     <InnerID>143</InnerID>
+                     <XElements>
+                        <Element xsi:type="XTextTableCell" StyleIndex="7">
+                           <InnerID>2</InnerID>
+                           <XElements>
+                              <Element xsi:type="XString">
+                                 <InnerID>373</InnerID>
+                                 <Text> 性别：</Text>
+                              </Element>
+                              <Element xsi:type="XInputField">
+                                 <InnerID>150</InnerID>
+                                 <ID>性别</ID>
+                                 <EnableValueValidate>true</EnableValueValidate>
+                                 <ValidateStyle>
+                                    <Required>true</Required>
+                                 </ValidateStyle>
+                                 <ValueBinding>
+                                    <DataSource>VAA1SOURSE</DataSource>
+                                    <BindingPath>ABW01</BindingPath>
+                                 </ValueBinding>
+                                 <ContentReadonly>False</ContentReadonly>
+                                 <XElements>
+                                    <Element xsi:type="XString">
+                                       <InnerID>375</InnerID>
+                                       <Text>男</Text>
+                                    </Element>
+                                 </XElements>
+                                 <BorderElementColor />
+                                 <MoveFocusHotKey>Tab</MoveFocusHotKey>
+                                 <Name>性别</Name>
+                                 <InnerValue>男</InnerValue>
+                                 <BackgroundText>性别</BackgroundText>
+                                 <FieldSettings>
+                                    <EditStyle>DropdownList</EditStyle>
+                                    <ListSource>
+                                       <Items>
+                                          <Item>
+                                             <Text>男</Text>
+                                             <Value>1</Value>
+                                          </Item>
+                                          <Item>
+                                             <Text>女</Text>
+                                             <Value>2</Value>
+                                          </Item>
+                                       </Items>
+                                    </ListSource>
+                                 </FieldSettings>
+                              </Element>
+                              <Element xsi:type="XString" WhitespaceCount="2">
+                                 <InnerID>374</InnerID>
+                                 <Text>  </Text>
+                              </Element>
+                              <Element xsi:type="XParagraphFlag">
+                                 <InnerID>154</InnerID>
+                              </Element>
+                           </XElements>
+                        </Element>
+                        <Element xsi:type="XTextTableCell" StyleIndex="7">
+                           <InnerID>3</InnerID>
+                           <XElements>
+                              <Element xsi:type="XString">
+                                 <InnerID>376</InnerID>
+                                 <Text>职业：</Text>
+                              </Element>
+                              <Element xsi:type="XInputField">
+                                 <InnerID>160</InnerID>
+                                 <ID>职业</ID>
+                                 <EnableValueValidate>true</EnableValueValidate>
+                                 <ValueBinding>
+                                    <DataSource>EMR_Patients</DataSource>
+                                    <BindingPath>Job</BindingPath>
+                                 </ValueBinding>
+                                 <BorderElementColor />
+                                 <MoveFocusHotKey>Tab</MoveFocusHotKey>
+                                 <Name>职业</Name>
+                                 <BackgroundText>职业</BackgroundText>
+                              </Element>
+                              <Element xsi:type="XParagraphFlag">
+                                 <InnerID>161</InnerID>
+                              </Element>
+                           </XElements>
+                        </Element>
+                     </XElements>
+                  </Element>
+                  <Element xsi:type="XTextTableRow">
+                     <InnerID>162</InnerID>
+                     <XElements>
+                        <Element xsi:type="XTextTableCell" StyleIndex="7">
+                           <InnerID>4</InnerID>
+                           <XElements>
+                              <Element xsi:type="XString">
+                                 <InnerID>377</InnerID>
+                                 <Text> 年龄：</Text>
+                              </Element>
+                              <Element xsi:type="XInputField">
+                                 <InnerID>169</InnerID>
+                                 <ID>年龄</ID>
+                                 <EnableValueValidate>true</EnableValueValidate>
+                                 <ValidateStyle>
+                                    <Required>true</Required>
+                                    <CheckMaxValue>true</CheckMaxValue>
+                                    <CheckMinValue>true</CheckMinValue>
+                                    <MaxValue>120</MaxValue>
+                                 </ValidateStyle>
+                                 <ValueBinding>
+                                    <DataSource>VAA1SOURSE</DataSource>
+                                    <BindingPath>VAA10</BindingPath>
+                                 </ValueBinding>
+                                 <ContentReadonly>False</ContentReadonly>
+                                 <XElements>
+                                    <Element xsi:type="XString">
+                                       <InnerID>379</InnerID>
+                                       <Text>54</Text>
+                                    </Element>
+                                 </XElements>
+                                 <BorderElementColor />
+                                 <MoveFocusHotKey>Tab</MoveFocusHotKey>
+                                 <Name>年龄</Name>
+                                 <InnerValue>54</InnerValue>
+                                 <BackgroundText>年龄</BackgroundText>
+                                 <FieldSettings>
+                                    <EditStyle>Numeric</EditStyle>
+                                 </FieldSettings>
+                              </Element>
+                              <Element xsi:type="XString">
+                                 <InnerID>378</InnerID>
+                                 <Text>岁</Text>
+                              </Element>
+                              <Element xsi:type="XParagraphFlag">
+                                 <InnerID>173</InnerID>
+                              </Element>
+                           </XElements>
+                        </Element>
+                        <Element xsi:type="XTextTableCell" StyleIndex="7">
+                           <InnerID>5</InnerID>
+                           <XElements>
+                              <Element xsi:type="XString">
+                                 <InnerID>380</InnerID>
+                                 <Text>入院时间：</Text>
+                              </Element>
+                              <Element xsi:type="XInputField">
+                                 <InnerID>181</InnerID>
+                                 <ID>入院时间</ID>
+                                 <EnableValueValidate>true</EnableValueValidate>
+                                 <ValueBinding>
+                                    <DataSource>EMR_Patients</DataSource>
+                                    <BindingPath>indate</BindingPath>
+                                 </ValueBinding>
+                                 <BorderElementColor />
+                                 <MoveFocusHotKey>Tab</MoveFocusHotKey>
+                                 <Name>入院时间</Name>
+                                 <DisplayFormat>
+                                    <Style>DateTime</Style>
+                                    <Format>yyyy-MM-dd HH:mm:ss</Format>
+                                 </DisplayFormat>
+                                 <BackgroundText>入院时间</BackgroundText>
+                                 <EditorActiveMode>Program F2 MouseClick</EditorActiveMode>
+                                 <FieldSettings>
+                                    <EditStyle>DateTime</EditStyle>
+                                 </FieldSettings>
+                              </Element>
+                              <Element xsi:type="XParagraphFlag">
+                                 <InnerID>182</InnerID>
+                              </Element>
+                           </XElements>
+                        </Element>
+                     </XElements>
+                  </Element>
+                  <Element xsi:type="XTextTableRow">
+                     <InnerID>183</InnerID>
+                     <XElements>
+                        <Element xsi:type="XTextTableCell" StyleIndex="7">
+                           <InnerID>6</InnerID>
+                           <XElements>
+                              <Element xsi:type="XString">
+                                 <InnerID>381</InnerID>
+                                 <Text> 民族：</Text>
+                              </Element>
+                              <Element xsi:type="XInputField" StyleIndex="8">
+                                 <InnerID>190</InnerID>
+                                 <ID>民族</ID>
+                                 <EnableValueValidate>true</EnableValueValidate>
+                                 <ValueBinding>
+                                    <DataSource>EMR_Patients</DataSource>
+                                    <BindingPath>mingzu</BindingPath>
+                                 </ValueBinding>
+                                 <XElements>
+                                    <Element xsi:type="XString" StyleIndex="8">
+                                       <InnerID>383</InnerID>
+                                       <Text>蒙古族</Text>
+                                    </Element>
+                                 </XElements>
+                                 <BorderElementColor />
+                                 <MoveFocusHotKey>Tab</MoveFocusHotKey>
+                                 <Name>民族</Name>
+                                 <InnerValue>02</InnerValue>
+                                 <BackgroundText>民族</BackgroundText>
+                                 <EditorActiveMode>Program F2 MouseClick</EditorActiveMode>
+                                 <FieldSettings>
+                                    <EditStyle>DropdownList</EditStyle>
+                                    <ListSource>
+                                       <Items>
+                                          <Item>
+                                             <Text>汉族</Text>
+                                             <Value>01</Value>
+                                          </Item>
+                                          <Item>
+                                             <Text>蒙古族</Text>
+                                             <Value>02</Value>
+                                          </Item>
+                                          <Item>
+                                             <Text>回族</Text>
+                                             <Value>03</Value>
+                                          </Item>
+                                          <Item>
+                                             <Text>藏族</Text>
+                                             <Value>04</Value>
+                                          </Item>
+                                          <Item>
+                                             <Text>维吾尔族</Text>
+                                             <Value>05</Value>
+                                          </Item>
+                                          <Item>
+                                             <Text>苗族</Text>
+                                             <Value>06</Value>
+                                          </Item>
+                                          <Item>
+                                             <Text>彝族</Text>
+                                             <Value>07</Value>
+                                          </Item>
+                                          <Item>
+                                             <Text>壮族</Text>
+                                             <Value>08</Value>
+                                          </Item>
+                                          <Item>
+                                             <Text>布依族</Text>
+                                             <Value>09</Value>
+                                          </Item>
+                                          <Item>
+                                             <Text>朝鲜族</Text>
+                                             <Value>10</Value>
+                                          </Item>
+                                          <Item>
+                                             <Text>满族</Text>
+                                             <Value>11</Value>
+                                          </Item>
+                                          <Item>
+                                             <Text>侗族</Text>
+                                             <Value>12</Value>
+                                          </Item>
+                                          <Item>
+                                             <Text>瑶族</Text>
+                                             <Value>13</Value>
+                                          </Item>
+                                          <Item>
+                                             <Text>白族</Text>
+                                             <Value>14</Value>
+                                          </Item>
+                                          <Item>
+                                             <Text>土家族</Text>
+                                             <Value>15</Value>
+                                          </Item>
+                                          <Item>
+                                             <Text>哈尼族</Text>
+                                             <Value>16</Value>
+                                          </Item>
+                                          <Item>
+                                             <Text>哈萨克族</Text>
+                                             <Value>17</Value>
+                                          </Item>
+                                          <Item>
+                                             <Text>傣族</Text>
+                                             <Value>18</Value>
+                                          </Item>
+                                          <Item>
+                                             <Text>黎族</Text>
+                                             <Value>19</Value>
+                                          </Item>
+                                          <Item>
+                                             <Text>傈僳族</Text>
+                                             <Value>20</Value>
+                                          </Item>
+                                          <Item>
+                                             <Text>佤族</Text>
+                                             <Value>21</Value>
+                                          </Item>
+                                          <Item>
+                                             <Text>畲族</Text>
+                                             <Value>22</Value>
+                                          </Item>
+                                       </Items>
+                                    </ListSource>
+                                 </FieldSettings>
+                              </Element>
+                              <Element xsi:type="XString" StyleIndex="8" WhitespaceCount="1">
+                                 <InnerID>382</InnerID>
+                                 <Text> </Text>
+                              </Element>
+                              <Element xsi:type="XParagraphFlag">
+                                 <InnerID>195</InnerID>
+                              </Element>
+                           </XElements>
+                        </Element>
+                        <Element xsi:type="XTextTableCell" StyleIndex="7">
+                           <InnerID>7</InnerID>
+                           <XElements>
+                              <Element xsi:type="XString">
+                                 <InnerID>384</InnerID>
+                                 <Text>记录时间：</Text>
+                              </Element>
+                              <Element xsi:type="XInputField">
+                                 <InnerID>203</InnerID>
+                                 <ID>记录时间</ID>
+                                 <EnableValueValidate>true</EnableValueValidate>
+                                 <ValueBinding>
+                                    <DataSource>EMR_Patients</DataSource>
+                                    <BindingPath>recorddate</BindingPath>
+                                 </ValueBinding>
+                                 <BorderElementColor />
+                                 <MoveFocusHotKey>Tab</MoveFocusHotKey>
+                                 <Name>记录时间</Name>
+                                 <BackgroundText>记录时间</BackgroundText>
+                                 <EditorActiveMode>Program F2 MouseClick</EditorActiveMode>
+                                 <FieldSettings>
+                                    <EditStyle>DateTime</EditStyle>
+                                 </FieldSettings>
+                              </Element>
+                              <Element xsi:type="XParagraphFlag">
+                                 <InnerID>204</InnerID>
+                              </Element>
+                           </XElements>
+                        </Element>
+                     </XElements>
+                  </Element>
+                  <Element xsi:type="XTextTableRow">
+                     <InnerID>205</InnerID>
+                     <XElements>
+                        <Element xsi:type="XTextTableCell" StyleIndex="7">
+                           <InnerID>8</InnerID>
+                           <XElements>
+                              <Element xsi:type="XString">
+                                 <InnerID>385</InnerID>
+                                 <Text> 婚姻：</Text>
+                              </Element>
+                              <Element xsi:type="XInputField">
+                                 <InnerID>212</InnerID>
+                                 <ID>婚姻</ID>
+                                 <EnableValueValidate>true</EnableValueValidate>
+                                 <ValueBinding>
+                                    <DataSource>EMR_Patients</DataSource>
+                                    <BindingPath>marriage</BindingPath>
+                                 </ValueBinding>
+                                 <XElements>
+                                    <Element xsi:type="XString">
+                                       <InnerID>387</InnerID>
+                                       <Text>其他</Text>
+                                    </Element>
+                                 </XElements>
+                                 <BorderElementColor />
+                                 <MoveFocusHotKey>Tab</MoveFocusHotKey>
+                                 <Name>婚姻</Name>
+                                 <InnerValue>4</InnerValue>
+                                 <BackgroundText>婚姻</BackgroundText>
+                                 <EditorActiveMode>Program F2 MouseClick</EditorActiveMode>
+                                 <FieldSettings>
+                                    <EditStyle>DropdownList</EditStyle>
+                                    <ListSource>
+                                       <Items>
+                                          <Item>
+                                             <Text>未婚</Text>
+                                             <Value>0</Value>
+                                          </Item>
+                                          <Item>
+                                             <Text>已婚</Text>
+                                             <Value>1</Value>
+                                          </Item>
+                                          <Item>
+                                             <Text>离异</Text>
+                                             <Value>2</Value>
+                                          </Item>
+                                          <Item>
+                                             <Text>丧偶</Text>
+                                             <Value>3</Value>
+                                          </Item>
+                                          <Item>
+                                             <Text>其他</Text>
+                                             <Value>4</Value>
+                                          </Item>
+                                       </Items>
+                                    </ListSource>
+                                 </FieldSettings>
+                              </Element>
+                              <Element xsi:type="XString" WhitespaceCount="2">
+                                 <InnerID>386</InnerID>
+                                 <Text>  </Text>
+                              </Element>
+                              <Element xsi:type="XParagraphFlag">
+                                 <InnerID>217</InnerID>
+                              </Element>
+                           </XElements>
+                        </Element>
+                        <Element xsi:type="XTextTableCell" StyleIndex="7">
+                           <InnerID>9</InnerID>
+                           <XElements>
+                              <Element xsi:type="XString">
+                                 <InnerID>388</InnerID>
+                                 <Text>病史陈述者：</Text>
+                              </Element>
+                              <Element xsi:type="XInputField">
+                                 <InnerID>226</InnerID>
+                                 <ID>病史陈述者</ID>
+                                 <EnableValueValidate>true</EnableValueValidate>
+                                 <ValueBinding>
+                                    <DataSource>EMR_Patients</DataSource>
+                                    <BindingPath>patientname</BindingPath>
+                                 </ValueBinding>
+                                 <BorderElementColor />
+                                 <MoveFocusHotKey>Tab</MoveFocusHotKey>
+                                 <Name>病史陈述者</Name>
+                                 <BackgroundText>病史陈述者</BackgroundText>
+                              </Element>
+                              <Element xsi:type="XParagraphFlag">
+                                 <InnerID>227</InnerID>
+                              </Element>
+                           </XElements>
+                        </Element>
+                     </XElements>
+                  </Element>
+                  <Element xsi:type="XTextTableRow">
+                     <InnerID>228</InnerID>
+                     <XElements>
+                        <Element xsi:type="XTextTableCell" StyleIndex="7">
+                           <InnerID>10</InnerID>
+                           <XElements>
+                              <Element xsi:type="XString">
+                                 <InnerID>389</InnerID>
+                                 <Text> 发病节气：</Text>
+                              </Element>
+                              <Element xsi:type="XInputField">
+                                 <InnerID>237</InnerID>
+                                 <ID>发病季节</ID>
+                                 <EnableValueValidate>true</EnableValueValidate>
+                                 <BorderElementColor />
+                                 <Name>发病节气</Name>
+                                 <BackgroundText>发病节气</BackgroundText>
+                              </Element>
+                              <Element xsi:type="XParagraphFlag">
+                                 <InnerID>238</InnerID>
+                              </Element>
+                           </XElements>
+                        </Element>
+                        <Element xsi:type="XTextTableCell" StyleIndex="7">
+                           <InnerID>11</InnerID>
+                           <XElements>
+                              <Element xsi:type="XParagraphFlag">
+                                 <InnerID>242</InnerID>
+                              </Element>
+                           </XElements>
+                        </Element>
+                     </XElements>
+                  </Element>
+                  <Element xsi:type="XTextTableRow">
+                     <InnerID>243</InnerID>
+                     <XElements>
+                        <Element xsi:type="XTextTableCell" StyleIndex="7">
+                           <InnerID>12</InnerID>
+                           <XElements>
+                              <Element xsi:type="XString">
+                                 <InnerID>390</InnerID>
+                                 <Text>过敏原：</Text>
+                              </Element>
+                              <Element xsi:type="XTextCheckBox">
+                                 <InnerID>250</InnerID>
+                                 <ID>1_0</ID>
+                                 <Name>1</Name>
+                                 <Caption>花粉</Caption>
+                                 <Width>172</Width>
+                                 <Height>57.0312424</Height>
+                                 <GroupName>1</GroupName>
+                                 <CheckedValue>花粉</CheckedValue>
+                                 <VisualStyle>SystemDefault</VisualStyle>
+                              </Element>
+                              <Element xsi:type="XTextCheckBox">
+                                 <InnerID>251</InnerID>
+                                 <ID>1_1</ID>
+                                 <Name>1</Name>
+                                 <Caption>油漆</Caption>
+                                 <Width>172</Width>
+                                 <Height>57.0312424</Height>
+                                 <GroupName>1</GroupName>
+                                 <CheckedValue>油漆</CheckedValue>
+                                 <VisualStyle>SystemDefault</VisualStyle>
+                              </Element>
+                              <Element xsi:type="XTextCheckBox">
+                                 <InnerID>252</InnerID>
+                                 <ID>1_2</ID>
+                                 <Name>1</Name>
+                                 <Caption>奶制品</Caption>
+                                 <Width>221.999985</Width>
+                                 <Height>57.0312424</Height>
+                                 <GroupName>1</GroupName>
+                                 <CheckedValue>奶制品</CheckedValue>
+                                 <VisualStyle>SystemDefault</VisualStyle>
+                              </Element>
+                              <Element xsi:type="XTextCheckBox">
+                                 <InnerID>253</InnerID>
+                                 <ID>1_3</ID>
+                                 <Name>1</Name>
+                                 <Caption>豆制品</Caption>
+                                 <Width>221.999985</Width>
+                                 <Height>57.0312424</Height>
+                                 <GroupName>1</GroupName>
+                                 <CheckedValue>豆制品</CheckedValue>
+                                 <VisualStyle>SystemDefault</VisualStyle>
+                              </Element>
+                              <Element xsi:type="XParagraphFlag">
+                                 <InnerID>254</InnerID>
+                              </Element>
+                           </XElements>
+                        </Element>
+                        <Element xsi:type="XTextTableCell" StyleIndex="7">
+                           <InnerID>13</InnerID>
+                           <XElements>
+                              <Element xsi:type="XString">
+                                 <InnerID>391</InnerID>
+                                 <Text>药物：</Text>
+                              </Element>
+                              <Element xsi:type="XTextRadioBox">
+                                 <InnerID>260</InnerID>
+                                 <ID>2_0</ID>
+                                 <Name>2</Name>
+                                 <Caption>静脉</Caption>
+                                 <Width>172</Width>
+                                 <Height>57.0312424</Height>
+                                 <GroupName>2</GroupName>
+                                 <ControlStyle>RadioBox</ControlStyle>
+                                 <CheckedValue>静脉</CheckedValue>
+                                 <VisualStyle>SystemDefault</VisualStyle>
+                              </Element>
+                              <Element xsi:type="XTextRadioBox">
+                                 <InnerID>261</InnerID>
+                                 <ID>2_1</ID>
+                                 <Name>2</Name>
+                                 <Caption>动脉</Caption>
+                                 <Width>172</Width>
+                                 <Height>57.0312424</Height>
+                                 <GroupName>2</GroupName>
+                                 <ControlStyle>RadioBox</ControlStyle>
+                                 <CheckedValue>动脉</CheckedValue>
+                                 <VisualStyle>SystemDefault</VisualStyle>
+                              </Element>
+                              <Element xsi:type="XParagraphFlag">
+                                 <InnerID>262</InnerID>
+                              </Element>
+                           </XElements>
+                        </Element>
+                     </XElements>
+                  </Element>
+                  <Element xsi:type="XTextTableRow">
+                     <InnerID>263</InnerID>
+                     <XElements>
+                        <Element xsi:type="XTextTableCell" StyleIndex="7">
+                           <InnerID>14</InnerID>
+                           <XElements>
+                              <Element xsi:type="XString">
+                                 <InnerID>392</InnerID>
+                                 <Text>按钮：</Text>
+                              </Element>
+                              <Element xsi:type="XTextButton">
+                                 <InnerID>269</InnerID>
+                                 <ID>1</ID>
+                                 <Name>测试按钮</Name>
+                                 <Width>231.25</Width>
+                                 <Height>71.875</Height>
+                                 <Text>测试按钮</Text>
+                              </Element>
+                              <Element xsi:type="XParagraphFlag">
+                                 <InnerID>270</InnerID>
+                              </Element>
+                           </XElements>
+                        </Element>
+                        <Element xsi:type="XTextTableCell" StyleIndex="7">
+                           <InnerID>15</InnerID>
+                           <XElements>
+                              <Element xsi:type="XString">
+                                 <InnerID>393</InnerID>
+                                 <Text>标签文本：</Text>
+                              </Element>
+                              <Element xsi:type="XTextLabelElement">
+                                 <InnerID>278</InnerID>
+                                 <ID>label1</ID>
+                                 <Name>11</Name>
+                                 <Width>199.999985</Width>
+                                 <Height>57.0312424</Height>
+                                 <Text>标签文本</Text>
+                              </Element>
+                              <Element xsi:type="XParagraphFlag">
+                                 <InnerID>279</InnerID>
+                              </Element>
+                           </XElements>
+                        </Element>
+                     </XElements>
+                  </Element>
+                  <Element xsi:type="XTextTableRow">
+                     <InnerID>280</InnerID>
+                     <XElements>
+                        <Element xsi:type="XTextTableCell" StyleIndex="7">
+                           <InnerID>16</InnerID>
+                           <XElements>
+                              <Element xsi:type="XString">
+                                 <InnerID>394</InnerID>
+                                 <Text>医学表达式：</Text>
+                              </Element>
+                              <Element xsi:type="XNewMedicalExpression">
+                                 <InnerID>289</InnerID>
+                                 <ID>exp1</ID>
+                                 <Text>Value1=11,Value2=22,Value3=33,Value4=44,Value5=55,Value6=66,Value7=77,Value8=88,Value9=99</Text>
+                                 <Values>
+                                    <Value Name="Value1">11</Value>
+                                    <Value Name="Value2">22</Value>
+                                    <Value Name="Value3">33</Value>
+                                    <Value Name="Value4">44</Value>
+                                    <Value Name="Value5">55</Value>
+                                    <Value Name="Value6">66</Value>
+                                    <Value Name="Value7">77</Value>
+                                    <Value Name="Value8">88</Value>
+                                    <Value Name="Value9">99</Value>
+                                 </Values>
+                                 <Width>515.625</Width>
+                                 <Height>206.25</Height>
+                                 <ExpressionStyle>LightPositioning</ExpressionStyle>
+                              </Element>
+                              <Element xsi:type="XParagraphFlag">
+                                 <InnerID>290</InnerID>
+                              </Element>
+                           </XElements>
+                        </Element>
+                        <Element xsi:type="XTextTableCell" StyleIndex="7">
+                           <InnerID>17</InnerID>
+                           <XElements>
+                              <Element xsi:type="XString">
+                                 <InnerID>395</InnerID>
+                                 <Text>条形码：</Text>
+                              </Element>
+                              <Element xsi:type="NewBarcode">
+                                 <InnerID>297</InnerID>
+                                 <ID>barcode1</ID>
+                                 <Name>4</Name>
+                                 <Width>400</Width>
+                                 <Height>150</Height>
+                                 <Text>1233343</Text>
+                              </Element>
+                              <Element xsi:type="XParagraphFlag">
+                                 <InnerID>298</InnerID>
+                              </Element>
+                           </XElements>
+                        </Element>
+                     </XElements>
+                  </Element>
+               </XElements>
+               <Columns>
+                  <Element xsi:type="XTextTableColumn">
+                     <InnerID>121</InnerID>
+                     <Width>937.375</Width>
+                  </Element>
+                  <Element xsi:type="XTextTableColumn">
+                     <InnerID>122</InnerID>
+                     <Width>957.375</Width>
+                  </Element>
+               </Columns>
+            </Element>
+            <Element xsi:type="XParagraphFlag" StyleIndex="0">
+               <InnerID>300</InnerID>
+            </Element>
+            <Element xsi:type="XString">
+               <InnerID>368</InnerID>
+               <Text> 医师签名：</Text>
+            </Element>
+            <Element xsi:type="XInputField">
+               <InnerID>360</InnerID>
+               <ID>医师签名</ID>
+               <EnableValueValidate>true</EnableValueValidate>
+               <BorderElementColor />
+               <MoveFocusHotKey>Tab</MoveFocusHotKey>
+               <SpecifyWidth>236.2205</SpecifyWidth>
+               <Name>医师签名</Name>
+               <BackgroundText>医师签名</BackgroundText>
+            </Element>
+            <Element xsi:type="XParagraphFlag" StyleIndex="0">
+               <InnerID>361</InnerID>
+            </Element>
+            <Element xsi:type="XParagraphFlag">
+               <InnerID>364</InnerID>
+            </Element>
+         </XElements>
+      </Element>
+      <Element xsi:type="XTextFooter">
+         <InnerID>96</InnerID>
+         <AcceptTab>true</AcceptTab>
+         <XElements>
+            <Element xsi:type="XString">
+               <InnerID>396</InnerID>
+               <Text> 第</Text>
+            </Element>
+            <Element xsi:type="XPageInfo" StyleIndex="9">
+               <InnerID>107</InnerID>
+               <Width>85</Width>
+               <AutoHeight>true</AutoHeight>
+               <Height>62.7343674</Height>
+               <FormatString>[%PageIndex%]</FormatString>
+            </Element>
+            <Element xsi:type="XString">
+               <InnerID>397</InnerID>
+               <Text>页</Text>
+            </Element>
+            <Element xsi:type="XParagraphFlag">
+               <InnerID>109</InnerID>
+            </Element>
+         </XElements>
+      </Element>
+   </XElements>
+   <SerializeParameterValue>true</SerializeParameterValue>
+   <FileName>C:\Users\DCSOFTWU\Desktop\aaa.xml</FileName>
+   <FileFormat>XML</FileFormat>
+   <ContentStyles>
+      <Default xsi:type="DocumentContentStyle">
+         <FontName>宋体</FontName>
+         <FontSize>12</FontSize>
+      </Default>
+      <Styles>
+         <Style Index="0">
+            <FontName>宋体</FontName>
+            <FontSize>12</FontSize>
+         </Style>
+         <Style Index="1">
+            <FontName>宋体</FontName>
+            <FontSize>15</FontSize>
+            <Bold>true</Bold>
+         </Style>
+         <Style Index="2">
+            <FontName>宋体</FontName>
+            <FontSize>12</FontSize>
+            <LineSpacing>1.2</LineSpacing>
+         </Style>
+         <Style Index="3">
+            <FontName>宋体</FontName>
+            <FontSize>12</FontSize>
+            <BorderLeft>true</BorderLeft>
+            <BorderBottom>true</BorderBottom>
+            <BorderTop>true</BorderTop>
+            <BorderRight>true</BorderRight>
+         </Style>
+         <Style Index="4">
+            <FontName>宋体</FontName>
+            <FontSize>12</FontSize>
+            <LineSpacing>1.2</LineSpacing>
+         </Style>
+         <Style Index="5">
+            <FontName>宋体</FontName>
+            <FontSize>18</FontSize>
+            <Bold>true</Bold>
+         </Style>
+         <Style Index="6">
+            <FontName>宋体</FontName>
+            <FontSize>12</FontSize>
+         </Style>
+         <Style Index="7">
+            <FontName>宋体</FontName>
+            <FontSize>12</FontSize>
+            <BorderWidth>1</BorderWidth>
+            <PaddingLeft>15</PaddingLeft>
+            <PaddingTop>10</PaddingTop>
+            <PaddingRight>12.5</PaddingRight>
+            <PaddingBottom>10</PaddingBottom>
+         </Style>
+         <Style Index="8">
+            <FontName>宋体</FontName>
+            <FontSize>10.5</FontSize>
+         </Style>
+         <Style Index="9">
+            <FontName>宋体</FontName>
+            <FontSize>12</FontSize>
+         </Style>
+         <Style Index="10">
+            <FontName>宋体</FontName>
+            <FontSize>12</FontSize>
+            <Align>Center</Align>
+         </Style>
+      </Styles>
+   </ContentStyles>
+   <Info>
+      <LicenseText>南京都昌公司2023年测试用旗舰版(2并发):南京都昌公司2023年测试用旗舰版(2并发)</LicenseText>
+      <CreationTime>1980-01-01T00:00:00</CreationTime>
+      <LastModifiedTime>2023-04-10T15:52:18.5018289+08:00</LastModifiedTime>
+      <LastPrintTime>1980-01-01T00:00:00</LastPrintTime>
+      <Operator>DCSoft.Writer Version:1.2019.1.4</Operator>
+      <NumOfPage>1</NumOfPage>
+   </Info>
+   <BodyText>入 院 记 录
+
+ 姓名：王一  出生地：
+ 性别：男   职业：
+ 年龄：54岁 入院时间：
+ 民族：蒙古族  记录时间：
+ 婚姻：其他   病史陈述者：
+ 发病节气：
+过敏原：□花粉□油漆□奶制品□豆制品 药物：○静脉○动脉
+按钮：测试按钮 标签文本：标签文本
+医学表达式：,Value1=11,Value2=22,Value3=33,Value4=44,Value5=55,Value6=66,Value7=77,Value8=88,Value9=99 条形码：1233343
+ 医师签名：
+</BodyText>
+   <LocalConfig />
+   <PageSettings>
+      <LeftMargin>95</LeftMargin>
+      <RightMargin>95</RightMargin>
+      <StrictUsePageSize>false</StrictUsePageSize>
+   </PageSettings>
+</XTextDocument>`;
+    </script>
+
+</body>
+
+</html>

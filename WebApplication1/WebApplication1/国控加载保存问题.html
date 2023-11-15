@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        #tools {
+            height: 60px;
+            padding: 5px;
+        }
+
+        #myWriterControl {
+            width: 100%;
+            height: calc(100% - 60px);
+            border: 1px solid black;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="tools">
+        <div id="url"></div>
+        <button
+            onclick="document.getElementById('myWriterControl').DCExecuteCommand('fileopen', true)">编辑器打开本地文件</button>
+        <button onclick="save()">保存</button>
+        <button onclick="savebase64()">保存base64</button>
+    </div>
+    <div id="myWriterControl" AutoGenerateCABFile="false" AutoLine="false" AutoPostBack="true" bordercolor="red"
+        BorderWidth="1px" contentrendermode="NormalHtmlEditable" FixedHeader="false" IndentHtmlCode="false"
+        IsMobileDevice="False" PixelPageSpacing="5" PageViewInMobileDevice="true" servicepageurl=""
+        ShowDebugInfo="false" UseClassAttribute="true" UseDCWriterMiniJS="true" WorkSpaceBackColor="#B1CAEB"
+        workspacebackcolorstring="#B1CAEB" HeaderFooterEditable="true" autozoom1="true" fileprintautoclose="false">
+    </div>
+</body>
+<script src="jquery-1.7.2.min.js"></script>
+<script>
+    var ctl = document.getElementById("myWriterControl");
+    var servicepageurl = "ServicePage.aspx";
+    function Build() {
+        if (ctl) {
+            ctl.setAttribute("servicepageurl", servicepageurl);
+            BindingDCWriterClientControl(ctl);
+            ctl.Options.LogUserEditTrack = true;
+            ctl.Options.CurrentUserID = "zhangsan";
+            ctl.Options.CurrentUserName = "张三主任医师";
+            ctl.Options.CurrentUserPermissionLevel = "1";
+            ctl.Options.ClientMachineName = "123";
+            ctl.Options.ExcludeLogicDeleted = true;
+            ctl.DocumentOptions.SecurityOptions.EnablePermission = true;
+            ctl.DocumentOptions.SecurityOptions.EnableLogicDelete = true;
+            ctl.DocumentOptions.SecurityOptions.ShowLogicDeletedContent = false;
+            ctl.DocumentOptions.SecurityOptions.ShowPermissionMark = false;
+            ctl.DocumentOptions.SecurityOptions.ShowPermissionTip = false;
+            // ctl.Options.FormView = "Strict";
+            ctl.BuildFrame(function () {
+                // ctl.LoadDocumentFromBase64String(str.replace(/\r\n/g,""), "xml");
+            });
+        }
+    }
+    function save() {
+        var ctl = document.WriterControl;
+        ctl.Options.TempContentHtml = fileContent;
+        var str = ctl.SaveDocumentToString();
+        console.log(str);
+        // var a = ctl.SaveDocumentToString();
+        //ada('ServivePage.aspx?savedocumenttostring=xml&controlinstanceid=52&commitusertraces=false&outputformatxml=true&encodingname=&savetobase64=false&specifysavepart=ALL&cleardatabindingcontent=false&contentrendermode=NormalHtmlEditable&tick=1693902805608')
+    }
+    function savebase64() {
+        var ctl = document.WriterControl;
+        ctl.Options.TempContentHtml = fileContent;
+        var str = ctl.SaveDocumentToBase64String();
+        console.log(str);
+        // var a = ctl.SaveDocumentToBase64String();
+        //ada('ServivePage.aspx?savedocumenttostring=xml&controlinstanceid=52&commitusertraces=false&outputformatxml=true&encodingname=&savetobase64=true&specifysavepart=ALL&cleardatabindingcontent=false&contentrendermode=NormalHtmlEditable&tick=1693902805608')
+    }
+    function ada(url) {
+        var result = "";
+        var funcCallback = function (responseText, textStatus, jqXHR) {
+            if (textStatus == "success") {
+                var temparray = responseText.split("$dcsuccesssplit$");
+                var success = temparray[0];
+                var temparray2 = temparray[1].split("$dcmessageplit$");
+                var message = temparray2[0];
+                var temparray3 = temparray2[1].split("$dcviewstatesplit$");
+                var responsehtml = temparray3[1];
+                var newdocumentviewstate = temparray3[0];
+                if (success == "true") {
+                    result = responsehtml;
+                } else {
+                    rootElement.RuntimeError(message);
+                }
+            }
+        }
+        var settings = {
+            method: "POST",
+            type: "POST",
+            url: url,
+            async: false,
+            data: fileContent,
+            success: funcCallback
+        };
+        DCDomTools.fixAjaxSettings(settings, ctl);
+        jQuery.ajax(settings);
+        console.log(result)
+    }
+    // Build();
+    var oScript = document.createElement('script');
+    oScript.src = servicepageurl + "?js=1&nojq=1";
+    document.getElementById("url").innerHTML = servicepageurl;
+    document.head.appendChild(oScript)
+    oScript.onload = function () {
+        Build();
+    }
+
+
+</script>
+
+</html>

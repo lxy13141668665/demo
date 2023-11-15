@@ -1,0 +1,577 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <script type="text/javascript" src="jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="ServicePage.aspx?js=1"></script>
+
+    <title></title>
+</head>
+<body>
+    <p>
+        <input type="button" value="从xml文件加载" onclick="LoadXmlFileInputField()" style=" background-color:chartreuse;" />
+       
+    </p>
+    <p>
+        <input type="button" value="打印预览" onclick="openPreview()" />
+        <input type="button" value="关闭预览" onclick="ClosePreview()" />
+        <input type="button" value="查看痕迹" onclick="ckhj()" />
+    </p>
+
+
+
+    <div id="myWriterControl"
+         style="width: 100%; border: 2px solid black; border-radius: 5px;height:900px;"
+         FormView="Normal"
+         TransformUseBase64="false"
+         AutoZoom="false"
+         AutoPostBack="true"
+         contentrendermode="NormalHtmlEditable"
+         AutoSaveIntervalInSecond="0"
+         workspacebackcolorstring="#B1CAEB"
+         servicepageurl="ServicePage.aspx"
+         useclassattribute="false"
+         heightcompress="true"
+         imagedataembedinhtml="true"
+         ExcludeLogicDeleted="false"
+         HeaderFooterEditable="true"
+         UseDCWriterMiniJS="False"
+         BackgroundTextOutputMode="Output"
+         serversleepfordebug="0"
+         fileprintautoclose="false"
+         allowcopy="true"
+         supportactivex="false"
+         pixelpagespacing="5"
+         clientcontextmenutype="Custom"
+         showdebuginfo="false"
+         ismobiledevice="False"
+         registercodeindex="0" />
+    <script type="text/javascript">
+
+            // 获得控件容器元素
+            var ctl = document.getElementById("myWriterControl");
+            // 绑定控件
+        BindingDCWriterClientControl(ctl);
+
+
+        //留痕标准设置
+        ctl.Options.LogUserEditTrack = 'true'
+        ctl.Options.CurrentUserID = 'zhangsan'
+        ctl.Options.CurrentUserName = '张三主任医师'
+        ctl.Options.CurrentUserPermissionLevel = '1'
+        ctl.Options.ClientMachineName = '123'
+        ctl.Options.ExcludeLogicDeleted = true
+        ctl.DocumentOptions.SecurityOptions.EnablePermission = true
+        ctl.DocumentOptions.SecurityOptions.EnableLogicDelete = true
+        ctl.DocumentOptions.SecurityOptions.ShowLogicDeletedContent = false
+        ctl.DocumentOptions.SecurityOptions.ShowPermissionMark = false
+        ctl.DocumentOptions.SecurityOptions.ShowPermissionTip = false
+
+        ctl.Options.OutputOriginUserTrackInfos = true;
+
+
+            // 创建编辑器框架
+            ctl.BuildFrame(function () {
+
+            });
+
+            //转换为预览
+           function openPreview() {
+                var ctl = document.getElementById("myWriterControl");
+                ctl.LoadPrintPreview();
+               console.log("$log 从书写模式 转换为 预览模式,如果需要退出预览,请点击 [关闭预览]");
+            }
+
+            //转为编辑
+            function ClosePreview() {
+                var ctl = document.getElementById("myWriterControl");
+                ctl.ClosePrintPreview();
+                console.log("$log 从预览 转换为书写模式");
+        }
+        function ckhj() {
+
+            var ctl = document.getElementById('myWriterControl');
+            ctl.LoadPrintPreviewWithPermissionMark();
+
+            setTimeout(() => {
+                var modifyRecord = []
+                modifyRecord = ctl.GetDocumentUserTrackInfos(false)
+                console.log('读取修改的记录:')
+                console.log(modifyRecord);
+            }, 1000)
+        }
+
+    </script>
+
+    <script>
+            function LoadXmlFileInputField() {
+                const _this = this;
+                var filename = "病程记录";
+                //$.ajax({
+                //    url: "/BC_SCBC_LH/" + filename + ".xml",
+                //    dataType: 'text',
+                //    type: 'GET',
+                //    timeout: 2000,
+                //    error: function (xml) {
+                //        alert("加载XML 文件出错！");
+                //    },
+                //    success: function (xml) {
+                        
+
+                //    }
+                //});
+
+
+                console.clear();
+                console.log("$log xml文档内容");
+
+                var ctl = document.getElementById("myWriterControl");
+                BindingDCWriterClientControl(ctl);
+
+
+                
+
+                //其他设置
+                ctl.DocumentOptions.SecurityOptions.TrackVisibleLevel1.DeleteLineNum = '2' // 删除线条数，默认值为2
+                ctl.DocumentOptions.SecurityOptions.TrackVisibleLevel1.DeleteLineColorString = 'Black' // 删除线颜色文本值，默认值为"#FF7F50"
+                ctl.DocumentOptions.SecurityOptions.TrackVisibleLevel1.UnderLineColorString = 'Yellow' // 下划线颜色文本值，默认值为null
+                ctl.DocumentOptions.SecurityOptions.TrackVisibleLevel1.UnderLineColorNum = '2' // 下划线条数，默认值为2
+                ctl.DocumentOptions.SecurityOptions.TrackVisibleLevel1.BackgroundColorString = 'LightGrey' // 背景颜色文本值，默认值为null
+                ctl.DocumentOptions.SecurityOptions.ShowFlagForOnlySoftwareSign = false // 是否显示签名图片的感叹号
+                ctl.Options.FreeSelection = 'true' // 在表单模式下，当需要在输入域外选择、复制内容时，需要设置容器对象的FreeSelection
+                ctl.Options.CustomCSSString += "[dctype='XTextSubDocumentElement'][active='true']{border: 2px dashed}"; // 自定义样式字符串
+                ctl.Options.CustomCSSString += "[dctype='XTextSubDocumentElement'][contenteditable='false'],[dctype='XTextSubDocumentElement'][contenteditable='False']{background-image:url('http://133.0.5.130:10150/assets/img/emr/%E9%94%81%E5%AE%9A.png');background-repeat: no-repeat;background-size: 90px;background-position: right bottom 45px;}",
+
+                    ctl.preserveScrollPosition = true // 加载文档时尽量保留页面滚动位置。
+
+                ctl.DocumentLoad = function () {
+                    ctl.setMouseDragScrollMode(false); // 文档加载后设置控件的鼠标拖拽滚动模式
+                    debugger;
+                    _this.loadProgressXml(ctl);
+                }
+
+                ctl.LoadDocumentFromString(xml, 'xml');
+                ctl.onDocumentLoad = function () {
+                    const tobj = {
+                        "BLH": "PID000578018",
+                        "XM": "蒋秀群",
+                        "XB": "女",
+                        "NL": "50岁",
+                        "KSMC": "神经内科",
+                        "ZD": " 1.前庭周围性眩晕 2.腔隙性脑梗死 3.窦性心动过缓",
+                        "RYZD": " 1.头晕和眩晕 2.腔隙性脑梗死",
+                        "ZS": "头晕3.5小时。",
+                        "CW": "23A",
+                        "RYSJ": "2022-03-10 02:31:18",
+                        "RYFS": "平车",
+                        "DHHM": "13886938420",
+                        "XYZD": null,
+                        "MZZYZD": null,
+                        "VID": "202203100017"
+                    };
+                    ctl.SetDocumentParameterValue('BASIC', tobj);//给文档变量 赋值
+                    ctl.WriteDataFromDataSourceToDocument();
+                }
+        }
+
+        function loadProgressXml(ctl) {
+            ctl.GetContentContainer().focus();
+            const res2 = {
+                "status": 200,
+                "success": true,
+                "msg": "",
+                "response": {
+                    "files": [
+                        "<XTextDocument xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" EditorVersionString=\"1.2023.3.10\">\r\n   <XElements>\r\n      <Element xsi:type=\"XTextHeader\">\r\n         <InnerID>195</InnerID>\r\n         <AcceptTab>true</AcceptTab>\r\n         <XElements>\r\n            <Element xsi:type=\"XParagraphFlag\">\r\n               <InnerID>789</InnerID>\r\n            </Element>\r\n         </XElements>\r\n      </Element>\r\n      <Element xsi:type=\"XTextBody\">\r\n         <InnerID>196</InnerID>\r\n         <AcceptTab>true</AcceptTab>\r\n         <XElements>\r\n            <Element xsi:type=\"XInputField\">\r\n               <InnerID>138</InnerID>\r\n               <ID>RYSJ</ID>\r\n               <EnableValueValidate>true</EnableValueValidate>\r\n               <ValidateStyle>\r\n                  <ValueType>DateTime</ValueType>\r\n               </ValidateStyle>\r\n               <ValueBinding>\r\n                  <DataSource>EMR</DataSource>\r\n                  <BindingPath>RYSJ</BindingPath>\r\n               </ValueBinding>\r\n               <XElements>\r\n                  <Element xsi:type=\"XString\">\r\n                     <InnerID>821</InnerID>\r\n                     <Text>2022-03-10 02:31:18</Text>\r\n                  </Element>\r\n               </XElements>\r\n               <BorderElementColor />\r\n               <SpecifyWidth>472.4409</SpecifyWidth>\r\n               <DisplayFormat>\r\n                  <Style>DateTime</Style>\r\n                  <Format>yyyy-MM-dd HH:mm:ss</Format>\r\n               </DisplayFormat>\r\n               <InnerValue>2022-03-10 02:31:18</InnerValue>\r\n               <FieldSettings>\r\n                  <EditStyle>DateTime</EditStyle>\r\n               </FieldSettings>\r\n            </Element>\r\n            <Element xsi:type=\"XString\">\r\n               <InnerID>797</InnerID>\r\n               <Text> </Text>\r\n            </Element>\r\n            <Element xsi:type=\"XInputField\">\r\n               <InnerID>159</InnerID>\r\n               <ID>ID</ID>\r\n               <EnableValueValidate>true</EnableValueValidate>\r\n               <ValueBinding>\r\n                  <DataSource>EMR</DataSource>\r\n                  <BindingPath>ID</BindingPath>\r\n               </ValueBinding>\r\n               <XElements>\r\n                  <Element xsi:type=\"XString\">\r\n                     <InnerID>822</InnerID>\r\n                     <Text>614c8c56-98ee-4840-9ea9-53d997f86a05</Text>\r\n                  </Element>\r\n               </XElements>\r\n               <Visible>false</Visible>\r\n               <Deleteable>false</Deleteable>\r\n               <BorderElementColor />\r\n               <InnerValue>614c8c56-98ee-4840-9ea9-53d997f86a05</InnerValue>\r\n            </Element>\r\n            <Element xsi:type=\"XString\">\r\n               <InnerID>798</InnerID>\r\n               <Text> </Text>\r\n            </Element>\r\n            <Element xsi:type=\"XInputField\">\r\n               <InnerID>197</InnerID>\r\n               <ID>BCLX</ID>\r\n               <EnableValueValidate>true</EnableValueValidate>\r\n               <ValueBinding>\r\n                  <DataSource>EMR</DataSource>\r\n                  <BindingPath>BCLX</BindingPath>\r\n               </ValueBinding>\r\n               <XElements>\r\n                  <Element xsi:type=\"XString\">\r\n                     <InnerID>823</InnerID>\r\n                     <Text>2001</Text>\r\n                  </Element>\r\n               </XElements>\r\n               <Visible>false</Visible>\r\n               <BorderElementColor />\r\n               <InnerValue>2001</InnerValue>\r\n            </Element>\r\n            <Element xsi:type=\"XString\">\r\n               <InnerID>799</InnerID>\r\n               <Text>           首次病程记录</Text>\r\n            </Element>\r\n            <Element xsi:type=\"XParagraphFlag\">\r\n               <InnerID>219</InnerID>\r\n            </Element>\r\n            <Element xsi:type=\"XString\">\r\n               <InnerID>800</InnerID>\r\n               <Text>患者:</Text>\r\n            </Element>\r\n            <Element xsi:type=\"XInputField\" StyleIndex=\"1\">\r\n               <InnerID>224</InnerID>\r\n               <ID>XM</ID>\r\n               <EnableValueValidate>true</EnableValueValidate>\r\n               <ValueBinding>\r\n                  <DataSource>EMR</DataSource>\r\n                  <BindingPath>XM</BindingPath>\r\n               </ValueBinding>\r\n               <XElements>\r\n                  <Element xsi:type=\"XString\">\r\n                     <InnerID>824</InnerID>\r\n                     <Text>蒋秀群</Text>\r\n                  </Element>\r\n               </XElements>\r\n               <BorderElementColor />\r\n               <SpecifyWidth>236.2205</SpecifyWidth>\r\n               <InnerValue>蒋秀群</InnerValue>\r\n            </Element>\r\n            <Element xsi:type=\"XString\">\r\n               <InnerID>801</InnerID>\r\n               <Text>，性别:</Text>\r\n            </Element>\r\n            <Element xsi:type=\"XInputField\" StyleIndex=\"1\">\r\n               <InnerID>232</InnerID>\r\n               <ID>XB</ID>\r\n               <EnableValueValidate>true</EnableValueValidate>\r\n               <ValueBinding>\r\n                  <DataSource>EMR</DataSource>\r\n                  <BindingPath>XB</BindingPath>\r\n               </ValueBinding>\r\n               <XElements>\r\n                  <Element xsi:type=\"XString\">\r\n                     <InnerID>825</InnerID>\r\n                     <Text>女</Text>\r\n                  </Element>\r\n               </XElements>\r\n               <BorderElementColor />\r\n               <SpecifyWidth>118.1102</SpecifyWidth>\r\n               <InnerValue>女</InnerValue>\r\n            </Element>\r\n            <Element xsi:type=\"XString\">\r\n               <InnerID>802</InnerID>\r\n               <Text>，年龄:</Text>\r\n            </Element>\r\n            <Element xsi:type=\"XInputField\" StyleIndex=\"1\">\r\n               <InnerID>238</InnerID>\r\n               <ID>NL</ID>\r\n               <EnableValueValidate>true</EnableValueValidate>\r\n               <ValueBinding>\r\n                  <DataSource>EMR</DataSource>\r\n                  <BindingPath>NL</BindingPath>\r\n               </ValueBinding>\r\n               <XElements>\r\n                  <Element xsi:type=\"XString\">\r\n                     <InnerID>826</InnerID>\r\n                     <Text>50岁</Text>\r\n                  </Element>\r\n               </XElements>\r\n               <BorderElementColor />\r\n               <SpecifyWidth>236.2205</SpecifyWidth>\r\n               <InnerValue>50岁</InnerValue>\r\n            </Element>\r\n            <Element xsi:type=\"XString\">\r\n               <InnerID>803</InnerID>\r\n               <Text>，职业：</Text>\r\n            </Element>\r\n            <Element xsi:type=\"XInputField\" StyleIndex=\"1\">\r\n               <InnerID>246</InnerID>\r\n               <ID>ZY</ID>\r\n               <EnableValueValidate>true</EnableValueValidate>\r\n               <ValueBinding>\r\n                  <DataSource>EMR</DataSource>\r\n                  <BindingPath>ZY</BindingPath>\r\n               </ValueBinding>\r\n               <BorderElementColor />\r\n               <SpecifyWidth>236.2205</SpecifyWidth>\r\n            </Element>\r\n            <Element xsi:type=\"XParagraphFlag\">\r\n               <InnerID>247</InnerID>\r\n            </Element>\r\n            <Element xsi:type=\"XString\">\r\n               <InnerID>804</InnerID>\r\n               <Text>一、病例特点：</Text>\r\n            </Element>\r\n            <Element xsi:type=\"XParagraphFlag\">\r\n               <InnerID>256</InnerID>\r\n            </Element>\r\n            <Element xsi:type=\"XString\">\r\n               <InnerID>805</InnerID>\r\n               <Text>  1、主诉：</Text>\r\n            </Element>\r\n            <Element xsi:type=\"XInputField\" StyleIndex=\"1\">\r\n               <InnerID>265</InnerID>\r\n               <ID>ZS</ID>\r\n               <EnableValueValidate>true</EnableValueValidate>\r\n               <ValueBinding>\r\n                  <DataSource>EMR</DataSource>\r\n                  <BindingPath>ZS</BindingPath>\r\n               </ValueBinding>\r\n               <XElements>\r\n                  <Element xsi:type=\"XString\">\r\n                     <InnerID>827</InnerID>\r\n                     <Text>头晕3.5小时。</Text>\r\n                  </Element>\r\n               </XElements>\r\n               <BorderElementColor />\r\n               <SpecifyWidth>1535.433</SpecifyWidth>\r\n               <InnerValue>头晕3.5小时。</InnerValue>\r\n            </Element>\r\n            <Element xsi:type=\"XParagraphFlag\">\r\n               <InnerID>274</InnerID>\r\n            </Element>\r\n            <Element xsi:type=\"XString\">\r\n               <InnerID>806</InnerID>\r\n               <Text>  2、现病史：</Text>\r\n            </Element>\r\n            <Element xsi:type=\"XInputField\" StyleIndex=\"1\">\r\n               <InnerID>284</InnerID>\r\n               <ID>XBS</ID>\r\n               <EnableValueValidate>true</EnableValueValidate>\r\n               <ValueBinding>\r\n                  <DataSource>EMR</DataSource>\r\n                  <BindingPath>XBS</BindingPath>\r\n               </ValueBinding>\r\n               <XElements>\r\n                  <Element xsi:type=\"XString\">\r\n                     <InnerID>828</InnerID>\r\n                     <Text>236666666661111</Text>\r\n                  </Element>\r\n               </XElements>\r\n               <BorderElementColor />\r\n               <SpecifyWidth>1488.189</SpecifyWidth>\r\n               <InnerValue>236666666661111</InnerValue>\r\n            </Element>\r\n            <Element xsi:type=\"XParagraphFlag\">\r\n               <InnerID>300</InnerID>\r\n            </Element>\r\n            <Element xsi:type=\"XString\">\r\n               <InnerID>807</InnerID>\r\n               <Text>  3、既往史：</Text>\r\n            </Element>\r\n            <Element xsi:type=\"XInputField\" StyleIndex=\"1\">\r\n               <InnerID>310</InnerID>\r\n               <ID>JWS</ID>\r\n               <EnableValueValidate>true</EnableValueValidate>\r\n               <ValueBinding>\r\n                  <DataSource>EMR</DataSource>\r\n                  <BindingPath>JWS</BindingPath>\r\n               </ValueBinding>\r\n               <XElements>\r\n                  <Element xsi:type=\"XString\">\r\n                     <InnerID>829</InnerID>\r\n                     <Text>23232222222</Text>\r\n                  </Element>\r\n               </XElements>\r\n               <BorderElementColor />\r\n               <SpecifyWidth>1488.189</SpecifyWidth>\r\n               <InnerValue>23232222222</InnerValue>\r\n            </Element>\r\n            <Element xsi:type=\"XParagraphFlag\">\r\n               <InnerID>322</InnerID>\r\n            </Element>\r\n            <Element xsi:type=\"XString\">\r\n               <InnerID>808</InnerID>\r\n               <Text>  4、入院查体：</Text>\r\n            </Element>\r\n            <Element xsi:type=\"XInputField\" StyleIndex=\"1\">\r\n               <InnerID>333</InnerID>\r\n               <ID>RYCT</ID>\r\n               <EnableValueValidate>true</EnableValueValidate>\r\n               <ValueBinding>\r\n                  <DataSource>EMR</DataSource>\r\n                  <BindingPath>RYCT</BindingPath>\r\n               </ValueBinding>\r\n               <XElements>\r\n                  <Element xsi:type=\"XString\">\r\n                     <InnerID>830</InnerID>\r\n                     <Text>3454</Text>\r\n                  </Element>\r\n               </XElements>\r\n               <BorderElementColor />\r\n               <SpecifyWidth>1452.756</SpecifyWidth>\r\n               <InnerValue>3454</InnerValue>\r\n            </Element>\r\n            <Element xsi:type=\"XParagraphFlag\">\r\n               <InnerID>338</InnerID>\r\n            </Element>\r\n            <Element xsi:type=\"XString\">\r\n               <InnerID>809</InnerID>\r\n               <Text>  5、辅助检查：</Text>\r\n            </Element>\r\n            <Element xsi:type=\"XInputField\" StyleIndex=\"1\">\r\n               <InnerID>349</InnerID>\r\n               <ID>FZJC</ID>\r\n               <EnableValueValidate>true</EnableValueValidate>\r\n               <ValueBinding>\r\n                  <DataSource>EMR</DataSource>\r\n                  <BindingPath>FZJC</BindingPath>\r\n               </ValueBinding>\r\n               <XElements>\r\n                  <Element xsi:type=\"XString\">\r\n                     <InnerID>831</InnerID>\r\n                     <Text>5454</Text>\r\n                  </Element>\r\n               </XElements>\r\n               <BorderElementColor />\r\n               <SpecifyWidth>1452.756</SpecifyWidth>\r\n               <InnerValue>5454</InnerValue>\r\n            </Element>\r\n            <Element xsi:type=\"XParagraphFlag\">\r\n               <InnerID>354</InnerID>\r\n            </Element>\r\n            <Element xsi:type=\"XString\">\r\n               <InnerID>810</InnerID>\r\n               <Text>二、诊断及诊断依据：</Text>\r\n            </Element>\r\n            <Element xsi:type=\"XParagraphFlag\">\r\n               <InnerID>366</InnerID>\r\n            </Element>\r\n            <Element xsi:type=\"XInputField\" StyleIndex=\"1\">\r\n               <InnerID>368</InnerID>\r\n               <ID>RYZD</ID>\r\n               <EnableValueValidate>true</EnableValueValidate>\r\n               <ValueBinding>\r\n                  <DataSource>EMR</DataSource>\r\n                  <BindingPath>RYZD</BindingPath>\r\n               </ValueBinding>\r\n               <XElements>\r\n                  <Element xsi:type=\"XString\">\r\n                     <InnerID>832</InnerID>\r\n                     <Text> 1.头晕和眩晕 2.腔隙性脑梗死</Text>\r\n                  </Element>\r\n               </XElements>\r\n               <BorderElementColor />\r\n               <SpecifyWidth>1748.031</SpecifyWidth>\r\n               <InnerValue> 1.头晕和眩晕 2.腔隙性脑梗死</InnerValue>\r\n            </Element>\r\n            <Element xsi:type=\"XParagraphFlag\">\r\n               <InnerID>386</InnerID>\r\n            </Element>\r\n            <Element xsi:type=\"XString\">\r\n               <InnerID>811</InnerID>\r\n               <Text>诊断依据：</Text>\r\n            </Element>\r\n            <Element xsi:type=\"XInputField\" StyleIndex=\"1\">\r\n               <InnerID>393</InnerID>\r\n               <ID>ZDYJ</ID>\r\n               <EnableValueValidate>true</EnableValueValidate>\r\n               <ValueBinding>\r\n                  <DataSource>EMR</DataSource>\r\n                  <BindingPath>ZDYJ</BindingPath>\r\n               </ValueBinding>\r\n               <XElements>\r\n                  <Element xsi:type=\"XString\">\r\n                     <InnerID>833</InnerID>\r\n                     <Text>545</Text>\r\n                  </Element>\r\n               </XElements>\r\n               <BorderElementColor />\r\n               <SpecifyWidth>1488.189</SpecifyWidth>\r\n               <InnerValue>545</InnerValue>\r\n            </Element>\r\n            <Element xsi:type=\"XParagraphFlag\">\r\n               <InnerID>397</InnerID>\r\n            </Element>\r\n            <Element xsi:type=\"XString\">\r\n               <InnerID>812</InnerID>\r\n               <Text>三、鉴别诊断：</Text>\r\n            </Element>\r\n            <Element xsi:type=\"XInputField\" StyleIndex=\"1\">\r\n               <InnerID>406</InnerID>\r\n               <ID>JBZD</ID>\r\n               <EnableValueValidate>true</EnableValueValidate>\r\n               <ValueBinding>\r\n                  <DataSource>EMR</DataSource>\r\n                  <BindingPath>JBZD</BindingPath>\r\n               </ValueBinding>\r\n               <XElements>\r\n                  <Element xsi:type=\"XString\">\r\n                     <InnerID>834</InnerID>\r\n                     <Text>545</Text>\r\n                  </Element>\r\n               </XElements>\r\n               <BorderElementColor />\r\n               <SpecifyWidth>1488.189</SpecifyWidth>\r\n               <InnerValue>545</InnerValue>\r\n            </Element>\r\n            <Element xsi:type=\"XParagraphFlag\">\r\n               <InnerID>410</InnerID>\r\n            </Element>\r\n            <Element xsi:type=\"XString\">\r\n               <InnerID>813</InnerID>\r\n               <Text>四、诊疗计划：</Text>\r\n            </Element>\r\n            <Element xsi:type=\"XParagraphFlag\">\r\n               <InnerID>419</InnerID>\r\n            </Element>\r\n            <Element xsi:type=\"XString\">\r\n               <InnerID>814</InnerID>\r\n               <Text>  1、完善相关检查，如血尿便常规、生化功能、凝血常规、D-二聚体、血糖、糖化血红蛋白、cTnI、NTproBNP、传染病筛选、心脏彩超、心电图、动态心电图、胸片等。 </Text>\r\n            </Element>\r\n            <Element xsi:type=\"XParagraphFlag\">\r\n               <InnerID>505</InnerID>\r\n            </Element>\r\n            <Element xsi:type=\"XString\">\r\n               <InnerID>815</InnerID>\r\n               <Text>  2、按心内科常规护理，Ⅰ/Ⅱ级护理，嘱患者低盐、低脂、糖尿病饮食。</Text>\r\n            </Element>\r\n            <Element xsi:type=\"XParagraphFlag\">\r\n               <InnerID>542</InnerID>\r\n            </Element>\r\n            <Element xsi:type=\"XString\">\r\n               <InnerID>816</InnerID>\r\n               <Text>3、暂给予抗血小板（阿司匹林、氯吡格雷/替格瑞洛）、抗凝药物（如低分子肝素）、抗心肌缺血（美托洛尔、CCB、尼可地尔、硝酸酯类）、抑制心肌重构（ACEI、ARB）、调脂稳定斑块（他汀）、改善心肌能量代谢（曲美他嗪）、降压（）、降糖（）、护胃抑酸（泮托拉唑、铝碳酸镁）等治疗，根据病情变化及检查结果随时调整方案。</Text>\r\n            </Element>\r\n            <Element xsi:type=\"XParagraphFlag\">\r\n               <InnerID>699</InnerID>\r\n            </Element>\r\n            <Element xsi:type=\"XString\">\r\n               <InnerID>817</InnerID>\r\n               <Text>  3、告病重/病危，向家属告知病情：</Text>\r\n            </Element>\r\n            <Element xsi:type=\"XInputField\" StyleIndex=\"1\">\r\n               <InnerID>720</InnerID>\r\n               <ID>GZBQ</ID>\r\n               <EnableValueValidate>true</EnableValueValidate>\r\n               <ValueBinding>\r\n                  <DataSource>EMR</DataSource>\r\n                  <BindingPath>GZBQ</BindingPath>\r\n               </ValueBinding>\r\n               <BorderElementColor />\r\n               <SpecifyWidth>236.2205</SpecifyWidth>\r\n            </Element>\r\n            <Element xsi:type=\"XString\">\r\n               <InnerID>818</InnerID>\r\n               <Text>，必要时转重症医学科继续治疗。</Text>\r\n            </Element>\r\n            <Element xsi:type=\"XParagraphFlag\">\r\n               <InnerID>736</InnerID>\r\n            </Element>\r\n            <Element xsi:type=\"XString\">\r\n               <InnerID>819</InnerID>\r\n               <Text>                                     主任/主治</Text>\r\n            </Element>\r\n            <Element xsi:type=\"XInputField\" StyleIndex=\"1\">\r\n               <InnerID>780</InnerID>\r\n               <ID>YSQM1</ID>\r\n               <EnableValueValidate>true</EnableValueValidate>\r\n               <BorderElementColor />\r\n               <SpecifyWidth>236.2205</SpecifyWidth>\r\n            </Element>\r\n            <Element xsi:type=\"XString\">\r\n               <InnerID>820</InnerID>\r\n               <Text>   医师</Text>\r\n            </Element>\r\n            <Element xsi:type=\"XInputField\" StyleIndex=\"1\">\r\n               <InnerID>786</InnerID>\r\n               <ID>YSQM</ID>\r\n               <EnableValueValidate>true</EnableValueValidate>\r\n               <XElements>\r\n                  <Element xsi:type=\"XImage\">\r\n                     <InnerID>787</InnerID>\r\n                     <ID>YSQM15b688fd-aa02-4cd8-9218-5413067e36e6</ID>\r\n                     <Width>156.25</Width>\r\n                     <Height>78.125</Height>\r\n                     <CompressSaveMode>false</CompressSaveMode>\r\n                     <Image>\r\n                        <ImageDataBase64String> R0lGODlh gQA3APcA AAAAAP// //7+/v39 /fz8/Pv7 +/r6+vn5 +fj4+Pf3 9/b29vX1 9fT09PPz 8/Ly8vHx 8fDw8O/v 7+7u7u3t 7ezs7Ovr 6+rq6unp 6ejo6Ofn 5+bm5uXl\r\n 5eTk5OPj 4+Li4uHh 4eDg4N/f 397e3t3d 3dzc3Nvb 29nZ2djY 2NfX19bW 1tTU1NPT 09LS0tHR 0dDQ0M/P z87Ozs3N zczMzMvL y8rKysnJ ycjIyMfH x8bGxsXF xcTExMPD\r\n w8LCwsHB wcDAwL6+ vr29vby8 vLq6urm5 ubi4uLe3 t7a2trW1 tbS0tLOz s7KysrGx sa+vr66u rq2trays rKurq6qq qqmpqaio qKenp6am pqWlpaSk pKOjo6Ki oqGhoaCg\r\n oJ+fn56e np2dnZyc nJubm5qa mpmZmZiY mJeXl5aW lpWVlZSU lJOTk5KS kpGRkZCQ kI+Pj46O jo2NjYyM jIuLi4qK iomJiYiI iIeHh4aG hoWFhYSE hIODg4KC goGBgYCA\r\n gH5+fn19 fXx8fHt7 e3p6enl5 eXh4eHd3 d3Z2dnR0 dHNzc3Fx cXBwcG9v b25ubmxs bGtra2pq amlpaWho aGdnZ2Zm ZmVlZWNj Y2JiYmFh YWBgYF9f X15eXl1d XVxcXFtb\r\n W1paWllZ WVdXV1ZW VlRUVFNT U1JSUlFR UVBQUE5O Tk1NTUxM TEtLS0pK SkdHR0ZG RkVFRURE RENDQ0FB QUBAQD8/ Pz4+Pj09 PTw8PDs7 Ozo6Ojk5 OTg4ODc3 NzY2NjU1\r\n NTQ0NDMz MzIyMjEx MTAwMC4u LiwsLCsr KyoqKikp KSgoKCcn JyYmJiUl JSQkJCMj IyIiIiEh ISAgIB8f Hx4eHh0d HRwcHBsb GxoaGhkZ GRgYGBcX FxYWFhUV FRQUFBMT\r\n ExISEhER ERAQEA8P Dw4ODg0N DQwMDAsL CwoKCgkJ CQgICAcH BwYGBgUF BQQEBAMD AwICAgEB Af///wAA AAAAAAAA AAAAAAAA AAAAAAAA AAAAAAAA AAAAAAAA AAAAAAAA\r\n AAAAAAAA AAAAAAAA ACH5BAEA AO4ALAAA AACBADcA AAj/AAMI HEiwoMGD CBMqXMiw ocOHECNK nEixosWL GDNq3Mix o8ePIEOK HEmypMmT KFOqXMmy pcuXMEsK mClgoIAB\r\n A2rG3FnR BJpCd4Qk 4EmU4UyC KwqlAwBg VZKiUBEK KDCQAx5t TF1BUTBw QNSvBZnY YnrLCcEC BQjopEgT 7EcUjZhO W/OgIM21 EgUQICBw AQcSISa4 vVgkFtNS OWyubQsR\r\n wYgbOEYM rOGJLBOp RwcTXOtg zjcA3N40 6Np1b06I KRYxRcZk QAU93ZgC CHXkwQQs moyRawYp iOaEIhDJ LcNVYAEP MGSQYCAw c8MXmZiG KmJDjjPZ AMx96xaO HYB2TMmF\r\n /4Li9XfB GqOYsvpB sAIbZkyP nYkQsQEd rLXoqNnk Xfa6dEvJ FssWxQXg nHlM9MJU Jiy094Yw 2NHShQEQ +dBJfwBc g0kbZBQy izG6+HIN dt4wEoNi eEG1FgJn TAMAOGQI\r\n tEMUM4RQ RCrX9FIJ KM+E04kL D0nARjCy PdOHZAJ9 UAd8AHSz DVPN1JGB YuZ1cIg6 AMxCg0B8 RJMLGzyY kQsxlMiR iTbmLPLB Qywgcg5T uDwh0A1i pLHHJsJE U0sow6wz\r\n jSAc/HYT QUfIAgA7 fQhEgylM rYMMNACI c8kXZJiC zjRolNdQ EoYCkEti ATiBDFOx dLFCD5zE 18aUHFTx Bhc40P/n 1gJujDhN FgKhgAmG svWShxmT UHNOJSU8 5IEf6wCw\r\n ThoCQaEM AM2QEkkp 1aDDlDjK CLPMOLIx c4cGbi2R C1OOXCCQ CYqQwxQs gOCRSTUA pMMNU98Y coJDEaBB JADRfHFC D6IAYI0l gXTijX/r gCcbOqZk QQFYGAwC DgCqzCCQ\r\n D5pgxdQo YUyhxzHY MVVMHFM2 FMUq3QIC Bh2qMAWO uul0ow04 vALgCxqy BlBAiivh lcQrAIyT SA8+EEJN yACQgoYW fzQT8i9q SOCQC4xc BwA214iD JTe3pEJL Mr/AYQEF\r\n WbjiTCuZ 3JLVEl+p 4Aek8XaD ZZaA2HHJ ZxQ/JZAS AR//OggJ Dh3gxpOq dMyIbN8k IoNABMTQ gw4pDBRB H+UAoAsS UCkQxrhI A/AMLa3s IhsqTRBE wiRM5TJE QQto8IEG\r\n zBE0wylM KXJAAC0w mp0hKAwk BSm0PBLC xWMBoEig RRGwAx+i dHIGCx8Y sQjc6IQT 3iMwEJTE uOXwEXsC P2SSLC1W GDTG0dzE GAAEf8Ar VyEVBLAB JMnkwnYA X4gDADly\r\n OEDUTTjh WQAkoAZM 0GIYkGIH JTogEBYE whhMGQcw ZPGLgzEl HJPggUEg AIhk6SJ7 ARgC0OJ1 DW8ojCns iAS4HhCd pvTAPATJ ABlaIZto 4EEgDBjE vJAmjVKw AQYUQggT\r\n 8XjBrykE AASYYMop bhCABVDh ErfQhSa8 UJcAMAGC AHhEscyz Fg7YITZZ gsJAICAD J2ihCTkg QQSoshnG DIQBXyie bMIhCRss ZASqAYA0 ugBDgWgK BH/YBS70 gDyLrAUD\r\n V9CEL2YR CB0MpTkI IYLaAPCJ F/QxAAMo gAEKEEAC pEWAEcHJ aQ5yF4MU iimqYM8l DXQgN5Ik BECgwhbO 0AinASAb fjDBKg1y F1CCxAJc SEWAAACM OWzRQKPc pUqOohe0\r\n 8EWZRQEg XmYSQGjG 5EDWzKY2 t8nNbnrz m+AMpzjH Sc5ymvOc 6EynOtfJ zna6850O CQgAOw==</ImageDataBase64String>\r\n                     </Image>\r\n                  </Element>\r\n               </XElements>\r\n               <BorderElementColor />\r\n               <SpecifyWidth>236.2205</SpecifyWidth>\r\n            </Element>\r\n            <Element xsi:type=\"XParagraphFlag\" StyleIndex=\"0\">\r\n               <InnerID>788</InnerID>\r\n            </Element>\r\n         </XElements>\r\n      </Element>\r\n      <Element xsi:type=\"XTextFooter\">\r\n         <InnerID>197</InnerID>\r\n         <AcceptTab>true</AcceptTab>\r\n         <XElements>\r\n            <Element xsi:type=\"XParagraphFlag\">\r\n               <InnerID>793</InnerID>\r\n            </Element>\r\n         </XElements>\r\n      </Element>\r\n   </XElements>\r\n   <FileName>C:\\dcxmlTemplate\\病程\\病程记录.xml</FileName>\r\n   <FileFormat>XML</FileFormat>\r\n   <ContentStyles>\r\n      <Default xsi:type=\"DocumentContentStyle\">\r\n         <FontName>宋体</FontName>\r\n         <FontSize>12</FontSize>\r\n      </Default>\r\n      <Styles>\r\n         <Style Index=\"0\">\r\n            <FontName>宋体</FontName>\r\n            <FontSize>12</FontSize>\r\n            <Align>Center</Align>\r\n         </Style>\r\n         <Style Index=\"1\">\r\n            <FontName>宋体</FontName>\r\n            <FontSize>12</FontSize>\r\n         </Style>\r\n      </Styles>\r\n   </ContentStyles>\r\n   <Info>\r\n      <LicenseText>未注册|Unregister</LicenseText>\r\n      <CreationTime>1980-01-01T00:00:00</CreationTime>\r\n      <LastModifiedTime>2023-03-30T14:17:03.3425658+08:00</LastModifiedTime>\r\n      <LastPrintTime>1980-01-01T00:00:00</LastPrintTime>\r\n      <Operator>DCSoft.Writer Version:1.2022.2.21</Operator>\r\n      <NumOfPage>1</NumOfPage>\r\n   </Info>\r\n   <BodyText>2022-03-10 02:31:18 614c8c56-98ee-4840-9ea9-53d997f86a05 2001           首次病程记录\r\n患者:蒋秀群，性别:女，年龄:50岁，职业：\r\n一、病例特点：\r\n  1、主诉：头晕3.5小时。\r\n  2、现病史：236666666661111\r\n  3、既往史：23232222222\r\n  4、入院查体：3454\r\n  5、辅助检查：5454\r\n二、诊断及诊断依据：\r\n 1.头晕和眩晕 2.腔隙性脑梗死\r\n诊断依据：545\r\n三、鉴别诊断：545\r\n四、诊疗计划：\r\n  1、完善相关检查，如血尿便常规、生化功能、凝血常规、D-二聚体、血糖、糖化血红蛋白、cTnI、NTproBNP、传染病筛选、心脏彩超、心电图、动态心电图、胸片等。 \r\n  2、按心内科常规护理，Ⅰ/Ⅱ级护理，嘱患者低盐、低脂、糖尿病饮食。\r\n3、暂给予抗血小板（阿司匹林、氯吡格雷/替格瑞洛）、抗凝药物（如低分子肝素）、抗心肌缺血（美托洛尔、CCB、尼可地尔、硝酸酯类）、抑制心肌重构（ACEI、ARB）、调脂稳定斑块（他汀）、改善心肌能量代谢（曲美他嗪）、降压（）、降糖（）、护胃抑酸（泮托拉唑、铝碳酸镁）等治疗，根据病情变化及检查结果随时调整方案。\r\n  3、告病重/病危，向家属告知病情：，必要时转重症医学科继续治疗。\r\n                                     主任/主治   医师</BodyText>\r\n   <LocalConfig />\r\n   <PageSettings>\r\n      <LeftMargin>59</LeftMargin>\r\n      <RightMargin>59</RightMargin>\r\n      <StrictUsePageSize>false</StrictUsePageSize>\r\n   </PageSettings>\r\n</XTextDocument>\r\n"
+                    ],
+                    "options": [
+                        {
+                            "NewPage": "false",
+                            "ReadOnly": "false",
+                            "Contenteditable": "false",
+                            "Title": "首次病程记录",
+                            "ID": "614c8c56-98ee-4840-9ea9-53d997f86a05",
+                            "ToolTip": null,
+                            "CSSStyle": "padding-bottom:20px;",
+                            "TitleLevel": "0",
+                            "EnablePermission": "true",
+                            "Parameters": null,
+                            "DataBindingXML": "<EMR>\r\n  <RYSJ>2022-03-10 02:31:18</RYSJ>\r\n  <ID>614c8c56-98ee-4840-9ea9-53d997f86a05</ID>\r\n  <BCLX>2001</BCLX>\r\n  <XM>蒋秀群</XM>\r\n  <XB>女</XB>\r\n  <NL>50岁</NL>\r\n  <ZY></ZY>\r\n  <ZS>头晕3.5小时。</ZS>\r\n  <XBS>236666666661111</XBS>\r\n  <JWS>23232222222</JWS>\r\n  <RYCT>3454</RYCT>\r\n  <FZJC>5454</FZJC>\r\n  <RYZD> 1.头晕和眩晕 2.腔隙性脑梗死</RYZD>\r\n  <ZDYJ>545</ZDYJ>\r\n  <JBZD>545</JBZD>\r\n  <GZBQ></GZBQ>\r\n</EMR>",
+                            "LoadOriginHeaderFooter": "false"
+                        }
+                    ]
+                }
+            };
+            const data = res2.response;
+            var subDocuments = { Files: data.files, Options: data.options, Usebase64: 'false', ShowMaskUI: 'true' }
+
+            ctl.AppendSubDocuments(subDocuments, function () {
+                ctl.ResetDocumentModified()
+
+                var contentDocument = ctl.GetContentDocument(); // 回当前编辑的文档的HTML Document对象
+
+                const res = [
+                    {
+                        "PNID": "614c8c56-98ee-4840-9ea9-53d997f86a05",
+                        "VID": "202203100017",
+                        "BLH": "PID000578018",
+                        "LX": "2001",
+                        "JLSJ": "2023-03-17T09:58:06",
+                        "BCSJ": "2022-03-10T02:31:18",
+                        "JLR": "17834",
+                        "TITLE": "首次病程记录",
+                        "NOTE": "{\r\n  \"EMR\": {\r\n    \"RYSJ\": \"2022-03-10 02:31:18\",\r\n    \"ID\": \"614c8c56-98ee-4840-9ea9-53d997f86a05\",\r\n    \"BCLX\": \"2001\",\r\n    \"XM\": \"蒋秀群\",\r\n    \"XB\": \"女\",\r\n    \"NL\": \"50岁\",\r\n    \"ZY\": \"\",\r\n    \"ZS\": \"头晕3.5小时。\",\r\n    \"XBS\": \"236666666661111\",\r\n    \"JWS\": \"23232222222\",\r\n    \"RYCT\": \"3454\",\r\n    \"FZJC\": \"5454\",\r\n    \"RYZD\": \" 1.头晕和眩晕 2.腔隙性脑梗死\",\r\n    \"ZDYJ\": \"545\",\r\n    \"JBZD\": \"545\",\r\n    \"GZBQ\": \"\"\r\n  }\r\n}",
+                        "NEWPAGEFLAG": null,
+                        "SORTID": null,
+                        "SJYS": null,
+                        "YXF": "Y",
+                        "VERSION": "V1.0",
+                        "JLRMC": "程婷",
+                        "DZ": null,
+                        "SJYSQMSJ": null
+                    }
+                ];
+
+                    for (var i = 0; i < res.length; i++) {
+                        // 设置子病程样式
+                        //_this.setChildProgressCSS(ctl, res[i].PNID);
+                        var record = ctl.GetCourseRecords(res[i].PNID);
+                        var Input = record[0].Element.querySelector('#title');
+                        $(Input).css('font-weight', 700).find('*').css('font-weight', 700);
+                    }
+            })
+
+        }
+        function GetProgressNoteList() {
+
+            const arr = [
+                {
+                    "PNID": "614c8c56-98ee-4840-9ea9-53d997f86a05",
+                    "VID": "202203100017",
+                    "BLH": "PID000578018",
+                    "LX": "2001",
+                    "JLSJ": "2023-03-17T09:58:06",
+                    "BCSJ": "2022-03-10T02:31:18",
+                    "JLR": "17834",
+                    "TITLE": "首次病程记录",
+                    "NOTE": "{\r\n  \"EMR\": {\r\n    \"RYSJ\": \"2022-03-10 02:31:18\",\r\n    \"ID\": \"614c8c56-98ee-4840-9ea9-53d997f86a05\",\r\n    \"BCLX\": \"2001\",\r\n    \"XM\": \"蒋秀群\",\r\n    \"XB\": \"女\",\r\n    \"NL\": \"50岁\",\r\n    \"ZY\": \"\",\r\n    \"ZS\": \"头晕3.5小时。\",\r\n    \"XBS\": \"236666666661111\",\r\n    \"JWS\": \"23232222222\",\r\n    \"RYCT\": \"3454\",\r\n    \"FZJC\": \"5454\",\r\n    \"RYZD\": \" 1.头晕和眩晕 2.腔隙性脑梗死\",\r\n    \"ZDYJ\": \"545\",\r\n    \"JBZD\": \"545\",\r\n    \"GZBQ\": \"\"\r\n  }\r\n}",
+                    "NEWPAGEFLAG": null,
+                    "SORTID": null,
+                    "SJYS": null,
+                    "YXF": "Y",
+                    "VERSION": "V1.0",
+                    "JLRMC": "程婷",
+                    "DZ": null,
+                    "SJYSQMSJ": null
+                }
+            ];
+            return arr;
+        }
+
+            function getDataByElement() {
+                var ctl = document.getElementById("myWriterControl");
+                var name = ctl.GetElementTextByID("name"); //获取文本域
+                console.log(`$log 姓名:${name}`);
+                var age = ctl.GetElementTextByID("age"); //获取文本域
+                console.log(`$log 年龄:${age}`);
+
+                // var ysxg_1 = ctl.GetElementTextByID("b6161c56-25bc-4a3c-8f4e-9cb51a795141"); //获取文本域
+                // console.log(`$log 饮食习惯:${ysxg_1}`);
+
+
+            }
+            function getRysj() {
+
+                var ctl = document.getElementById("myWriterControl");
+                var rusj = ctl.GetElementTextByID("rysj"); //获取文本域
+                console.log(`$log 入院时间:${rusj}`);
+            }
+            function setJlsj() {
+                var ctl = document.getElementById("myWriterControl");
+                ctl.SetElementTextByID("jlsj", "2022-10-10 12:09");
+
+            }
+
+            function SetBindPatient() {
+                //数据内容填充
+                //注意,这里设置数据应全部 设置为 小写,否者会出现多个字段  txtname 和 txtName
+                //如果没有 绑定的目标控件, 原来的值会保持不变
+
+                var ctl = document.getElementById("myWriterControl");
+
+                var emr = {
+                    XM: "李国平",
+                    XB: "女",
+                    NL: "60岁",
+                    CSRQ: "1963-01-29",
+                    ZYKSMC: "消化内科",
+                    ZYCW: "17楼II区",
+                    BLH: "PID000100032",
+                    THDD: "心内科",
+                    THSJ: '2022-01-01 12:30:30',
+                    THYS: '张三丰',
+                    HZBQ:"患者病情xxxxx"
+
+                };
+                ctl.SetDocumentParameterValue("EMR", emr);
+                var result = ctl.WriteDataFromDataSourceToDocument();
+
+                console.log(`更新了 ${result} 处数据。`);
+            }
+
+            function GetBindPatient() {
+                //获取数据项
+                var ctl = document.getElementById("myWriterControl");
+                ctl.WriteDataFromDocumentToDataSource();
+                var data = ctl.GetDocumentParameterValue("EMR");
+                if (data != null) {
+                    var json = JSON.stringify(data);
+                    console.log(json);
+                    //
+                    //{"txtname":"张三丰","age":"33212","recorddate":"2019-3-28","marriage":"3333","patientname":"004","txtName":"张三丰12"}
+                }
+
+
+            }
+        function setHidden() {
+
+            //将按钮和  提示信息 隐藏
+            //ctl.SetElementPrintVisibility('lbl_tqsj', 'Hidden');
+            //ctl.SetElementPrintVisibility('dc_xsr_tqsj_ts', 'Hidden');  //Visible
+            //var dc_xsr_tqsj_ts = document.getElementById('dc_xsr_tqsj_ts')
+            //if (dc_xsr_tqsj_ts != null) {
+            //    $('#dc_xsr_tqsj_ts').hide();
+            //    // ctl.SetElementVisibility(dc_xsr_tqsj_ts, false)
+            //}
+
+        }
+
+        var xml = `<XTextDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" EditorVersionString="1.2022.2.21">
+   <XElements>
+      <Element xsi:type="XTextHeader">
+         <InnerID>195</InnerID>
+         <AcceptTab>true</AcceptTab>
+         <XElements>
+            <Element xsi:type="XImage">
+               <InnerID>208</InnerID>
+               <Width>457</Width>
+               <Height>116</Height>
+               <Image>
+                  <HorizontalResolution>96</HorizontalResolution>
+                  <VerticalResolution>96</VerticalResolution>
+                  <ImageDataBase64String> iVBORw0K GgoAAAAN SUhEUgAA AIwAAAAi CAYAAACN 1jGgAAAA AXNSR0IA rs4c6QAA AARnQU1B AACxjwv8 YQUAAAAJ cEhZcwAA DsMAAA7D AcdvqGQA ABAlSURB VHhe7Zz3
+ c5THGcf1 v8RO3GPj lsnYjseZ YGcy8SR2 YtPBYIwx zZgugem9 dyRAdNER IJCx6V0C hCqgLhlJ qKECOvXy ZD977572 TneH7PEP QO4784ze d993993y 3ae99ypM uokKV4vE
+ Z9bIrNNF 8q/td+St tWnyflSG DD+cJ5uv l0taab20 tnc4d4fw tCIgYaob WuVkTq3M P1ssn+7M lDdWp8rr q9OUmL/m uPP8vcgM GRNXIDtu Vsid8npp 7wgR6GmD hzAPm9rk
+ XP4DWXKh RHrtzpY3 19iESFXn qdIrJktf 576i2ma5 pUixM7lC xh4rkL9E pnvdj3yw MUPGHS+Q Pan3Ja+q UUL8efIR Vl7XIiOO 5MtbihA9 1CIbgTCf KM2ChjmZ UyNVSuOA
+ hoJ8KVy+ VG6PHC7Z 4ROl4nic dLS2anOU UVYvW5Mq ZIQyU+9s 6Eqgj6Jv SeytKt1O CE8mwoYd ypPXFVkw OR9vuyMz T92V+Kwa gUi+uBez Uy698rxc fP4ZL0np 9R9pqfIm
+ QnNbu9ws cUnUtTIZ ejBX/rzO rbF4Troi VghPJsLe Vs5rj1Up klRc5xT5 R/WFc3Lp xd9rgqQP HiDFW6Ml f9ECufrW a+6yQf0k mM1paGmX YbGKnIow MSmVTmkI TxrCcFTx
+ T2oa2pwi /0j5/FNN jJzp07yI UZ+dJVd6 vKyv1SYm OKX+QYQF YQ6k33dK QnjSEJZU 7JLzyokN hrb6ern0 0h80KZrL y5zSTmRN Gq+vFa5e 6ZT4B2YO sjS2tjsl 3uhQRCwv
+ K/MrTU1N 8uDBAzlz +rRUVlRI cXGx3Ll9 26nprnv0 yBFJTHCT 9vq1a3Lo wIGgknnn jr4X/Hji hBxUZd2V 2EOH9DN9 0dbWJg0N DdLe7h7j 3j175If4 eH3cHVy6 eFFOnTzp
+ nIluJ/7Y MUm6ccMp 8YbL5dJ9 QQ53Q46r tgzoa0tL i0ds8NxD Bw96zTHo Vh6mtbpa EwLStDc3 O6WdKFi6 WF/Pmzfb Kfl1aGxs lMEDB/qV m0lJUqGI 0vuzzzRp fvrxR+nz
+ +edy/36n tpo7e7aM +/ZbfRyn yLNg7ly/ Mm/OHN3O kdhYfS/Y vm2brF65 0iN9evXS bXEcPnmy vn/JokWe 62tXr/aQ ApTeu6f7 cuXyZX1v 8s2bunz5 0qUyfNgw D7l45srl
+ y/Wxjdzc XLmjCLxn 9249LkjG OYSjPXN+ 9+efnRpu lJWW6uvh kybJimXL Hikb1q3z 9IW+9e/b V8sAJeXl 5RKrSKJF keuLAQPk +4iIzjIl v5Awz/kl TOGyJb8J YQCDCSSt
+ Khrr17u3 7N+7VwoK CmTm9OmS pybaYJ+a 3L5qodl1 yMmffpKi u3edq50o yM/Xi3Lj +nWnpCv6 9ekjO7dv 18eQk0Wp ssjpi1Ej RsiqFSu6 EAZNxnll pdtv45w+ 1iutbWPk
+ N9/IoP79 ZeL48d4y bpznmEWd M3OmU8ON MqV9af+U GmuJ0rqb oqK8iBwM bIBp4eFy +dIl6avm FULS1vat W7sIm4Rr jxVh4o8f 17s/mPRX Czli+HDP OXUM2H1o lofKdEGw
+ KWrXMdEQ zUb0pk0y dPBgabbG kp2dLVuj o6VajRUE IgxtcZ+v iRj+1VcS uWFDF8Ik XL2qz1OS k73Oc3Jy 9LkBhJk1 Y4Zz5h9j x4wJShjM sdaMY8fK +ABSW1vr 1HQTBq2c
+ nZWlyYqZ R+v4Q6nS ZMuWLHm8 CEPHz587 5xFMz5lT p7zKIMBo tZvNOXUM MjMzZcb3 32vtA27d uqU1yV6l 5g3QOJAO 9Wrj7Jkz euKNyg9E GHwpjvfE xOhrBgP7 9ZNtW7Z0
+ IQwakPNz qn2Qr7Qb 5/gqNn4L wuxTmnfC d99JXl6e fi7ztGbV Kve5I/gt BoYw9PWr IUN0GX7O wvnz/QqE 9CJM+/0s aTwbIfV7 P5b6mI88 4trZU6oX v6ilPuZD qd/tXFP3
+ tZWneghD iH295wed 8uEHkjaw r5TuiZGO 1q55HX9g oCwewN7O mTVLHxug cr9WuxkN 4gtMDJMH UQyi1K7H BKSnpWkf adKECXqn 2doFoJap awgYiDA4 3hzbhGtS 7fIMnERf
+ wuCgcx53 9Kg+Z4dz fvTwYX1u AGHwGSKm TAkojzJJ mNpcpbkw d8jY0aNl y+bNnnPE HrchDE42 2hhACsbh T3KUFvYQ piXrqNRF vSquyBe1 1G14QQl/ g0vL7QNS sm2LJkww
+ Se3XW9qU X/EowHAI AdatWaMH gkNofJUT P/ygtYYx HTYqlNNG tGNfgyTs OkzQbDXZ qN6fCwud q53IyMjQ E38tMVGf ByIMdTlG +xmgrilD 4/kShugD c0TfzDnk 2u2joYxD
+ fUv1wwiR nn3OLsec 2rAJg3OO pjPCPOHz 2WVmTMAQ hjmbqgiJ A41JCiQ4 zZow7dW5 UrfxNU2A xvjh0lpw RtpKrnuk KfO0JPd8 VlL+/py0 3r0qbfec a0q7SIdy sJST9SD5
+ ptReS/SW xAQp2hQl V958VZHm d5IzLVx3 NBh8CcOu GqV235hR o7RWMSre hM82mFQG zk6zYZxc 6jE5/lBV VaXvIToA gQhz9coV fXzb0mLJ ihCUEab7 EsYXOKRE fex8gwa1
+ 82traiRL mVQWBZMK cQcPGiSF jnkFrro6 7cjb2tUm DG1jchDC YUwvZule SYmnvMNy iA1h8MeG DR2q52D/ vn0SuX69 bjNa9ZH+ YK4wd1zT hGk6P8Mh y9deSTmD R/kw7RUZ
+ 0nhsqJtA flCTcEUu vvCsXHr5 OWnxoxls +BJmloqE bDDoIWoi fXcaOHf2 rB5ooaVB 2P1EGmgW tMxXX37p ZbIMWAQc VyYRBCLM DhV++0Y5 R5R5gWx1 akEfRRie Qz+ilKk0
+ 2LRxo0yf Ns1TF42E c00Zfosx IxAKjXFS 9cfAJgz+ 2Wnl8zEG +rh+7Vqt tdAsmHfI /vDhQ6dm J2Ew10O+ +MJDREwU JGGuIS4m 3EATpuHA fzVhWvM7 E0Y2HkWY 5sQVun7z
+ lQVOSVck /aOnbqP6 4gWnxD+C EcaEi4Sv hLH2TgMH 9++X3mrh HjiRAI4l u5l7cfgI O7HrTCZO q2+y6q6a cKOdAhGm qKjIYx4N IKXxfQIR hr5CNq6T T7IXDmeX BbUJA7iP
+ /AvkOaB2 NwtJv9kw JtqxCQMB pkycKLt2 7PDaNITL RHAjVXRp O9uGMPh+ 3wwb5pSK Nn3rVX9A YMIovyUg YZS6NBqi w2eSgYcw l+c7JV3R HcIwyfPU ANAGu3bu 1B2F6ZAG
+ pxAfBDAI JokdZwP1 +bVSrSwO 6pN7iBLI yRigGSjj GhNjQNIK 1W0EwrCI HJu2bis1 b66TqPMH 4zyfVT4O PoER4+ew 623QVxKE mBpDGJx+ uy7CPDA3 ONgkDUtU HwBZcOpA
+ EkwicxJM SB8YGMLw XDYhIF+E FktTWgcw 18x9Wmqq 9t+6ZZLw UXKmT5X8 xQudAm88 ijDdNUlE EoTFs9WO YzEhAKqb bCfmhjwB YMdNUGYm ZtcufW5A thMygMOx sZKqBhkI
+ GenpOiFl MH3qVJ2R 7a7gV6Gy fcFuxbSx Y7vUU+X2 M30RrC5l /jLEaKGA z/Mj41UA YAB5fdtk rkmIGu3N JqZ96m6M jHSc3qqc rk4vjq2P tLvc75Ga ykql9nqn c1u5bYLc
+ i3heKjeP cZcbuYbT G+k4vc90 y+kN4fGG JgwwYTWk CSSu7e8r drVKwjtv awL8Eulu WB3C4w0P YYCduHOR sDOy629u 0kS9osKU FskcP9Yr QXftvR6S 8OYzkviu d+Luxod/
+ lbSB/bqd uNNhn6MK jbrnL86u cXi5bs7N vfYxsOsa 6HrWuYF9 D/4NoSWw 2+Sv3b4N 7jd5H+4x b36pb7+S sPvEdXPN 3OsLu1/2 sUGg6zjD JBcNaB8/ h3Ca/vFc MxYzRtNn
+ xLQVqH0v wgRCR2O1 hzAdbUGi pCBOb3dA FEDyizAS Wwp4f0EC i58UABy7 Y3Fx2knE wQREMYSM AMfOvF8i Dc8LScCk 2aEswBE1 KX4SaziA PJdoiQgp y4l8eL5v Kp+Jx8fa
+ sH69juZw DnEeZyof jHNyKZtV uEymF+Bb 8Tab8XBM xpowfMzI kfp+3pYb EEFtttIG hNe+MK8R WHB8DkCf Fy9cqP0/ XtBCCDLD vPBkDMwR bS1asED7 S9xPDobn 88pl4bx5
+ ep5pc7Xq oyEy89Lm EPyxIgwT yGB5QUci iUiASSfM JFIBJKR4 wQhJSFfn q3A5RkVU LBYg70A0 xW6BMLRD SEqkQdRj g0XDySaK glA42ziR AOcUwjB5 Sxcvlvlz 53p2Jrh4
+ 4YKHxIBr EJjEH8k2 Jps60yIi dORBFAJh aIv0PVEZ xGDxeD9F 6t+AJBn1 uAdMDe/q ++HgM3aE 60QwZGMN mEciOZx5 UvqAOWLe SDHg8BLm s8EA5DG/ fYFMEZMn 600AmM/H
+ kjCABSeM ZoeQtSW/ kZKS4tEU ZFiPqWiK gXMvx+xa JoP8COE4 morQFMKw 8GgRJsgm DMTgnMkh 9wPQLEwO k2gIQ5TA M9il/CbH AC0HadBS 7Gp2KYRB exxX11Dj EIbFQQNA
+ TAhDKMsP vXguhEHD kBtijKBe kZfxMBaT nPRHGEJx +kU/yL0Q 9rJxDKjL 3GGimCcT tkM0oh3I 6I8wEB+y UY9fA3D+ qwnjCkCY poTlvxlh 0CYsJKly XhQCklN0 mjIWn0WE
+ MMZMkO5n MggRSTiR 2maH8g6K SWHQEMkm DNqFfAYJ rcnqOYTs mA8mlpAc wmD+WHTa oy4TaEAS kB8XoU14 JcEi2xoG f4i6/PqO ewlNbQ2D RoAwkA1i oh3oJ1qL Y8wnGeoa
+ NWb+Qv57 Vu7HmCnq cMw7MzYY i65fkSiS 4cvwHMjH c42GMfBH GOYfgkMq 5pB8DOaP PtOHsKQS l5zLC/4T zY6Weq1d IEWHy60m bTSenuwm zPU1Tol/ 8PVksJ9o AnZmcVGR
+ Prbfo2Br GQQv/Zgk dq75cRTH qGYmxID7 GaBJQFHH ZGM5xlcy 4FUB6XF+ 57J71y69 2CZRhSYw wAeAAAZk hbdu2aJ/ 1kBCjCww hEFI7kEg 49xCSEwu bXCdnBOm yPhe+Bho
+ vQvnz+v+ AcbEM0yb XDOw+2/K qU8CjzHg jOMLkqvi vRWaUGep VZsGjJns NSAvBaEZ r0l01ihn /qbanDzL 9CHs3Q3p 3foReMOh XpoUTedn MuNOqfK0 q7LFtfkN fa2t5JpT
+ 6h98whL6 EfiTDf2Z CYvIj8GD oe3uBamL fFkR4yVp iBsizanb pOnqYnFF /0mTpSFu sLrLf+gJ Qp+ZPB0I G3YoVy8i H5j9c+tt pQWK5Hhm td8P2ZrT Y5Rp+qMm iC0NsX2U
+ n+P7IVuH /pAtMtH7 Qza+qEwv DX3I9qTC /ans4Tz9 qSwLagQC fbIjU+af 41PZWs+n su21BToq ajwxWhrP hEtrTrx0 tHd+Krvl RrlqLz/0 qexTCk+U xMf4fJ/k /hg/S2sC
+ e7H9f4zf IDuTK+Xb uPyAH+OP jy+UPamV kns/9DH+ 04CAYbX5 dx8LlIbp /HcfwcXr 331U8DFX iCFPG7qV hwEVynTF K9+Gz13/ rUwVJsz8 Q6FoZYZC /1Do/wEi /wPVNfwe
+ s/rQTQAA AABJRU5E rkJggg==</ImageDataBase64String>
+               </Image>
+            </Element>
+            <Element xsi:type="XString" WhitespaceCount="19">
+               <InnerID>169</InnerID>
+               <Text>                   </Text>
+            </Element>
+            <Element xsi:type="XString" StyleIndex="3">
+               <InnerID>170</InnerID>
+               <Text>病程记录</Text>
+            </Element>
+            <Element xsi:type="XString" WhitespaceCount="20">
+               <InnerID>171</InnerID>
+               <Text>                    </Text>
+            </Element>
+            <Element xsi:type="XString" StyleIndex="1">
+               <InnerID>172</InnerID>
+               <Text>AMD-YWB-014-01-R3</Text>
+            </Element>
+            <Element xsi:type="XParagraphFlag" StyleIndex="4">
+               <InnerID>1909</InnerID>
+            </Element>
+            <Element xsi:type="XString" StyleIndex="2">
+               <InnerID>173</InnerID>
+               <Text>  病案号:</Text>
+            </Element>
+            <Element xsi:type="XInputField">
+               <InnerID>56</InnerID>
+               <ID>BLH</ID>
+               <EnableValueValidate>true</EnableValueValidate>
+               <ValueBinding>
+                  <DataSource>BASIC</DataSource>
+                  <BindingPath>BLH</BindingPath>
+                  <BindingPathForText />
+                  <Handled>true</Handled>
+               </ValueBinding>
+               <XElements />
+               <Deleteable>false</Deleteable>
+               <BorderElementColor />
+               <SpecifyWidth>354.330719</SpecifyWidth>
+               <UserEditable>false</UserEditable>
+               <InnerValue />
+            </Element>
+            <Element xsi:type="XString" StyleIndex="2">
+               <InnerID>174</InnerID>
+               <Text>               姓名:</Text>
+            </Element>
+            <Element xsi:type="XInputField">
+               <InnerID>95</InnerID>
+               <ID>XM</ID>
+               <EnableValueValidate>true</EnableValueValidate>
+               <ValueBinding>
+                  <DataSource>BASIC</DataSource>
+                  <BindingPath>XM</BindingPath>
+                  <BindingPathForText />
+                  <Handled>true</Handled>
+               </ValueBinding>
+               <XElements />
+               <Deleteable>false</Deleteable>
+               <BorderElementColor />
+               <SpecifyWidth>354.330719</SpecifyWidth>
+               <UserEditable>false</UserEditable>
+               <InnerValue />
+            </Element>
+            <Element xsi:type="XString" StyleIndex="2">
+               <InnerID>175</InnerID>
+               <Text>                性别:</Text>
+            </Element>
+            <Element xsi:type="XInputField">
+               <InnerID>128</InnerID>
+               <ID>XB</ID>
+               <EnableValueValidate>true</EnableValueValidate>
+               <ValueBinding>
+                  <DataSource>BASIC</DataSource>
+                  <BindingPath>XB</BindingPath>
+                  <BindingPathForText />
+                  <Handled>true</Handled>
+               </ValueBinding>
+               <XElements />
+               <Deleteable>false</Deleteable>
+               <BorderElementColor />
+               <SpecifyWidth>118.110237</SpecifyWidth>
+               <UserEditable>false</UserEditable>
+               <InnerValue />
+            </Element>
+            <Element xsi:type="XParagraphFlag" StyleIndex="2">
+               <InnerID>201</InnerID>
+               <AutoCreate>true</AutoCreate>
+            </Element>
+         </XElements>
+      </Element>
+      <Element xsi:type="XTextBody">
+         <InnerID>196</InnerID>
+         <AcceptTab>true</AcceptTab>
+         <XElements>
+            <Element xsi:type="XParagraphFlag">
+               <InnerID>200</InnerID>
+               <AutoCreate>true</AutoCreate>
+            </Element>
+         </XElements>
+      </Element>
+      <Element xsi:type="XTextFooter">
+         <InnerID>197</InnerID>
+         <AcceptTab>true</AcceptTab>
+         <XElements>
+            <Element xsi:type="XParagraphFlag">
+               <InnerID>202</InnerID>
+               <AutoCreate>true</AutoCreate>
+            </Element>
+         </XElements>
+      </Element>
+   </XElements>
+   <FileFormat>XML</FileFormat>
+   <ContentStyles>
+      <Default xsi:type="DocumentContentStyle">
+         <FontName>宋体</FontName>
+         <FontSize>12</FontSize>
+      </Default>
+      <Styles>
+         <Style Index="0">
+            <FontName>宋体</FontName>
+            <FontSize>12</FontSize>
+            <Align>Center</Align>
+         </Style>
+         <Style Index="1">
+            <BackgroundColor>#00000000</BackgroundColor>
+            <FontName>宋体</FontName>
+            <FontSize>10.5</FontSize>
+         </Style>
+         <Style Index="2">
+            <BackgroundColor>#00000000</BackgroundColor>
+            <FontName>宋体</FontName>
+            <FontSize>12</FontSize>
+         </Style>
+         <Style Index="3">
+            <FontName>宋体</FontName>
+            <FontSize>18</FontSize>
+            <Bold>true</Bold>
+         </Style>
+         <Style Index="4">
+            <BackgroundColor>#00000000</BackgroundColor>
+            <FontName>宋体</FontName>
+            <FontSize>12</FontSize>
+            <Align>Center</Align>
+         </Style>
+      </Styles>
+   </ContentStyles>
+   <Info>
+      <LicenseText>未注册|Unregister</LicenseText>
+      <CreationTime>1980-01-01T00:00:00</CreationTime>
+      <LastModifiedTime>2022-05-13T10:00:58.5842415+08:00</LastModifiedTime>
+      <LastPrintTime>1980-01-01T00:00:00</LastPrintTime>
+      <Operator>DCSoft.Writer Version:1.2022.2.21</Operator>
+      <NumOfPage>1</NumOfPage>
+   </Info>
+   <BodyText />
+   <LocalConfig />
+   <PageSettings>
+      <PageIndexsForHideHeaderFooter />
+      <PrinterName />
+      <PageIndexsForPrintBackgroundImage />
+      <PageIndexsForShowBackgroundImage />
+      <PaperSource />
+      <LeftMargin>59</LeftMargin>
+      <RightMargin>59</RightMargin>
+      <StrictUsePageSize>false</StrictUsePageSize>
+   </PageSettings>
+</XTextDocument>`;
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script type="text/javascript" src="jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="ServicePage.aspx?js=1"></script>
+</head>
+<body>
+    <div>
+        <input type="text" id="text1" style="width:100px" />
+        <input type="text" id="xoffset" style="width:100px" />
+    </div>
+    <div>
+        <input type="text" id="text2" style="width:1000px" />
+    </div>
+    <div>
+        <input type="text" id="text3" style="width:100px" />
+    </div>
+    <div>
+        <input type="button" value="刷新" onclick="exp();" />
+    </div>
+    <div>
+        <div id="WebTemperatureControl1"
+             documentbuffername="DCTemperatureDocument"
+             contentpixelheight="500"
+             servicepageurl="ServicePage.aspx"
+             pixelpagespacing="20"
+             dc_height="900px"
+             pageshadow="True"
+             advancedmode=true
+             align="center"
+             formid="form1"
+             style="height:900px;overflow:auto;position:relative;">
+        </div>
+    </div>
+    <script type="text/javascript">
+
+        var xml = `<?xml version="1.0"?>
+<TemperatureDocument xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+              <Datas>
+                <Data Name="NewLine1">
+                  <Values>
+                    <Value Time="2023-04-30T10:39:04" Value="0" Text="萍萍萍）" />
+                  </Values>
+                </Data>
+                <Data Name="NewLine2">
+                  <Values>
+                    <Value Time="2023-05-01T10:40:04" Value="0" Text="李春雷顶置杨万里杨万里李春雷在无可奈何百萍）" />
+                  </Values>
+                </Data>
+                <Data Name="NewValue">
+                  <Values>
+                    <Value Time="2023-04-29T10:38:35.8465902+08:00" Value="100" Text="萍萍萍）" />
+                  </Values>
+                </Data>
+              </Datas>
+              <Parameters />
+              <Config Version="1.0">
+                <Images />
+                <GridYSplitInfo />
+                <FontName>宋体</FontName>
+                <PageSettings />
+                <HeaderLabels>
+                  <Label SeperatorChar="58" Title="姓名" Value="萍萍萍）" />
+                </HeaderLabels>
+                <Labels />
+                <YAxisInfos>
+                  <YAxis Title="Y轴" Style="Text" ColorValueForDownValue="#FF0000" Name="NewValue" ColorValueForPointValue="#000000" ColorValueForUpValue="#FF0000" AlertLineColorValue="#FF0000">
+                    <AbNormalRangeSettings>
+                      <NormalRangeUpLineStyle>
+                        <Color>#00FFFFFF</Color>
+                        <Width>0</Width>
+                      </NormalRangeUpLineStyle>
+                      <NormalRangeDownLineStyle>
+                        <Color>#00FFFFFF</Color>
+                        <Width>0</Width>
+                      </NormalRangeDownLineStyle>
+                    </AbNormalRangeSettings>
+                  </YAxis>
+                </YAxisInfos>
+                <HeaderLines>
+                  <Line Title="页眉数据行" Name="NewLine1" ValueType="Text" TickStep="6" />
+                  <Line Title="页眉数据行" AutoHeight="true" Name="NewLine2" ValueType="Text" TickStep="6" />
+                  <Line Title="页眉数据行" AutoHeight="true" Name="NewLine3" ValueType="Text" TickStep="6" />
+                  <Line Title="页眉数据行" AutoHeight="true" Name="NewLine4" ValueType="Text" TickStep="6" />
+                  <Line Title="页眉数据行" AutoHeight="true" Name="NewLine5" ValueType="Text" TickStep="6" />
+                </HeaderLines>
+                <Ticks>
+                  <Tick ColorValue="#FF0000" Text="2" Value="2" />
+                  <Tick ColorValue="#FF0000" Text="6" Value="6" />
+                  <Tick Text="10" Value="10" />
+                  <Tick Text="14" Value="14" />
+                  <Tick Text="18" Value="18" />
+                  <Tick ColorValue="#FF0000" Text="22" Value="22" />
+                </Ticks>
+                <PageIndexText>第[%pageindex%]页</PageIndexText>
+                <Zones />
+                <FooterLines />
+              </Config>
+</TemperatureDocument>`;
+
+
+        var ctl = document.getElementById("WebTemperatureControl1");
+        if (ctl != null) {
+            InitializeDCTemperatureControl(ctl);
+            ctl.EventAfterRefreshView = function () {
+                console.log(ctl.Document.Values)
+                for (var i = 0; i < ctl.Document.Values.length; i++) {
+                    var group = ctl.Document.Values[i];
+                    switch (group.Name) {
+                        case "NewLine1":
+                            document.getElementById("text1").value = group.Datas[0].Text;
+                            break;
+                        case "NewLine2":
+                            document.getElementById("text2").value = group.Datas[0].Text
+                            break;
+                        case "NewValue":
+                            document.getElementById("text3").value = group.Datas[0].Text
+                            break;
+                        default:
+                            break;
+                    }
+                }
+            };
+            ctl.LoadDocumentFromString(xml);
+            ctl.RefreshView();
+        }
+
+        function exp() {
+            var ctl = document.TemperatureControl;
+            var txt1 = document.getElementById("text1").value;
+            var txtoffset = document.getElementById("xoffset").value;
+            var txt2 = document.getElementById("text2").value;
+            var txt3 = document.getElementById("text3").value;
+
+            for (var i = 0; i < ctl.Document.Values.length; i++) {
+                var group = ctl.Document.Values[i];
+                switch (group.Name) {
+                    case "NewLine1":
+                        group.Datas[0].Text = txt1;
+                        group.Datas[0].xoffset = txtoffset;
+                        break;
+                    case "NewLine2":
+                        group.Datas[0].Text = txt2;
+                        break;
+                    case "NewValue":
+                        group.Datas[0].Text = txt3;
+                        break;
+                    default:
+                        break;
+                }
+            }
+            ctl.RefreshView();
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>移动端展示</title>
+    <link rel="stylesheet" href="/static/mobilecss/default.css">
+    <link rel="stylesheet" href="/static/mobilecss/devices.css">
+    <link rel="stylesheet" href="/static/mobilecss/ydd.css">
+    <style>
+        .el-container {
+            height: calc(100% - 46px);
+            overflow-y: auto;
+        }
+
+        .el-form-item__label,
+        .van-cell__title {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="body">
+        <div class="mobile he" style="overflow:auto;width: 100%;">
+            <div style="min-width: 570px">
+                <h2 class="title">移动端</h2>
+                <div class="cd-ipad cd-scale-100">
+                    <div class="cd-body">
+                        <div class="cd-camera"></div>
+                        <div class="cd-home"></div>
+                        <div class="cd-screen">
+                            <div id="writer">
+                                <iframe id="mobileForm" width="100%" height="100%" src="./static/mobilecss/index.html">
+                                </iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+        var u = navigator.userAgent
+        if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(u)) {
+            window.location.href = "./static/mobilecss/index.html";
+        }
+
+        window.onresize = function () {
+            setTimeout(function () {
+                var u = navigator.userAgent
+                if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(u)) {
+                    window.location.href = "./static/mobilecss/index.html";
+                }
+            }, 100)
+        }
+
+    </script>
+</body>
+
+</html>

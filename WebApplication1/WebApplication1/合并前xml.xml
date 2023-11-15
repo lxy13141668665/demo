@@ -1,0 +1,1448 @@
+<XTextDocument xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" EditorVersionString="1.2022.2.28">
+   <Attributes>
+      <Attribute>
+         <Name>姓名</Name>
+         <Value>张三</Value>
+      </Attribute>
+      <Attribute>
+         <Name>科室</Name>
+         <Value>胸外科</Value>
+      </Attribute>
+      <Attribute>
+         <Name>床号</Name>
+         <Value>12345</Value>
+      </Attribute>
+   </Attributes>
+   <InnerID>925</InnerID>
+   <XElements>
+      <Element xsi:type="XTextHeader">
+         <InnerID>931</InnerID>
+         <AcceptTab>true</AcceptTab>
+         <XElements>
+            <Element xsi:type="XTextTable" NumOfRows="6" NumOfColumns="4">
+               <InnerID>18</InnerID>
+               <ID>table4</ID>
+               <XElements>
+                  <Element xsi:type="XTextTableRow">
+                     <InnerID>23</InnerID>
+                     <XElements>
+                        <Element xsi:type="XTextTableCell" StyleIndex="12">
+                           <InnerID>24</InnerID>
+                           <XElements>
+                              <Element xsi:type="XString" StyleIndex="3">
+                                 <InnerID>797</InnerID>
+                                 <Text>广州市花都区人民医院</Text>
+                              </Element>
+                              <Element xsi:type="XParagraphFlag" StyleIndex="7">
+                                 <InnerID>27</InnerID>
+                              </Element>
+                           </XElements>
+                           <ColSpan>4</ColSpan>
+                        </Element>
+                        <Element xsi:type="XTextTableCell" StyleIndex="12">
+                           <InnerID>106</InnerID>
+                           <XElements>
+                              <Element xsi:type="XParagraphFlag">
+                                 <InnerID>239</InnerID>
+                                 <AutoCreate>true</AutoCreate>
+                              </Element>
+                           </XElements>
+                        </Element>
+                        <Element xsi:type="XTextTableCell" StyleIndex="12">
+                           <InnerID>107</InnerID>
+                           <XElements>
+                              <Element xsi:type="XParagraphFlag">
+                                 <InnerID>240</InnerID>
+                                 <AutoCreate>true</AutoCreate>
+                              </Element>
+                           </XElements>
+                        </Element>
+                        <Element xsi:type="XTextTableCell" StyleIndex="12">
+                           <InnerID>108</InnerID>
+                           <XElements>
+                              <Element xsi:type="XParagraphFlag">
+                                 <InnerID>241</InnerID>
+                                 <AutoCreate>true</AutoCreate>
+                              </Element>
+                           </XElements>
+                        </Element>
+                     </XElements>
+                  </Element>
+                  <Element xsi:type="XTextTableRow">
+                     <InnerID>28</InnerID>
+                     <XElements>
+                        <Element xsi:type="XTextTableCell" StyleIndex="12">
+                           <InnerID>29</InnerID>
+                           <XElements>
+                              <Element xsi:type="XString" StyleIndex="3">
+                                 <InnerID>798</InnerID>
+                                 <Text>急 诊 病 历</Text>
+                              </Element>
+                              <Element xsi:type="XParagraphFlag" StyleIndex="7">
+                                 <InnerID>32</InnerID>
+                              </Element>
+                           </XElements>
+                           <ColSpan>4</ColSpan>
+                        </Element>
+                        <Element xsi:type="XTextTableCell" StyleIndex="12">
+                           <InnerID>109</InnerID>
+                           <XElements>
+                              <Element xsi:type="XParagraphFlag">
+                                 <InnerID>242</InnerID>
+                                 <AutoCreate>true</AutoCreate>
+                              </Element>
+                           </XElements>
+                        </Element>
+                        <Element xsi:type="XTextTableCell" StyleIndex="12">
+                           <InnerID>110</InnerID>
+                           <XElements>
+                              <Element xsi:type="XParagraphFlag">
+                                 <InnerID>243</InnerID>
+                                 <AutoCreate>true</AutoCreate>
+                              </Element>
+                           </XElements>
+                        </Element>
+                        <Element xsi:type="XTextTableCell" StyleIndex="12">
+                           <InnerID>111</InnerID>
+                           <XElements>
+                              <Element xsi:type="XParagraphFlag">
+                                 <InnerID>244</InnerID>
+                                 <AutoCreate>true</AutoCreate>
+                              </Element>
+                           </XElements>
+                        </Element>
+                     </XElements>
+                  </Element>
+                  <Element xsi:type="XTextTableRow">
+                     <InnerID>33</InnerID>
+                     <XElements>
+                        <Element xsi:type="XTextTableCell" StyleIndex="12">
+                           <InnerID>34</InnerID>
+                           <XElements>
+                              <Element xsi:type="XString" StyleIndex="1">
+                                 <InnerID>799</InnerID>
+                                 <Text>姓名:</Text>
+                              </Element>
+                              <Element xsi:type="XInputField" StyleIndex="1">
+                                 <InnerID>37</InnerID>
+                                 <ID>pat.name</ID>
+                                 <EnableValueValidate>true</EnableValueValidate>
+                                 <XElements>
+                                    <Element xsi:type="XString" StyleIndex="1">
+                                       <InnerID>800</InnerID>
+                                       <Text>无名氏720</Text>
+                                    </Element>
+                                 </XElements>
+                                 <BorderElementColor />
+                                 <Name>pat.name</Name>
+                                 <InnerValue>无名氏720</InnerValue>
+                                 <BackgroundText>姓名</BackgroundText>
+                              </Element>
+                              <Element xsi:type="XParagraphFlag" StyleIndex="2">
+                                 <InnerID>39</InnerID>
+                              </Element>
+                           </XElements>
+                        </Element>
+                        <Element xsi:type="XTextTableCell" StyleIndex="12">
+                           <InnerID>40</InnerID>
+                           <XElements>
+                              <Element xsi:type="XString" StyleIndex="1">
+                                 <InnerID>801</InnerID>
+                                 <Text>性别:</Text>
+                              </Element>
+                              <Element xsi:type="XInputField" StyleIndex="1">
+                                 <InnerID>43</InnerID>
+                                 <ID>pat.sexName</ID>
+                                 <EnableValueValidate>true</EnableValueValidate>
+                                 <XElements>
+                                    <Element xsi:type="XString" StyleIndex="1">
+                                       <InnerID>802</InnerID>
+                                       <Text>男</Text>
+                                    </Element>
+                                 </XElements>
+                                 <BorderElementColor />
+                                 <Name>pat.sexName</Name>
+                                 <InnerValue>男</InnerValue>
+                                 <BackgroundText>性别</BackgroundText>
+                              </Element>
+                              <Element xsi:type="XParagraphFlag" StyleIndex="2">
+                                 <InnerID>45</InnerID>
+                              </Element>
+                           </XElements>
+                        </Element>
+                        <Element xsi:type="XTextTableCell" StyleIndex="12">
+                           <InnerID>46</InnerID>
+                           <XElements>
+                              <Element xsi:type="XString" StyleIndex="1">
+                                 <InnerID>803</InnerID>
+                                 <Text>年龄:</Text>
+                              </Element>
+                              <Element xsi:type="XInputField" StyleIndex="1">
+                                 <InnerID>49</InnerID>
+                                 <ID>pat.ageYear</ID>
+                                 <EnableValueValidate>true</EnableValueValidate>
+                                 <XElements>
+                                    <Element xsi:type="XString" StyleIndex="1">
+                                       <InnerID>804</InnerID>
+                                       <Text>81</Text>
+                                    </Element>
+                                 </XElements>
+                                 <BorderElementColor />
+                                 <UnitText>岁</UnitText>
+                                 <Name>pat.ageYear</Name>
+                                 <InnerValue>81</InnerValue>
+                                 <BackgroundText>年龄</BackgroundText>
+                              </Element>
+                              <Element xsi:type="XParagraphFlag" StyleIndex="2">
+                                 <InnerID>51</InnerID>
+                              </Element>
+                           </XElements>
+                        </Element>
+                        <Element xsi:type="XTextTableCell" StyleIndex="12">
+                           <InnerID>52</InnerID>
+                           <XElements>
+                              <Element xsi:type="XString" StyleIndex="1">
+                                 <InnerID>805</InnerID>
+                                 <Text>身份证号:</Text>
+                              </Element>
+                              <Element xsi:type="XInputField" StyleIndex="1">
+                                 <InnerID>55</InnerID>
+                                 <ID>pat.idCard</ID>
+                                 <EnableValueValidate>true</EnableValueValidate>
+                                 <XElements />
+                                 <BorderElementColor />
+                                 <Name>pat.idCard</Name>
+                                 <BackgroundText>身份证号码</BackgroundText>
+                              </Element>
+                              <Element xsi:type="XParagraphFlag" StyleIndex="2">
+                                 <InnerID>56</InnerID>
+                              </Element>
+                           </XElements>
+                        </Element>
+                     </XElements>
+                     <SpecifyHeight>70</SpecifyHeight>
+                  </Element>
+                  <Element xsi:type="XTextTableRow">
+                     <InnerID>57</InnerID>
+                     <XElements>
+                        <Element xsi:type="XTextTableCell" StyleIndex="12">
+                           <InnerID>58</InnerID>
+                           <XElements>
+                              <Element xsi:type="XString" StyleIndex="1">
+                                 <InnerID>806</InnerID>
+                                 <Text>科室:</Text>
+                              </Element>
+                              <Element xsi:type="XInputField" StyleIndex="1">
+                                 <InnerID>61</InnerID>
+                                 <ID>med.deptName</ID>
+                                 <EnableValueValidate>true</EnableValueValidate>
+                                 <XElements>
+                                    <Element xsi:type="XString" StyleIndex="1">
+                                       <InnerID>807</InnerID>
+                                       <Text>急诊科</Text>
+                                    </Element>
+                                 </XElements>
+                                 <BorderElementColor />
+                                 <Name>med.deptName</Name>
+                                 <InnerValue>急诊科</InnerValue>
+                                 <BackgroundText>科室</BackgroundText>
+                              </Element>
+                              <Element xsi:type="XParagraphFlag" StyleIndex="2">
+                                 <InnerID>63</InnerID>
+                              </Element>
+                           </XElements>
+                        </Element>
+                        <Element xsi:type="XTextTableCell" StyleIndex="12">
+                           <InnerID>64</InnerID>
+                           <XElements>
+                              <Element xsi:type="XString" StyleIndex="1">
+                                 <InnerID>808</InnerID>
+                                 <Text>就诊时间:</Text>
+                              </Element>
+                              <Element xsi:type="XInputField" StyleIndex="1">
+                                 <InnerID>67</InnerID>
+                                 <ID>med.medicalTime</ID>
+                                 <EnableValueValidate>true</EnableValueValidate>
+                                 <XElements>
+                                    <Element xsi:type="XString" StyleIndex="1">
+                                       <InnerID>809</InnerID>
+                                       <Text>2022-05-17 09:34:02</Text>
+                                    </Element>
+                                 </XElements>
+                                 <BorderElementColor />
+                                 <Name>med.medicalTime</Name>
+                                 <InnerValue>2022-05-17 09:34:02</InnerValue>
+                                 <BackgroundText>就诊时间</BackgroundText>
+                                 <FieldSettings>
+                                    <EditStyle>DateTime</EditStyle>
+                                 </FieldSettings>
+                              </Element>
+                              <Element xsi:type="XParagraphFlag" StyleIndex="2">
+                                 <InnerID>69</InnerID>
+                              </Element>
+                           </XElements>
+                           <ColSpan>2</ColSpan>
+                        </Element>
+                        <Element xsi:type="XTextTableCell" StyleIndex="12">
+                           <InnerID>112</InnerID>
+                           <XElements>
+                              <Element xsi:type="XParagraphFlag">
+                                 <InnerID>245</InnerID>
+                                 <AutoCreate>true</AutoCreate>
+                              </Element>
+                           </XElements>
+                        </Element>
+                        <Element xsi:type="XTextTableCell" StyleIndex="12">
+                           <InnerID>70</InnerID>
+                           <XElements>
+                              <Element xsi:type="XString" StyleIndex="1">
+                                 <InnerID>810</InnerID>
+                                 <Text>打印时间:</Text>
+                              </Element>
+                              <Element xsi:type="XInputField" StyleIndex="1">
+                                 <InnerID>73</InnerID>
+                                 <ID>elecMediRecTime</ID>
+                                 <EnableValueValidate>true</EnableValueValidate>
+                                 <XElements>
+                                    <Element xsi:type="XString" StyleIndex="1">
+                                       <InnerID>811</InnerID>
+                                       <Text>2022-05-17 09:35</Text>
+                                    </Element>
+                                 </XElements>
+                                 <BorderElementColor />
+                                 <Name>elecMediRecTime</Name>
+                                 <InnerValue>2022-05-17 09:35</InnerValue>
+                                 <BackgroundText>病历时间</BackgroundText>
+                                 <FieldSettings>
+                                    <EditStyle>DateTimeWithoutSecond</EditStyle>
+                                 </FieldSettings>
+                              </Element>
+                              <Element xsi:type="XParagraphFlag" StyleIndex="2">
+                                 <InnerID>75</InnerID>
+                              </Element>
+                           </XElements>
+                        </Element>
+                     </XElements>
+                  </Element>
+                  <Element xsi:type="XTextTableRow">
+                     <InnerID>76</InnerID>
+                     <XElements>
+                        <Element xsi:type="XTextTableCell" StyleIndex="12">
+                           <InnerID>77</InnerID>
+                           <XElements>
+                              <Element xsi:type="XString" StyleIndex="1">
+                                 <InnerID>812</InnerID>
+                                 <Text>医师:</Text>
+                              </Element>
+                              <Element xsi:type="XInputField" StyleIndex="1">
+                                 <InnerID>80</InnerID>
+                                 <ID>med.chargeDoctorName</ID>
+                                 <EnableValueValidate>true</EnableValueValidate>
+                                 <XElements>
+                                    <Element xsi:type="XString" StyleIndex="1">
+                                       <InnerID>813</InnerID>
+                                       <Text>章晓</Text>
+                                    </Element>
+                                 </XElements>
+                                 <BorderElementColor />
+                                 <Name>med.chargeDoctorName</Name>
+                                 <InnerValue>章晓</InnerValue>
+                                 <BackgroundText>主管医师</BackgroundText>
+                              </Element>
+                              <Element xsi:type="XParagraphFlag" StyleIndex="2">
+                                 <InnerID>82</InnerID>
+                              </Element>
+                           </XElements>
+                        </Element>
+                        <Element xsi:type="XTextTableCell" StyleIndex="12">
+                           <InnerID>83</InnerID>
+                           <XElements>
+                              <Element xsi:type="XString" StyleIndex="1">
+                                 <InnerID>814</InnerID>
+                                 <Text>门诊号:</Text>
+                              </Element>
+                              <Element xsi:type="XInputField" StyleIndex="1">
+                                 <InnerID>86</InnerID>
+                                 <ID>med.outPatNum</ID>
+                                 <EnableValueValidate>true</EnableValueValidate>
+                                 <XElements />
+                                 <BorderElementColor />
+                                 <Name>med.outPatNum</Name>
+                                 <BackgroundText>门诊号</BackgroundText>
+                              </Element>
+                              <Element xsi:type="XParagraphFlag" StyleIndex="2">
+                                 <InnerID>87</InnerID>
+                              </Element>
+                           </XElements>
+                           <ColSpan>2</ColSpan>
+                        </Element>
+                        <Element xsi:type="XTextTableCell" StyleIndex="12">
+                           <InnerID>113</InnerID>
+                           <XElements>
+                              <Element xsi:type="XParagraphFlag">
+                                 <InnerID>246</InnerID>
+                                 <AutoCreate>true</AutoCreate>
+                              </Element>
+                           </XElements>
+                        </Element>
+                        <Element xsi:type="XTextTableCell" StyleIndex="12">
+                           <InnerID>88</InnerID>
+                           <XElements>
+                              <Element xsi:type="XString" StyleIndex="1">
+                                 <InnerID>815</InnerID>
+                                 <Text>流水号码:</Text>
+                              </Element>
+                              <Element xsi:type="XInputField" StyleIndex="1">
+                                 <InnerID>91</InnerID>
+                                 <ID>med.registerId</ID>
+                                 <EnableValueValidate>true</EnableValueValidate>
+                                 <XElements />
+                                 <BorderElementColor />
+                                 <Name>med.registerId</Name>
+                                 <BackgroundText>HIS挂号流水</BackgroundText>
+                              </Element>
+                              <Element xsi:type="XParagraphFlag" StyleIndex="2">
+                                 <InnerID>92</InnerID>
+                              </Element>
+                           </XElements>
+                        </Element>
+                     </XElements>
+                  </Element>
+                  <Element xsi:type="XTextTableRow">
+                     <InnerID>93</InnerID>
+                     <XElements>
+                        <Element xsi:type="XTextTableCell" StyleIndex="12">
+                           <InnerID>94</InnerID>
+                           <XElements>
+                              <Element xsi:type="XString" StyleIndex="1">
+                                 <InnerID>816</InnerID>
+                                 <Text>电话:</Text>
+                              </Element>
+                              <Element xsi:type="XInputField" StyleIndex="1">
+                                 <InnerID>97</InnerID>
+                                 <ID>pat.phone</ID>
+                                 <EnableValueValidate>true</EnableValueValidate>
+                                 <XElements>
+                                    <Element xsi:type="XString" StyleIndex="1">
+                                       <InnerID>817</InnerID>
+                                       <Text>13622236589</Text>
+                                    </Element>
+                                 </XElements>
+                                 <BorderElementColor />
+                                 <Name>pat.phone</Name>
+                                 <InnerValue>13622236589</InnerValue>
+                                 <BackgroundText>手机号码</BackgroundText>
+                              </Element>
+                              <Element xsi:type="XParagraphFlag" StyleIndex="2">
+                                 <InnerID>99</InnerID>
+                              </Element>
+                           </XElements>
+                        </Element>
+                        <Element xsi:type="XTextTableCell" StyleIndex="12">
+                           <InnerID>100</InnerID>
+                           <XElements>
+                              <Element xsi:type="XString" StyleIndex="1">
+                                 <InnerID>818</InnerID>
+                                 <Text>住址:</Text>
+                              </Element>
+                              <Element xsi:type="XInputField" StyleIndex="1">
+                                 <InnerID>103</InnerID>
+                                 <ID>field27</ID>
+                                 <ToolTip>地址</ToolTip>
+                                 <EnableValueValidate>true</EnableValueValidate>
+                                 <XElements />
+                                 <BorderElementColor />
+                                 <BackgroundText>地址</BackgroundText>
+                              </Element>
+                              <Element xsi:type="XParagraphFlag" StyleIndex="2">
+                                 <InnerID>104</InnerID>
+                              </Element>
+                           </XElements>
+                           <ColSpan>3</ColSpan>
+                        </Element>
+                        <Element xsi:type="XTextTableCell" StyleIndex="12">
+                           <InnerID>114</InnerID>
+                           <XElements>
+                              <Element xsi:type="XParagraphFlag">
+                                 <InnerID>247</InnerID>
+                                 <AutoCreate>true</AutoCreate>
+                              </Element>
+                           </XElements>
+                        </Element>
+                        <Element xsi:type="XTextTableCell" StyleIndex="12">
+                           <InnerID>115</InnerID>
+                           <XElements>
+                              <Element xsi:type="XParagraphFlag">
+                                 <InnerID>248</InnerID>
+                                 <AutoCreate>true</AutoCreate>
+                              </Element>
+                           </XElements>
+                        </Element>
+                     </XElements>
+                     <SpecifyHeight>-71</SpecifyHeight>
+                  </Element>
+               </XElements>
+               <Columns>
+                  <Element xsi:type="XTextTableColumn">
+                     <InnerID>19</InnerID>
+                     <Width>362.1331</Width>
+                  </Element>
+                  <Element xsi:type="XTextTableColumn">
+                     <InnerID>20</InnerID>
+                     <Width>291.9973</Width>
+                  </Element>
+                  <Element xsi:type="XTextTableColumn">
+                     <InnerID>21</InnerID>
+                     <Width>379.1151</Width>
+                  </Element>
+                  <Element xsi:type="XTextTableColumn">
+                     <InnerID>22</InnerID>
+                     <Width>628.7546</Width>
+                  </Element>
+               </Columns>
+            </Element>
+            <Element xsi:type="XParagraphFlag" StyleIndex="11">
+               <InnerID>116</InnerID>
+            </Element>
+         </XElements>
+      </Element>
+      <Element xsi:type="XTextBody">
+         <InnerID>932</InnerID>
+         <AcceptTab>true</AcceptTab>
+         <XElements>
+            <Element xsi:type="XString" StyleIndex="0">
+               <InnerID>819</InnerID>
+               <Text>职  业：</Text>
+            </Element>
+            <Element xsi:type="XInputField" StyleIndex="1">
+               <InnerID>318</InnerID>
+               <ID>emr.DE02.01.052.00</ID>
+               <EnableValueValidate>true</EnableValueValidate>
+               <XElements />
+               <BorderElementColor />
+               <Name>emr.DE02.01.052.00</Name>
+               <BackgroundText>*职业为必填项*</BackgroundText>
+            </Element>
+            <Element xsi:type="XParagraphFlag" StyleIndex="2">
+               <InnerID>319</InnerID>
+            </Element>
+            <Element xsi:type="XString" StyleIndex="0">
+               <InnerID>820</InnerID>
+               <Text>主  诉：</Text>
+            </Element>
+            <Element xsi:type="XInputField" StyleIndex="1">
+               <InnerID>322</InnerID>
+               <ID>emr.DE04.01.119.00</ID>
+               <EnableValueValidate>true</EnableValueValidate>
+               <XElements />
+               <BorderElementColor />
+               <Name>emr.DE04.01.119.00</Name>
+               <BackgroundText>点击此处输入主诉</BackgroundText>
+            </Element>
+            <Element xsi:type="XParagraphFlag" StyleIndex="2">
+               <InnerID>323</InnerID>
+            </Element>
+            <Element xsi:type="XString" StyleIndex="0">
+               <InnerID>821</InnerID>
+               <Text>现病史：</Text>
+            </Element>
+            <Element xsi:type="XInputField" StyleIndex="1">
+               <InnerID>326</InnerID>
+               <ID>emr.DE02.10.071.00</ID>
+               <EnableValueValidate>true</EnableValueValidate>
+               <XElements />
+               <BorderElementColor />
+               <Name>emr.DE02.10.071.00</Name>
+               <BackgroundText>点击此处输入病史</BackgroundText>
+            </Element>
+            <Element xsi:type="XParagraphFlag" StyleIndex="3">
+               <InnerID>327</InnerID>
+            </Element>
+            <Element xsi:type="XString" StyleIndex="0">
+               <InnerID>822</InnerID>
+               <Text>既往史：</Text>
+            </Element>
+            <Element xsi:type="XInputField" StyleIndex="4">
+               <InnerID>330</InnerID>
+               <ID>emr.DE02.10.099.00</ID>
+               <EnableValueValidate>true</EnableValueValidate>
+               <XElements>
+                  <Element xsi:type="XString" StyleIndex="4">
+                     <InnerID>832</InnerID>
+                     <Text>平素体健，否认“肝炎、结核”等传染病史，否认药物、食物过敏史，无外伤史，无手术史，无输血、血制品史。</Text>
+                  </Element>
+               </XElements>
+               <BorderElementColor />
+               <Name>emr.DE02.10.099.00</Name>
+               <InnerValue>平素体健，否认“肝炎、结核”等传染病史，否认药物、食物过敏史，无外伤史，无手术史，无输血、血制品史。</InnerValue>
+               <BackgroundText>既往史</BackgroundText>
+            </Element>
+            <Element xsi:type="XParagraphFlag" StyleIndex="3">
+               <InnerID>332</InnerID>
+            </Element>
+            <Element xsi:type="XString" StyleIndex="0">
+               <InnerID>823</InnerID>
+               <Text>过敏史：</Text>
+            </Element>
+            <Element xsi:type="XInputField" StyleIndex="1">
+               <InnerID>335</InnerID>
+               <ID>pat.allergicHist</ID>
+               <EnableValueValidate>true</EnableValueValidate>
+               <XElements />
+               <BorderElementColor />
+               <Name>pat.allergicHist</Name>
+               <BackgroundText>过敏史请在患者信息栏修改</BackgroundText>
+            </Element>
+            <Element xsi:type="XParagraphFlag" StyleIndex="3">
+               <InnerID>336</InnerID>
+            </Element>
+            <Element xsi:type="XString" StyleIndex="0">
+               <InnerID>824</InnerID>
+               <Text>新冠肺炎流行病学史：</Text>
+            </Element>
+            <Element xsi:type="XParagraphFlag" StyleIndex="2">
+               <InnerID>339</InnerID>
+            </Element>
+            <Element xsi:type="XTextTable" NumOfRows="8" NumOfColumns="2">
+               <InnerID>341</InnerID>
+               <ID>table3</ID>
+               <XElements>
+                  <Element xsi:type="XTextTableRow" StyleIndex="1">
+                     <InnerID>344</InnerID>
+                     <XElements>
+                        <Element xsi:type="XTextTableCell" StyleIndex="5">
+                           <InnerID>345</InnerID>
+                           <XElements>
+                              <Element xsi:type="XString" StyleIndex="1">
+                                 <InnerID>833</InnerID>
+                                 <Text>1.您21天是否有发热、干咳、乏力、嗅（味）觉减退、鼻塞、流涕、咽痛、结膜炎、肌痛和腹泻等症状？</Text>
+                              </Element>
+                              <Element xsi:type="XParagraphFlag" StyleIndex="2">
+                                 <InnerID>348</InnerID>
+                              </Element>
+                           </XElements>
+                        </Element>
+                        <Element xsi:type="XTextTableCell" StyleIndex="6">
+                           <InnerID>349</InnerID>
+                           <XElements>
+                              <Element xsi:type="XTextRadioBox" StyleIndex="1">
+                                 <InnerID>351</InnerID>
+                                 <ID>流行病学史11</ID>
+                                 <Name>流行病学史1</Name>
+                                 <Caption>是</Caption>
+                                 <Width>115.75</Width>
+                                 <Height>49.90234</Height>
+                                 <GroupName>流行病学史1</GroupName>
+                                 <ControlStyle>RadioBox</ControlStyle>
+                                 <CheckedValue>true</CheckedValue>
+                                 <VisualStyle>SystemDefault</VisualStyle>
+                              </Element>
+                              <Element xsi:type="XTextRadioBox" StyleIndex="1">
+                                 <InnerID>352</InnerID>
+                                 <ID>流行病学史12</ID>
+                                 <Name>流行病学史1</Name>
+                                 <Caption>否</Caption>
+                                 <Width>115.75</Width>
+                                 <Height>49.90234</Height>
+                                 <GroupName>流行病学史1</GroupName>
+                                 <ControlStyle>RadioBox</ControlStyle>
+                                 <Checked>true</Checked>
+                                 <CheckedValue>false</CheckedValue>
+                                 <VisualStyle>SystemDefault</VisualStyle>
+                              </Element>
+                              <Element xsi:type="XParagraphFlag" StyleIndex="7">
+                                 <InnerID>353</InnerID>
+                              </Element>
+                           </XElements>
+                        </Element>
+                     </XElements>
+                  </Element>
+                  <Element xsi:type="XTextTableRow" StyleIndex="1">
+                     <InnerID>354</InnerID>
+                     <XElements>
+                        <Element xsi:type="XTextTableCell" StyleIndex="5">
+                           <InnerID>355</InnerID>
+                           <XElements>
+                              <Element xsi:type="XString" StyleIndex="1">
+                                 <InnerID>834</InnerID>
+                                 <Text>2.近21天内是否到过境外.境内中高风险地区*，或有病例报告的社区? </Text>
+                              </Element>
+                              <Element xsi:type="XParagraphFlag" StyleIndex="2">
+                                 <InnerID>358</InnerID>
+                              </Element>
+                           </XElements>
+                        </Element>
+                        <Element xsi:type="XTextTableCell" StyleIndex="6">
+                           <InnerID>359</InnerID>
+                           <XElements>
+                              <Element xsi:type="XTextRadioBox" StyleIndex="1">
+                                 <InnerID>361</InnerID>
+                                 <ID>流行病学史21</ID>
+                                 <Name>流行病学史2</Name>
+                                 <Caption>是</Caption>
+                                 <Width>115.75</Width>
+                                 <Height>49.90234</Height>
+                                 <GroupName>流行病学史2</GroupName>
+                                 <ControlStyle>RadioBox</ControlStyle>
+                                 <CheckedValue>1</CheckedValue>
+                                 <VisualStyle>SystemDefault</VisualStyle>
+                              </Element>
+                              <Element xsi:type="XTextRadioBox" StyleIndex="1">
+                                 <InnerID>362</InnerID>
+                                 <ID>流行病学史22</ID>
+                                 <Name>流行病学史2</Name>
+                                 <Caption>否</Caption>
+                                 <Width>115.75</Width>
+                                 <Height>49.90234</Height>
+                                 <GroupName>流行病学史2</GroupName>
+                                 <ControlStyle>RadioBox</ControlStyle>
+                                 <Checked>true</Checked>
+                                 <CheckedValue>0</CheckedValue>
+                                 <VisualStyle>SystemDefault</VisualStyle>
+                              </Element>
+                              <Element xsi:type="XParagraphFlag" StyleIndex="7">
+                                 <InnerID>363</InnerID>
+                              </Element>
+                           </XElements>
+                        </Element>
+                     </XElements>
+                  </Element>
+                  <Element xsi:type="XTextTableRow" StyleIndex="1">
+                     <InnerID>364</InnerID>
+                     <XElements>
+                        <Element xsi:type="XTextTableCell" StyleIndex="5">
+                           <InnerID>365</InnerID>
+                           <XElements>
+                              <Element xsi:type="XString" StyleIndex="1">
+                                 <InnerID>835</InnerID>
+                                 <Text>3.近21关内是否接触过来自境外.境内中高风险地区*的人员? </Text>
+                              </Element>
+                              <Element xsi:type="XParagraphFlag" StyleIndex="2">
+                                 <InnerID>368</InnerID>
+                              </Element>
+                           </XElements>
+                        </Element>
+                        <Element xsi:type="XTextTableCell" StyleIndex="6">
+                           <InnerID>369</InnerID>
+                           <XElements>
+                              <Element xsi:type="XTextRadioBox" StyleIndex="1">
+                                 <InnerID>371</InnerID>
+                                 <ID>流行病学史31</ID>
+                                 <Name>流行病学史3</Name>
+                                 <Caption>是</Caption>
+                                 <Width>115.75</Width>
+                                 <Height>49.90234</Height>
+                                 <GroupName>流行病学史3</GroupName>
+                                 <ControlStyle>RadioBox</ControlStyle>
+                                 <CheckedValue />
+                                 <VisualStyle>SystemDefault</VisualStyle>
+                              </Element>
+                              <Element xsi:type="XTextRadioBox" StyleIndex="1">
+                                 <InnerID>372</InnerID>
+                                 <ID>流行病学史32</ID>
+                                 <Name>流行病学史3</Name>
+                                 <Caption>否</Caption>
+                                 <Width>115.75</Width>
+                                 <Height>49.90234</Height>
+                                 <GroupName>流行病学史3</GroupName>
+                                 <ControlStyle>RadioBox</ControlStyle>
+                                 <Checked>true</Checked>
+                                 <CheckedValue />
+                                 <VisualStyle>SystemDefault</VisualStyle>
+                              </Element>
+                              <Element xsi:type="XParagraphFlag" StyleIndex="7">
+                                 <InnerID>373</InnerID>
+                              </Element>
+                           </XElements>
+                        </Element>
+                     </XElements>
+                  </Element>
+                  <Element xsi:type="XTextTableRow" StyleIndex="1">
+                     <InnerID>374</InnerID>
+                     <XElements>
+                        <Element xsi:type="XTextTableCell" StyleIndex="5">
+                           <InnerID>375</InnerID>
+                           <XElements>
+                              <Element xsi:type="XString" StyleIndex="1">
+                                 <InnerID>836</InnerID>
+                                 <Text>4.近21天内是否接触过确诊病例或无症状感染者(核酸检测阳性者)?</Text>
+                              </Element>
+                              <Element xsi:type="XParagraphFlag" StyleIndex="2">
+                                 <InnerID>378</InnerID>
+                              </Element>
+                           </XElements>
+                        </Element>
+                        <Element xsi:type="XTextTableCell" StyleIndex="6">
+                           <InnerID>379</InnerID>
+                           <XElements>
+                              <Element xsi:type="XTextRadioBox" StyleIndex="1">
+                                 <InnerID>381</InnerID>
+                                 <ID>流行病学史41</ID>
+                                 <Name>流行病学史4</Name>
+                                 <Caption>是</Caption>
+                                 <Width>115.75</Width>
+                                 <Height>49.90234</Height>
+                                 <GroupName>流行病学史4</GroupName>
+                                 <ControlStyle>RadioBox</ControlStyle>
+                                 <CheckedValue />
+                                 <VisualStyle>SystemDefault</VisualStyle>
+                              </Element>
+                              <Element xsi:type="XTextRadioBox" StyleIndex="1">
+                                 <InnerID>382</InnerID>
+                                 <ID>流行病学史42</ID>
+                                 <Name>流行病学史4</Name>
+                                 <Caption>否</Caption>
+                                 <Width>115.75</Width>
+                                 <Height>49.90234</Height>
+                                 <GroupName>流行病学史4</GroupName>
+                                 <ControlStyle>RadioBox</ControlStyle>
+                                 <Checked>true</Checked>
+                                 <CheckedValue />
+                                 <VisualStyle>SystemDefault</VisualStyle>
+                              </Element>
+                              <Element xsi:type="XParagraphFlag" StyleIndex="7">
+                                 <InnerID>383</InnerID>
+                              </Element>
+                           </XElements>
+                        </Element>
+                     </XElements>
+                  </Element>
+                  <Element xsi:type="XTextTableRow" StyleIndex="1">
+                     <InnerID>384</InnerID>
+                     <XElements>
+                        <Element xsi:type="XTextTableCell" StyleIndex="5">
+                           <InnerID>385</InnerID>
+                           <XElements>
+                              <Element xsi:type="XString" StyleIndex="1">
+                                 <InnerID>837</InnerID>
+                                 <Text>5.近21关内您的亲庭、办公空、学校或托幼机构班级、车间等身体单位是否出现2例及以上发热和/或呼吸道症状的聚集性病例? </Text>
+                              </Element>
+                              <Element xsi:type="XParagraphFlag" StyleIndex="2">
+                                 <InnerID>388</InnerID>
+                              </Element>
+                           </XElements>
+                        </Element>
+                        <Element xsi:type="XTextTableCell" StyleIndex="6">
+                           <InnerID>389</InnerID>
+                           <XElements>
+                              <Element xsi:type="XTextRadioBox" StyleIndex="1">
+                                 <InnerID>391</InnerID>
+                                 <ID>流行病学史51</ID>
+                                 <Name>流行病学史5</Name>
+                                 <Caption>是</Caption>
+                                 <Width>115.75</Width>
+                                 <Height>49.90234</Height>
+                                 <GroupName>流行病学史5</GroupName>
+                                 <ControlStyle>RadioBox</ControlStyle>
+                                 <CheckedValue />
+                                 <VisualStyle>SystemDefault</VisualStyle>
+                              </Element>
+                              <Element xsi:type="XTextRadioBox" StyleIndex="1">
+                                 <InnerID>392</InnerID>
+                                 <ID>流行病学史52</ID>
+                                 <Name>流行病学史5</Name>
+                                 <Caption>否</Caption>
+                                 <Width>115.75</Width>
+                                 <Height>49.90234</Height>
+                                 <GroupName>流行病学史5</GroupName>
+                                 <ControlStyle>RadioBox</ControlStyle>
+                                 <Checked>true</Checked>
+                                 <CheckedValue />
+                                 <VisualStyle>SystemDefault</VisualStyle>
+                              </Element>
+                              <Element xsi:type="XParagraphFlag" StyleIndex="7">
+                                 <InnerID>393</InnerID>
+                              </Element>
+                           </XElements>
+                        </Element>
+                     </XElements>
+                  </Element>
+                  <Element xsi:type="XTextTableRow" StyleIndex="1">
+                     <InnerID>394</InnerID>
+                     <XElements>
+                        <Element xsi:type="XTextTableCell" StyleIndex="5">
+                           <InnerID>395</InnerID>
+                           <XElements>
+                              <Element xsi:type="XString" StyleIndex="1">
+                                 <InnerID>838</InnerID>
+                                 <Text>6.是否在隔离管控期的入境人员?</Text>
+                              </Element>
+                              <Element xsi:type="XParagraphFlag" StyleIndex="2">
+                                 <InnerID>398</InnerID>
+                              </Element>
+                           </XElements>
+                        </Element>
+                        <Element xsi:type="XTextTableCell" StyleIndex="6">
+                           <InnerID>399</InnerID>
+                           <XElements>
+                              <Element xsi:type="XTextRadioBox" StyleIndex="1">
+                                 <InnerID>401</InnerID>
+                                 <ID>流行病学史61</ID>
+                                 <Name>流行病学史6</Name>
+                                 <Caption>是</Caption>
+                                 <Width>115.75</Width>
+                                 <Height>49.90234</Height>
+                                 <GroupName>流行病学史6</GroupName>
+                                 <ControlStyle>RadioBox</ControlStyle>
+                                 <CheckedValue />
+                                 <VisualStyle>SystemDefault</VisualStyle>
+                              </Element>
+                              <Element xsi:type="XTextRadioBox" StyleIndex="1">
+                                 <InnerID>402</InnerID>
+                                 <ID>流行病学史62</ID>
+                                 <Name>流行病学史6</Name>
+                                 <Caption>否</Caption>
+                                 <Width>115.75</Width>
+                                 <Height>49.90234</Height>
+                                 <GroupName>流行病学史6</GroupName>
+                                 <ControlStyle>RadioBox</ControlStyle>
+                                 <Checked>true</Checked>
+                                 <CheckedValue />
+                                 <VisualStyle>SystemDefault</VisualStyle>
+                              </Element>
+                              <Element xsi:type="XParagraphFlag" StyleIndex="7">
+                                 <InnerID>403</InnerID>
+                              </Element>
+                           </XElements>
+                        </Element>
+                     </XElements>
+                  </Element>
+                  <Element xsi:type="XTextTableRow" StyleIndex="1">
+                     <InnerID>404</InnerID>
+                     <XElements>
+                        <Element xsi:type="XTextTableCell" StyleIndex="5">
+                           <InnerID>405</InnerID>
+                           <XElements>
+                              <Element xsi:type="XString" StyleIndex="1">
+                                 <InnerID>839</InnerID>
+                                 <Text>7.是否在隔离管控期的国内密接人员?</Text>
+                              </Element>
+                              <Element xsi:type="XParagraphFlag" StyleIndex="2">
+                                 <InnerID>408</InnerID>
+                              </Element>
+                           </XElements>
+                        </Element>
+                        <Element xsi:type="XTextTableCell" StyleIndex="6">
+                           <InnerID>409</InnerID>
+                           <XElements>
+                              <Element xsi:type="XTextRadioBox" StyleIndex="1">
+                                 <InnerID>411</InnerID>
+                                 <ID>流行病学史71</ID>
+                                 <Name>流行病学史7</Name>
+                                 <Caption>是</Caption>
+                                 <Width>115.75</Width>
+                                 <Height>49.90234</Height>
+                                 <GroupName>流行病学史7</GroupName>
+                                 <ControlStyle>RadioBox</ControlStyle>
+                                 <CheckedValue />
+                                 <VisualStyle>SystemDefault</VisualStyle>
+                              </Element>
+                              <Element xsi:type="XTextRadioBox" StyleIndex="1">
+                                 <InnerID>412</InnerID>
+                                 <ID>流行病学史72</ID>
+                                 <Name>流行病学史7</Name>
+                                 <Caption>否</Caption>
+                                 <Width>115.75</Width>
+                                 <Height>49.90234</Height>
+                                 <GroupName>流行病学史7</GroupName>
+                                 <ControlStyle>RadioBox</ControlStyle>
+                                 <Checked>true</Checked>
+                                 <CheckedValue />
+                                 <VisualStyle>SystemDefault</VisualStyle>
+                              </Element>
+                              <Element xsi:type="XParagraphFlag" StyleIndex="7">
+                                 <InnerID>413</InnerID>
+                              </Element>
+                           </XElements>
+                        </Element>
+                     </XElements>
+                  </Element>
+                  <Element xsi:type="XTextTableRow" StyleIndex="1">
+                     <InnerID>414</InnerID>
+                     <XElements>
+                        <Element xsi:type="XTextTableCell" StyleIndex="5">
+                           <InnerID>415</InnerID>
+                           <XElements>
+                              <Element xsi:type="XString" StyleIndex="1">
+                                 <InnerID>840</InnerID>
+                                 <Text>8.是否黄码、橙码、红码人员?</Text>
+                              </Element>
+                              <Element xsi:type="XParagraphFlag" StyleIndex="2">
+                                 <InnerID>418</InnerID>
+                              </Element>
+                           </XElements>
+                        </Element>
+                        <Element xsi:type="XTextTableCell" StyleIndex="6">
+                           <InnerID>419</InnerID>
+                           <XElements>
+                              <Element xsi:type="XTextCheckBox" StyleIndex="8">
+                                 <InnerID>421</InnerID>
+                                 <ID>checkbox1</ID>
+                                 <Name>lxbxs8</Name>
+                                 <Caption>是</Caption>
+                                 <Width>122</Width>
+                                 <Height>57.0312424</Height>
+                                 <GroupName>lxbxs8</GroupName>
+                                 <CheckedValue>1</CheckedValue>
+                                 <VisualStyle>SystemDefault</VisualStyle>
+                              </Element>
+                              <Element xsi:type="XTextCheckBox" StyleIndex="8">
+                                 <InnerID>422</InnerID>
+                                 <ID>checkbox2</ID>
+                                 <Name>lxbxs8</Name>
+                                 <Caption>否</Caption>
+                                 <Width>122</Width>
+                                 <Height>57.0312424</Height>
+                                 <GroupName>lxbxs8</GroupName>
+                                 <CheckedValue>2</CheckedValue>
+                                 <VisualStyle>SystemDefault</VisualStyle>
+                              </Element>
+                              <Element xsi:type="XTextCheckBox" StyleIndex="8">
+                                 <InnerID>423</InnerID>
+                                 <ID>checkbox3</ID>
+                                 <Name>lxbxs8</Name>
+                                 <Caption>未知</Caption>
+                                 <Width>172</Width>
+                                 <Height>57.0312424</Height>
+                                 <GroupName>lxbxs8</GroupName>
+                                 <CheckedValue>3</CheckedValue>
+                                 <VisualStyle>SystemDefault</VisualStyle>
+                              </Element>
+                              <Element xsi:type="XParagraphFlag" StyleIndex="7">
+                                 <InnerID>424</InnerID>
+                              </Element>
+                           </XElements>
+                        </Element>
+                     </XElements>
+                  </Element>
+               </XElements>
+               <Columns>
+                  <Element xsi:type="XTextTableColumn">
+                     <InnerID>342</InnerID>
+                     <Width>1391.375</Width>
+                  </Element>
+                  <Element xsi:type="XTextTableColumn">
+                     <InnerID>343</InnerID>
+                     <Width>264.375</Width>
+                  </Element>
+               </Columns>
+            </Element>
+            <Element xsi:type="XParagraphFlag" StyleIndex="2">
+               <InnerID>426</InnerID>
+            </Element>
+            <Element xsi:type="XString" StyleIndex="1">
+               <InnerID>825</InnerID>
+               <Text>医生以上问诊内容与患者（家属)陈述内容一致且真实。患者（家属）确认签名:_______医生确认签名:______</Text>
+            </Element>
+            <Element xsi:type="XParagraphFlag" StyleIndex="2">
+               <InnerID>429</InnerID>
+            </Element>
+            <Element xsi:type="XString" StyleIndex="0">
+               <InnerID>826</InnerID>
+               <Text>体格检查：</Text>
+            </Element>
+            <Element xsi:type="XInputField" StyleIndex="1">
+               <InnerID>432</InnerID>
+               <ID>emr.DE04.10.258.00</ID>
+               <EnableValueValidate>true</EnableValueValidate>
+               <XElements />
+               <BorderElementColor />
+               <Name>emr.DE04.10.258.00</Name>
+               <BackgroundText>点击此处输入体格检查内容</BackgroundText>
+            </Element>
+            <Element xsi:type="XParagraphFlag" StyleIndex="3">
+               <InnerID>433</InnerID>
+            </Element>
+            <Element xsi:type="XString" StyleIndex="0">
+               <InnerID>827</InnerID>
+               <Text>辅助检查：</Text>
+            </Element>
+            <Element xsi:type="XInputField" StyleIndex="1">
+               <InnerID>436</InnerID>
+               <ID>field6</ID>
+               <EnableValueValidate>true</EnableValueValidate>
+               <XElements />
+               <BorderElementColor />
+               <BackgroundText>点击此处输入辅助检查内容</BackgroundText>
+            </Element>
+            <Element xsi:type="XParagraphFlag" StyleIndex="3">
+               <InnerID>437</InnerID>
+            </Element>
+            <Element xsi:type="XString" StyleIndex="0">
+               <InnerID>828</InnerID>
+               <Text>诊  断：</Text>
+            </Element>
+            <Element xsi:type="XInputField" StyleIndex="1">
+               <InnerID>440</InnerID>
+               <ID>emr.DE05.01.025.00</ID>
+               <EnableValueValidate>true</EnableValueValidate>
+               <XElements>
+                  <Element xsi:type="XString" StyleIndex="8" WhitespaceCount="1">
+                     <InnerID>841</InnerID>
+                     <Text> </Text>
+                  </Element>
+                  <Element xsi:type="XParagraphFlag" StyleIndex="3">
+                     <InnerID>442</InnerID>
+                  </Element>
+                  <Element xsi:type="XString" StyleIndex="9">
+                     <InnerID>842</InnerID>
+                     <Text>005771</Text>
+                  </Element>
+                  <Element xsi:type="XParagraphFlag" StyleIndex="3">
+                     <InnerID>444</InnerID>
+                  </Element>
+                  <Element xsi:type="XString" StyleIndex="9">
+                     <InnerID>843</InnerID>
+                     <Text>  1急性广泛前壁、高侧壁心肌梗死  </Text>
+                  </Element>
+                  <Element xsi:type="XParagraphFlag" StyleIndex="3">
+                     <InnerID>446</InnerID>
+                  </Element>
+                  <Element xsi:type="XString" StyleIndex="9">
+                     <InnerID>844</InnerID>
+                     <Text>  2双侧乳腺癌术后化疗 </Text>
+                  </Element>
+               </XElements>
+               <BorderElementColor />
+               <Name>emr.DE05.01.025.00</Name>
+               <BackgroundText>点击输入急诊诊断</BackgroundText>
+            </Element>
+            <Element xsi:type="XParagraphFlag" StyleIndex="3">
+               <InnerID>448</InnerID>
+            </Element>
+            <Element xsi:type="XString" StyleIndex="0">
+               <InnerID>829</InnerID>
+               <Text>处理意见：</Text>
+            </Element>
+            <Element xsi:type="XInputField" StyleIndex="1">
+               <InnerID>451</InnerID>
+               <ID>DE06.00.018.00</ID>
+               <EnableValueValidate>true</EnableValueValidate>
+               <XElements />
+               <BorderElementColor />
+               <Name>DE06.00.018.00</Name>
+               <BackgroundText>点击输入处理意见</BackgroundText>
+            </Element>
+            <Element xsi:type="XParagraphFlag" StyleIndex="3">
+               <InnerID>452</InnerID>
+            </Element>
+            <Element xsi:type="XString" StyleIndex="0">
+               <InnerID>830</InnerID>
+               <Text>备  注：</Text>
+            </Element>
+            <Element xsi:type="XInputField" StyleIndex="1">
+               <InnerID>455</InnerID>
+               <ID>field7</ID>
+               <EnableValueValidate>true</EnableValueValidate>
+               <XElements />
+               <BorderElementColor />
+               <BackgroundText>点击此处输入备注</BackgroundText>
+            </Element>
+            <Element xsi:type="XParagraphFlag" StyleIndex="3">
+               <InnerID>456</InnerID>
+            </Element>
+            <Element xsi:type="XString" StyleIndex="0">
+               <InnerID>831</InnerID>
+               <Text>嘱  托：</Text>
+            </Element>
+            <Element xsi:type="XInputField" StyleIndex="1">
+               <InnerID>459</InnerID>
+               <ID>field8</ID>
+               <EnableValueValidate>true</EnableValueValidate>
+               <XElements />
+               <BorderElementColor />
+               <BackgroundText>点击此处输入嘱托</BackgroundText>
+            </Element>
+            <Element xsi:type="XParagraphFlag" StyleIndex="10">
+               <InnerID>460</InnerID>
+            </Element>
+         </XElements>
+      </Element>
+      <Element xsi:type="XTextFooter">
+         <InnerID>933</InnerID>
+         <AcceptTab>true</AcceptTab>
+         <XElements>
+            <Element xsi:type="XTextTable" NumOfRows="1" NumOfColumns="3">
+               <InnerID>250</InnerID>
+               <ID>table5</ID>
+               <XElements>
+                  <Element xsi:type="XTextTableRow" StyleIndex="8">
+                     <InnerID>254</InnerID>
+                     <XElements>
+                        <Element xsi:type="XTextTableCell" StyleIndex="13">
+                           <InnerID>255</InnerID>
+                           <XElements>
+                              <Element xsi:type="XString" StyleIndex="1">
+                                 <InnerID>845</InnerID>
+                                 <Text>医师工号:</Text>
+                              </Element>
+                              <Element xsi:type="XInputField" StyleIndex="1">
+                                 <InnerID>258</InnerID>
+                                 <ID>med.chargeDoctorId</ID>
+                                 <EnableValueValidate>true</EnableValueValidate>
+                                 <XElements>
+                                    <Element xsi:type="XString" StyleIndex="1">
+                                       <InnerID>846</InnerID>
+                                       <Text>YS0018</Text>
+                                    </Element>
+                                 </XElements>
+                                 <BorderElementColor />
+                                 <Name>med.chargeDoctorId</Name>
+                                 <InnerValue>YS0018</InnerValue>
+                                 <BackgroundText>主管医师ID</BackgroundText>
+                              </Element>
+                              <Element xsi:type="XParagraphFlag" StyleIndex="2">
+                                 <InnerID>260</InnerID>
+                              </Element>
+                           </XElements>
+                        </Element>
+                        <Element xsi:type="XTextTableCell" StyleIndex="13">
+                           <InnerID>261</InnerID>
+                           <XElements>
+                              <Element xsi:type="XString" StyleIndex="1">
+                                 <InnerID>847</InnerID>
+                                 <Text>医师姓名:</Text>
+                              </Element>
+                              <Element xsi:type="XInputField" StyleIndex="1">
+                                 <InnerID>264</InnerID>
+                                 <ID>field26</ID>
+                                 <EnableValueValidate>true</EnableValueValidate>
+                                 <CopySource>
+                                    <SourceID>med.chargeDoctorName</SourceID>
+                                    <SourcePropertyName />
+                                    <DescPropertyName />
+                                    <IgnoreChildElements>false</IgnoreChildElements>
+                                 </CopySource>
+                                 <XElements>
+                                    <Element xsi:type="XString" StyleIndex="1">
+                                       <InnerID>848</InnerID>
+                                       <Text>章晓</Text>
+                                    </Element>
+                                 </XElements>
+                                 <BorderElementColor />
+                                 <Name>医生签名</Name>
+                                 <InnerValue>章晓</InnerValue>
+                                 <BackgroundText>医生签名</BackgroundText>
+                              </Element>
+                              <Element xsi:type="XParagraphFlag" StyleIndex="2">
+                                 <InnerID>266</InnerID>
+                              </Element>
+                           </XElements>
+                        </Element>
+                        <Element xsi:type="XTextTableCell" StyleIndex="13">
+                           <InnerID>267</InnerID>
+                           <XElements>
+                              <Element xsi:type="XString" StyleIndex="1">
+                                 <InnerID>849</InnerID>
+                                 <Text>签署日期:</Text>
+                              </Element>
+                              <Element xsi:type="XInputField" StyleIndex="1">
+                                 <InnerID>270</InnerID>
+                                 <ID>field25</ID>
+                                 <EnableValueValidate>true</EnableValueValidate>
+                                 <CopySource>
+                                    <SourceID>elecMediRecTime</SourceID>
+                                    <SourcePropertyName />
+                                    <DescPropertyName />
+                                    <IgnoreChildElements>false</IgnoreChildElements>
+                                 </CopySource>
+                                 <XElements>
+                                    <Element xsi:type="XString" StyleIndex="1">
+                                       <InnerID>850</InnerID>
+                                       <Text>2022-05-17 09:35</Text>
+                                    </Element>
+                                 </XElements>
+                                 <BorderElementColor />
+                                 <Name>elecMediRecTime</Name>
+                                 <InnerValue>2022-05-17 09:35</InnerValue>
+                                 <BackgroundText>病历时间</BackgroundText>
+                                 <FieldSettings>
+                                    <EditStyle>DateTimeWithoutSecond</EditStyle>
+                                 </FieldSettings>
+                              </Element>
+                              <Element xsi:type="XParagraphFlag" StyleIndex="2">
+                                 <InnerID>272</InnerID>
+                              </Element>
+                           </XElements>
+                        </Element>
+                     </XElements>
+                     <SpecifyHeight>73</SpecifyHeight>
+                  </Element>
+               </XElements>
+               <Columns>
+                  <Element xsi:type="XTextTableColumn">
+                     <InnerID>251</InnerID>
+                     <Width>473.3719</Width>
+                  </Element>
+                  <Element xsi:type="XTextTableColumn">
+                     <InnerID>252</InnerID>
+                     <Width>504.9516</Width>
+                  </Element>
+                  <Element xsi:type="XTextTableColumn">
+                     <InnerID>253</InnerID>
+                     <Width>680.6766</Width>
+                  </Element>
+               </Columns>
+            </Element>
+            <Element xsi:type="XParagraphFlag">
+               <InnerID>274</InnerID>
+            </Element>
+         </XElements>
+      </Element>
+   </XElements>
+   <SerializeParameterValue>true</SerializeParameterValue>
+   <ContentStyles>
+      <Default xsi:type="DocumentContentStyle">
+         <FontName>宋体</FontName>
+         <FontSize>12</FontSize>
+      </Default>
+      <Styles>
+         <Style Index="0">
+            <BackgroundColor>#78C0D4</BackgroundColor>
+            <FontName>宋体</FontName>
+            <FontSize>10.5</FontSize>
+            <Bold>true</Bold>
+            <Align>Justify</Align>
+         </Style>
+         <Style Index="1">
+            <FontName>宋体</FontName>
+            <FontSize>10.5</FontSize>
+            <Align>Justify</Align>
+         </Style>
+         <Style Index="2">
+            <FontName>宋体</FontName>
+            <FontSize>10.5</FontSize>
+         </Style>
+         <Style Index="3">
+            <FontName>宋体</FontName>
+            <FontSize>10.5</FontSize>
+            <Bold>true</Bold>
+         </Style>
+         <Style Index="4">
+            <BackgroundColor>#FFFFFF</BackgroundColor>
+            <FontName>宋体</FontName>
+            <FontSize>10.5</FontSize>
+            <Align>Justify</Align>
+         </Style>
+         <Style Index="5">
+            <FontName>宋体</FontName>
+            <FontSize>10.5</FontSize>
+            <Align>Justify</Align>
+            <BorderWidth>1</BorderWidth>
+            <PaddingLeft>15</PaddingLeft>
+            <PaddingTop>10</PaddingTop>
+            <PaddingRight>15</PaddingRight>
+            <PaddingBottom>10</PaddingBottom>
+         </Style>
+         <Style Index="6">
+            <FontName>宋体</FontName>
+            <FontSize>10.5</FontSize>
+            <Align>Justify</Align>
+            <VerticalAlign>Middle</VerticalAlign>
+            <BorderWidth>1</BorderWidth>
+            <PaddingLeft>15</PaddingLeft>
+            <PaddingTop>10</PaddingTop>
+            <PaddingRight>15</PaddingRight>
+            <PaddingBottom>10</PaddingBottom>
+         </Style>
+         <Style Index="7">
+            <FontName>宋体</FontName>
+            <FontSize>10.5</FontSize>
+            <Align>Center</Align>
+         </Style>
+         <Style Index="8">
+            <FontName>宋体</FontName>
+            <FontSize>12</FontSize>
+            <Align>Justify</Align>
+         </Style>
+         <Style Index="9">
+            <FontName>宋体</FontName>
+            <FontSize>0.9999998</FontSize>
+            <Align>Justify</Align>
+         </Style>
+         <Style Index="10">
+            <FontName>宋体</FontName>
+            <FontSize>7.5</FontSize>
+         </Style>
+         <Style Index="11">
+            <FontName>宋体</FontName>
+            <FontSize>12</FontSize>
+            <Align>Center</Align>
+         </Style>
+         <Style Index="12">
+            <FontName>宋体</FontName>
+            <FontSize>12</FontSize>
+            <BorderWidth>1</BorderWidth>
+            <BorderLeft>true</BorderLeft>
+            <BorderBottom>true</BorderBottom>
+            <BorderTop>true</BorderTop>
+            <BorderRight>true</BorderRight>
+            <PaddingLeft>15</PaddingLeft>
+            <PaddingTop>10</PaddingTop>
+            <PaddingRight>15</PaddingRight>
+            <PaddingBottom>10</PaddingBottom>
+         </Style>
+         <Style Index="13">
+            <FontName>宋体</FontName>
+            <FontSize>12</FontSize>
+            <Align>Justify</Align>
+            <BorderWidth>1</BorderWidth>
+            <BorderLeft>true</BorderLeft>
+            <BorderBottom>true</BorderBottom>
+            <BorderTop>true</BorderTop>
+            <BorderRight>true</BorderRight>
+            <PaddingLeft>15</PaddingLeft>
+            <PaddingTop>10</PaddingTop>
+            <PaddingRight>15</PaddingRight>
+            <PaddingBottom>10</PaddingBottom>
+         </Style>
+      </Styles>
+   </ContentStyles>
+   <Info>
+      <LicenseText>广东医通软件:广东医通软件有限公司</LicenseText>
+      <CreationTime>1980-01-01T00:00:00</CreationTime>
+      <LastModifiedTime>2022-06-02T09:41:14.2719+08:00</LastModifiedTime>
+      <LastPrintTime>1980-01-01T00:00:00</LastPrintTime>
+      <Operator>DCSoft.Writer Version:1.2019.1.29</Operator>
+      <NumOfPage>2</NumOfPage>
+   </Info>
+   <BodyText>职  业：
+主  诉：
+现病史：
+既往史：平素体健，否认“肝炎、结核”等传染病史，否认药物、食物过敏史，无外伤史，无手术史，无输血、血制品史。
+过敏史：
+新冠肺炎流行病学史：
+
+1.您21天是否有发热、干咳、乏力、嗅（味）觉减退、鼻塞、流涕、咽痛、结膜炎、肌痛和腹泻等症状？ 是否 
+2.近21天内是否到过境外.境内中高风险地区*，或有病例报告的社区?  是否 
+3.近21关内是否接触过来自境外.境内中高风险地区*的人员?  是否 
+4.近21天内是否接触过确诊病例或无症状感染者(核酸检测阳性者)? 是否 
+5.近21关内您的亲庭、办公空、学校或托幼机构班级、车间等身体单位是否出现2例及以上发热和/或呼吸道症状的聚集性病例?  是否 
+6.是否在隔离管控期的入境人员? 是否 
+7.是否在隔离管控期的国内密接人员? 是否 
+8.是否黄码、橙码、红码人员? 是否未知 
+医生以上问诊内容与患者（家属)陈述内容一致且真实。患者（家属）确认签名:_______医生确认签名:______
+体格检查：
+辅助检查：
+诊  断： 
+005771
+  1急性广泛前壁、高侧壁心肌梗死  
+  2双侧乳腺癌术后化疗 
+处理意见：
+备  注：
+嘱  托：</BodyText>
+   <LocalConfig />
+   <PageSettings>
+      <PageIndexsForHideHeaderFooter />
+      <PrinterName />
+      <PaperSource />
+      <PaperKind>A5</PaperKind>
+      <PaperWidth>583</PaperWidth>
+      <PaperHeight>827</PaperHeight>
+      <LeftMargin>19</LeftMargin>
+      <TopMargin>19</TopMargin>
+      <RightMargin>19</RightMargin>
+      <BottomMargin>19</BottomMargin>
+      <StrictUsePageSize>false</StrictUsePageSize>
+   </PageSettings>
+</XTextDocument>

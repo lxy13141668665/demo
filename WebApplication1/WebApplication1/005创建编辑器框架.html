@@ -1,0 +1,1087 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script type="text/javascript" src="jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="ServicePage.aspx?js=1"></script>
+    <style type="text/css">
+        html {
+            height: 100%;
+        }
+
+        body {
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="button" value="插入病程" onclick="hb()" />
+    <div id="myWriterControl" style="width: 100%; border: 2px solid black; border-radius: 5px;height:100%;"
+         ContentRenderMode="NormalHtmlEditable" workspacebackcolorstring="#DEDEDE"
+         servicepageurl="ServicePage.aspx" useclassattribute="true" heightcompress="true"
+         backgroundtextoutputmode="None" imagedataembedinhtml="true" HeaderFooterEditable="true" pixelpagespacing="5"
+         clientcontextmenutype="Custom" usedcwriterminijs="False" showdebuginfo="false" registercodeindex="0"
+         ctl.DocumentOptions.BehaviorOptions.AcceptDataFormats="Text" ;>
+    </div>
+
+    <script>
+        function BuildDCWriterControlFrame() {
+            var ctl = document.getElementById("myWriterControl");
+            BindingDCWriterClientControl(ctl);// 创建编辑器框架
+            ctl.BuildFrame(function () {
+                if (ctl != null) {
+                    ctl.GetContentContainer().focus();
+                }
+                // ctl.LoadDocumentFromFile("Test\\演示文档\\常规文档\\入院记录通用测试.xml", "xml");
+            });
+        }
+        BuildDCWriterControlFrame();
+        function hb() {
+            var ctl = document.getElementById('myWriterControl');
+            ctl.ClearDocumentBody()
+            const sub01Attr = {
+                //"Attributes": { "name": "张三", "dept": "胸外科2", "bebNo": "12345" }, //自定义属性
+                //"NewPage": "true", //子文档标题
+                "ReadOnly": "true", //是否可编辑
+                //"Title": "张三的病程记录", //文档标题
+                "ID": "xmlstr",//hb
+                //"ToolTip": "sdsd",//光标提示内容
+                //"CSSStyle": "", //自定义的样式
+                //"TitleLevel": "0",//导航级别，从0到7的整数
+                //"Parameters": {} //绑定的数据格式
+            }
+
+            var options = {
+                Files: [sub01fix],
+                Options: [sub01Attr],
+                Usebase64: "false"
+            };
+            console.log(options)
+            ctl.AppendSubDocuments(options)
+        }
+        var sub01 = `<XTextDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" EditorVersionString="1.2022.9.1">
+   <XElements>
+      <Element xsi:type="XTextHeader">
+         <InnerID>1</InnerID>
+         <AcceptTab>true</AcceptTab>
+         <XElements>
+            <Element xsi:type="XParagraphFlag" StyleIndex="1">
+               <InnerID>3109</InnerID>
+            </Element>
+         </XElements>
+      </Element>
+      <Element xsi:type="XTextBody">
+         <InnerID>2</InnerID>
+         <AcceptTab>true</AcceptTab>
+         <XElements>
+            <Element xsi:type="XParagraphFlag">
+               <InnerID>3114</InnerID>
+            </Element>
+            <Element xsi:type="XTextSubDocument">
+               <Attributes>
+                  <Attribute>
+                     <Name>科室</Name>
+                     <Value>住院内科</Value>
+                  </Attribute>
+                  <Attribute>
+                     <Name>病区</Name>
+                     <Value>住院内科病区</Value>
+                  </Attribute>
+                  <Attribute>
+                     <Name>床位</Name>
+                     <Value>1</Value>
+                  </Attribute>
+               </Attributes>
+               <InnerID>3115</InnerID>
+               <AcceptTab>true</AcceptTab>
+               <XElements>
+                  <Element xsi:type="XTextTable" NumOfRows="2" NumOfColumns="4">
+                     <InnerID>3116</InnerID>
+                     <ID>table2</ID>
+                     <XElements>
+                        <Element xsi:type="XTextTableRow">
+                           <InnerID>3121</InnerID>
+                           <XElements>
+                              <Element xsi:type="XTextTableCell" StyleIndex="3">
+                                 <InnerID>13</InnerID>
+                                 <XElements>
+                                    <Element xsi:type="XInputField" StyleIndex="11">
+                                       <Attributes>
+                                          <Attribute>
+                                             <Name>NsoElementTypeName</Name>
+                                             <Value>NewControl</Value>
+                                          </Attribute>
+                                          <Attribute>
+                                             <Name>NsoControlTypeName</Name>
+                                             <Value>DateTimeBox</Value>
+                                          </Attribute>
+                                          <Attribute>
+                                             <Name>Type</Name>
+                                             <Value>8</Value>
+                                          </Attribute>
+                                       </Attributes>
+                                       <InnerID>3124</InnerID>
+                                       <ID>20200612101208_31_32</ID>
+                                       <EnableValueValidate>true</EnableValueValidate>
+                                       <XElements>
+                                          <Element xsi:type="XString" StyleIndex="4">
+                                             <InnerID>251</InnerID>
+                                             <Text>2023-01-31 15:06</Text>
+                                          </Element>
+                                       </XElements>
+                                       <BorderElementColor />
+                                       <DisplayFormat>
+                                          <Style>DateTime</Style>
+                                          <Format>yyyy-MM-dd HH:mm</Format>
+                                       </DisplayFormat>
+                                       <InnerValue>2023-01-31 15:06:53</InnerValue>
+                                       <BackgroundText>记录时间</BackgroundText>
+                                       <BorderVisible>Hidden</BorderVisible>
+                                       <FieldSettings>
+                                          <EditStyle>DateTime</EditStyle>
+                                       </FieldSettings>
+                                    </Element>
+                                    <Element xsi:type="XParagraphFlag" StyleIndex="5">
+                                       <InnerID>3141</InnerID>
+                                    </Element>
+                                 </XElements>
+                                 <ColSpan>4</ColSpan>
+                              </Element>
+                              <Element xsi:type="XTextTableCell" StyleIndex="3">
+                                 <InnerID>3365</InnerID>
+                                 <XElements>
+                                    <Element xsi:type="XParagraphFlag">
+                                       <InnerID>71</InnerID>
+                                       <AutoCreate>true</AutoCreate>
+                                    </Element>
+                                 </XElements>
+                              </Element>
+                              <Element xsi:type="XTextTableCell" StyleIndex="3">
+                                 <InnerID>3366</InnerID>
+                                 <XElements>
+                                    <Element xsi:type="XParagraphFlag">
+                                       <InnerID>72</InnerID>
+                                       <AutoCreate>true</AutoCreate>
+                                    </Element>
+                                 </XElements>
+                              </Element>
+                              <Element xsi:type="XTextTableCell" StyleIndex="3">
+                                 <InnerID>3367</InnerID>
+                                 <XElements>
+                                    <Element xsi:type="XParagraphFlag">
+                                       <InnerID>73</InnerID>
+                                       <AutoCreate>true</AutoCreate>
+                                    </Element>
+                                 </XElements>
+                              </Element>
+                           </XElements>
+                        </Element>
+                        <Element xsi:type="XTextTableRow">
+                           <InnerID>3142</InnerID>
+                           <XElements>
+                              <Element xsi:type="XTextTableCell" StyleIndex="3">
+                                 <InnerID>1</InnerID>
+                                 <XElements>
+                                    <Element xsi:type="XInputField" StyleIndex="10">
+                                       <Attributes>
+                                          <Attribute>
+                                             <Name>NsoElementTypeName</Name>
+                                             <Value>NewControl</Value>
+                                          </Attribute>
+                                          <Attribute>
+                                             <Name>NsoControlTypeName</Name>
+                                             <Value>TextBox</Value>
+                                          </Attribute>
+                                          <Attribute>
+                                             <Name>Type</Name>
+                                             <Value>3</Value>
+                                          </Attribute>
+                                       </Attributes>
+                                       <InnerID>3145</InnerID>
+                                       <ID>20190710223726</ID>
+                                       <EnableValueValidate>true</EnableValueValidate>
+                                       <XElements>
+                                          <Element xsi:type="XString" StyleIndex="6">
+                                             <InnerID>252</InnerID>
+                                             <Text>1231212222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222224444444777777777  这个是合并的病程，这里应该不能编辑，才对的，但是现场能正常输入</Text>
+                                          </Element>
+                                       </XElements>
+                                       <BorderElementColor />
+                                       <SpecifyWidth>1417.32288</SpecifyWidth>
+                                       <InnerValue>1231212222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222224444444777777777  这个是合并的病程，这里应该不能编辑，才对的，但是现场能正常输入</InnerValue>
+                                       <BackgroundText>请输入病程记录</BackgroundText>
+                                       <BorderVisible>Hidden</BorderVisible>
+                                       <EditorActiveMode>MouseClick</EditorActiveMode>
+                                    </Element>
+                                    <Element xsi:type="XParagraphFlag">
+                                       <InnerID>370</InnerID>
+                                    </Element>
+                                    <Element xsi:type="XParagraphFlag">
+                                       <InnerID>371</InnerID>
+                                    </Element>
+                                    <Element xsi:type="XInputField" StyleIndex="9">
+                                       <Attributes>
+                                          <Attribute>
+                                             <Name>NsoElementTypeName</Name>
+                                             <Value>NewControl</Value>
+                                          </Attribute>
+                                          <Attribute>
+                                             <Name>NsoControlTypeName</Name>
+                                             <Value>TextBox</Value>
+                                          </Attribute>
+                                          <Attribute>
+                                             <Name>Type</Name>
+                                             <Value>3</Value>
+                                          </Attribute>
+                                       </Attributes>
+                                       <InnerID>3145</InnerID>
+                                       <ID>field4</ID>
+                                       <EnableValueValidate>true</EnableValueValidate>
+                                       <XElements>
+                                          <Element xsi:type="XString" StyleIndex="6">
+                                             <InnerID>253</InnerID>
+                                             <Text>1231212222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222224444444777777777  这个是合并的病程，这里应该不能编辑，才对的，但是现场能正常输入</Text>
+                                          </Element>
+                                       </XElements>
+                                       <BorderElementColor />
+                                       <InnerValue>1231212222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222224444444777777777  这个是合并的病程，这里应该不能编辑，才对的，但是现场能正常输入</InnerValue>
+                                       <BackgroundText>请输入病程记录</BackgroundText>
+                                       <BorderVisible>Hidden</BorderVisible>
+                                       <EditorActiveMode>MouseClick</EditorActiveMode>
+                                    </Element>
+                                    <Element xsi:type="XParagraphFlag">
+                                       <InnerID>305</InnerID>
+                                    </Element>
+                                    <Element xsi:type="XParagraphFlag">
+                                       <InnerID>306</InnerID>
+                                    </Element>
+                                    <Element xsi:type="XInputField" StyleIndex="9">
+                                       <Attributes>
+                                          <Attribute>
+                                             <Name>NsoElementTypeName</Name>
+                                             <Value>NewControl</Value>
+                                          </Attribute>
+                                          <Attribute>
+                                             <Name>NsoControlTypeName</Name>
+                                             <Value>TextBox</Value>
+                                          </Attribute>
+                                          <Attribute>
+                                             <Name>Type</Name>
+                                             <Value>3</Value>
+                                          </Attribute>
+                                       </Attributes>
+                                       <InnerID>3145</InnerID>
+                                       <ID>field5</ID>
+                                       <EnableValueValidate>true</EnableValueValidate>
+                                       <ContentReadonly>False</ContentReadonly>
+                                       <XElements>
+                                          <Element xsi:type="XString" StyleIndex="6">
+                                             <InnerID>254</InnerID>
+                                             <Text>1231212222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222224444444777777777  这个是合并的病程，这里应该不能编辑，才对的，但是现场能正常输入</Text>
+                                          </Element>
+                                       </XElements>
+                                       <BorderElementColor />
+                                       <InnerValue>1231212222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222224444444777777777  这个是合并的病程，这里应该不能编辑，才对的，但是现场能正常输入</InnerValue>
+                                       <BackgroundText>请输入病程记录</BackgroundText>
+                                       <BorderVisible>Hidden</BorderVisible>
+                                       <EditorActiveMode>MouseClick</EditorActiveMode>
+                                    </Element>
+                                    <Element xsi:type="XParagraphFlag" StyleIndex="2">
+                                       <InnerID>3363</InnerID>
+                                    </Element>
+                                 </XElements>
+                                 <ColSpan>4</ColSpan>
+                              </Element>
+                              <Element xsi:type="XTextTableCell" StyleIndex="3">
+                                 <InnerID>3368</InnerID>
+                                 <XElements>
+                                    <Element xsi:type="XParagraphFlag">
+                                       <InnerID>291</InnerID>
+                                       <AutoCreate>true</AutoCreate>
+                                    </Element>
+                                 </XElements>
+                              </Element>
+                              <Element xsi:type="XTextTableCell" StyleIndex="3">
+                                 <InnerID>3369</InnerID>
+                                 <XElements>
+                                    <Element xsi:type="XParagraphFlag">
+                                       <InnerID>292</InnerID>
+                                       <AutoCreate>true</AutoCreate>
+                                    </Element>
+                                 </XElements>
+                              </Element>
+                              <Element xsi:type="XTextTableCell" StyleIndex="3">
+                                 <InnerID>3370</InnerID>
+                                 <XElements>
+                                    <Element xsi:type="XParagraphFlag">
+                                       <InnerID>293</InnerID>
+                                       <AutoCreate>true</AutoCreate>
+                                    </Element>
+                                 </XElements>
+                              </Element>
+                           </XElements>
+                        </Element>
+                     </XElements>
+                     <CompressOwnerLineSpacing>true</CompressOwnerLineSpacing>
+                     <Columns>
+                        <Element xsi:type="XTextTableColumn">
+                           <InnerID>3117</InnerID>
+                           <Width>636.9167</Width>
+                        </Element>
+                        <Element xsi:type="XTextTableColumn">
+                           <InnerID>3118</InnerID>
+                           <Width>424.6111</Width>
+                        </Element>
+                        <Element xsi:type="XTextTableColumn">
+                           <InnerID>3119</InnerID>
+                           <Width>228.125</Width>
+                        </Element>
+                        <Element xsi:type="XTextTableColumn">
+                           <InnerID>3120</InnerID>
+                           <Width>568.625</Width>
+                        </Element>
+                     </Columns>
+                  </Element>
+                  <Element xsi:type="XTextTable" NumOfRows="1" NumOfColumns="5">
+                     <InnerID>3371</InnerID>
+                     <ID>table1_24_134</ID>
+                     <XElements>
+                        <Element xsi:type="XTextTableRow">
+                           <InnerID>3377</InnerID>
+                           <XElements>
+                              <Element xsi:type="XTextTableCell" StyleIndex="7">
+                                 <InnerID>2</InnerID>
+                                 <XElements>
+                                    <Element xsi:type="XParagraphFlag" StyleIndex="6">
+                                       <InnerID>3381</InnerID>
+                                    </Element>
+                                 </XElements>
+                                 <ColSpan>3</ColSpan>
+                              </Element>
+                              <Element xsi:type="XTextTableCell" StyleIndex="7">
+                                 <InnerID>3397</InnerID>
+                                 <XElements>
+                                    <Element xsi:type="XParagraphFlag">
+                                       <InnerID>294</InnerID>
+                                       <AutoCreate>true</AutoCreate>
+                                    </Element>
+                                 </XElements>
+                              </Element>
+                              <Element xsi:type="XTextTableCell" StyleIndex="7">
+                                 <InnerID>3398</InnerID>
+                                 <XElements>
+                                    <Element xsi:type="XParagraphFlag">
+                                       <InnerID>295</InnerID>
+                                       <AutoCreate>true</AutoCreate>
+                                    </Element>
+                                 </XElements>
+                              </Element>
+                              <Element xsi:type="XTextTableCell" StyleIndex="7">
+                                 <InnerID>3</InnerID>
+                                 <XElements>
+                                    <Element xsi:type="XString" StyleIndex="6">
+                                       <InnerID>255</InnerID>
+                                       <Text>签名：</Text>
+                                    </Element>
+                                    <Element xsi:type="XParagraphFlag" StyleIndex="8">
+                                       <InnerID>3387</InnerID>
+                                    </Element>
+                                 </XElements>
+                              </Element>
+                              <Element xsi:type="XTextTableCell" StyleIndex="7">
+                                 <InnerID>4</InnerID>
+                                 <XElements>
+                                    <Element xsi:type="XInputField" StyleIndex="9">
+                                       <Attributes>
+                                          <Attribute>
+                                             <Name>NsoElementTypeName</Name>
+                                             <Value>NewControl</Value>
+                                          </Attribute>
+                                          <Attribute>
+                                             <Name>NsoControlTypeName</Name>
+                                             <Value>TextBox</Value>
+                                          </Attribute>
+                                          <Attribute>
+                                             <Name>Type</Name>
+                                             <Value>3</Value>
+                                          </Attribute>
+                                       </Attributes>
+                                       <InnerID>3390</InnerID>
+                                       <ID>20200616155528_13_25_135</ID>
+                                       <EnableValueValidate>true</EnableValueValidate>
+                                       <XElements>
+                                          <Element xsi:type="XString" StyleIndex="6">
+                                             <InnerID>256</InnerID>
+                                             <Text>住院医生</Text>
+                                          </Element>
+                                       </XElements>
+                                       <BorderElementColor />
+                                       <InnerValue>住院医生</InnerValue>
+                                       <BackgroundText>医生签名</BackgroundText>
+                                       <BorderVisible>Hidden</BorderVisible>
+                                       <EditorActiveMode>MouseClick</EditorActiveMode>
+                                    </Element>
+                                    <Element xsi:type="XParagraphFlag" StyleIndex="6">
+                                       <InnerID>3395</InnerID>
+                                    </Element>
+                                 </XElements>
+                              </Element>
+                           </XElements>
+                           <SpecifyHeight>94.48819</SpecifyHeight>
+                        </Element>
+                     </XElements>
+                     <CompressOwnerLineSpacing>true</CompressOwnerLineSpacing>
+                     <Columns>
+                        <Element xsi:type="XTextTableColumn">
+                           <InnerID>3372</InnerID>
+                           <Width>280.3104</Width>
+                        </Element>
+                        <Element xsi:type="XTextTableColumn">
+                           <InnerID>3373</InnerID>
+                           <Width>357.9299</Width>
+                        </Element>
+                        <Element xsi:type="XTextTableColumn">
+                           <InnerID>3374</InnerID>
+                           <Width>50</Width>
+                        </Element>
+                        <Element xsi:type="XTextTableColumn">
+                           <InnerID>3375</InnerID>
+                           <Width>791.6442</Width>
+                        </Element>
+                        <Element xsi:type="XTextTableColumn">
+                           <InnerID>3376</InnerID>
+                           <Width>376.019</Width>
+                        </Element>
+                     </Columns>
+                  </Element>
+                  <Element xsi:type="XParagraphFlag">
+                     <InnerID>303</InnerID>
+                     <AutoCreate>true</AutoCreate>
+                  </Element>
+               </XElements>
+               <ForeColorForCollapsed />
+               <ForeColorValueForCollapsed>#00000000</ForeColorValueForCollapsed>
+               <CompressOwnerLineSpacing>true</CompressOwnerLineSpacing>
+               <DocumentInfo>
+                  <CreationTime>1980-01-01T00:00:00</CreationTime>
+                  <LastModifiedTime>1980-01-01T00:00:00</LastModifiedTime>
+                  <LastPrintTime>1980-01-01T00:00:00</LastPrintTime>
+                  <Operator>DCSoft.Writer Version:1.2023.3.10</Operator>
+               </DocumentInfo>
+            </Element>
+            <Element xsi:type="XParagraphFlag">
+               <InnerID>3399</InnerID>
+               <AutoCreate>true</AutoCreate>
+            </Element>
+         </XElements>
+      </Element>
+      <Element xsi:type="XTextFooter">
+         <InnerID>3</InnerID>
+         <AcceptTab>true</AcceptTab>
+         <XElements>
+            <Element xsi:type="XParagraphFlag" StyleIndex="2">
+               <InnerID>3111</InnerID>
+            </Element>
+         </XElements>
+      </Element>
+   </XElements>
+   <SerializeParameterValue>true</SerializeParameterValue>
+   <FileName>20230315173611.xml</FileName>
+   <FileFormat>XML</FileFormat>
+   <ContentStyles>
+      <Default xsi:type="DocumentContentStyle">
+         <FontName>宋体</FontName>
+         <FontSize>12</FontSize>
+      </Default>
+      <Styles>
+         <Style Index="0">
+            <FontName>宋体</FontName>
+            <FontSize>12</FontSize>
+            <Align>Center</Align>
+         </Style>
+         <Style Index="1">
+            <FontName>宋体</FontName>
+            <FontSize>12</FontSize>
+            <Align>Center</Align>
+         </Style>
+         <Style Index="2">
+            <FontName>宋体</FontName>
+            <FontSize>12</FontSize>
+         </Style>
+         <Style Index="3">
+            <FontName>宋体</FontName>
+            <FontSize>12</FontSize>
+            <BorderWidth>1</BorderWidth>
+         </Style>
+         <Style Index="4">
+            <FontName>宋体</FontName>
+            <FontSize>11</FontSize>
+            <Bold>true</Bold>
+         </Style>
+         <Style Index="5">
+            <FontName>宋体</FontName>
+            <FontSize>11</FontSize>
+            <Align>Justify</Align>
+         </Style>
+         <Style Index="6">
+            <FontName>宋体</FontName>
+            <FontSize>10.5</FontSize>
+         </Style>
+         <Style Index="7">
+            <FontName>宋体</FontName>
+            <FontSize>12</FontSize>
+            <BorderLeft>true</BorderLeft>
+            <BorderBottom>true</BorderBottom>
+            <BorderTop>true</BorderTop>
+            <BorderRight>true</BorderRight>
+            <PaddingLeft>15</PaddingLeft>
+            <PaddingTop>10</PaddingTop>
+            <PaddingRight>12.5</PaddingRight>
+            <PaddingBottom>10</PaddingBottom>
+         </Style>
+         <Style Index="8">
+            <FontName>宋体</FontName>
+            <FontSize>10.5</FontSize>
+            <Align>Right</Align>
+         </Style>
+         <Style Index="9">
+            <FontName>宋体</FontName>
+            <FontSize>10.5</FontSize>
+            <BorderWidth>1</BorderWidth>
+         </Style>
+         <Style Index="10">
+            <FontName>宋体</FontName>
+            <FontSize>10.5</FontSize>
+            <BorderWidth>1</BorderWidth>
+         </Style>
+         <Style Index="11">
+            <FontName>宋体</FontName>
+            <FontSize>11</FontSize>
+            <Bold>true</Bold>
+            <BorderWidth>1</BorderWidth>
+         </Style>
+      </Styles>
+   </ContentStyles>
+   <Info>
+      <LicenseText>南京都昌信息科技有限公司内部使用:南京都昌信息科技有限公司内测旗舰版</LicenseText>
+      <CreationTime>1980-01-01T00:00:00</CreationTime>
+      <LastModifiedTime>2023-03-15T17:59:10.4442744+08:00</LastModifiedTime>
+      <LastPrintTime>1980-01-01T00:00:00</LastPrintTime>
+      <Operator>DCSoft.Writer Version:1.2023.3.10</Operator>
+      <NumOfPage>1</NumOfPage>
+   </Info>
+   <BodyText>
+
+2023-01-31 15:06 
+1231212222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222224444444777777777  这个是合并的病程，这里应该不能编辑，才对的，但是现场能正常输入
+
+1231212222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222224444444777777777  这个是合并的病程，这里应该不能编辑，才对的，但是现场能正常输入
+
+1231212222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222224444444777777777  这个是合并的病程，这里应该不能编辑，才对的，但是现场能正常输入 
+  签名： 住院医生 </BodyText>
+   <LocalConfig />
+   <PageSettings>
+      <StrictUsePageSize>false</StrictUsePageSize>
+   </PageSettings>
+</XTextDocument>`;
+
+        var sub01fix = `<XTextDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" EditorVersionString="1.2022.9.1">
+	<XElements>
+		<Element xsi:type="XTextHeader">
+			<InnerID>1</InnerID>
+			<AcceptTab>true</AcceptTab>
+			<XElements>
+				<Element xsi:type="XParagraphFlag" StyleIndex="1">
+					<InnerID>3109</InnerID>
+				</Element>
+			</XElements>
+		</Element>
+		<Element xsi:type="XTextBody">
+			<InnerID>2</InnerID>
+			<AcceptTab>true</AcceptTab>
+			<XElements>
+				<Element xsi:type="XParagraphFlag">
+					<InnerID>3114</InnerID>
+				</Element>
+				<Element xsi:type="XTextTable" NumOfRows="2" NumOfColumns="4">
+					<InnerID>3116</InnerID>
+					<ID>table2</ID>
+					<XElements>
+						<Element xsi:type="XTextTableRow">
+							<InnerID>3121</InnerID>
+							<XElements>
+								<Element xsi:type="XTextTableCell" StyleIndex="3">
+									<InnerID>13</InnerID>
+									<XElements>
+										<Element xsi:type="XInputField" StyleIndex="11">
+											<Attributes>
+												<Attribute>
+													<Name>NsoElementTypeName</Name>
+													<Value>NewControl</Value>
+												</Attribute>
+												<Attribute>
+													<Name>NsoControlTypeName</Name>
+													<Value>DateTimeBox</Value>
+												</Attribute>
+												<Attribute>
+													<Name>Type</Name>
+													<Value>8</Value>
+												</Attribute>
+											</Attributes>
+											<InnerID>3124</InnerID>
+											<ID>20200612101208_31_32</ID>
+											<EnableValueValidate>true</EnableValueValidate>
+											<XElements>
+												<Element xsi:type="XString" StyleIndex="4">
+													<InnerID>251</InnerID>
+													<Text>2023-01-31 15:06</Text>
+												</Element>
+											</XElements>
+											<BorderElementColor />
+											<DisplayFormat>
+												<Style>DateTime</Style>
+												<Format>yyyy-MM-dd HH:mm</Format>
+											</DisplayFormat>
+											<InnerValue>2023-01-31 15:06:53</InnerValue>
+											<BackgroundText>记录时间</BackgroundText>
+											<BorderVisible>Hidden</BorderVisible>
+											<FieldSettings>
+												<EditStyle>DateTime</EditStyle>
+											</FieldSettings>
+										</Element>
+										<Element xsi:type="XParagraphFlag" StyleIndex="5">
+											<InnerID>3141</InnerID>
+										</Element>
+									</XElements>
+									<ColSpan>4</ColSpan>
+								</Element>
+								<Element xsi:type="XTextTableCell" StyleIndex="3">
+									<InnerID>3365</InnerID>
+									<XElements>
+										<Element xsi:type="XParagraphFlag">
+											<InnerID>71</InnerID>
+											<AutoCreate>true</AutoCreate>
+										</Element>
+									</XElements>
+								</Element>
+								<Element xsi:type="XTextTableCell" StyleIndex="3">
+									<InnerID>3366</InnerID>
+									<XElements>
+										<Element xsi:type="XParagraphFlag">
+											<InnerID>72</InnerID>
+											<AutoCreate>true</AutoCreate>
+										</Element>
+									</XElements>
+								</Element>
+								<Element xsi:type="XTextTableCell" StyleIndex="3">
+									<InnerID>3367</InnerID>
+									<XElements>
+										<Element xsi:type="XParagraphFlag">
+											<InnerID>73</InnerID>
+											<AutoCreate>true</AutoCreate>
+										</Element>
+									</XElements>
+								</Element>
+							</XElements>
+						</Element>
+						<Element xsi:type="XTextTableRow">
+							<InnerID>3142</InnerID>
+							<XElements>
+								<Element xsi:type="XTextTableCell" StyleIndex="3">
+									<InnerID>1</InnerID>
+									<XElements>
+										<Element xsi:type="XInputField" StyleIndex="10">
+											<Attributes>
+												<Attribute>
+													<Name>NsoElementTypeName</Name>
+													<Value>NewControl</Value>
+												</Attribute>
+												<Attribute>
+													<Name>NsoControlTypeName</Name>
+													<Value>TextBox</Value>
+												</Attribute>
+												<Attribute>
+													<Name>Type</Name>
+													<Value>3</Value>
+												</Attribute>
+											</Attributes>
+											<InnerID>3145</InnerID>
+											<ID>20190710223726</ID>
+											<EnableValueValidate>true</EnableValueValidate>
+											<XElements>
+												<Element xsi:type="XString" StyleIndex="6">
+													<InnerID>252</InnerID>
+													<Text>1231212222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222224444444777777777  这个是合并的病程，这里应该不能编辑，才对的，但是现场能正常输入</Text>
+												</Element>
+											</XElements>
+											<BorderElementColor />
+											<SpecifyWidth>1417.32288</SpecifyWidth>
+											<InnerValue>1231212222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222224444444777777777  这个是合并的病程，这里应该不能编辑，才对的，但是现场能正常输入</InnerValue>
+											<BackgroundText>请输入病程记录</BackgroundText>
+											<BorderVisible>Hidden</BorderVisible>
+											<EditorActiveMode>MouseClick</EditorActiveMode>
+										</Element>
+										<Element xsi:type="XParagraphFlag">
+											<InnerID>370</InnerID>
+										</Element>
+										<Element xsi:type="XParagraphFlag">
+											<InnerID>371</InnerID>
+										</Element>
+										<Element xsi:type="XInputField" StyleIndex="9">
+											<Attributes>
+												<Attribute>
+													<Name>NsoElementTypeName</Name>
+													<Value>NewControl</Value>
+												</Attribute>
+												<Attribute>
+													<Name>NsoControlTypeName</Name>
+													<Value>TextBox</Value>
+												</Attribute>
+												<Attribute>
+													<Name>Type</Name>
+													<Value>3</Value>
+												</Attribute>
+											</Attributes>
+											<InnerID>3145</InnerID>
+											<ID>field4</ID>
+											<EnableValueValidate>true</EnableValueValidate>
+											<XElements>
+												<Element xsi:type="XString" StyleIndex="6">
+													<InnerID>253</InnerID>
+													<Text>1231212222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222224444444777777777  这个是合并的病程，这里应该不能编辑，才对的，但是现场能正常输入</Text>
+												</Element>
+											</XElements>
+											<BorderElementColor />
+											<InnerValue>1231212222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222224444444777777777  这个是合并的病程，这里应该不能编辑，才对的，但是现场能正常输入</InnerValue>
+											<BackgroundText>请输入病程记录</BackgroundText>
+											<BorderVisible>Hidden</BorderVisible>
+											<EditorActiveMode>MouseClick</EditorActiveMode>
+										</Element>
+										<Element xsi:type="XParagraphFlag">
+											<InnerID>305</InnerID>
+										</Element>
+										<Element xsi:type="XParagraphFlag">
+											<InnerID>306</InnerID>
+										</Element>
+										<Element xsi:type="XInputField" StyleIndex="9">
+											<Attributes>
+												<Attribute>
+													<Name>NsoElementTypeName</Name>
+													<Value>NewControl</Value>
+												</Attribute>
+												<Attribute>
+													<Name>NsoControlTypeName</Name>
+													<Value>TextBox</Value>
+												</Attribute>
+												<Attribute>
+													<Name>Type</Name>
+													<Value>3</Value>
+												</Attribute>
+											</Attributes>
+											<InnerID>3145</InnerID>
+											<ID>field5</ID>
+											<EnableValueValidate>true</EnableValueValidate>
+											<ContentReadonly>False</ContentReadonly>
+											<XElements>
+												<Element xsi:type="XString" StyleIndex="6">
+													<InnerID>254</InnerID>
+													<Text>1231212222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222224444444777777777  这个是合并的病程，这里应该不能编辑，才对的，但是现场能正常输入</Text>
+												</Element>
+											</XElements>
+											<BorderElementColor />
+											<InnerValue>1231212222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222224444444777777777  这个是合并的病程，这里应该不能编辑，才对的，但是现场能正常输入</InnerValue>
+											<BackgroundText>请输入病程记录</BackgroundText>
+											<BorderVisible>Hidden</BorderVisible>
+											<EditorActiveMode>MouseClick</EditorActiveMode>
+										</Element>
+										<Element xsi:type="XParagraphFlag" StyleIndex="2">
+											<InnerID>3363</InnerID>
+										</Element>
+									</XElements>
+									<ColSpan>4</ColSpan>
+								</Element>
+								<Element xsi:type="XTextTableCell" StyleIndex="3">
+									<InnerID>3368</InnerID>
+									<XElements>
+										<Element xsi:type="XParagraphFlag">
+											<InnerID>291</InnerID>
+											<AutoCreate>true</AutoCreate>
+										</Element>
+									</XElements>
+								</Element>
+								<Element xsi:type="XTextTableCell" StyleIndex="3">
+									<InnerID>3369</InnerID>
+									<XElements>
+										<Element xsi:type="XParagraphFlag">
+											<InnerID>292</InnerID>
+											<AutoCreate>true</AutoCreate>
+										</Element>
+									</XElements>
+								</Element>
+								<Element xsi:type="XTextTableCell" StyleIndex="3">
+									<InnerID>3370</InnerID>
+									<XElements>
+										<Element xsi:type="XParagraphFlag">
+											<InnerID>293</InnerID>
+											<AutoCreate>true</AutoCreate>
+										</Element>
+									</XElements>
+								</Element>
+							</XElements>
+						</Element>
+					</XElements>
+					<CompressOwnerLineSpacing>true</CompressOwnerLineSpacing>
+					<Columns>
+						<Element xsi:type="XTextTableColumn">
+							<InnerID>3117</InnerID>
+							<Width>636.9167</Width>
+						</Element>
+						<Element xsi:type="XTextTableColumn">
+							<InnerID>3118</InnerID>
+							<Width>424.6111</Width>
+						</Element>
+						<Element xsi:type="XTextTableColumn">
+							<InnerID>3119</InnerID>
+							<Width>228.125</Width>
+						</Element>
+						<Element xsi:type="XTextTableColumn">
+							<InnerID>3120</InnerID>
+							<Width>568.625</Width>
+						</Element>
+					</Columns>
+				</Element>
+				<Element xsi:type="XTextTable" NumOfRows="1" NumOfColumns="5">
+					<InnerID>3371</InnerID>
+					<ID>table1_24_134</ID>
+					<XElements>
+						<Element xsi:type="XTextTableRow">
+							<InnerID>3377</InnerID>
+							<XElements>
+								<Element xsi:type="XTextTableCell" StyleIndex="7">
+									<InnerID>2</InnerID>
+									<XElements>
+										<Element xsi:type="XParagraphFlag" StyleIndex="6">
+											<InnerID>3381</InnerID>
+										</Element>
+									</XElements>
+									<ColSpan>3</ColSpan>
+								</Element>
+								<Element xsi:type="XTextTableCell" StyleIndex="7">
+									<InnerID>3397</InnerID>
+									<XElements>
+										<Element xsi:type="XParagraphFlag">
+											<InnerID>294</InnerID>
+											<AutoCreate>true</AutoCreate>
+										</Element>
+									</XElements>
+								</Element>
+								<Element xsi:type="XTextTableCell" StyleIndex="7">
+									<InnerID>3398</InnerID>
+									<XElements>
+										<Element xsi:type="XParagraphFlag">
+											<InnerID>295</InnerID>
+											<AutoCreate>true</AutoCreate>
+										</Element>
+									</XElements>
+								</Element>
+								<Element xsi:type="XTextTableCell" StyleIndex="7">
+									<InnerID>3</InnerID>
+									<XElements>
+										<Element xsi:type="XString" StyleIndex="6">
+											<InnerID>255</InnerID>
+											<Text>签名：</Text>
+										</Element>
+										<Element xsi:type="XParagraphFlag" StyleIndex="8">
+											<InnerID>3387</InnerID>
+										</Element>
+									</XElements>
+								</Element>
+								<Element xsi:type="XTextTableCell" StyleIndex="7">
+									<InnerID>4</InnerID>
+									<XElements>
+										<Element xsi:type="XInputField" StyleIndex="9">
+											<Attributes>
+												<Attribute>
+													<Name>NsoElementTypeName</Name>
+													<Value>NewControl</Value>
+												</Attribute>
+												<Attribute>
+													<Name>NsoControlTypeName</Name>
+													<Value>TextBox</Value>
+												</Attribute>
+												<Attribute>
+													<Name>Type</Name>
+													<Value>3</Value>
+												</Attribute>
+											</Attributes>
+											<InnerID>3390</InnerID>
+											<ID>20200616155528_13_25_135</ID>
+											<EnableValueValidate>true</EnableValueValidate>
+											<XElements>
+												<Element xsi:type="XString" StyleIndex="6">
+													<InnerID>256</InnerID>
+													<Text>住院医生</Text>
+												</Element>
+											</XElements>
+											<BorderElementColor />
+											<InnerValue>住院医生</InnerValue>
+											<BackgroundText>医生签名</BackgroundText>
+											<BorderVisible>Hidden</BorderVisible>
+											<EditorActiveMode>MouseClick</EditorActiveMode>
+										</Element>
+										<Element xsi:type="XParagraphFlag" StyleIndex="6">
+											<InnerID>3395</InnerID>
+										</Element>
+									</XElements>
+								</Element>
+							</XElements>
+							<SpecifyHeight>94.48819</SpecifyHeight>
+						</Element>
+					</XElements>
+					<CompressOwnerLineSpacing>true</CompressOwnerLineSpacing>
+					<Columns>
+						<Element xsi:type="XTextTableColumn">
+							<InnerID>3372</InnerID>
+							<Width>280.3104</Width>
+						</Element>
+						<Element xsi:type="XTextTableColumn">
+							<InnerID>3373</InnerID>
+							<Width>357.9299</Width>
+						</Element>
+						<Element xsi:type="XTextTableColumn">
+							<InnerID>3374</InnerID>
+							<Width>50</Width>
+						</Element>
+						<Element xsi:type="XTextTableColumn">
+							<InnerID>3375</InnerID>
+							<Width>791.6442</Width>
+						</Element>
+						<Element xsi:type="XTextTableColumn">
+							<InnerID>3376</InnerID>
+							<Width>376.019</Width>
+						</Element>
+					</Columns>
+				</Element>
+				<Element xsi:type="XParagraphFlag">
+					<InnerID>303</InnerID>
+					<AutoCreate>true</AutoCreate>
+				</Element>
+		    </XElements>
+		</Element>
+		<Element xsi:type="XTextFooter">
+			<InnerID>3</InnerID>
+			<AcceptTab>true</AcceptTab>
+			<XElements>
+				<Element xsi:type="XParagraphFlag" StyleIndex="2">
+					<InnerID>3111</InnerID>
+				</Element>
+			</XElements>
+		</Element>
+	</XElements>
+	<SerializeParameterValue>true</SerializeParameterValue>
+	<FileName>20230315173611.xml</FileName>
+	<FileFormat>XML</FileFormat>
+	<ContentStyles>
+		<Default xsi:type="DocumentContentStyle">
+			<FontName>宋体</FontName>
+			<FontSize>12</FontSize>
+		</Default>
+		<Styles>
+			<Style Index="0">
+				<FontName>宋体</FontName>
+				<FontSize>12</FontSize>
+				<Align>Center</Align>
+			</Style>
+			<Style Index="1">
+				<FontName>宋体</FontName>
+				<FontSize>12</FontSize>
+				<Align>Center</Align>
+			</Style>
+			<Style Index="2">
+				<FontName>宋体</FontName>
+				<FontSize>12</FontSize>
+			</Style>
+			<Style Index="3">
+				<FontName>宋体</FontName>
+				<FontSize>12</FontSize>
+				<BorderWidth>1</BorderWidth>
+			</Style>
+			<Style Index="4">
+				<FontName>宋体</FontName>
+				<FontSize>11</FontSize>
+				<Bold>true</Bold>
+			</Style>
+			<Style Index="5">
+				<FontName>宋体</FontName>
+				<FontSize>11</FontSize>
+				<Align>Justify</Align>
+			</Style>
+			<Style Index="6">
+				<FontName>宋体</FontName>
+				<FontSize>10.5</FontSize>
+			</Style>
+			<Style Index="7">
+				<FontName>宋体</FontName>
+				<FontSize>12</FontSize>
+				<BorderLeft>true</BorderLeft>
+				<BorderBottom>true</BorderBottom>
+				<BorderTop>true</BorderTop>
+				<BorderRight>true</BorderRight>
+				<PaddingLeft>15</PaddingLeft>
+				<PaddingTop>10</PaddingTop>
+				<PaddingRight>12.5</PaddingRight>
+				<PaddingBottom>10</PaddingBottom>
+			</Style>
+			<Style Index="8">
+				<FontName>宋体</FontName>
+				<FontSize>10.5</FontSize>
+				<Align>Right</Align>
+			</Style>
+			<Style Index="9">
+				<FontName>宋体</FontName>
+				<FontSize>10.5</FontSize>
+				<BorderWidth>1</BorderWidth>
+			</Style>
+			<Style Index="10">
+				<FontName>宋体</FontName>
+				<FontSize>10.5</FontSize>
+				<BorderWidth>1</BorderWidth>
+			</Style>
+			<Style Index="11">
+				<FontName>宋体</FontName>
+				<FontSize>11</FontSize>
+				<Bold>true</Bold>
+				<BorderWidth>1</BorderWidth>
+			</Style>
+		</Styles>
+	</ContentStyles>
+	<Info>
+		<LicenseText>南京都昌信息科技有限公司内部使用:南京都昌信息科技有限公司内测旗舰版</LicenseText>
+		<CreationTime>1980-01-01T00:00:00</CreationTime>
+		<LastModifiedTime>2023-03-15T17:59:10.4442744+08:00</LastModifiedTime>
+		<LastPrintTime>1980-01-01T00:00:00</LastPrintTime>
+		<Operator>DCSoft.Writer Version:1.2023.3.10</Operator>
+		<NumOfPage>1</NumOfPage>
+	</Info>
+	<BodyText>
+
+		2023-01-31 15:06
+		1231212222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222224444444777777777  这个是合并的病程，这里应该不能编辑，才对的，但是现场能正常输入
+
+		1231212222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222224444444777777777  这个是合并的病程，这里应该不能编辑，才对的，但是现场能正常输入
+
+		1231212222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222224444444777777777  这个是合并的病程，这里应该不能编辑，才对的，但是现场能正常输入
+		签名： 住院医生
+	</BodyText>
+	<LocalConfig />
+	<PageSettings>
+		<StrictUsePageSize>false</StrictUsePageSize>
+	</PageSettings>
+</XTextDocument>`;
+    </script>
+</body>
+
+</html>

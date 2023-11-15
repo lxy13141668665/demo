@@ -1,0 +1,295 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <script type="text/javascript" src="jquery-1.7.2.min.js"></script>
+    <!--<script type="text/javascript" src="ServicePage.aspx?js=1"></script>-->
+
+    <script type="text/javascript" src="ServicePage.aspx?js=1"></script>
+    <title></title>
+</head>
+<body>
+    <input type="button" value="插入子文档" onclick="exp21();" />
+    
+
+    <div id="myWriterControl" style="width: 100%; border: 2px solid black; border-radius: 5px;height:900px;"
+         LocalServerPort="2345"
+         TransformUseBase64="false"
+         FieldBorderPrintVisibility="None"
+         FormView="Disabled"
+         ReadOnly="false"
+         PreviewUseAdvancedLayout="false"
+         BackgroundTextOutputMode="Underline"
+         contentrendermode="NormalHTMLEditable"
+         AutoSaveIntervalInSecond="0"
+         workspacebackcolorstring="#B1CAEB"
+         servicepageurl="ServicePage.aspx"
+         useclassattribute="false"
+         heightcompress="true"
+         imagedataembedinhtml="true"
+         ExcludeLogicDeleted="false"
+         HeaderFooterEditable="true"
+         UseDCWriterMiniJS="false"
+         serversleepfordebug="0"
+         allowcopy="true"
+         supportactivex="false"
+         pixelpagespacing="5"
+         clientcontextmenutype="Custom"
+         showdebuginfo="false"
+         ismobiledevice="False"
+         IndentHtmlCode="false"
+         FreeSelection="true"
+         urlencodecountforpostdata="0"
+         AutoZoom="false"
+         registercodeindex="0" />
+
+
+    <script type="text/javascript">
+        // HTML页面加载后执行本函数
+        function BuildDCWriterControlFrame() {
+            // 获得控件容器元素
+            var ctl = document.getElementById("myWriterControl");
+            // 绑定控件
+            BindingDCWriterClientControl(ctl);
+
+            // 创建编辑器框架
+            ctl.BuildFrame(function () {
+            });
+        }
+        BuildDCWriterControlFrame();
+
+
+
+        function exp21(hastrace) {
+            var ctl = document.getElementById("myWriterControl");
+            if (ctl != null) {
+                ctl.GetContentContainer().focus();
+                var file = new Array();
+                //file.push(xml);
+                //file.push(xml);
+                file.push(xml);
+                file.push(xml);
+
+                //构造两个选项分别对应两个子文档
+                var options = new Array();
+                //var attr1 = {
+                //    "ID": "subdoc1",//
+                //    "Parameters": { "rdogroup": "V3", "chkgroup": "V2,V3" } //绑定的数据格式
+                //};
+                //var attr2 = {
+                //    "ID": "subdoc2",//
+                //    "Parameters": { "rdogroup": "V1", "chkgroup": "V1,V4" } //绑定的数据格式
+                //};
+                var attr3 = {
+                    "ID": "subdoc1",//
+                    "Parameters": { "rdogroup_2": true, "chkgroup_1": true, "chkgroup_2": true } //绑定的数据格式
+                };
+                var attr4 = {
+                    "ID": "subdoc2",//
+                    "Parameters": { "rdogroup_0": true, "chkgroup_0": true, "chkgroup_3": true } //绑定的数据格式
+                };
+
+                //options.push(attr1);
+                //options.push(attr2);
+                options.push(attr3);
+                options.push(attr4);
+                var options = {
+                    Files: file,
+                    Options: options,
+                    Usebase64: "false",
+                    ShowMaskUI: "true"
+                };
+
+
+                ctl.AppendSubDocuments(options);
+            }
+        }
+
+        var xml = `
+<XTextDocument xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" EditorVersionString="0.0.0.0">
+   <XElements>
+      <Element xsi:type="XTextHeader">
+         <InnerID>1</InnerID>
+         <AcceptTab>true</AcceptTab>
+         <XElements>
+            <Element xsi:type="XParagraphFlag" StyleIndex="0">
+               <InnerID>6</InnerID>
+               <AutoCreate>true</AutoCreate>
+            </Element>
+         </XElements>
+      </Element>
+      <Element xsi:type="XTextBody">
+         <InnerID>2</InnerID>
+         <AcceptTab>true</AcceptTab>
+         <XElements>
+            <Element xsi:type="XString">
+               <InnerID>74</InnerID>
+               <Text>FASDASDFSFASF</Text>
+            </Element>
+            <Element xsi:type="XParagraphFlag">
+               <InnerID>15</InnerID>
+            </Element>
+            <Element xsi:type="XTextRadioBox">
+               <InnerID>11</InnerID>
+               <ID>rdogroup_0</ID>
+               <Name>rdogroup</Name>
+               <Caption>T1</Caption>
+               <Width>122</Width>
+               <Height>57.0312424</Height>
+               <GroupName>rdogroup</GroupName>
+               <ControlStyle>RadioBox</ControlStyle>
+               <CheckedValue>V1</CheckedValue>
+               <VisualStyle>SystemDefault</VisualStyle>
+            </Element>
+            <Element xsi:type="XTextRadioBox">
+               <InnerID>12</InnerID>
+               <ID>rdogroup_1</ID>
+               <Name>rdogroup</Name>
+               <Caption>T2</Caption>
+               <Width>122</Width>
+               <Height>57.0312424</Height>
+               <GroupName>rdogroup</GroupName>
+               <ControlStyle>RadioBox</ControlStyle>
+               <CheckedValue>V2</CheckedValue>
+               <VisualStyle>SystemDefault</VisualStyle>
+            </Element>
+            <Element xsi:type="XTextRadioBox">
+               <InnerID>13</InnerID>
+               <ID>rdogroup_2</ID>
+               <Name>rdogroup</Name>
+               <Caption>T3</Caption>
+               <Width>122</Width>
+               <Height>57.0312424</Height>
+               <GroupName>rdogroup</GroupName>
+               <ControlStyle>RadioBox</ControlStyle>
+               <CheckedValue>V3</CheckedValue>
+               <VisualStyle>SystemDefault</VisualStyle>
+            </Element>
+            <Element xsi:type="XTextRadioBox">
+               <InnerID>14</InnerID>
+               <ID>rdogroup_3</ID>
+               <Name>rdogroup</Name>
+               <Caption>T4</Caption>
+               <Width>122</Width>
+               <Height>57.0312424</Height>
+               <GroupName>rdogroup</GroupName>
+               <ControlStyle>RadioBox</ControlStyle>
+               <CheckedValue>V4</CheckedValue>
+               <VisualStyle>SystemDefault</VisualStyle>
+            </Element>
+            <Element xsi:type="XParagraphFlag">
+               <InnerID>30</InnerID>
+            </Element>
+            <Element xsi:type="XString" StyleIndex="1">
+               <InnerID>75</InnerID>
+               <Text>ASFASDFASDFASDFSDAF</Text>
+            </Element>
+            <Element xsi:type="XParagraphFlag">
+               <InnerID>50</InnerID>
+            </Element>
+            <Element xsi:type="XTextCheckBox">
+               <InnerID>51</InnerID>
+               <ID>chkgroup_0</ID>
+               <Name>chkgroup</Name>
+               <Caption>T1</Caption>
+               <Width>122</Width>
+               <Height>57.0312424</Height>
+               <GroupName>chkgroup</GroupName>
+               <CheckedValue>V1</CheckedValue>
+               <VisualStyle>SystemDefault</VisualStyle>
+            </Element>
+            <Element xsi:type="XTextCheckBox">
+               <InnerID>52</InnerID>
+               <ID>chkgroup_1</ID>
+               <Name>chkgroup</Name>
+               <Caption>T2</Caption>
+               <Width>122</Width>
+               <Height>57.0312424</Height>
+               <GroupName>chkgroup</GroupName>
+               <CheckedValue>V2</CheckedValue>
+               <VisualStyle>SystemDefault</VisualStyle>
+            </Element>
+            <Element xsi:type="XTextCheckBox">
+               <InnerID>53</InnerID>
+               <ID>chkgroup_2</ID>
+               <Name>chkgroup</Name>
+               <Caption>T3</Caption>
+               <Width>122</Width>
+               <Height>57.0312424</Height>
+               <GroupName>chkgroup</GroupName>
+               <CheckedValue>V3</CheckedValue>
+               <VisualStyle>SystemDefault</VisualStyle>
+            </Element>
+            <Element xsi:type="XTextCheckBox">
+               <InnerID>54</InnerID>
+               <ID>chkgroup_3</ID>
+               <Name>chkgroup</Name>
+               <Caption>T4</Caption>
+               <Width>122</Width>
+               <Height>57.0312424</Height>
+               <GroupName>chkgroup</GroupName>
+               <CheckedValue>V4</CheckedValue>
+               <VisualStyle>SystemDefault</VisualStyle>
+            </Element>
+            <Element xsi:type="XParagraphFlag">
+               <InnerID>55</InnerID>
+            </Element>
+            <Element xsi:type="XString" StyleIndex="1">
+               <InnerID>76</InnerID>
+               <Text>ASFASDFASDFDASFASF</Text>
+            </Element>
+            <Element xsi:type="XParagraphFlag">
+               <InnerID>7</InnerID>
+               <AutoCreate>true</AutoCreate>
+            </Element>
+         </XElements>
+      </Element>
+      <Element xsi:type="XTextFooter">
+         <InnerID>3</InnerID>
+         <AcceptTab>true</AcceptTab>
+         <XElements>
+            <Element xsi:type="XParagraphFlag">
+               <InnerID>8</InnerID>
+               <AutoCreate>true</AutoCreate>
+            </Element>
+         </XElements>
+      </Element>
+   </XElements>
+   <FileFormat>XML</FileFormat>
+   <ContentStyles>
+      <Default xsi:type="DocumentContentStyle">
+         <FontSize>12</FontSize>
+      </Default>
+      <Styles>
+         <Style Index="0">
+            <FontSize>12</FontSize>
+            <Align>Center</Align>
+         </Style>
+         <Style Index="1">
+            <FontName>宋体</FontName>
+            <FontSize>12</FontSize>
+         </Style>
+      </Styles>
+   </ContentStyles>
+   <Info>
+      <LicenseText>南京都昌公司2023年测试用旗舰版(2并发):南京都昌公司2023年测试用旗舰版(2并发)</LicenseText>
+      <CreationTime>2023-03-31T14:11:29.5513345+08:00</CreationTime>
+      <LastModifiedTime>2023-03-31T14:13:06.317549+08:00</LastModifiedTime>
+      <LastPrintTime>1980-01-01T00:00:00</LastPrintTime>
+      <Operator>DCSoft.Writer Version:0.0.0.0</Operator>
+      <NumOfPage>1</NumOfPage>
+   </Info>
+   <BodyText>FASDASDFSFASF
+○T1○T2○T3○T4
+ASFASDFASDFASDFSDAF
+□T1□T2□T3□T4
+ASFASDFASDFDASFASF</BodyText>
+   <LocalConfig />
+   <PageSettings>
+      <StrictUsePageSize>false</StrictUsePageSize>
+   </PageSettings>
+</XTextDocument>`;
+
+    </script>
+</body>
+</html>

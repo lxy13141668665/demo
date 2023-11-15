@@ -113,3 +113,63 @@ function* 定义了生成器函数 numberGenerator，它通过多次调用 .next
 生成器函数在处理异步操作时特别有用，因为它们可以将异步操作的代码结构化得更清晰，并且避免了回调地狱（callback hell）的问题。
 
 需要注意的是，function* 和 yield 关键字只能在支持 ECMAScript 6（ES6）或更高版本的JavaScript环境中使用。
+————————————————————————————————————————————————
+ // 将base64转为二进制Unicode编码
+        // var base64 = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAR8AAADeCAIAAACL9pO/AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAKWSURBVHhe7dOhDcAwEARBdxaaxtyLi3FRCQ6xApaNNOjh63Zc9wYK6oKKuqCiLqioCyrqgoq6oKIuqKgLKuqCirqgoi6oqAsq6oKKuqCiLqioCyrqgoq6oKIuqKgLKuqCirqgoi6oqAsq6oKKuqCiLqioCyrqgoq6oKIuqKgLKuqCirqgoi6oqAsq6oKKuqCiLqioCyrqgoq6oKIuqKgLKuqCirqgoi6oqAsq6oKKuqCiLqioCyrqgoq6oKIuqKgLKuqCirqgoi6oqAsq6oKKuqCiLqioCyrqgoq6oKIuqKgLKuqCirqgoi6oqAsq6oKKuqCiLqioCyrqgoq6oKIuqKgLKuqCirqgoi6oqAsq6oKKuqCiLqioCyrqgoq6oKIuqKgLKuqCirqgoi6oqAsq6oKKuqCiLqioCyrqgoq6oKIuqKgLKuqCirqgoi6oqAsq6oKKuqCiLqioCyrqgoq6oKIuqKgLKuqCirqgoi6oqAsq6oKKuqCiLqioCyrqgoq6oKIuqKgLKuqCirqgoi6oqAsq6oKKuqCiLqioCyrqgoq6oKIuqKgLKuqCirqgoi6oqIuztdac83PkSF2cvWmNYSq/eRlU1AUVdUFFXVBRF1TUBRV1QUVdUFEXVNQFFXVBRV1QURdU1AUVdUFFXVBRF1TUBRV1QUVdUFEXVNQFFXVBRV1QURdU1AUVdUFFXVBRF1TUBRV1QUVdUFEXVNQFFXVBRV1QURdU1AUVdUFFXVBRF1TUBRV1QUVdUFEXVNQFFXVBRV1QURdU1AUVdUFFXVBRF1TUBRV1QUVdUFEXVNQFFXVBRV1QURdU1AUVdUFFXVBRF1TUBRV1QUVdUFEXVNQFFXVBRV1QURdU1AUVdUFFXdC49wNy06ZYIL3nJAAAAABJRU5ErkJggg=="; // 替换成你的Base64字符串
+        function base64toBlob(base64) {
+            const base64WithoutPrefix = base64.replace(/^data:[^;]+;base64,/, '');
+            var bstr = atob(base64WithoutPrefix)// 获得base64解码后的字符串
+            var n = bstr.length
+            var u8arr = new Uint8Array(n); // 新建一个8位的整数类型数组，用来存放ASCII编码的字符串
+            while (n--) {
+                u8arr[n] = bstr.charCodeAt(n) // 转换编码后才使用charCodeAt 找到Unicode编码 
+            }
+            return u8arr
+        }
+
+——————————————————————————————————————————
+下载指定页面
+ jQuery('.downloadButton').click(function (e) {
+            let origin = window.location.origin
+            let urlToDownload = `${origin}/pingcode/${e.target.getAttribute('attrID')}`
+            fetch(urlToDownload)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('网络请求失败');
+                    }
+                    return response.text(); // 将响应内容作为文本返回
+                })
+                .then(pageContent => {
+                    // 创建Blob对象
+                    var blob = new Blob([pageContent], { type: 'text/html' });
+
+                    // 创建Blob URL
+                    var url = URL.createObjectURL(blob);
+
+                    // 创建一个链接元素并设置属性
+                    var a = document.createElement('a');
+                    a.href = url;
+                    a.download = e.target.getAttribute('attrID'); // 设置文件名
+
+                    // 模拟用户点击链接
+                    a.click();
+
+                    // 释放Blob URL
+                    URL.revokeObjectURL(url);
+                })
+                .catch(error => {
+                    console.error('下载失败：', error);
+                });
+        })
+
+——————————————————————————————————
+将html的文本下载为一个页面
+  var blob = new Blob([result], { type: 'text/html' });
+            let downloadElement = ctl.ownerDocument.createElement("a");
+            let href = window.URL.createObjectURL(blob); //创建下载的链接
+            downloadElement.href = href;
+            downloadElement.download = "PrintForHtml_" + new Date().valueOf() + ".html";
+            document.body.appendChild(downloadElement);
+            downloadElement.click(); //点击下载
+            document.body.removeChild(downloadElement); //下载完成移除元素
+            window.URL.revokeObjectURL(href); //释放掉blob对象

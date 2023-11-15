@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<XTextDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" EditorVersionString="1.2023.1.10">
+   <InnerID>3556</InnerID>
+   <XElements>
+      <Element xsi:type="XTextHeader">
+         <InnerID>3570</InnerID>
+         <AcceptTab>true</AcceptTab>
+         <XElements>
+            <Element xsi:type="XParagraphFlag" StyleIndex="0">
+               <InnerID>3576</InnerID>
+               <AutoCreate>true</AutoCreate>
+            </Element>
+         </XElements>
+      </Element>
+      <Element xsi:type="XTextBody">
+         <InnerID>3571</InnerID>
+         <AcceptTab>true</AcceptTab>
+         <XElements>
+            <Element xsi:type="XString" StyleIndex="1">
+               <InnerID>3623</InnerID>
+               <Text>aaa</Text>
+            </Element>
+            <Element xsi:type="XString" StyleIndex="3">
+               <InnerID>3624</InnerID>
+               <Text>aaaa</Text>
+            </Element>
+            <Element xsi:type="XString" StyleIndex="1">
+               <InnerID>3625</InnerID>
+               <Text>aaaaaaa</Text>
+            </Element>
+            <Element xsi:type="XString" StyleIndex="2">
+               <InnerID>3626</InnerID>
+               <Text>bbbbbbbbb</Text>
+            </Element>
+            <Element xsi:type="XString" StyleIndex="1">
+               <InnerID>3627</InnerID>
+               <Text>aaaaaaaaaaaa</Text>
+            </Element>
+            <Element xsi:type="XParagraphFlag">
+               <InnerID>3575</InnerID>
+               <AutoCreate>true</AutoCreate>
+            </Element>
+         </XElements>
+      </Element>
+      <Element xsi:type="XTextFooter">
+         <InnerID>3572</InnerID>
+         <AcceptTab>true</AcceptTab>
+         <XElements>
+            <Element xsi:type="XParagraphFlag">
+               <InnerID>3577</InnerID>
+               <AutoCreate>true</AutoCreate>
+            </Element>
+         </XElements>
+      </Element>
+   </XElements>
+   <Parameters>
+      <Parameter Name="当前时间" />
+   </Parameters>
+   <FileName>D:\PROJECTS\WebApplication\WebApplication1\对比文档1.xml</FileName>
+   <FileFormat>XML</FileFormat>
+   <UserHistories>
+      <History>
+         <ID>wang</ID>
+         <Name>王医师</Name>
+         <SavedTime>2023-02-14T15:37:14.1440977+08:00</SavedTime>
+      </History>
+      <History>
+         <ID>li</ID>
+         <Name>李医师</Name>
+         <SavedTime>2023-02-14T15:39:00.4734132+08:00</SavedTime>
+         <PermissionLevel>1</PermissionLevel>
+      </History>
+      <History>
+         <ID>li</ID>
+         <Name>李医师</Name>
+         <SavedTime>1980-01-01T00:00:00</SavedTime>
+         <PermissionLevel>1</PermissionLevel>
+      </History>
+   </UserHistories>
+   <ContentStyles>
+      <Default xsi:type="DocumentContentStyle">
+         <FontName>宋体</FontName>
+         <FontSize>12</FontSize>
+      </Default>
+      <Styles>
+         <Style Index="0">
+            <FontName>宋体</FontName>
+            <FontSize>12</FontSize>
+            <Align>Center</Align>
+         </Style>
+         <Style Index="1">
+            <FontName>宋体</FontName>
+            <FontSize>12</FontSize>
+            <CreatorIndex>0</CreatorIndex>
+         </Style>
+         <Style Index="2">
+            <FontName>宋体</FontName>
+            <FontSize>12</FontSize>
+            <CreatorIndex>1</CreatorIndex>
+         </Style>
+         <Style Index="3">
+            <FontName>宋体</FontName>
+            <FontSize>12</FontSize>
+            <CreatorIndex>0</CreatorIndex>
+            <DeleterIndex>1</DeleterIndex>
+         </Style>
+      </Styles>
+   </ContentStyles>
+   <Info>
+      <LicenseText>南京都昌信息科技有限公司内部使用:南京都昌信息科技有限公司内测旗舰版</LicenseText>
+      <CreationTime>1980-01-01T00:00:00</CreationTime>
+      <LastModifiedTime>2023-02-14T15:39:00.4734132+08:00</LastModifiedTime>
+      <LastPrintTime>1980-01-01T00:00:00</LastPrintTime>
+      <Operator>DCSoft.Writer Version:1.2023.1.10</Operator>
+      <NumOfPage>1</NumOfPage>
+   </Info>
+   <BodyText>aaaaaaaaaabbbbbbbbbaaaaaaaaaaaa</BodyText>
+   <LocalConfig />
+   <PageSettings>
+      <StrictUsePageSize>false</StrictUsePageSize>
+   </PageSettings>
+</XTextDocument>
