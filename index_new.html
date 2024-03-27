@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DCSoft.WASM</title>
+    <link rel="icon" href="./img/favicon.ico">
+    <link rel="stylesheet" href="./Fonts/newFont/iconfont.css">
+    <link rel="stylesheet" href="./css/index.css">
+
+</head>
+
+<body>
+    <div class="dc_content">
+        <div class="dc_aside">
+            <div class="dc_aside_search_box">
+                <input type="text" name="" id="dc_aside_search" placeholder="请输入内容">
+            </div>
+            <div class="dc_aside_container_box">
+                <button onclick="addTab()">增加</button>
+            </div>
+        </div>
+        <div class="dc_section">
+            <div class="dc_section_header">
+                <div id="dc_section_header_control_left" isCurrentShowLeft="true" class="dc_section_header_item ">
+                    <span class="icon iconfont icon-zuoyou-"></span>
+                </div>
+                <div class="dc_section_header_item dc_section_header_2">
+                    <div class="toLfetOrRight" onclick="toLfetOrRight('left')">
+                        <span class="icon iconfont icon-zuoyou"></span>
+                    </div>
+                    <div id="dc_section_header_center">
+                        <div id="tab1" class="dc_section_header_tab dc_tab_button_active">演示文档</div>
+                    </div>
+                    <div class="toLfetOrRight" onclick="toLfetOrRight('right')">
+                        <span class="icon iconfont icon-zuoyou1"></span>
+                    </div>
+
+                </div>
+                <div id="dc_section_header_right" class="dc_section_header_item ">
+                    <div class="tryButtonAndShowCodeButton tryButton">
+                        <span class="icon iconfont icon-bianji"></span>亲自试一试
+                    </div>
+                    <div class="tryButtonAndShowCodeButton ShowCodeButton">
+                        <span class="icon iconfont icon-wenjian"></span>查看源代码
+                    </div>
+                    <div>
+                        <span class="icon iconfont icon-shouye"></span>官网首页
+                    </div>
+                    <div>
+                        <span class="icon iconfont icon-wenhao_huabanfuben"></span>帮助文档
+                    </div>
+                    <div>
+                        <span class="icon iconfont icon-tixing"></span>模板工具
+                    </div>
+                </div>
+            </div>
+            <div id="dc_section_container_box" class="dc_section_container_box">
+                <div tabId="tab1" class="dc_section_container_content dc_container_active">
+
+                </div>
+                <!-- <div tabId="tab2" class="dc_section_container_content">Content 2</div> -->
+            </div>
+        </div>
+    </div>
+    <script>
+        //获取tab切换元素
+        var dcHeaderTab = document.getElementById('dc_section_header_center')
+        dcHeaderTab && dcHeaderTab.addEventListener('click', switchTab)
+
+        //隐藏左侧列表事件
+        var dcShowLeftButton = document.getElementById('dc_section_header_control_left');
+        dcShowLeftButton && dcShowLeftButton.addEventListener('click', changeShowLeftContent)
+
+        //tab切换事件
+        function switchTab(event) {
+            var clickedTab = event.target;
+            var dcTabButtonActive = document.querySelector('.dc_tab_button_active')
+            if (clickedTab.className.indexOf('dc_section_header_tab') !== -1) {
+                //判断点击的是否为同一个元素
+                if (clickedTab.id !== dcTabButtonActive.id) {
+                    //切换点击的按钮
+                    dcTabButtonActive.classList.remove("dc_tab_button_active");//删除上一个带有类名的样式
+                    clickedTab.classList.add('dc_tab_button_active')//给当前点击的元素一个类名
+                    //切换当前需要展示的内容
+                    var preShowDiv = document.querySelector('.dc_container_active')
+                    preShowDiv && preShowDiv.classList.remove('dc_container_active') //删除上一个展示类名
+                    var ShowDivTab = getShowDivTab(clickedTab.id);
+                    ShowDivTab && ShowDivTab.classList.add('dc_container_active')//给需要展示的div增加展示类名
+
+                    //新增tab页会用到的逻辑，如果内容超出父元素，则展示左右按钮
+                    // 获取元素和父元素的位置信息
+                    var elementRect = clickedTab.getBoundingClientRect();
+                    var parentRect = clickedTab.parentElement.getBoundingClientRect();
+                    // 判断子元素的右边界是否超出父元素的右边界
+                    if (elementRect.right > parentRect.right) {
+                        console.log("子元素超出父元素");
+                        var toLfetOrRight = document.querySelectorAll('.toLfetOrRight')
+                        toLfetOrRight[0].style['display'] = 'block'
+                        toLfetOrRight[1].style['display'] = 'block'
+                    } else {
+                        console.log("子元素未超出父元素");
+                    }
+
+                    //当前点击按钮若超出滚动条，则滚动到可视范围
+                    clickedTab.scrollIntoView(false);
+
+                    //判断当前点击页面是否为演示文档，如果不是演示文档则展示试一试和查看源码按钮
+                    var tryButtonAndShowCodeButton = document.querySelectorAll('.tryButtonAndShowCodeButton');
+                    for (var i = 0; i < tryButtonAndShowCodeButton.length; i++) {
+                        var item = tryButtonAndShowCodeButton[i]
+                        item.style.display = clickedTab.id === 'tab1' ? 'none' : 'block';
+                    }
+                }
+
+
+            } else if (clickedTab.className.indexOf('closeIconHidden') !== -1) {
+                //关闭一个tab页
+                var id = clickedTab.getAttribute('tabid');
+                var deleteTab = getShowDivTab(id);
+                //如果关闭的tab正在展示，则自动展示上一兄弟节点的tab页
+                if (dcTabButtonActive.id === id) {
+                    clickedTab.parentElement.previousElementSibling.click()
+                }
+                //删除要关闭的tab
+                deleteTab.remove()
+                clickedTab.parentElement.remove()
+
+            }
+        }
+
+        //增加一个tab页
+        function addTab() {
+            var sectionTabContainer = document.getElementById('dc_section_container_box');
+            var id = 'tab' + new Date().valueOf();
+            //创建一个展示区域
+            var containerDiv = document.createElement('div')
+            containerDiv.setAttribute('tabId', id)
+            containerDiv.className = "dc_section_container_content"
+            containerDiv.innerHTML = id
+            sectionTabContainer.appendChild(containerDiv)
+
+            //创建一个新的点击按钮
+            var buttonDiv = document.createElement('div');
+            buttonDiv.id = id;
+            buttonDiv.className = 'dc_section_header_tab'
+            buttonDiv.innerHTML = `
+            ${id} <span tabId="${id}" class="icon iconfont icon-guanbi1 closeIconHidden"></span>
+            `
+            dcHeaderTab.appendChild(buttonDiv)
+            buttonDiv.click()
+        }
+        // 返回匹配到div
+        function getShowDivTab(id) {
+            var dcAllContainer = document.getElementsByClassName('dc_section_container_content');
+            var ShowDivTab = null
+            if (dcAllContainer && dcAllContainer.length) {
+                for (var i = 0; i < dcAllContainer.length; i++) {
+                    var item = dcAllContainer[i];
+                    var tabId = item.getAttribute('tabId');
+                    if (tabId && (tabId === id)) {
+                        ShowDivTab = item;
+                    }
+                }
+            }
+            return ShowDivTab;
+        }
+
+        //点击按钮向左/右滚动
+        function toLfetOrRight(type) {
+            var myDiv = document.getElementById("dc_section_header_center");
+            myDiv.scrollBy({
+                left: type === 'left' ? -200 : 200,
+                behavior: 'smooth'
+            });
+        }
+
+        //左侧列表的显示隐藏切换
+        function changeShowLeftContent(event) {
+
+            //获取按钮状态
+            var isCurrentShowLeft = this.getAttribute('isCurrentShowLeft') === 'true';
+            //设置左侧列表的显隐
+            var dcAsideLeft = document.querySelector('.dc_aside');
+            dcAsideLeft && (dcAsideLeft.style.display = isCurrentShowLeft ? 'none' : 'block')
+            //重置按钮状态
+            this.setAttribute('isCurrentShowLeft', isCurrentShowLeft ? 'false' : 'true');
+            //设置按钮样式
+            var iconButton = this.querySelector('.iconfont')
+            iconButton.classList.remove(isCurrentShowLeft ? 'icon-zuoyou-' : 'icon-zuoyou-1')
+            iconButton.classList.add(isCurrentShowLeft ? 'icon-zuoyou-1' : 'icon-zuoyou-')
+        }
+    </script>
+</body>
+
+</html>
