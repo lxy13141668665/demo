@@ -1,0 +1,47 @@
+保护变量安全的方法：
+
+	"use strict";（es5）：
+		告诉js引擎使用严格模式解析代码，启用严格模式书写，可以减少一些不安全和不规范的语法使用，提高代码质量和安全性。
+		比如：未声明的变量不允许使用、声明的变量或者函数、函数形参不允许使用delete关键字删除。这些都是内置到严格模式中的。
+
+	IIFE：
+		是一种常见的JavaScript模式，用于创建并立即执行函数表达式。用于保护在函数范围内声明变量，在范围外无法读取。
+		也是可以防止全局命名空间被干扰的有效方式
+		(function(){ //自执行函数表达式})() 
+	
+eval(`console.log(1234)`): 将js字符串以js语句执行
+
+async await(es8)：
+	async 表示函数里有异步操作
+	await 表示紧跟在后面的表达式需要等待结果
+	
+Generator(es6):
+	是一种异步编程解决方案，语法行为与传统函数完全不同。是一个分段执行的函数
+	声明方法在function后面必须使用*
+	函数体内部使用yield表达式，定义不同的内部状态（yield在英语里的意思就是“产出”）。
+	function* helloWorldGenerator() {
+    		yield 'hello';
+    		yield 'world';
+    		return 'ending';
+	}
+	var hw = helloWorldGenerator();
+	hw.next();//必须next()调用
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

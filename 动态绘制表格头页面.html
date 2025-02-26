@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            border: 2px solid rgb(140 140 140);
+            font-family: sans-serif;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+        }
+        
+        caption {
+            caption-side: bottom;
+            padding: 10px;
+            font-weight: bold;
+        }
+        
+        thead,
+        tfoot {
+            background-color: rgb(228 240 245);
+        }
+        
+        tr {
+            width: 100%;
+        }
+        
+        th,
+        td {
+            border: 1px solid rgb(160 160 160);
+            padding: 8px 10px;
+        }
+        
+        td:last-of-type {
+            text-align: center;
+        }
+        
+        tbody>tr:nth-of-type(even) {
+            background-color: rgb(237 238 242);
+        }
+        
+        tfoot th {
+            text-align: right;
+        }
+        
+        tfoot td {
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <script>
+        var jsonData = [{
+                "id": "1",
+                "label": "1",
+                "prop": "1",
+                "children": [{
+                    "id": "11",
+                    "label": "11",
+                    "prop": "11",
+                }, {
+                    "id": "12",
+                    "label": "12",
+                    "prop": "12",
+                }]
+            }, {
+                "id": "Rc8ma2cESqCoY7J-bBJAh",
+                "label": "2",
+                "prop": "incididunt"
+            }, {
+                "id": "ANfCYk9nyeRcQ4eCkBgOZ",
+                "label": "3",
+                "prop": "aute minim nulla",
+                "children": [{
+                    "id": "2IEAaZzj1Vy5w-fMBHKe_",
+                    "label": "31",
+                    "prop": "enim do sit"
+                }, {
+                    "id": "EbuS59XAR0VfedZt7exzI",
+                    "label": "32",
+                    "prop": "aliquip qui ex Duis consectetur",
+                    "children": [{
+                        "id": "2dluGYY1MOMaFoypOKR",
+                        "label": "321",
+                        "prop": "svfss"
+                    }, {
+                        "id": "YHMOMaFoypOKR",
+                        "label": "322",
+                        "prop": "ali"
+                    }]
+                }]
+            }, {
+                "id": "xoD6zDJO2ack-hceBkW7W",
+                "label": "4",
+                "prop": "mollit nostrud pariatur cupidatat irure",
+                "children": [{
+                    "id": "oSnBXS20UTiijfByQnomO",
+                    "label": "41",
+                    "prop": "exercitation fugiat commodo",
+                    "children": [{
+                        "id": "oSnBXS20UTiijfByQnomO",
+                        "label": "411",
+                        "prop": "exercitation fugiat commodo"
+                    }, {
+                        "id": "64qH_B8yaKoMMAi6i1FsO",
+                        "label": "412",
+                        "prop": "ullamco"
+                    }, {
+                        "id": "64qH_B8yaKoMMAi6i1FsO",
+                        "label": "413",
+                        "prop": "ullamco",
+                        "children": [{
+                            "id": "2dluGYY1MOMaFoypOKR",
+                            "label": "4131",
+                            "prop": "svfss"
+                        }, {
+                            "id": "YHMOMaFoypOKR",
+                            "label": "4132",
+                            "prop": "ali"
+                        }]
+                    }]
+                }, {
+                    "id": "64qH_B8yaKoMMAi6i1FsO",
+                    "label": "42",
+                    "prop": "ullamco"
+                }]
+            },
+
+            {
+                "id": "AZYR-TZ1KVfjtV0aC4G-A",
+                "label": "5",
+                "prop": "laborum labore",
+                "children": [{
+                    "id": "XufKGSWxLUSI73uPQXLTZ",
+                    "label": "51",
+                    "prop": "nostrud"
+                }, {
+                    "id": "P00DmopExhuX2kfDTR8v9",
+                    "label": "52",
+                    "prop": "sint5"
+                }, {
+                    "id": "YH2dluGYY1MOMaFoypOKR",
+                    "label": "53",
+                    "prop": "aliquip dolore aliqua"
+                }]
+            }, {
+                "id": "_NWYTOPFW4heD2YzhuMo2",
+                "label": "6",
+                "prop": "id dolor ullamco cupidatat",
+                "children": [{
+                    "id": "1asoeEP2AuzmsMUt9cDSr",
+                    "label": "61",
+                    "prop": "minim et"
+                }]
+            }, {
+                "id": "Z9IsK_BUry97Bh2Ze1ETy",
+                "label": "7",
+                "prop": "nisi exercitation dolor Excepteur",
+                "children": [{
+                    "id": "oEeSK4b1Sx1TSO4KGog8R",
+                    "label": "71",
+                    "prop": "quis dolor Lorem ex"
+                }, {
+                    "id": "G0Pn2vPTLsDRd-Pfr_WJW",
+                    "label": "72",
+                    "prop": "dolore"
+                }]
+            }, {
+                "id": "2bkBR_-KLq3Vfuk1QPqr_",
+                "label": "8",
+                "prop": "veniam"
+            }, {
+                "id": "PDHChEjfNGFLrJaJEddu_",
+                "label": "9",
+                "prop": "laboris qui nisi"
+            }, {
+                "id": "Z9IsK_BUry97Bh2Ze1ETy",
+                "label": "10",
+                "prop": "nisi exercitation dolor Excepteur",
+                "children": [{
+                    "id": "oEeSK4b1Sx1TSO4KGog8R",
+                    "label": "101",
+                    "prop": "quis dolor Lorem ex",
+                    "children": [{
+                        "id": "oEeSK4b1Sx1TSO4KGog8R",
+                        "label": "1011",
+                        "prop": "quis dolor Lorem ex"
+                    }]
+                }]
+            }
+
+        ]
+        jsonData.map(item => item.rowLevel = 1)
+        var newJson = flatten(jsonData)
+            //数据扁平化
+        function flatten(arr, parent = null) {
+            let result = [];
+            for (let i = 0; i < arr.length; i++) {
+                result.push(arr[i]);
+                if (parent) {
+                    arr[i].rowLevel = parent.rowLevel + 1
+                }
+                if (arr[i].children && arr[i].children.length) {
+                    result = result.concat(flatten(arr[i].children, arr[i]));
+                }
+            }
+            return result;
+        }
+
+        //获取总行
+        var maxRow = Math.max.apply(Math, newJson.map(i => i.rowLevel))
+        console.log(maxRow)
+
+        function countNodes(arr) {
+            let count = 0;
+
+            function countHelper(arr) {
+                arr.forEach(item => {
+                    if (item.children && Array.isArray(item.children)) {
+                        // count += item.children.length
+                        countHelper(item.children); // 递归嵌套数组
+                    } else {
+                        //计算总的子节点数
+                        count += 1
+                    }
+                });
+            }
+
+            countHelper(arr); // 开始递归计数
+            return count; // 返回总节点数
+        }
+        newJson.forEach(item => {
+                if (item.children && item.children.length) {
+                    item['allChidrenLength'] = countNodes(item.children)
+                } else {
+                    item['allChidrenLength'] = 0
+                }
+            })
+            // 示例使用
+        console.log(newJson); // 输出: 5
+
+
+        var headertable = document.getElementById("headertable")
+
+        var table = document.createElement('table')
+        var thead = document.createElement('thead')
+
+
+        var currentRow = null
+        for (var i = 1; i <= maxRow; i++) {
+            var tr = document.createElement('tr');
+            newJson.map(item => {
+                if (item.rowLevel === i) {
+                    var th = document.createElement('th')
+                    th.innerHTML = item.label;
+                    if (item.children && item.children.length) {
+                        if (item.allChidrenLength) {
+                            th.colSpan = item.allChidrenLength
+                        }
+                    } else {
+                        th.rowSpan = maxRow - item.rowLevel + 1
+                    }
+                    // th.rowSpan = maxRow - item.rowLevel + 1
+                    tr.append(th)
+                }
+
+            })
+            thead.append(tr)
+        }
+
+
+
+        // createHeader(jsonData);
+
+        // function createHeader(data) {
+        //     var tr = document.createElement('tr');
+        //     for (var i = 0; i < data.length; i++) {
+        //         var th = document.createElement('th')
+        //         th.innerText = data[i].label;
+        //         th.colSpan = data[i].allChidrenLength
+        //         th.rowSpan = maxRow - data[i].rowLevel + 1
+        //         tr.appendChild(th)
+        //         thead.appendChild(tr)
+
+        //         if (data[i].children && data[i].children.length) {
+        //             createHeader(data[i].children)
+        //         }
+        //     }
+        // }
+
+
+
+
+        table.appendChild(thead);
+        table.width = "100%"
+        table.height = "800px"
+        document.body.appendChild(table)
+            //创建表头
+    </script>
+</body>
+
+</html>
