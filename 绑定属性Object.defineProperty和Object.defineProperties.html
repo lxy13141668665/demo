@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    注意：Object.defineProperties只能用于对象，不能用于类，因为类没有原型链。
+    <pre style="font-size: 16px;">
+
+        Object.defineProperty(对象, 属性名, {
+            configurable：属性是否可配置，默认为 false。
+            enumerable：属性是否可枚举，默认为 false。
+            value：属性的值，默认为 undefined。
+            writable：属性是否可写，默认为 false。
+            get：获取属性值的函数。
+            set：设置属性值的函数。
+        })
+
+
+        Object.defineProperties(person3, {
+            name: {
+                value: 'Jake',
+                configurable: true
+            },
+            age: {
+                get: function () {
+                    return this.value || 22;
+                },
+                set: function (value) {
+                    this.value = value;
+                }
+            }
+        });
+    </pre>
+    <script>
+
+        ///////////////////// Object.defineProperty////////////////////
+        // 方式一：
+        const person1 = {};
+        Object.defineProperty(person1, 'name', {
+            value: 'John Doe',
+            writable: false, // 不可写
+            enumerable: true, // 可枚举
+            configurable: false // 不可配置（即不能通过delete删除）
+        });
+        console.log(person1.name); // 输出: John Doe
+        person1.name = 'Jane Doe2'; // 这行代码不会有任何效果，因为writable为false
+        console.log(person1.name); // 仍然输出: John Doe
+
+
+        //方式二：
+        const person2 = {
+            _age: 30 // 使用下划线表示这是一个内部属性，不应在外部直接访问或修改
+        };
+
+        Object.defineProperty(person2, 'age', {
+            get: function () {
+                return this._age; // getter函数返回_age的值
+            },
+            set: function (value) {
+                if (value > 0) { // 设置一些验证规则，例如年龄必须大于0
+                    this._age = value; // 设置_age的值
+                } else {
+                    console.log('Invalid value for age.'); // 无效值处理
+                }
+            },
+            enumerable: true, // 可枚举
+            configurable: true // 可配置（可以删除或修改）
+        });
+
+        console.log(person2.age); // 输出: 30
+        person2.age = 25; // 使用setter设置新的值
+        console.log(person2.age); // 输出: 25，通过getter获取新的值
+
+    </script>
+
+    <script>
+        ///////////////////// Object.defineProperties ////////////////////
+        var person3 = {};
+        Object.defineProperties(person3, {
+            name: {
+                value: 'Jake',
+                configurable: true
+            },
+            age: {
+                get: function () {
+                    return this.value || 22;
+                },
+                set: function (value) {
+                    this.value = value;
+                }
+            }
+        });
+
+        console.log(person3.name); // 输出: Jake
+        console.log(person3.age); // 输出: 22
+        person3.age = 25;
+        console.log(person3.age); // 输出: 25
+        // 
+        var descripter = Object.getOwnPropertyDescriptor(person3, 'age');
+        console.log(descripter);  // 返回结果如下
+
+    </script>
+</body>
+
+</html>
