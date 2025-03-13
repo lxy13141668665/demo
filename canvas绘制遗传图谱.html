@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Family Genetic Disease Pedigree</title>
+    <style>
+        canvas {
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="familyTreeCanvas" width="1200" height="600"></canvas>
+
+    <script>
+        // 创建一个带有右倾斜线条的图案
+        const canvas2 = document.createElement('canvas');
+        const ctx2 = canvas2.getContext('2d');
+        canvas2.width = 10;
+        canvas2.height = 10;
+
+        ctx2.strokeStyle = 'black';
+        ctx2.lineWidth = 2;
+        ctx2.beginPath();
+        ctx2.moveTo(0, 0);
+        ctx2.lineTo(10, 10);
+        ctx2.stroke();
+
+        // 创建斜线图案
+        var pattern = ctx2.createPattern(canvas2, 'repeat');
+
+        //开始创建canvas画布
+        var canvas = document.getElementById('familyTreeCanvas');
+        var ctx = canvas.getContext('2d');
+
+        var typeList = {
+            "zhengchangnv": "正常女性",
+            "zhengchangnan": "正常男性",
+            "jiazhengnv": "甲遗传病女性患者",
+            "jiazhengnan": "甲遗传病男性患者",
+            "yizhengnv": "乙遗传病女性患者",
+            "yizhengnan": "乙遗传病男性患者",
+        };
+
+        var DrawJson = {
+            name: '1',
+            sex: "nv",
+            typeof: "jiazhengnv",
+            id: "1",
+            spouse: {
+                name: '2',
+                sex: "nan",
+                id: "2",
+                typeof: "zhengchangnan",
+            },
+            childrens: [
+                {
+                    name: '3',
+                    sex: "nv",
+                    typeof: "zhengchangnv",
+                    id: "5",
+                },
+                {
+                    name: '1',
+                    sex: "nan",
+                    typeof: "zhengchangnan",
+                    id: "3",
+                    spouse: {
+                        name: '2',
+                        sex: "nv",
+                        typeof: "zhengchangnv",
+                        id: "4",
+                    },
+                    childrens: [
+                        {
+                            name: '1',
+                            sex: "nan",
+                            typeof: "zhengchangnan",
+                            id: "6",
+                        },
+                        {
+                            name: '2',
+                            sex: "nan",
+                            typeof: "jiazhengnv",
+                            id: "7",
+                        },
+                        {
+                            name: '3',
+                            sex: "nv",
+                            typeof: "zhengchangnv",
+                            id: "8",
+                            spouse: {
+                                name: '4',
+                                sex: "nan",
+                                typeof: "zhengchangnan",
+                                id: "9",
+                            },
+                            childrens: [
+                                {
+                                    name: '1',
+                                    sex: "nv",
+                                    typeof: "zhengchangnv",
+                                    id: "10",
+                                },
+                                {
+                                    name: '2',
+                                    sex: "nan",
+                                    typeof: "yizhengnan",
+                                    id: "11",
+                                },
+                                {
+                                    name: '3',
+                                    sex: "nan",
+                                    typeof: "jiazhengnan",
+                                    id: "12",
+                                },
+                                {
+                                    name: '4',
+                                    sex: "nan",
+                                    typeof: "zhengchangnan",
+                                    id: "13",
+                                },
+                            ]
+                        }
+                    ]
+                },
+
+            ]
+        };
+
+        //绘制右侧图例
+        ctx.font = "22px Arial";
+        ctx.fillStyle = "#000";
+        //写入文本
+        ctx.fillText("图例", 1050, 50);
+        Object.keys(typeList).forEach((key, index) => {
+            // 绘制节点
+            ctx.font = "18px Arial";
+            ctx.beginPath();
+            switch (key) {
+                case "zhengchangnv":
+                    ctx.arc(1000, 100, 16, 0, 2 * Math.PI);
+                    ctx.fillText(typeList[key], 1030, 106);
+                    break;
+                case "zhengchangnan":
+                    ctx.rect(988, 144, 30, 30);
+                    ctx.fillText(typeList[key], 1030, 164);
+                    break;
+                case "jiazhengnv":
+                    ctx.fillText(typeList[key], 1030, 222);
+
+                    // 保存当前绘图状态
+                    ctx.save();
+                    ctx.arc(1000, 216, 16, 0, 2 * Math.PI);
+                    ctx.fillStyle = pattern;
+                    ctx.fill();
+                    // 恢复之前的绘图状态
+                    ctx.restore();
+
+                    break;
+                case "jiazhengnan":
+                    // 绘制文字
+                    ctx.fillText(typeList[key], 1030, 276);
+
+                    // 保存当前绘图状态
+                    ctx.save();
+
+                    // 绘制矩形并填充图案
+                    ctx.rect(988, 256, 30, 30);
+                    ctx.fillStyle = pattern;
+                    ctx.fill();
+
+                    // 恢复之前的绘图状态
+                    ctx.restore();
+
+
+                    break;
+                case "yizhengnv":
+                    ctx.arc(1000, 326, 16, 0, 2 * Math.PI);
+                    // 填充颜色
+                    ctx.fillStyle = "#000000";
+                    ctx.fill();
+                    ctx.fillText(typeList[key], 1030, 330);
+                    break;
+                case "yizhengnan":
+                    ctx.rect(988, 366, 30, 30);
+                    // 填充颜色
+                    ctx.fillStyle = "#000000";
+                    ctx.fill();
+
+                    ctx.fillText(typeList[key], 1030, 386);
+                    break;
+            }
+            ctx.stroke();
+        });
+
+        function drawNode(x, y, type) {
+            ctx.beginPath();
+            switch (type) {
+                case "zhengchangnv":
+                    ctx.arc(x, y, 20, 0, 2 * Math.PI);
+                    break;
+                case "zhengchangnan":
+                    ctx.rect(x - 17, y - 20, 36, 36);
+                    break;
+                case "jiazhengnv":
+                    // 保存当前绘图状态
+                    ctx.save();
+                    ctx.arc(x, y, 20, 0, 2 * Math.PI);
+                    //填充斜线
+                    ctx.fillStyle = pattern;
+                    ctx.fill();
+
+                    // 恢复之前的绘图状态
+                    ctx.restore();
+                    break;
+                case "jiazhengnan":
+                    // 保存当前绘图状态
+                    ctx.save();
+                    ctx.rect(x - 17, y - 20, 36, 36);
+                    //填充斜线
+                    ctx.fillStyle = pattern;
+                    ctx.fill();
+
+                    // 恢复之前的绘图状态
+                    ctx.restore();
+                    break;
+                case "yizhengnv":
+                    ctx.arc(x, y, 20, 0, 2 * Math.PI);
+                    // 填充颜色
+                    ctx.fillStyle = "#000000";
+                    ctx.fill();
+                    break;
+                case "yizhengnan":
+                    ctx.rect(x - 17, y - 20, 36, 36);
+                    // 填充颜色
+                    ctx.fillStyle = "#000000";
+                    ctx.fill();
+                    break;
+            }
+            ctx.stroke();
+
+        }
+
+
+        function drawFamilyTree(node, x, y, level, parentX, parentY) {
+            var parentCenterX = 0;
+            ctx.font = "10px Arial";
+
+            // ctx.beginPath();
+            // // ctx.arc(x, y, 20, 0, 2 * Math.PI);
+            // ctx.stroke();
+
+            var textX = (node.typeof === "zhengchangnv" || node.typeof === "zhengchangnan") ? x - 20 : x - 40;
+            ctx.fillText(typeList[node.typeof], textX, y + 30);
+
+            // 绘制节点
+            drawNode(x, y, node.typeof);
+
+
+            // 绘制配偶线
+            if (node.spouse) {
+                ctx.beginPath();
+                ctx.moveTo(x + 20, y);
+                ctx.lineTo(x + 100, y);
+                ctx.stroke();
+
+                //配偶节点文本
+                var textX = (node.spouse.typeof === "zhengchangnv" || node.spouse.typeof === "zhengchangnan") ? x + 100 : x + 120;
+                ctx.fillText(typeList[node.spouse.typeof], textX, y + 30);
+
+                // 绘制节点
+                drawNode(x + 120, y, node.spouse.typeof);
+
+                //计算父母与子女连接线--垂直中线
+                parentCenterX = x + 60;
+            }
+
+            // 绘制子女线
+            if (node.childrens) {
+                //绘制父母与子女连接线--垂直中线
+                ctx.beginPath();
+                ctx.moveTo(parentCenterX, y);
+                ctx.lineTo(parentCenterX, y + 50);
+                ctx.stroke();
+
+                node.childrens.forEach((child, index) => {
+                    //绘制父母与子女连接线水平线
+                    ctx.beginPath();
+                    ctx.moveTo(parentCenterX, y + 50);
+                    ctx.lineTo((parentCenterX + (index * 100)) - 60, y + 50);
+                    ctx.stroke();
+
+                    // 绘制父母与子女垂直连接线
+                    ctx.beginPath();
+                    ctx.moveTo((parentCenterX + (index * 100)) - 60, y + 50);
+                    ctx.lineTo((parentCenterX + (index * 100)) - 60, y + 80);
+                    ctx.stroke();
+
+
+                    drawFamilyTree(child, (x) + (index * 100), y + 100, level + 1, x, y);
+                });
+            }
+        }
+
+        drawFamilyTree(DrawJson, 100, 50, 1);
+
+
+    </script>
+</body>
+
+</html>
